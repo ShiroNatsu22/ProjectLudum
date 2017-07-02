@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="ProjectLudum:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="ludum.war">
+      <element id="artifact" artifact-name="ProjectLudum:war exploded" />
+    </root>
+  </artifact>
+</component>
