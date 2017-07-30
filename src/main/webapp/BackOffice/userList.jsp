@@ -4,11 +4,11 @@
 <tag:pageMaster>
 
     <jsp:attribute name="head">
-        <title>Index</title>
+        <title>User list</title>
     </jsp:attribute>
 
     <jsp:body>
-        Esto es el index
+        <p>Aquí habrá una lista con los usuarios</p>
     </jsp:body>
 
 </tag:pageMaster>
