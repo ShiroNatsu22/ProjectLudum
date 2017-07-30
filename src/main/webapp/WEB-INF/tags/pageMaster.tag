@@ -1,5 +1,4 @@
 <%@tag description="Overall page template" %>
-
 <%@attribute name="head" fragment="true" %>
 
 <!Doctype html>
@@ -12,11 +11,12 @@
 
 <body>
 <ul>
-    <li><a href="/index.jsp">Home</a></li>
-    <li><a href="/BackOffice/userList.jsp">User list</a></li>
+    <li><a href="${pageContext.request.contextPath}/index.jsp">Home</a></li>
+    <li><a href="${pageContext.request.contextPath}/BackOffice/UserList.jsp">User list</a></li>
 </ul>
 
 <jsp:doBody/>
+
 </body>
 
 </html>

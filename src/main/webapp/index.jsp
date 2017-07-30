@@ -1,3 +1,6 @@
+<%@ page import="pojo.User" %>
+<%@ page import="model.UserDAO" %>
+<%@ page import="java.util.List" %>
 <%@page pageEncoding="UTF-8" %>
 <%@taglib prefix="tag" tagdir="/WEB-INF/tags" %>
 
@@ -9,6 +12,9 @@
 
     <jsp:body>
         Esto es el index
+
+
     </jsp:body>
 
 </tag:pageMaster>
+

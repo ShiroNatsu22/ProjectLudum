@@ -1,0 +1,7 @@
+Pablo Arbós Jiménez 30/07/2017 - Creada la tabla de usuarios con las credenciales básicas.
+
+CREATE TABLE `gamerlistDB`.`users` (
+  `user_id_pk` INT NOT NULL,
+  `username` VARCHAR(30) NOT NULL,
+  `password` VARCHAR(30) NOT NULL,
+  PRIMARY KEY (`user_id_pk`));
