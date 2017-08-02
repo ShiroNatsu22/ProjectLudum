@@ -1,4 +1,6 @@
-package pojo;
+package model;
+
+import java.sql.*;
 
 public class DataBase {
     private String driver;
@@ -11,6 +13,25 @@ public class DataBase {
         this.url = url;
         this.user = user;
         this.password = password;
+    }
+
+    public PreparedStatement getConnection(String query) {
+
+        try {
+            Class.forName(this.getDriver());
+            Connection connection = DriverManager.getConnection(
+                    this.getUrl(),
+                    this.getUser(),
+                    this.getPassword()
+            );
+            PreparedStatement ps = connection.prepareStatement(query);
+            return ps;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 
     public String getDriver() {

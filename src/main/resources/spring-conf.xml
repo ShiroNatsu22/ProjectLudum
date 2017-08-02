@@ -3,7 +3,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-    <bean id="dbc" class="pojo.DataBase">
+    <bean id="dbc" class="model.DataBase">
         <constructor-arg value="com.mysql.jdbc.Driver"/>
         <constructor-arg value="jdbc:mysql://192.168.1.36/gamerlistDB"/>
         <constructor-arg value="root"/>

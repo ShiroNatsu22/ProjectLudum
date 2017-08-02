@@ -5,3 +5,8 @@ CREATE TABLE `gamerlistDB`.`users` (
   `username` VARCHAR(30) NOT NULL,
   `password` VARCHAR(30) NOT NULL,
   PRIMARY KEY (`user_id_pk`));
+
+PAJ 01/08/2017 - No estaba puesto como incremental la primary key de la tabla users
+
+ALTER TABLE `gamerlistDB`.`users`
+CHANGE COLUMN `user_id_pk` `user_id_pk` INT(11) NOT NULL AUTO_INCREMENT ;
