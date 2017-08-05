@@ -8,6 +8,10 @@ public class DataBase {
     private String user;
     private String password;
 
+    public DataBase() {
+
+    }
+
     public DataBase(String driver, String url, String user, String password) {
         this.driver = driver;
         this.url = url;

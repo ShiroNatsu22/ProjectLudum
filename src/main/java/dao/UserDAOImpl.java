@@ -1,33 +1,48 @@
-package model;
+package dao;
 
+import model.DataBase;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import pojo.User;
+import model.User;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserDAO implements DAO {
+public class UserDAOImpl implements UserDAO {
 
     private DataBase db;
 
-    public UserDAO() {
+    public UserDAOImpl() {
         ApplicationContext beans = new ClassPathXmlApplicationContext("spring-conf.xml");
         this.db = (DataBase) beans.getBean("dbc");
     }
 
-    public void create(Object obj) {
+    @Override
+    public List<User> getAllUsers() {
+
+        String query = "SELECT * FROM users";
+        return getUsers(query);
     }
 
-    public List<User> read() {
+    @Override
+    public User getUserByUsername(String username) {
+
+        String query = "SELECT * FROM users WHERE users.username = '" + username + "'";
+        List<User> userList = getUsers(query);
+
+        if (!(userList.isEmpty()))
+            return userList.get(0);
+
+        return new User();
+
+    }
+
+    private List<User> getUsers(String query) {
         PreparedStatement ps;
         ResultSet rs;
         ArrayList<User> userList = new ArrayList<User>();
-        String query = "SELECT * FROM users";
 
         try {
 
@@ -46,4 +61,5 @@ public class UserDAO implements DAO {
 
         return userList;
     }
+
 }
