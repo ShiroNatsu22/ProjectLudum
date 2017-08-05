@@ -1,6 +1,3 @@
-<%@ page import="model.User" %>
-<%@ page import="dao.UserDAOImpl" %>
-<%@ page import="java.util.List" %>
 <%@page pageEncoding="UTF-8" %>
 <%@taglib prefix="tag" tagdir="/WEB-INF/tags" %>
 
@@ -11,7 +8,7 @@
     </jsp:attribute>
 
     <jsp:body>
-        Esto es el index
+        <p>Esto es el index</p>
 
 
     </jsp:body>

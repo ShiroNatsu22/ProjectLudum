@@ -7,24 +7,4 @@
 
     <display-name>Archetype Created Web Application</display-name>
 
-    <servlet>
-        <servlet-name>UsersControl</servlet-name>
-        <servlet-class>controller.UsersControl</servlet-class>
-    </servlet>
-
-    <servlet>
-        <servlet-name>Authenticate</servlet-name>
-        <servlet-class>controller.Authentication</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>Authenticate</servlet-name>
-        <url-pattern>/controller/Authenticate</url-pattern>
-    </servlet-mapping>
-
-    <servlet-mapping>
-        <servlet-name>UsersControl</servlet-name>
-        <url-pattern>/controller/UsersControl</url-pattern>
-    </servlet-mapping>
-
 </web-app>
