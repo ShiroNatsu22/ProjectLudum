@@ -12,7 +12,7 @@
 
     <jsp:body>
         Esto es el index
-
+    <tag:login></tag:login>
 
     </jsp:body>
 
