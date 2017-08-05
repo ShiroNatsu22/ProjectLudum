@@ -12,9 +12,9 @@
     </c:when>
 
     <c:otherwise>
-        <div id="container" class="col-lg-12 col-sm-4 offset-sm-4">
+        <div id="container" class="col-lg-12 col-sm-4 cffset-4">
             <div class="row">
-                <div class="col-sm-12 " id="formContainer">
+                <div class="col-sm-3 " id="formContainer">
                     <form id="form">
                         <img alt="logo" id="logoImg"  src="http://lavozdelmuro.net/wp-content/uploads/2017/02/PORTADA-1000x523.jpg">
 
@@ -24,12 +24,14 @@
                             </div>
 
                             <div class="form-group input-group icon ">
-                                <span class="input-group-addon" style="color:white; background-color:#1985A1"><i class="glyphicon glyphicon-user"></i></span>
+                                <span class="input-group-addon" style="color:white; background-color:#1985A1"><i class="fa fa-user" aria-hidden="true"></i>
+</span>
                                 <input type="text" class="form-control" name="user " id="user" placeholder="Enter username">
                             </div>
 
                             <div class="form-group input-group">
-                                <span class="input-group-addon" style="color:white; background-color:#1985A1"><i class="glyphicon glyphicon-lock"></i></span>
+                                <span class="input-group-addon" style="color:white; background-color:#1985A1"><i class="fa fa-key" aria-hidden="true"></i>
+</span>
                                 <input type="password" class="form-control" name="password" id="pass" placeholder="Enter user password">
                             </div>
                             <div class="form-group" id="button">
