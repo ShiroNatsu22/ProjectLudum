@@ -5,11 +5,14 @@ import dao.UserDAOImpl;
 import model.User;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+@WebServlet("/controller/Authenticate")
 public class Authentication extends HttpServlet {
 
     @Override
@@ -26,10 +29,14 @@ public class Authentication extends HttpServlet {
             authentication = password.equals(user.getPassword());
 
         if (authentication) {
+            HttpSession session = req.getSession(true);
+            session.setAttribute("currentUser", user);
 
         } else {
 
         }
+
+        resp.sendRedirect(req.getHeader("Referer"));
 
 
     }

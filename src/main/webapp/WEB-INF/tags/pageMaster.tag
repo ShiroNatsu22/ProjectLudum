@@ -1,32 +1,28 @@
-<%@tag description="Overall page template" %>
-<%@attribute name="head" fragment="true" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="tag" tagdir="/WEB-INF/tags" %>
+<%@ tag description="Overall page template" pageEncoding="UTF-8" %>
+<%@ attribute name="head" fragment="true" %>
 
 <!Doctype html>
 <html>
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <jsp:invoke fragment="head"/>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
 </head>
 
 <body>
-<ul>
-    <li><a href="${pageContext.request.contextPath}/index.jsp">Home</a></li>
-    <li><a href="${pageContext.request.contextPath}/BackOffice/UserList.jsp">User list</a></li>
-</ul>
 
-<form action="${pageContext.request.contextPath}/controller/Authenticate" method="post">
-    <label>
-        Username: <input name="username">
-    </label>
-
-    <label>
-        Password: <input type="password" name="password">
-    </label>
-    <input type="submit">
-</form>
+<tag:navbar/>
 
 <jsp:doBody/>
+
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
 
 </body>
 
