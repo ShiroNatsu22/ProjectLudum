@@ -13,19 +13,72 @@
 
         <p>Aquí habrá una lista con los usuarios</p>
 
-        <table>
-            <tr>
+        <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#modalAddUser">Add user
+        </button>
+
+        <%-- Table that prints a list of all users --%>
+        <table class="table table-hover table-bordered">
+            <thead>
+            <tr class="bg-primary text-white">
                 <th>Name</th>
                 <th>Password</th>
+                <th>Admin</th>
             </tr>
+            </thead>
 
-            <c:forEach items="${userList}" var="item">
+            <tbody>
+            <c:forEach items="${requestScope.userList}" var="item">
                 <tr>
                     <td>${item.username}</td>
                     <td>${item.password}</td>
+                    <td><input type="checkbox" class="form-check disabled" disabled
+                               <c:if test="${item.admin}">checked</c:if> ></td>
                 </tr>
             </c:forEach>
+            </tbody>
         </table>
+
+        <%-- Modal with the form that creates new users --%>
+        <div class="modal fade" id="modalAddUser" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add new user</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span>&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <form action="${pageContext.request.contextPath}/controller/UsersControl" method="post">
+                            <div class="form-group">
+                                <label for="newUsername">Username</label>
+                                <input class="form-control" id="newUsername" name="username"
+                                       placeholder="Enter new username">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="newPassword">Password</label>
+                                <input type="password" class="form-control" id="newPassword" name="password"
+                                       placeholder="Enter new password">
+                            </div>
+
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input" id="newAdmin" name="admin"
+                                           value="true">
+                                    Is admin?
+                                </label>
+                            </div>
+
+                            <button class="btn btn-primary">Add user</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
 
     </jsp:body>
 

@@ -39,6 +39,25 @@ public class UserDAOImpl implements UserDAO {
 
     }
 
+    @Override
+    public void createUser(String username, String password, boolean admin) {
+        PreparedStatement ps;
+        String query = "INSERT INTO users (username, password, admin) VALUES(?,?,?)";
+
+        try {
+
+            ps = db.getConnection(query);
+            ps.setString(1, username);
+            ps.setString(2, password);
+            ps.setBoolean(3, admin);
+            ps.execute();
+            ps.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     private List<User> getUsers(String query) {
         PreparedStatement ps;
         ResultSet rs;
@@ -50,7 +69,7 @@ public class UserDAOImpl implements UserDAO {
             rs = ps.executeQuery();
 
             while (rs.next()) {
-                userList.add(new User(rs.getInt("user_id_pk"), rs.getString("username"), rs.getString("password")));
+                userList.add(new User(rs.getInt("user_id_pk"), rs.getString("username"), rs.getString("password"), rs.getBoolean("admin")));
             }
 
             ps.close();

@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="tag" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="navbar" tagdir="/WEB-INF/tags/navbar" %>
 <%@ tag description="Navbar" pageEncoding="UTF-8" %>
 
 <nav class="navbar navbar-toggleable-sm navbar-inverse bg-primary">
@@ -16,12 +17,19 @@
             <li class="nav-item">
                 <a class="nav-link" href="${pageContext.request.contextPath}/index.jsp">Home</a>
             </li>
-            <li>
-                <a class="nav-link" href="${pageContext.request.contextPath}/BackOffice/UserList.jsp">User list</a>
-            </li>
         </ul>
 
-        <tag:login/>
+        <c:choose>
+            <c:when test="${sessionScope.currentUser != null}">
+                <navbar:navbarUserProfile/>
+            </c:when>
+
+            <c:otherwise>
+                <navbar:navbarLogin/>
+            </c:otherwise>
+        </c:choose>
+
+
     </div>
 
 

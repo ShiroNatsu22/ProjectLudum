@@ -23,4 +23,19 @@ public class UsersControl extends HttpServlet {
         req.setAttribute("userList", userList);
 
     }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        UserDAO userDAO = new UserDAOImpl();
+
+        String username = req.getParameter("username");
+        String password = req.getParameter("password");
+        boolean admin = Boolean.parseBoolean(req.getParameter("admin"));
+
+        userDAO.createUser(username, password, admin);
+
+        resp.sendRedirect(req.getHeader("Referer"));
+
+    }
 }

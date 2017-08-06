@@ -16,3 +16,10 @@ ALTER TABLE `gamerlistDB`.`users`
 
 ALTER TABLE `gamerlistDB`.`users`
   ADD UNIQUE INDEX `username_UNIQUE` (`username` ASC);
+
+/* PAJ 05/08/2017 - Agregado campo isAdmin para saber si un usuario es administrador, como seguramente solo habrán
+2 roles, usuario normal y admin, no encuentro un motivo suficiente para crear una tabla de roles.*/
+
+ALTER TABLE `gamerlistDB`.`users`
+  ADD COLUMN `admin` TINYINT NOT NULL DEFAULT 0
+  AFTER `password`;
