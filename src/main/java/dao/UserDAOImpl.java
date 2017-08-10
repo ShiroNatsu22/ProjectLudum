@@ -41,12 +41,12 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public void createUser(String username, String password, boolean admin) {
-        PreparedStatement ps;
-        String query = "INSERT INTO users (username, password, admin) VALUES(?,?,?)";
 
         try {
 
-            ps = db.getConnection(query);
+            String query = "INSERT INTO users (username, password, admin) VALUES(?,?,?)";
+            PreparedStatement ps = db.getConnection(query);
+
             ps.setString(1, username);
             ps.setString(2, password);
             ps.setBoolean(3, admin);
@@ -58,15 +58,32 @@ public class UserDAOImpl implements UserDAO {
         }
     }
 
-    private List<User> getUsers(String query) {
-        PreparedStatement ps;
-        ResultSet rs;
-        ArrayList<User> userList = new ArrayList<User>();
+    @Override
+    public void deleteUser(int user_id_pk) {
 
         try {
 
-            ps = db.getConnection(query);
-            rs = ps.executeQuery();
+            String query = "DELETE FROM users WHERE users.user_id_pk = ?";
+            PreparedStatement ps = db.getConnection(query);
+
+            ps.setInt(1, user_id_pk);
+            ps.execute();
+            ps.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private List<User> getUsers(String query) {
+
+        List<User> userList = new ArrayList<User>();
+
+        try {
+
+            PreparedStatement ps = db.getConnection(query);
+            ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
                 userList.add(new User(rs.getInt("user_id_pk"), rs.getString("username"), rs.getString("password"), rs.getBoolean("admin")));

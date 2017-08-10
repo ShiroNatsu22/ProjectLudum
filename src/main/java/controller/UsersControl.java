@@ -28,12 +28,21 @@ public class UsersControl extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         UserDAO userDAO = new UserDAOImpl();
+        String user_id_pk = req.getParameter("deleteUser");
 
-        String username = req.getParameter("username");
-        String password = req.getParameter("password");
-        boolean admin = Boolean.parseBoolean(req.getParameter("admin"));
+        if (user_id_pk != null) {
 
-        userDAO.createUser(username, password, admin);
+            userDAO.deleteUser(Integer.parseInt(user_id_pk));
+
+        } else {
+
+            String username = req.getParameter("username");
+            String password = req.getParameter("password");
+            boolean admin = Boolean.parseBoolean(req.getParameter("admin"));
+
+            userDAO.createUser(username, password, admin);
+
+        }
 
         resp.sendRedirect(req.getHeader("Referer"));
 

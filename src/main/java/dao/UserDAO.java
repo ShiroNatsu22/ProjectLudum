@@ -10,4 +10,6 @@ public interface UserDAO {
     User getUserByUsername(String username);
 
     void createUser(String username, String password, boolean admin);
+
+    void deleteUser(int id);
 }

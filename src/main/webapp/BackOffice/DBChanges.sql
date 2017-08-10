@@ -23,3 +23,12 @@ ALTER TABLE `gamerlistDB`.`users`
 ALTER TABLE `gamerlistDB`.`users`
   ADD COLUMN `admin` TINYINT NOT NULL DEFAULT 0
   AFTER `password`;
+
+/* PAJ 10/08/2017 - Agregada la tabla videogames, irá creciendo con el tiempo */
+
+CREATE TABLE `gamerlistDB`.`videogames` (
+  `videogame_id_pk` INT         NOT NULL AUTO_INCREMENT,
+  `name`            VARCHAR(30) NOT NULL,
+  `description`     TEXT        NOT NULL,
+  PRIMARY KEY (`videogame_id_pk`)
+);

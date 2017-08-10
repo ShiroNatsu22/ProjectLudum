@@ -1,7 +1,8 @@
 package model;
 
 public class User {
-    private int id;
+
+    private int user_id_pk;
     private String username;
     private String password;
     private boolean admin;
@@ -10,19 +11,19 @@ public class User {
 
     }
 
-    public User(int id, String username, String password, boolean admin) {
-        this.id = id;
+    public User(int user_id_pk, String username, String password, boolean admin) {
+        this.user_id_pk = user_id_pk;
         this.username = username;
         this.password = password;
         this.admin = admin;
     }
 
-    public int getId() {
-        return id;
+    public int getUser_id_pk() {
+        return user_id_pk;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setUser_id_pk(int user_id_pk) {
+        this.user_id_pk = user_id_pk;
     }
 
     public String getUsername() {

@@ -24,7 +24,7 @@
 
 <navbar:navbar/>
 
-<div class="container">
+<div class="container px-2 py-2">
     <jsp:doBody/>
 </div>
 

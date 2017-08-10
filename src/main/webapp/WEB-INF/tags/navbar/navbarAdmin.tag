@@ -12,8 +12,13 @@
 
     <div class="collapse navbar-collapse" id="adminNavbar">
         <ul class="navbar-nav mr-auto">
-            <li>
-                <a class="nav-link" href="${pageContext.request.contextPath}/BackOffice/UserList.jsp">User list</a>
+            <li class="nav-item">
+                <a class="nav-link" href="${pageContext.request.contextPath}/BackOffice/Admin/UserList.jsp">User
+                    list</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="${pageContext.request.contextPath}/BackOffice/Admin/VideogameList.jsp">Videogame
+                    list</a>
             </li>
         </ul>
 

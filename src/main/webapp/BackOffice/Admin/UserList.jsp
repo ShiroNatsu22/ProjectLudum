@@ -11,8 +11,6 @@
     <jsp:body>
         <jsp:include page="/controller/UsersControl"/>
 
-        <p>Aquí habrá una lista con los usuarios</p>
-
         <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#modalAddUser">Add user
         </button>
 
@@ -23,16 +21,28 @@
                 <th>Name</th>
                 <th>Password</th>
                 <th>Admin</th>
+                <th>Delete</th>
             </tr>
             </thead>
 
             <tbody>
             <c:forEach items="${requestScope.userList}" var="item">
                 <tr>
-                    <td>${item.username}</td>
-                    <td>${item.password}</td>
-                    <td><input type="checkbox" class="form-check disabled" disabled
-                               <c:if test="${item.admin}">checked</c:if> ></td>
+                    <td>
+                            ${item.username}
+                    </td>
+                    <td>
+                            ${item.password}
+                    </td>
+                    <td>
+                        <input type="checkbox" class="form-check disabled" disabled
+                               <c:if test="${item.admin}">checked</c:if> >
+                    </td>
+                    <td>
+                        <form action="${pageContext.request.contextPath}/controller/UsersControl" method="post">
+                            <button name="deleteUser" value="${item.user_id_pk}"><i class="fa fa-trash"></i></button>
+                        </form>
+                    </td>
                 </tr>
             </c:forEach>
             </tbody>
