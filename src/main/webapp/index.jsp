@@ -9,9 +9,7 @@
 
     <jsp:body>
         <p>Esto es el index</p>
-
-    <tag:windowLogin></tag:windowLogin>
-    </jsp:body>
+<tag:windowLogin></tag:windowLogin>    </jsp:body>
 
 </tag:pageMaster>
 

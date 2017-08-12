@@ -14,30 +14,34 @@
     <c:otherwise>
         <div id="container" class="col-lg-12 col-sm-4 cffset-4">
             <div class="row">
-                <div class="col-sm-4 " id="formContainer">
+                <div class="col-sm-5 " id="formContainer">
+                    <p> Formulario de registro</p>
                     <form id="form">
-                        <img alt="logo" id="logoImg"  src="http://lavozdelmuro.net/wp-content/uploads/2017/02/PORTADA-1000x523.jpg">
+
 
                         <div id="paddings">
-                            <div id="errorMessage">
 
-                            </div>
 
-                            <div class="form-group input-group icon ">
-                                <span class="input-group-addon" style="color:white; background-color:#1985A1"><i class="fa fa-user" aria-hidden="true"></i>
-</span>
+                            <div class="registrerUser">
+                                <p>Usuario:</p>
                                 <input type="text" class="form-control" name="user " id="user" placeholder="Enter username">
                             </div>
 
-                            <div class="form-group input-group">
-                                <span class="input-group-addon" style="color:white; background-color:#1985A1"><i class="fa fa-key" aria-hidden="true"></i>
-</span>
+                            <div class="registrerPass">
+                                <p>Contraseña:</p>
                                 <input type="password" class="form-control" name="password" id="pass" placeholder="Enter user password">
                             </div>
-                            <div class="noAccount">
-                                <a href="#">¿No tienes cuenta? Aqui podras crearte una</a>
-
+                            <div class="registrerPass">
+                                <p>Vuelva a introducir la contraseña:</p>
+                                <input type="password" class="form-control" name="password" id="rePass" placeholder="Repeat Password">
                             </div>
+
+                            <div class="registrerMail">
+                                <p>Introduzca su email:</p>
+                                <input type="email" class="form-control" name="password" id="email" placeholder="Enter email">
+                            </div>
+
+
                             <div class="form-group" id="button">
                                 <button type="button" class="btn btn-block" name="submit" value="Envia" onclick="" id="submit">Send</button>
                             </div>
