@@ -16,7 +16,7 @@
             <div class="row">
                 <div class="col-sm-4 " id="formContainer">
                     <form id="form">
-                        <img alt="logo" id="logoImg"  src="http://lavozdelmuro.net/wp-content/uploads/2017/02/PORTADA-1000x523.jpg">
+                        <img alt="logo" id="logoImg"  class="col-sm-12" src="http://lavozdelmuro.net/wp-content/uploads/2017/02/PORTADA-1000x523.jpg">
 
                         <div id="paddings">
                             <div id="errorMessage">
