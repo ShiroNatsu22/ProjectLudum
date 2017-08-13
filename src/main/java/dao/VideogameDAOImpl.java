@@ -22,62 +22,49 @@ public class VideogameDAOImpl implements VideogameDAO {
     @Override
     public List<Videogame> getAllVideogames() {
 
-        List<Videogame> videogameList = new ArrayList<Videogame>();
         String query = "SELECT * FROM videogames";
+        return getVideogames(query);
 
-        try {
-
-            PreparedStatement ps = db.getConnection(query);
-            ResultSet rs = ps.executeQuery();
-
-            while (rs.next()) {
-                videogameList.add(new Videogame(rs.getInt("videogame_id_pk"), rs.getString("name"), rs.getString("description")));
-            }
-
-            ps.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return videogameList;
-
-        /*ArrayList<User> userList = new ArrayList<User>();
-
-        try {
-
-            PreparedStatement ps = db.getConnection(query);
-            ResultSet rs = ps.executeQuery();
-
-            while (rs.next()) {
-                userList.add(new User(rs.getInt("user_id_pk"), rs.getString("username"), rs.getString("password"), rs.getBoolean("admin")));
-            }
-
-            ps.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return userList;*/
     }
 
     @Override
-    public void createVideogame(String name, String description) {
+    public Videogame getVideogameByID(int videogame_id_pk) {
+        String query = "SELECT * FROM videogames WHERE videogames.videogame_id_pk = " + String.valueOf(videogame_id_pk);
+        List<Videogame> videogameList = getVideogames(query);
+
+        if (!(videogameList.isEmpty()))
+            return videogameList.get(0);
+
+        return new Videogame();
+    }
+
+    @Override
+    public int createVideogame(Videogame videogame) {
+
+        int resultVideogame_id_pk = 0;
 
         try {
 
+            ResultSet rs;
             String query = "INSERT INTO videogames (name, description) VALUES(?,?)";
             PreparedStatement ps = db.getConnection(query);
 
-            ps.setString(1, name);
-            ps.setString(2, description);
+            ps.setString(1, videogame.getName());
+            ps.setString(2, videogame.getDescription());
             ps.execute();
+
+            rs = ps.getGeneratedKeys();
+
+            if (rs.next())
+                resultVideogame_id_pk = rs.getInt(1);
+
             ps.close();
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        return resultVideogame_id_pk;
 
     }
 
@@ -97,5 +84,27 @@ public class VideogameDAOImpl implements VideogameDAO {
             e.printStackTrace();
         }
 
+    }
+
+    private List<Videogame> getVideogames(String query) {
+
+        List<Videogame> videogameList = new ArrayList<Videogame>();
+
+        try {
+
+            PreparedStatement ps = db.getConnection(query);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                videogameList.add(new Videogame(rs.getInt("videogame_id_pk"), rs.getString("name"), rs.getString("description")));
+            }
+
+            ps.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return videogameList;
     }
 }

@@ -1,5 +1,7 @@
 package controller;
 
+import dao.DeveloperDAO;
+import dao.DeveloperDAOImpl;
 import dao.VideogameDAO;
 import dao.VideogameDAOImpl;
 import model.Videogame;
@@ -19,8 +21,18 @@ public class VideogamesControl extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         VideogameDAO videogameDAO = new VideogameDAOImpl();
-        List<Videogame> videogameList = videogameDAO.getAllVideogames();
-        req.setAttribute("videogameList", videogameList);
+        String id = req.getParameter("id");
+
+        // Si la peticion es desde la ficha de videojuegos
+        if (id != null) {
+
+            req.setAttribute("currentVideogame", videogameDAO.getVideogameByID(Integer.parseInt(id)));
+
+        } else {
+
+            req.setAttribute("videogameList", videogameDAO.getAllVideogames());
+
+        }
 
     }
 
@@ -36,10 +48,11 @@ public class VideogamesControl extends HttpServlet {
 
         } else {
 
-            String name = req.getParameter("name");
-            String description = req.getParameter("description");
+            DeveloperDAO developerDAO = new DeveloperDAOImpl();
+            Videogame videogame = new Videogame(0, req.getParameter("name"), req.getParameter("description"));
+            int videogame_id_fk = videogameDAO.createVideogame(videogame);
 
-            videogameDAO.createVideogame(name, description);
+            developerDAO.createDeveloper(Integer.parseInt(req.getParameter("company_id_fk")), videogame_id_fk);
 
         }
 

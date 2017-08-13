@@ -10,12 +10,12 @@
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <a class="navbar-brand" href="${pageContext.request.contextPath}/index.jsp">GamerList</a>
+    <a class="navbar-brand" href="<c:url value="/index.jsp"/>">GamerList</a>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="${pageContext.request.contextPath}/index.jsp">Home</a>
+                <a class="nav-link" href="<c:url value="/index.jsp"/>">Home</a>
             </li>
         </ul>
 

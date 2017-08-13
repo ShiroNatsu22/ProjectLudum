@@ -18,9 +18,7 @@ public class UsersControl extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         UserDAO userDAOImpl = new UserDAOImpl();
-        List<User> userList = userDAOImpl.getAllUsers();
-
-        req.setAttribute("userList", userList);
+        req.setAttribute("userList", userDAOImpl.getAllUsers());
 
     }
 
@@ -36,11 +34,9 @@ public class UsersControl extends HttpServlet {
 
         } else {
 
-            String username = req.getParameter("username");
-            String password = req.getParameter("password");
-            boolean admin = Boolean.parseBoolean(req.getParameter("admin"));
+            User user = new User(0, req.getParameter("username"), req.getParameter("password"), Boolean.parseBoolean(req.getParameter("admin")));
 
-            userDAO.createUser(username, password, admin);
+            userDAO.createUser(user);
 
         }
 

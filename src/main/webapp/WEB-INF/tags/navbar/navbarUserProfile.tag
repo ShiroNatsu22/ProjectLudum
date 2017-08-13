@@ -5,6 +5,6 @@
     User: ${sessionScope.currentUser.getUsername()}
 </span>
 
-<form class="form-inline" action="${pageContext.request.contextPath}/controller/LogOut">
+<form class="form-inline" action="<c:url value="/controller/LogOut"/>">
     <button class="btn btn-danger btn-sm my-2 my-sm-0">LogOut</button>
 </form>

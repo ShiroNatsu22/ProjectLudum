@@ -40,16 +40,16 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public void createUser(String username, String password, boolean admin) {
+    public void createUser(User user) {
 
         try {
 
             String query = "INSERT INTO users (username, password, admin) VALUES(?,?,?)";
             PreparedStatement ps = db.getConnection(query);
 
-            ps.setString(1, username);
-            ps.setString(2, password);
-            ps.setBoolean(3, admin);
+            ps.setString(1, user.getUsername());
+            ps.setString(2, user.getPassword());
+            ps.setBoolean(3, user.isAdmin());
             ps.execute();
             ps.close();
 

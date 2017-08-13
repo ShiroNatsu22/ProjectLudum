@@ -8,7 +8,9 @@ public interface VideogameDAO {
 
     List<Videogame> getAllVideogames();
 
-    void createVideogame(String name, String description);
+    Videogame getVideogameByID(int videogame_id_pk);
+
+    int createVideogame(Videogame videogame);
 
     void deleteVideogame(int videogame_id_pk);
 

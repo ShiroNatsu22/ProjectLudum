@@ -8,8 +8,10 @@
     </jsp:attribute>
 
     <jsp:body>
-        <p>Esto es el index</p>
-<tag:gameCard></tag:gameCard>    </jsp:body>
+
+        <tag:gameCard/>
+
+    </jsp:body>
 
 </tag:pageMaster>
 

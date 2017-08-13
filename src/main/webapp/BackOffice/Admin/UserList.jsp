@@ -2,6 +2,8 @@
 <%@ taglib prefix="tag" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<jsp:include page="/controller/UsersControl"/>
+
 <tag:pageMaster>
 
     <jsp:attribute name="head">
@@ -9,7 +11,6 @@
     </jsp:attribute>
 
     <jsp:body>
-        <jsp:include page="/controller/UsersControl"/>
 
         <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#modalAddUser">Add user
         </button>
@@ -18,7 +19,7 @@
         <table class="table table-hover table-bordered">
             <thead>
             <tr class="bg-primary text-white">
-                <th>Name</th>
+                <th>Username</th>
                 <th>Password</th>
                 <th>Admin</th>
                 <th>Delete</th>
@@ -39,7 +40,7 @@
                                <c:if test="${item.admin}">checked</c:if> >
                     </td>
                     <td>
-                        <form action="${pageContext.request.contextPath}/controller/UsersControl" method="post">
+                        <form action="<c:url value="/controller/UsersControl"/>" method="post">
                             <button name="deleteUser" value="${item.user_id_pk}"><i class="fa fa-trash"></i></button>
                         </form>
                     </td>
@@ -61,7 +62,7 @@
                     </div>
 
                     <div class="modal-body">
-                        <form action="${pageContext.request.contextPath}/controller/UsersControl" method="post">
+                        <form action="<c:url value="/controller/UsersControl"/>" method="post">
                             <div class="form-group">
                                 <label for="newUsername">Username</label>
                                 <input class="form-control" id="newUsername" name="username"
