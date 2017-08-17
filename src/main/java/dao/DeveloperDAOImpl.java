@@ -24,25 +24,16 @@ public class DeveloperDAOImpl implements DeveloperDAO {
     @Override
     public List<Developer> getDevelopersByVideogame_id_fk(int videogame_id_fk) {
 
-        List<Developer> developerList = new ArrayList<Developer>();
+        String query = String.format("SELECT * FROM developers WHERE developers.videogame_id_fk = %d", videogame_id_fk);
+        return getDevelopersById_fk(query);
 
-        try {
+    }
 
-            String query = "SELECT * FROM developers WHERE developers.videogame_id_fk = " + String.valueOf(videogame_id_fk);
-            PreparedStatement ps = db.getConnection(query);
-            ResultSet rs = ps.executeQuery();
+    @Override
+    public List<Developer> getDevelopersByCompany_id_fk(int company_id_fk) {
 
-            while (rs.next()) {
-                developerList.add(new Developer(rs.getInt("developer_id_pk"), rs.getInt("company_id_fk"), rs.getInt("videogame_id_fk")));
-            }
-
-            ps.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return developerList;
+        String query = String.format("SELECT * FROM developers WHERE developers.company_id_fk = %d", company_id_fk);
+        return getDevelopersById_fk(query);
 
     }
 
@@ -62,6 +53,29 @@ public class DeveloperDAOImpl implements DeveloperDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+    }
+
+    private List<Developer> getDevelopersById_fk(String query) {
+
+        List<Developer> developerList = new ArrayList<Developer>();
+
+        try {
+
+            PreparedStatement ps = db.getConnection(query);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                developerList.add(new Developer(rs.getInt("developer_id_pk"), rs.getInt("company_id_fk"), rs.getInt("videogame_id_fk")));
+            }
+
+            ps.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return developerList;
 
     }
 

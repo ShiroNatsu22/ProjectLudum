@@ -64,3 +64,25 @@ CREATE TABLE `gamerlistDB`.`developers` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
 );
+
+/* PAJ 17/08/2017 - Creada la tabla intermedia publishers, que relaciona videogames y companies */
+
+CREATE TABLE `gamerlistDB`.`publishers` (
+  `publisher_id_pk` INT NOT NULL AUTO_INCREMENT,
+  `videogame_id_fk` INT NOT NULL,
+  `company_id_fk`   INT NOT NULL,
+  PRIMARY KEY (`publisher_id_pk`),
+  INDEX `videogame_idx` (`videogame_id_fk` ASC),
+  INDEX `company_idx` (`company_id_fk` ASC),
+  UNIQUE INDEX `videogameCompany` (`videogame_id_fk` ASC, `company_id_fk` ASC),
+  CONSTRAINT `videogame`
+  FOREIGN KEY (`videogame_id_fk`)
+  REFERENCES `gamerlistDB`.`videogames` (`videogame_id_pk`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `company`
+  FOREIGN KEY (`company_id_fk`)
+  REFERENCES `gamerlistDB`.`companies` (`company_id_pk`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+);

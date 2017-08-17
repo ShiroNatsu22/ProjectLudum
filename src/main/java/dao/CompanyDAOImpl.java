@@ -42,21 +42,32 @@ public class CompanyDAOImpl implements CompanyDAO {
     }
 
     @Override
-    public void createCompany(Company company) {
+    public int createCompany(Company company) {
+
+        int resultCompany_id_pk = -1;
 
         try {
 
+            ResultSet rs;
             String query = "INSERT INTO companies (name, founded) VALUES(?,?)";
             PreparedStatement ps = db.getConnection(query);
 
             ps.setString(1, company.getName());
             ps.setDate(2, new Date(company.getFounded().getTime()));
             ps.execute();
+
+            rs = ps.getGeneratedKeys();
+
+            if (rs.next())
+                resultCompany_id_pk = rs.getInt(1);
+
             ps.close();
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        return resultCompany_id_pk;
 
     }
 
@@ -65,10 +76,14 @@ public class CompanyDAOImpl implements CompanyDAO {
 
         try {
 
-            String query = "DELETE FROM companies WHERE companies.company_id_pk = ?";
+            // Borramos la relación entre company y developer
+            String query = String.format("DELETE FROM gamerlistDB.developers WHERE company_id_fk = %d;", company_id_pk);
+
+            // Borramos la empresa
+            query += String.format("DELETE FROM companies WHERE companies.company_id_pk = %d", company_id_pk);
+
             PreparedStatement ps = db.getConnection(query);
 
-            ps.setInt(1, company_id_pk);
             ps.execute();
             ps.close();
 

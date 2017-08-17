@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <jsp:include page="/controller/CompaniesControl"/>
+<jsp:include page="/controller/VideogamesControl"/>
 
 <tag:pageMaster>
 
@@ -27,17 +28,17 @@
             </thead>
 
             <tbody>
-            <c:forEach items="${requestScope.companyList}" var="item">
+            <c:forEach items="${requestScope.companyList}" var="company">
                 <tr>
                     <td>
-                            ${item.name}
+                        <a href="<c:url value="/BackOffice/CompanyCard.jsp?id=${company.company_id_pk}" />">${company.name}</a>
                     </td>
                     <td>
-                            ${item.founded}
+                            ${company.founded}
                     </td>
                     <td>
                         <form action="<c:url value="/controller/CompaniesControl"/>" method="post">
-                            <button name="deleteCompany" value="${item.company_id_pk}"><i class="fa fa-trash"></i>
+                            <button name="deleteCompany" value="${company.company_id_pk}"><i class="fa fa-trash"></i>
                             </button>
                         </form>
                     </td>
@@ -71,6 +72,12 @@
                                 <input type="date" class="" id="newFounded" name="founded"
                                        placeholder="Enter new founded">
                             </div>
+
+                            <select id="newDeveloperVideogame_id_fk" name="videogame_id_fk" multiple>
+                                <c:forEach var="videogame" items="${requestScope.videogameList}">
+                                    <option value="${videogame.videogame_id_pk}">${videogame.name}</option>
+                                </c:forEach>
+                            </select>
 
                             <button class="btn btn-primary">Add company</button>
                         </form>

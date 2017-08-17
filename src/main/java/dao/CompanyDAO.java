@@ -10,7 +10,7 @@ public interface CompanyDAO {
 
     Company getCompanyByID(int company_id_pk);
 
-    void createCompany(Company company);
+    int createCompany(Company company);
 
     void deleteCompany(int company_id_pk);
 

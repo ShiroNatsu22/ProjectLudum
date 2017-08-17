@@ -8,14 +8,13 @@
 
     <jsp:attribute name="head">
         <title>Provisional</title>
-        <%--<link type="text/css" rel="stylesheet" href="<c:url value="/lib/css/cardCss.min.css" />" />--%>
     </jsp:attribute>
 
     <jsp:body>
 
         <div class="row">
             <div class="col game-title">
-                <h3>${requestScope.currentVideogame.getName()}</h3>
+                <h3>${requestScope.currentVideogame.name}</h3>
             </div>
         </div>
 
@@ -31,38 +30,31 @@
 
                 <ul class="list-group">
                     <li class="list-group-item">
-                        Name: ${requestScope.currentVideogame.getName()}
+                        Name: ${requestScope.currentVideogame.name}
                     </li>
                     <li class="list-group-item">
                         Developer:
-                        <c:forEach var="item" items="${requestScope.currentVideogameDeveloperList}">
-                            ${item.getName()}
+                        <c:forEach var="developer" items="${requestScope.currentVideogameDeveloperList}">
+                            <a class="ml-1"
+                               href="<c:url value="/BackOffice/CompanyCard.jsp?id=${developer.company_id_pk}" />">${developer.name}</a>
                         </c:forEach>
                     </li>
                     <li class="list-group-item">
-                        Productor: Ubisoft
+                        Publisher:
                     </li>
                     <li class="list-group-item">
-                        Género: Acción
+                        Genre:
                     </li>
                     <li class="list-group-item">
-                        Plataforma: PS4
+                        Platform:
                     </li>
                     <li class="list-group-item">
-                        Jugadores: 25
+                        Number of players:
                     </li>
                     <li class="list-group-item">
-                        PEGI: 18
+                        PEGI:
                     </li>
                 </ul>
-
-                    <%--<p class="main-info">Nombre: VIKINGS</p>
-                    <p class="main-info">Distribuidor: Bethesda</p>
-                    <p class="main-info">Productor: Ubisoft</p>
-                    <p class="main-info">Género: Acción</p>
-                    <p class="main-info">Plataforma: PS4</p>
-                    <p class="main-info">Jugadores: 25</p>
-                    <p class="main-info">PEGI: 18</p>--%>
 
             </div>
 
@@ -70,7 +62,7 @@
 
         <div class="row">
             <div class="col col-sm-12 mt-2 other-info">
-                <p>${requestScope.currentVideogame.getDescription()}</p>
+                <p>${requestScope.currentVideogame.description}</p>
             </div>
         </div>
 

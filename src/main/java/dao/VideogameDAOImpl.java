@@ -41,7 +41,7 @@ public class VideogameDAOImpl implements VideogameDAO {
     @Override
     public int createVideogame(Videogame videogame) {
 
-        int resultVideogame_id_pk = 0;
+        int resultVideogame_id_pk = -1;
 
         try {
 
