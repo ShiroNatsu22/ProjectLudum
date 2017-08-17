@@ -30,13 +30,30 @@
             <div class="col">
 
                 <ul class="list-group">
-                    <li class="list-group-item">Nombre: VIKINGS</li>
-                    <li class="list-group-item">Distribuidor: Bethesda</li>
-                    <li class="list-group-item">Productor: Ubisoft</li>
-                    <li class="list-group-item">Género: Acción</li>
-                    <li class="list-group-item">Plataforma: PS4</li>
-                    <li class="list-group-item">Jugadores: 25</li>
-                    <li class="list-group-item">PEGI: 18</li>
+                    <li class="list-group-item">
+                        Name: ${requestScope.currentVideogame.getName()}
+                    </li>
+                    <li class="list-group-item">
+                        Developer:
+                        <c:forEach var="item" items="${requestScope.currentVideogameDeveloperList}">
+                            ${item.getName()}
+                        </c:forEach>
+                    </li>
+                    <li class="list-group-item">
+                        Productor: Ubisoft
+                    </li>
+                    <li class="list-group-item">
+                        Género: Acción
+                    </li>
+                    <li class="list-group-item">
+                        Plataforma: PS4
+                    </li>
+                    <li class="list-group-item">
+                        Jugadores: 25
+                    </li>
+                    <li class="list-group-item">
+                        PEGI: 18
+                    </li>
                 </ul>
 
                     <%--<p class="main-info">Nombre: VIKINGS</p>

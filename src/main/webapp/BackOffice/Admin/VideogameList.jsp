@@ -4,7 +4,6 @@
 
 <jsp:include page="/controller/VideogamesControl"/>
 <jsp:include page="/controller/CompaniesControl"/>
-<jsp:include page="/controller/DeveloperControl"/>
 
 <tag:pageMaster>
 
@@ -74,7 +73,7 @@
                                           rows="3"></textarea>
                             </div>
 
-                            <select id="newCompany_id_fk" name="company_id_fk">
+                            <select id="newCompany_id_fk" name="company_id_fk" multiple>
                                 <c:forEach var="item" items="${requestScope.companyList}">
                                     <option value="${item.company_id_pk}">${item.name}</option>
                                 </c:forEach>

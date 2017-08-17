@@ -73,10 +73,14 @@ public class VideogameDAOImpl implements VideogameDAO {
 
         try {
 
-            String query = "DELETE FROM videogames WHERE videogames.videogame_id_pk = ?";
+            // Borramos la relación entre videojuego y developer
+            String query = String.format("DELETE FROM gamerlistDB.developers WHERE videogame_id_fk = %d;", videogame_id_pk);
+
+            // Borramos el videojuego
+            query += String.format("DELETE FROM videogames WHERE videogames.videogame_id_pk = %d", videogame_id_pk);
+
             PreparedStatement ps = db.getConnection(query);
 
-            ps.setInt(1, videogame_id_pk);
             ps.execute();
             ps.close();
 
@@ -95,9 +99,9 @@ public class VideogameDAOImpl implements VideogameDAO {
             PreparedStatement ps = db.getConnection(query);
             ResultSet rs = ps.executeQuery();
 
-            while (rs.next()) {
+            while (rs.next())
                 videogameList.add(new Videogame(rs.getInt("videogame_id_pk"), rs.getString("name"), rs.getString("description")));
-            }
+
 
             ps.close();
 

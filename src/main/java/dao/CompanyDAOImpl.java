@@ -23,25 +23,21 @@ public class CompanyDAOImpl implements CompanyDAO {
     @Override
     public List<Company> getAllCompanies() {
 
-        List<Company> companyList = new ArrayList<Company>();
         String query = "SELECT * FROM companies";
+        return getCompanies(query);
 
-        try {
+    }
 
-            PreparedStatement ps = db.getConnection(query);
-            ResultSet rs = ps.executeQuery();
+    @Override
+    public Company getCompanyByID(int company_id_pk) {
 
-            while (rs.next()) {
-                companyList.add(new Company(rs.getInt("company_id_pk"), rs.getString("name"), rs.getDate("founded")));
-            }
+        String query = "SELECT * FROM companies WHERE companies.company_id_pk = " + String.valueOf(company_id_pk);
+        List<Company> companyList = getCompanies(query);
 
-            ps.close();
+        if (!(companyList.isEmpty()))
+            return companyList.get(0);
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return companyList;
+        return new Company();
 
     }
 
@@ -80,6 +76,28 @@ public class CompanyDAOImpl implements CompanyDAO {
             e.printStackTrace();
         }
 
+    }
+
+    private List<Company> getCompanies(String query) {
+
+        List<Company> companyList = new ArrayList<Company>();
+
+        try {
+
+            PreparedStatement ps = db.getConnection(query);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                companyList.add(new Company(rs.getInt("company_id_pk"), rs.getString("name"), rs.getDate("founded")));
+            }
+
+            ps.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return companyList;
     }
 
 }
