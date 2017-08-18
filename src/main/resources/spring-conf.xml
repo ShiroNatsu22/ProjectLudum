@@ -5,9 +5,9 @@
 
     <bean id="dbc" class="model.DataBase">
         <constructor-arg value="com.mysql.jdbc.Driver"/>
-        <constructor-arg value="jdbc:mysql://192.168.1.36/gamerlistDB?allowMultiQueries=true"/>
+        <constructor-arg value="jdbc:mysql://192.168.1.47/gamerlistDB?allowMultiQueries=true"/>
         <constructor-arg value="root"/>
-        <constructor-arg value="1234"/>
+        <constructor-arg value="test"/>
     </bean>
 
 

@@ -25,7 +25,9 @@
 <navbar:navbar/>
 
 <div class="container px-2 py-2">
+    <tag:profile></tag:profile>
     <jsp:doBody/>
+
 </div>
 
 
