@@ -27,19 +27,18 @@
                 <div class="col-sm-8 user-info float-right">
                     <ul class="list-group col-sm-12">
                         <li class="list-group-item" > <div class="user-name">Nombre: Hipito</div></li>
-                        <li class="list-group-item">  <div class="user-age">Edad:22 años</div></li>
-                        <li class="list-group-item"> <div class="user-gender">Sexo:Macho de pelo en pecho</div></li>
-                        <li class="list-group-item"><div class="user-country">País:Magnolia</div></li>
-                        <li class="list-group-item"><div class="user-email">Correo:correo@gmail.com</div></>
-                        <li class="list-group-item" ><div class="user-birthday">Fecha de nacimiento:3000 A.C</div></li>
+                        <li class="list-group-item">  <div class="user-age">Edad: 22 años</div></li>
+                        <li class="list-group-item"> <div class="user-gender">Sexo: Macho de pelo en pecho</div></li>
+                        <li class="list-group-item"><div class="user-country">País: Magnolia</div></li>
+                        <li class="list-group-item"><div class="user-email">Correo: correo@gmail.com</div></>
+                        <li class="list-group-item" ><div class="user-birthday">Fecha de nacimiento: 3000 A.C</div></li>
                     </ul>
                 </div>
-                <div class="col-sm-4 float-left">
-                    <span class="col-sm-12 float-right">Amigos <a href="">(x amigos, ver todos)</a></span>
-                    <img  class="float-left col-sm-3" src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
-                    <img  class="float-left col-sm-3" src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
-                    <img  class="float-left col-sm-3" src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
-                    <img  class="float-left col-sm-3" src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
+                <div class="col-sm-4 float-left ">
+                    <span class="col-sm-12 float-right mb-2">Amigos <a href="">(x amigos, ver todos)</a></span>
+                    <img  class="float-left col-sm-4 mb-3" src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
+                    <img  class="float-left col-sm-4" src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
+                    <img  class="float-left col-sm-4" src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
 
                 </div>
             </div>
@@ -82,17 +81,13 @@
 
             </div>
 
-
-
-
-
-            <div class="col col-sm-12">
+            <div class="col col-sm-12 mt-4">
                 <span>
                     Comentarios:
 
                     <div class="comments">
-                        <img class="col-sm-3 float-left" src="https://upload.wikimedia.org/wikipedia/en/b/b4/Jaime_Lannister-Nikolaj_Coster-Waldau.jpg" alt="Jaimito">
-                        <div class="col-sm-6 float-left">
+                        <img class="col-sm-1 float-left" src="https://upload.wikimedia.org/wikipedia/en/b/b4/Jaime_Lannister-Nikolaj_Coster-Waldau.jpg" alt="Jaimito">
+                        <div class="col-sm-11 float-left">
                             <div class="author col-sm-12"> Escrito por USUARIO</div>
                              <div class="col-sm-12">
                             INSERTAR TEXTO DE COMENTARIO
