@@ -44,36 +44,36 @@
             </div>
 
             <div class="status col-sm-12">
-                <div class="col-sm-6 float-left">
+                <div class="col-sm-3 float-left">
                     <ul class="list-group">
-                        <li class="list-group-item" style="background:lightblue">Ultimas 3 actualizaciones:</li>
-                        <li class="list-group-item"><img src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a" class="col-sm-3">Vikings</li>
-                        <li class="list-group-item"><img src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg" alt="s" class="col-sm-3">Kingdom hearts</li>
-                        <li class="list-group-item"><img src="http://www.hobbyconsolas.com/sites/hobbyconsolas.com/public/media/image/2015/09/518036-que-no-esta-tema-principal-metal-gear-solid-phantom-pain.jpg" alt="d" class="col-sm-3">Metal Gear solid</li>
+                        <li class="list-group-item" style="background:lightblue">Ultimas 3 actualizaciones: <button>Ir a la lista</button></li>
+                        <li class="list-group-item"><img src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a" class="col-sm-8"><span class="col-4">5 <i class="fa fa-star" aria-hidden="true"></i></span><span class="col-sm-12">Vikings</span></li>
+                        <li class="list-group-item"><img src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg" alt="s" class="col-sm-8"><span class="col-4">5 <i class="fa fa-star" aria-hidden="true"></i></span><span class="col-sm-12">Kingdom hearts</span></li>
+                        <li class="list-group-item"><img src="http://www.hobbyconsolas.com/sites/hobbyconsolas.com/public/media/image/2015/09/518036-que-no-esta-tema-principal-metal-gear-solid-phantom-pain.jpg" alt="d" class="col-sm-8"><span class="col-4">5 <i class="fa fa-star" aria-hidden="true"></i></span><span class="col-sm-12">Metal Gear solid</span></li>
                     </ul>
                 </div>
-                <div class="col-sm-6 float-right" >
+                <div class="col-sm-3 float-left" >
                     <ul class="list-group">
-                        <li class="list-group-item" style="background:lightgreen">Ultimos 3 completados:</li>
-                        <li class="list-group-item"><img src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a" class="col-sm-3">Vikings</li>
-                        <li class="list-group-item"><img src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg" alt="s" class="col-sm-3">Kingdom hearts</li>
-                        <li class="list-group-item"><img src="http://www.hobbyconsolas.com/sites/hobbyconsolas.com/public/media/image/2015/09/518036-que-no-esta-tema-principal-metal-gear-solid-phantom-pain.jpg" alt="d" class="col-sm-3">Metal Gear solid</li>
+                        <li class="list-group-item" style="background:lightgreen">Ultimos 3 completados:  <button>Ir a la lista</button> </li>
+                        <li class="list-group-item"><img src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a" class="col-sm-8"><span class="col-4">5 <i class="fa fa-star" aria-hidden="true"></i></span><span class="col-sm-12">Vikings</span></li>
+                        <li class="list-group-item"><img src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg" alt="s" class="col-sm-8"><span class="col-4">5 <i class="fa fa-star" aria-hidden="true"></i></span><span class="col-sm-12">Kingdom hearts</span></li>
+                        <li class="list-group-item"><img src="http://www.hobbyconsolas.com/sites/hobbyconsolas.com/public/media/image/2015/09/518036-que-no-esta-tema-principal-metal-gear-solid-phantom-pain.jpg" alt="d" class="col-sm-8"><span class="col-4">5 <i class="fa fa-star" aria-hidden="true"></i></span><span class="col-sm-12">Metal Gear solid</span></li>
                     </ul>
                 </div>
-                <div class="col-sm-6 float-left">
+                <div class="col-sm-3 float-left">
                     <ul class="list-group">
-                        <li class="list-group-item" style="background:lightgoldenrodyellow">Ultimos 3 jugando:</li>
-                        <li class="list-group-item"><img src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a" class="col-sm-3">Vikings</li>
-                        <li class="list-group-item"><img src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg" alt="s" class="col-sm-3">Kingdom hearts</li>
-                        <li class="list-group-item"><img src="http://www.hobbyconsolas.com/sites/hobbyconsolas.com/public/media/image/2015/09/518036-que-no-esta-tema-principal-metal-gear-solid-phantom-pain.jpg" alt="d" class="col-sm-3">Metal Gear solid</li>
+                        <li class="list-group-item" style="background:lightgoldenrodyellow">Ultimos 3 jugados:  <button>Ir a la lista</button></li>
+                        <li class="list-group-item"><img src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a" class="col-sm-8"><span class="col-4">5 <i class="fa fa-star" aria-hidden="true"></i></span><span class="col-sm-12">Vikings</span></li>
+                        <li class="list-group-item"><img src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg" alt="s" class="col-sm-8"><span class="col-4">5 <i class="fa fa-star" aria-hidden="true"></i></span><span class="col-sm-12">Kingdom hearts</span></li>
+                        <li class="list-group-item"><img src="http://www.hobbyconsolas.com/sites/hobbyconsolas.com/public/media/image/2015/09/518036-que-no-esta-tema-principal-metal-gear-solid-phantom-pain.jpg" alt="d" class="col-sm-8"><span class="col-4">5 <i class="fa fa-star" aria-hidden="true"></i></span><span class="col-sm-12">Metal Gear solid</span></li>
                     </ul>
                 </div>
-                <div class="col-sm-6 float-right" >
+                <div class="col-sm-3 float-left" >
                     <ul class="list-group">
-                        <li class="list-group-item" style="background:lightcoral">Ultimos 3 dropeados:</li>
-                        <li class="list-group-item"><img src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a" class="col-sm-3">Vikings</li>
-                        <li class="list-group-item"><img src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg" alt="s" class="col-sm-3">Kingdom hearts</li>
-                        <li class="list-group-item"><img src="http://www.hobbyconsolas.com/sites/hobbyconsolas.com/public/media/image/2015/09/518036-que-no-esta-tema-principal-metal-gear-solid-phantom-pain.jpg" alt="d" class="col-sm-3">Metal Gear solid</li>
+                        <li class="list-group-item" style="background:lightcoral">Ultimos 3 dropeados:  <button>Ir a la lista</button></li>
+                        <li class="list-group-item"><img src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a" class="col-sm-8"><span class="col-4">5 <i class="fa fa-star" aria-hidden="true"></i></span><span class="col-sm-12">Vikings</span></li>
+                        <li class="list-group-item"><img src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg" alt="s" class="col-sm-8"><span class="col-4">5 <i class="fa fa-star" aria-hidden="true"></i></span><span class="col-sm-12">Kingdom hearts</span></li>
+                        <li class="list-group-item"><img src="http://www.hobbyconsolas.com/sites/hobbyconsolas.com/public/media/image/2015/09/518036-que-no-esta-tema-principal-metal-gear-solid-phantom-pain.jpg" alt="d" class="col-sm-8"><span class="col-4">5 <i class="fa fa-star" aria-hidden="true"></i></span><span class="col-sm-12">Metal Gear solid</span></li>
                     </ul>
                 </div>
             </div>
