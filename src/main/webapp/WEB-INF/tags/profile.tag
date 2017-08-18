@@ -30,7 +30,7 @@
                         <li class="list-group-item">  <div class="user-age">Edad: 22 años</div></li>
                         <li class="list-group-item"> <div class="user-gender">Sexo: Macho de pelo en pecho</div></li>
                         <li class="list-group-item"><div class="user-country">País: Magnolia</div></li>
-                        <li class="list-group-item"><div class="user-email">Correo: correo@gmail.com</div></>
+                        <li class="list-group-item"><div class="user-email">Correo: correo@gmail.com</div></li>
                         <li class="list-group-item" ><div class="user-birthday">Fecha de nacimiento: 3000 A.C</div></li>
                     </ul>
                 </div>
