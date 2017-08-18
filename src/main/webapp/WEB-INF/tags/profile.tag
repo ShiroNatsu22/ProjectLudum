@@ -41,6 +41,17 @@
                         gfdsjakdjkasjdjhasgfasdhfjasjfgasfhgasfsafghfgsafsagfhjsagfhsagfjhsagfdsjakdjkasjdkjhasgfasdhfjasjfgasfhgasfs
                      </span>
                 </div>
+                <div class="col-sm-4 float-left">
+                    <span class="col-sm-12 float-right">Amigos <a href="">(x amigos, ver todos)</a></span>
+                    <img  class="float-left col-sm-3" src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
+                    <img  class="float-left col-sm-3" src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
+                    <img  class="float-left col-sm-3" src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
+                    <img  class="float-left col-sm-3" src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
+                    <img  class="float-left col-sm-3" src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
+                    <img  class="float-left col-sm-3" src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
+                    <img  class="float-left col-sm-3" src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
+
+                </div>
             </div>
 
             <div class="status col-sm-12">
