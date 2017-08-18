@@ -3,6 +3,7 @@ package controller;
 import dao.*;
 import model.Company;
 import model.Developer;
+import model.Publisher;
 import model.Videogame;
 
 import javax.servlet.ServletException;
@@ -30,20 +31,28 @@ public class CompaniesControl extends HttpServlet {
         if (id != null) {
 
             DeveloperDAO developerDAO = new DeveloperDAOImpl();
+            PublisherDAO publisherDAO = new PublisherDAOImpl();
             VideogameDAO videogameDAO = new VideogameDAOImpl();
-            List<Videogame> videogameList = new ArrayList<Videogame>();
+            List<Videogame> developerVideogameList = new ArrayList<Videogame>();
+            List<Videogame> publisherVideogameList = new ArrayList<Videogame>();
 
-            // Obtenemos la empresa y la lista de la relación con developers
+            // Obtenemos la empresa y la lista de la relación con developers y publishers
             Company company = companyDAO.getCompanyByID(Integer.parseInt(id));
             List<Developer> developerList = developerDAO.getDevelopersByCompany_id_fk(company.getCompany_id_pk());
+            List<Publisher> publisherList = publisherDAO.getPublishersByCompany_id_fk(company.getCompany_id_pk());
 
             // Obtenemos los datos de los videojuegos que hayan sido desarrollados por esta empresa
             for (Developer developer : developerList)
-                videogameList.add(videogameDAO.getVideogameByID(developer.getVideogame_id_fk()));
+                developerVideogameList.add(videogameDAO.getVideogameByID(developer.getVideogame_id_fk()));
+
+            // Obtenemos los datos de los videojuegos que hayan sido publicados por esta empresa
+            for (Publisher publisher : publisherList)
+                publisherVideogameList.add(videogameDAO.getVideogameByID(publisher.getVideogame_id_fk()));
 
             // Enviamos la empresa actual y sus videojuegos
             req.setAttribute("currentCompany", company);
-            req.setAttribute("currentCompanyDeveloperList", videogameList);
+            req.setAttribute("currentCompanyDeveloperList", developerVideogameList);
+            req.setAttribute("currentCompanyPublisherList", publisherVideogameList);
 
         } else {
 
@@ -68,9 +77,11 @@ public class CompaniesControl extends HttpServlet {
         } else {
 
             DeveloperDAO developerDAO = new DeveloperDAOImpl();
+            PublisherDAO publisherDAO = new PublisherDAOImpl();
             DateFormat format = new SimpleDateFormat("YYYY-MM-DD");
             Company company = new Company();
-            String[] developedVideogameList = req.getParameterValues("videogame_id_fk");
+            String[] developedVideogameList = req.getParameterValues("developer_videogame_id_fk");
+            String[] publishedVideogameList = req.getParameterValues("publisher_videogame_id_fk");
 
             try {
                 company = new Company(0, req.getParameter("name"), format.parse(req.getParameter("founded")));
@@ -78,12 +89,19 @@ public class CompaniesControl extends HttpServlet {
                 e.printStackTrace();
             }
 
+            // Creamos la empresa
             int company_id_fk = companyDAO.createCompany(company);
 
             // Creamos la relación con el developer y el juego
-            for (String developedVideogame : developedVideogameList)
-                developerDAO.createDeveloper(company_id_fk, Integer.parseInt(developedVideogame));
+            if (developedVideogameList != null)
+                for (String developedVideogame : developedVideogameList)
+                    developerDAO.createDeveloper(company_id_fk, Integer.parseInt(developedVideogame));
 
+
+            // Creamos la relación con el publisher y el juego
+            if (publishedVideogameList != null)
+                for (String publishedVideogame : publishedVideogameList)
+                    publisherDAO.createPublisher(company_id_fk, Integer.parseInt(publishedVideogame));
 
         }
 

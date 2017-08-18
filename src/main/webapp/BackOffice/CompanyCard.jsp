@@ -42,6 +42,13 @@
                                href="<c:url value="/BackOffice/VideogameCard.jsp?id=${videogame.videogame_id_pk}" />">${videogame.name}</a>
                         </c:forEach>
                     </li>
+                    <li class="list-group-item">
+                        Games published:
+                        <c:forEach var="videogame" items="${requestScope.currentCompanyPublisherList}">
+                            <a class="ml-1"
+                               href="<c:url value="/BackOffice/VideogameCard.jsp?id=${videogame.videogame_id_pk}" />">${videogame.name}</a>
+                        </c:forEach>
+                    </li>
                 </ul>
 
             </div>

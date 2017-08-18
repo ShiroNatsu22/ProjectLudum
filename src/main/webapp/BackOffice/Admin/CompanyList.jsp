@@ -73,7 +73,13 @@
                                        placeholder="Enter new founded">
                             </div>
 
-                            <select id="newDeveloperVideogame_id_fk" name="videogame_id_fk" multiple>
+                            <select id="newDeveloperVideogame_id_fk" name="developer_videogame_id_fk" multiple>
+                                <c:forEach var="videogame" items="${requestScope.videogameList}">
+                                    <option value="${videogame.videogame_id_pk}">${videogame.name}</option>
+                                </c:forEach>
+                            </select>
+
+                            <select id="newPublisherVideogame_id_fk" name="publisher_videogame_id_fk" multiple>
                                 <c:forEach var="videogame" items="${requestScope.videogameList}">
                                     <option value="${videogame.videogame_id_pk}">${videogame.name}</option>
                                 </c:forEach>

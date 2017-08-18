@@ -73,8 +73,11 @@ public class VideogameDAOImpl implements VideogameDAO {
 
         try {
 
-            // Borramos la relación entre videojuego y developer
+            // Borramos la relación entre videogame y developer
             String query = String.format("DELETE FROM gamerlistDB.developers WHERE videogame_id_fk = %d;", videogame_id_pk);
+
+            // Borramos la relación entre videogame y publisher
+            query += String.format("DELETE FROM gamerlistDB.publishers WHERE videogame_id_fk = %d;", videogame_id_pk);
 
             // Borramos el videojuego
             query += String.format("DELETE FROM videogames WHERE videogames.videogame_id_pk = %d", videogame_id_pk);

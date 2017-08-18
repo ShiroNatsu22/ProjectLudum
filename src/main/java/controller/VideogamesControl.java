@@ -3,6 +3,7 @@ package controller;
 import dao.*;
 import model.Company;
 import model.Developer;
+import model.Publisher;
 import model.Videogame;
 
 import javax.servlet.ServletException;
@@ -27,22 +28,31 @@ public class VideogamesControl extends HttpServlet {
         if (id != null) {
 
             DeveloperDAO developerDAO = new DeveloperDAOImpl();
+            PublisherDAO publisherDAO = new PublisherDAOImpl();
             CompanyDAO companyDAO = new CompanyDAOImpl();
-            List<Company> companyList = new ArrayList<Company>();
+            List<Company> developerCompanyList = new ArrayList<Company>();
+            List<Company> publisherCompanyList = new ArrayList<Company>();
 
-            // Obtenemos el videojuego y la lista de developers de este
+            // Obtenemos el videojuego y las companies relacionadas
             Videogame videogame = videogameDAO.getVideogameByID(Integer.parseInt(id));
             List<Developer> developerList = developerDAO.getDevelopersByVideogame_id_fk(videogame.getVideogame_id_pk());
+            List<Publisher> publisherList = publisherDAO.getPublishersByVideogame_id_fk(videogame.getVideogame_id_pk());
 
 
             // Obtenemos los datos de las companies que sean los developers del juego
             for (Developer developer : developerList) {
-                companyList.add(companyDAO.getCompanyByID(developer.getCompany_id_fk()));
+                developerCompanyList.add(companyDAO.getCompanyByID(developer.getCompany_id_fk()));
+            }
+
+            // Obtenemos los datos de las companies que sean los publishers del juego
+            for (Publisher publisher : publisherList) {
+                publisherCompanyList.add(companyDAO.getCompanyByID(publisher.getCompany_id_fk()));
             }
 
             // Enviamos el juego actual y la lista de desarrolladores
             req.setAttribute("currentVideogame", videogame);
-            req.setAttribute("currentVideogameDeveloperList", companyList);
+            req.setAttribute("currentVideogameDeveloperList", developerCompanyList);
+            req.setAttribute("currentVideogamePublisherList", publisherCompanyList);
 
         } else {
 
@@ -66,13 +76,23 @@ public class VideogamesControl extends HttpServlet {
         } else {
 
             DeveloperDAO developerDAO = new DeveloperDAOImpl();
+            PublisherDAO publisherDAO = new PublisherDAOImpl();
             Videogame videogame = new Videogame(0, req.getParameter("name"), req.getParameter("description"));
+            String[] developerList = req.getParameterValues("developer_company_id_fk");
+            String[] publisherList = req.getParameterValues("publisher_company_id_fk");
+
+            // Se crea el videojuego
             int videogame_id_fk = videogameDAO.createVideogame(videogame);
-            String[] developerList = req.getParameterValues("company_id_fk");
 
             // Se crea la relación entre el videojuego y el developer
-            for (String developer : developerList)
-                developerDAO.createDeveloper(Integer.parseInt(developer), videogame_id_fk);
+            if (developerList != null)
+                for (String developer : developerList)
+                    developerDAO.createDeveloper(Integer.parseInt(developer), videogame_id_fk);
+
+            // Se crea la relación entre el videojuego y el publisher
+            if (publisherList != null)
+                for (String publisher : publisherList)
+                    publisherDAO.createPublisher(Integer.parseInt(publisher), videogame_id_fk);
 
         }
 

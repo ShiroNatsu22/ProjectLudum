@@ -41,6 +41,10 @@
                     </li>
                     <li class="list-group-item">
                         Publisher:
+                        <c:forEach var="publisher" items="${requestScope.currentVideogamePublisherList}">
+                            <a class="ml-1"
+                               href="<c:url value="/BackOffice/CompanyCard.jsp?id=${publisher.company_id_pk}" />">${publisher.name}</a>
+                        </c:forEach>
                     </li>
                     <li class="list-group-item">
                         Genre:

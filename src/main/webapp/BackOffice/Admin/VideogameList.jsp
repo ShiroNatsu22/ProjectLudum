@@ -73,9 +73,15 @@
                                           rows="3"></textarea>
                             </div>
 
-                            <select id="newCompany_id_fk" name="company_id_fk" multiple>
-                                <c:forEach var="item" items="${requestScope.companyList}">
-                                    <option value="${item.company_id_pk}">${item.name}</option>
+                            <select id="newDeveloper_id_fk" name="developer_company_id_fk" multiple>
+                                <c:forEach var="developer" items="${requestScope.companyList}">
+                                    <option value="${developer.company_id_pk}">${developer.name}</option>
+                                </c:forEach>
+                            </select>
+
+                            <select id="newPublisher_id_fk" name="publisher_company_id_fk" multiple>
+                                <c:forEach var="publisher" items="${requestScope.companyList}">
+                                    <option value="${publisher.company_id_pk}">${publisher.name}</option>
                                 </c:forEach>
                             </select>
 
