@@ -4,33 +4,34 @@
 <%@ tag description="Navbar" pageEncoding="UTF-8" %>
 
 <nav class="navbar navbar-toggleable-sm navbar-inverse bg-primary">
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+    <div class="container">
 
-    <a class="navbar-brand" href="<c:url value="/index.jsp"/>">GamerList</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="<c:url value="/index.jsp"/>">Home</a>
-            </li>
-        </ul>
+        <a class="navbar-brand" href="<c:url value="/index.jsp"/>">GamerList</a>
 
-        <c:choose>
-            <c:when test="${sessionScope.currentUser != null}">
-                <navbar:navbarUserProfile/>
-            </c:when>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="<c:url value="/index.jsp"/>">Home</a>
+                </li>
+            </ul>
 
-            <c:otherwise>
-                <navbar:navbarLogin/>
-            </c:otherwise>
-        </c:choose>
+            <c:choose>
+                <c:when test="${sessionScope.currentUser != null}">
+                    <navbar:navbarUserProfile/>
+                </c:when>
 
+                <c:otherwise>
+                    <navbar:navbarLogin/>
+                </c:otherwise>
+            </c:choose>
+
+        </div>
 
     </div>
-
-
 </nav>

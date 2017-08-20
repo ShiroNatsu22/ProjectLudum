@@ -12,87 +12,118 @@
 
     <jsp:body>
 
+        <!-- Título -->
         <div class="row">
             <div class="col user-name">
-                <h3>Perfil de ${requestScope.currentUser.username}</h3>
+                <h3>${requestScope.currentUser.username}</h3>
             </div>
         </div>
 
+        <!-- Bloque información usuario -->
         <div class="row">
+
+            <!-- Bloque izquierdo -->
             <div class="content-info col-4">
-                <div class="col-12 image">
-                    <img class="img-fluid"
-                         src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
-                         alt="gameImg">
+
+                <!-- Imagen usuario -->
+                <div class="row">
+                    <div class="col image">
+                        <img class="img-fluid"
+                             src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
+                             alt="gameImg">
+                    </div>
                 </div>
-                <div class="col-12  ">
-                    <div class="row">
-                        <span class="col-12  mb-2">Amigos <a href="">(x amigos, ver todos)</a></span>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <img class="img-fluid"
-                                 src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
-                        </div>
-                        <div class="col">
 
-                            <img class="img-fluid"
-                                 src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
-                        </div>
-                        <div class="col">
+                <!-- Lista con información del usuario -->
+                <div class="row">
 
-                            <img class="img-fluid"
-                                 src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
-                        </div>
+                    <div class="col">
+
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                Registered: ${requestScope.currentUser.registration}
+                            </li>
+                            <li class="list-group-item">
+                                Name: ${requestScope.currentUser.name}, ${requestScope.currentUser.surname}
+                            </li>
+                            <li class="list-group-item">
+                                Age: calculo de JS
+                            </li>
+                            <li class="list-group-item">
+                                Gender: ${requestScope.currentUser.gender}
+                            </li>
+                            <li class="list-group-item">
+                                Country: ${requestScope.currentUser.country}
+                            </li>
+                            <li class="list-group-item">
+                                Email: ${requestScope.currentUser.email}
+                            </li>
+                            <li class="list-group-item">
+                                BirthDay: ${requestScope.currentUser.birthday}
+                            </li>
+                            <li class="list-group-item">
+                                Biography: ${requestScope.currentUser.biography}
+                            </li>
+                            <li class="list-group-item">
+                                <form action="<c:url value="/controller/UsersControl" />" method="post">
+                                    <button class="btn btn-primary" name="newRelationshipRequest"
+                                            value="${requestScope.currentUser.user_id_pk}">Send friendship request
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>
+
                     </div>
+
+                </div>
+
+                <!-- Sección de amigos -->
+                <div class="row">
+
+                    <div class="col">
+                        <span class="">Amigos <a href="">(x amigos, ver todos)</a></span>
+                    </div>
+
                 </div>
 
                 <div class="row">
-                    <ul class="list-group col-12">
-                        <li class="list-group-item">
-                            <div class="user-name">Nombre: Hipito</div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="user-age">Edad: 22 años</div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="user-gender">Sexo: Macho de pelo en pecho</div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="user-country">País: Magnolia</div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="user-email">Correo: correo@gmail.com</div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="user-birthday">Fecha de nacimiento: 3000 A.C</div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="user-description">Biografia:Hihasdihaidha
-                                fsadfhasdfghsdfdsfsdf dsaff sadf saf asf asddf sa fs f sda fsd
+
+                    <div class="col my-2">
+
+                        <div class="row">
+                            <div class="col">
+                                <img class="img-fluid"
+                                     src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
                             </div>
-                        </li>
-                    </ul>
+                            <div class="col">
+                                <img class="img-fluid"
+                                     src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
+                            </div>
+                            <div class="col">
+                                <img class="img-fluid"
+                                     src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
             </div>
 
-
-            <div class="status col-8 ">
+            <!-- Bloque derecho -->
+            <div class="status col-8">
 
 
                 <div class="row">
-
                     <div style="background:lightgreen" class="col">10</div>
                     <div style="background:lightblue" class="col ">10</div>
                 </div>
-                <div class="row">
 
+                <div class="row">
                     <div style="background:lightcoral" class="col ">10</div>
                     <div style="background:lightgray" class="col ">10</div>
-
-
                 </div>
+
                 <div class="row">
                     <div class="col">Completados Jugando Dropeados Por jugar</div>
                 </div>
@@ -154,7 +185,8 @@
                                     src="http://www.hobbyconsolas.com/sites/hobbyconsolas.com/public/media/image/2015/09/518036-que-no-esta-tema-principal-metal-gear-solid-phantom-pain.jpg"
                                     alt="d" class="col-8"><span class="col-4">5 <i class="fa fa-star"
                                                                                    aria-hidden="true"></i></span><span
-                                    class="col-12">Metal Gear solid</span></div>
+                                    class="col-12">Metal Gear solid</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -175,7 +207,8 @@
                                     src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a"
                                     class="col-8"><span class="col-4">5 <i class="fa fa-star"
                                                                            aria-hidden="true"></i></span><span
-                                    class="col-12">Vikings</span></div>
+                                    class="col-12">Vikings</span>
+                            </div>
                             <div class="col"><img
                                     src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg"
                                     alt="s" class="col-8"><span class="col-4">5 <i class="fa fa-star"
@@ -185,7 +218,8 @@
                                     src="http://www.hobbyconsolas.com/sites/hobbyconsolas.com/public/media/image/2015/09/518036-que-no-esta-tema-principal-metal-gear-solid-phantom-pain.jpg"
                                     alt="d" class="col-8"><span class="col-4">5 <i class="fa fa-star"
                                                                                    aria-hidden="true"></i></span><span
-                                    class="col-12">Metal Gear solid</span></div>
+                                    class="col-12">Metal Gear solid</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -205,17 +239,20 @@
                                     src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a"
                                     class="col-8"><span class="col-4">5 <i class="fa fa-star"
                                                                            aria-hidden="true"></i></span><span
-                                    class="col-12">Vikings</span></div>
+                                    class="col-12">Vikings</span>
+                            </div>
                             <div class="col"><img
                                     src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg"
                                     alt="s" class="col-8"><span class="col-4">5 <i class="fa fa-star"
                                                                                    aria-hidden="true"></i></span><span
-                                    class="col-12">Kingdom hearts</span></div>
+                                    class="col-12">Kingdom hearts</span>
+                            </div>
                             <div class="col"><img
                                     src="http://www.hobbyconsolas.com/sites/hobbyconsolas.com/public/media/image/2015/09/518036-que-no-esta-tema-principal-metal-gear-solid-phantom-pain.jpg"
                                     alt="d" class="col-8"><span class="col-4">5 <i class="fa fa-star"
                                                                                    aria-hidden="true"></i></span><span
-                                    class="col-12">Metal Gear solid</span></div>
+                                    class="col-12">Metal Gear solid</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -226,23 +263,24 @@
 
 
         <div class="row">
-
-
-            <div class="col-12">
+            <div class="col">
                 <span>
                     Comentarios:
                 </span>
             </div>
+        </div>
+
+        <div class="row">
 
             <div class="col comments">
                 <div class="row">
 
                     <div class="col-2">
-                        <img class="img-fluid "
+                        <img class="img-fluid"
                              src="https://upload.wikimedia.org/wikipedia/en/b/b4/Jaime_Lannister-Nikolaj_Coster-Waldau.jpg"
                              alt="Jaimito">
                     </div>
-                    <div class="col ">
+                    <div class="col">
                         <div class="author col-2"> Escrito por USUARIO</div>
                         <div class="col-10">
                             INSERTAR TEXTO DE COMENTARIO
@@ -252,7 +290,6 @@
 
                 </div>
             </div>
-
 
         </div>
 

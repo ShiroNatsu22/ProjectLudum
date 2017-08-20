@@ -30,7 +30,7 @@
             <c:forEach items="${requestScope.userList}" var="item">
                 <tr>
                     <td>
-                        <a href="<c:url value="/BackOffice/Profile.jsp?username=${item.username}" />">${item.username}</a>
+                        <a href="<c:url value="/BackOffice/Profile.jsp?id=${item.user_id_pk}" />">${item.username}</a>
                     </td>
                     <td>
                             ${item.password}
@@ -82,6 +82,20 @@
                                     Is admin?
                                 </label>
                             </div>
+
+                            Name: <input name="name"><br>
+
+                            Surname: <input name="surname"><br>
+
+                            Gender: <input name="gender"><br>
+
+                            Country: <input name="country"><br>
+
+                            Email: <input type="email" name="email"><br>
+
+                            Birthday: <input type="date" name="birthday"><br>
+
+                            Biography: <textarea name="biography"></textarea><br>
 
                             <button class="btn btn-primary">Add user</button>
                         </form>

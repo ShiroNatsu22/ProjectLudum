@@ -86,3 +86,75 @@ CREATE TABLE `gamerlistDB`.`publishers` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
 );
+
+/* PAJ 20/08/2017 - Agregados campos a la tabla del usuario */
+
+ALTER TABLE `gamerlistDB`.`users`
+  ADD COLUMN `name` VARCHAR(20) NULL
+  AFTER `admin`,
+  ADD COLUMN `surname` VARCHAR(20) NULL
+  AFTER `name`,
+  ADD COLUMN `gender` VARCHAR(15) NULL
+  AFTER `surname`,
+  ADD COLUMN `country` VARCHAR(30) NULL
+  AFTER `gender`,
+  ADD COLUMN `email` VARCHAR(30) NULL
+  AFTER `country`,
+  ADD COLUMN `birthday` DATE NULL
+  AFTER `email`,
+  ADD COLUMN `biography` MEDIUMTEXT NULL
+  AFTER `birthday`,
+  ADD COLUMN `registration` DATE NULL
+  AFTER `biography`;
+
+/* PAJ 21/08/2017 - Agregada la tabla de relaciones para que el usuario pueda tener amigos junto con un trigger para evitar
+ que si ya hay una relación entre dos usuarios, no pueda haber otra más */
+
+CREATE TABLE `gamerlistDB`.`relationships` (
+  `relationship_id_pk`  INT         NOT NULL AUTO_INCREMENT,
+  `sender_user_id_fk`   INT         NOT NULL,
+  `receiver_user_id_fk` INT         NOT NULL,
+  `status`              VARCHAR(15) NOT NULL
+  COMMENT 'State 1: pending\nState 2: accepted',
+  PRIMARY KEY (`relationship_id_pk`),
+  INDEX `sender_idx` (`sender_user_id_fk` ASC),
+  INDEX `receiver_user_idx` (`receiver_user_id_fk` ASC),
+  UNIQUE INDEX `relationship` (`sender_user_id_fk` ASC, `receiver_user_id_fk` ASC),
+  CONSTRAINT `sender_user`
+  FOREIGN KEY (`sender_user_id_fk`)
+  REFERENCES `gamerlistDB`.`users` (`user_id_pk`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `receiver_user`
+  FOREIGN KEY (`receiver_user_id_fk`)
+  REFERENCES `gamerlistDB`.`users` (`user_id_pk`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+);
+DROP TRIGGER IF EXISTS `gamerlistDB`.`relationships_BEFORE_INSERT`;
+
+DELIMITER $$
+USE `gamerlistDB`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `gamerlistDB`.`relationships_BEFORE_INSERT`
+BEFORE INSERT ON `relationships`
+FOR EACH ROW
+  BEGIN
+    DECLARE rowCount INT;
+
+    SELECT COUNT(*)
+    INTO rowCount
+    FROM `relationships`
+    WHERE sender_user_id_fk = NEW.receiver_user_id_fk;
+
+    IF (NEW.sender_user_id_fk = NEW.receiver_user_id_fk)
+    THEN
+      SIGNAL SQLSTATE '45000'
+      SET MESSAGE_TEXT = 'Same user error. Insertion cancelled';
+    END IF;
+
+    IF rowCount > 0
+    THEN
+      SET rowCount = NEW.sender_user_id_fk, NEW.sender_user_id_fk = NEW.receiver_user_id_fk, NEW.receiver_user_id_fk = rowCount;
+    END IF;
+  END$$
+DELIMITER ;
