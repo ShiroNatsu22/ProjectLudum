@@ -18,8 +18,15 @@ import java.util.List;
 public class UsersControl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        String username = req.getParameter("username");
         UserDAO userDAOImpl = new UserDAOImpl();
+        if(username !=null) {
+            User user = userDAOImpl.getUserByUsername(username);
+
+            req.setAttribute("currentUser", user);
+        }
+
+
         req.setAttribute("userList", userDAOImpl.getAllUsers());
 
     }

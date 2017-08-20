@@ -1,18 +1,19 @@
+<%@ page pageEncoding="UTF-8" %>
+<%@ taglib prefix="tag" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ tag description="Login form" pageEncoding="UTF-8" %>
-<link type="text/css" rel="stylesheet" href="<c:url value="../../lib/css/login.min.css" />" />
+
+<jsp:include page="/controller/VideogamesControl"/>
+<link type="text/css" rel="stylesheet" href="<c:url value="../lib/css/login.min.css" />" />
+
+<tag:pageMaster>
+
+    <jsp:attribute name="head">
+        <title>Provisional</title>
+    </jsp:attribute>
+
+    <jsp:body>
 
 
-<c:choose>
-    <c:when test="${currentUser != null}">
-        User: ${currentUser.getUsername()}
-        <form action="${pageContext.request.contextPath}/controller/LogOut">
-            <button>LogOut</button>
-        </form>
-    </c:when>
-
-    <c:otherwise>
-        <div id="container" class="col-lg-12 col-sm-4 cffset-4">
             <div class="row">
                 <div class="col-sm-4 " id="formContainer">
                     <form id="form">
@@ -24,14 +25,12 @@
                             </div>
 
                             <div class="form-group input-group icon ">
-                                <span class="input-group-addon" style="color:white; background-color:#1985A1"><i class="fa fa-user" aria-hidden="true"></i>
-</span>
+                                <span class="input-group-addon" style="color:white; background-color:#1985A1"><i class="fa fa-user" aria-hidden="true"></i></span>
                                 <input type="text" class="form-control" name="user " id="user" placeholder="Enter username">
                             </div>
 
                             <div class="form-group input-group">
-                                <span class="input-group-addon" style="color:white; background-color:#1985A1"><i class="fa fa-key" aria-hidden="true"></i>
-</span>
+                                <span class="input-group-addon" style="color:white; background-color:#1985A1"><i class="fa fa-key" aria-hidden="true"></i></span>
                                 <input type="password" class="form-control" name="password" id="pass" placeholder="Enter user password">
                             </div>
                             <div class="noAccount">
@@ -46,6 +45,8 @@
                     </form>
                 </div>
             </div>
-        </div>
-    </c:otherwise>
-</c:choose>
+
+
+    </jsp:body>
+
+</tag:pageMaster>

@@ -1,18 +1,18 @@
+<%@ page pageEncoding="UTF-8" %>
+<%@ taglib prefix="tag" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ tag description="Login form" pageEncoding="UTF-8" %>
-<link type="text/css" rel="stylesheet" href="<c:url value="../../lib/css/login.min.css" />" />
 
+<jsp:include page="/controller/VideogamesControl"/>
+<link type="text/css" rel="stylesheet" href="<c:url value="../lib/css/login.min.css" />" />
 
-<c:choose>
-    <c:when test="${currentUser != null}">
-        User: ${currentUser.getUsername()}
-        <form action="${pageContext.request.contextPath}/controller/LogOut">
-            <button>LogOut</button>
-        </form>
-    </c:when>
+<tag:pageMaster>
 
-    <c:otherwise>
-        <div id="container" class="col-lg-12 col-sm-4 cffset-4">
+    <jsp:attribute name="head">
+        <title>Provisional</title>
+    </jsp:attribute>
+
+    <jsp:body>
+
             <div class="row">
                 <div class="col-sm-5 " id="formContainer">
                     <p> Formulario de registro</p>
@@ -50,6 +50,10 @@
                     </form>
                 </div>
             </div>
-        </div>
-    </c:otherwise>
-</c:choose>
+
+
+
+
+    </jsp:body>
+
+</tag:pageMaster>

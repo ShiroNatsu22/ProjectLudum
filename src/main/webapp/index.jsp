@@ -9,7 +9,6 @@
 
     <jsp:body>
 
-        <tag:gameCard/>
 
     </jsp:body>
 

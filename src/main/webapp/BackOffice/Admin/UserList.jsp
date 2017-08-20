@@ -30,7 +30,7 @@
             <c:forEach items="${requestScope.userList}" var="item">
                 <tr>
                     <td>
-                            ${item.username}
+                        <a href="<c:url value="/BackOffice/Profile.jsp?username=${item.username}" />">${item.username}</a>
                     </td>
                     <td>
                             ${item.password}
