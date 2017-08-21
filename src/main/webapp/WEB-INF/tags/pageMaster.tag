@@ -39,11 +39,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
 <script src="https://use.fontawesome.com/7ec73d1c1e.js"></script>
-<script>
-    $(document).ready(function() {
-        $('#game-list-table').DataTable();
-    } );
-
-</script></body>
+<script src="../../lib/js/datatable.min.js"></script>
+</body>
 
 </html>
