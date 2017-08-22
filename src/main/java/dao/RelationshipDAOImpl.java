@@ -24,25 +24,29 @@ public class RelationshipDAOImpl implements RelationshipDAO {
     @Override
     public List<Relationship> getRelationshipsByID(int user_id_fk) {
 
-        List<Relationship> relationshipList = new ArrayList<Relationship>();
+        String query = String.format("SELECT * FROM gamerlistDB.relationships WHERE sender_user_id_fk = %1$d or receiver_user_id_fk = %1$d", user_id_fk);
+        return getRelationships(query);
 
-        try {
+    }
 
-            String query = String.format("SELECT * FROM gamerlistDB.relationships WHERE sender_user_id_fk = %1$d or receiver_user_id_fk = %1$d", user_id_fk);
-            PreparedStatement ps = db.getConnection(query);
-            ResultSet rs = ps.executeQuery();
+    @Override
+    public List<Relationship> getRelationshipsByIDAndStatus(int user_id_fk, String status) {
 
-            while (rs.next()) {
-                relationshipList.add(new Relationship(rs.getInt("relationship_id_pk"), rs.getInt("sender_user_id_fk"), rs.getInt("receiver_user_id_fk"), rs.getString("status")));
-            }
+        String query = String.format("SELECT * FROM gamerlistDB.relationships WHERE (sender_user_id_fk = %1$d or receiver_user_id_fk = %1$d) AND status = '%2$s'", user_id_fk, status);
+        return getRelationships(query);
 
-            ps.close();
+    }
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    @Override
+    public Relationship getRelationshipByUserIDandUserID(int user_id_fk1, int user_id_fk2) {
 
-        return relationshipList;
+        String query = String.format("SELECT * FROM relationships WHERE (sender_user_id_fk = %1$d OR receiver_user_id_fk = %1$d) AND (sender_user_id_fk = %2$d OR receiver_user_id_fk = %2$d)", user_id_fk1, user_id_fk2);
+        List<Relationship> relationshipList = getRelationships(query);
+
+        if (!(relationshipList.isEmpty()))
+            return relationshipList.get(0);
+
+        return new Relationship();
 
     }
 
@@ -80,6 +84,28 @@ public class RelationshipDAOImpl implements RelationshipDAO {
         String query = String.format("DELETE FROM relationship WHERE sender_user_id_fk = %1$d OR receiver_user_id_fk = %1$d", user_id_fk);
         deleteRelationship(query);
 
+    }
+
+    private List<Relationship> getRelationships(String query) {
+
+        List<Relationship> relationshipList = new ArrayList<Relationship>();
+
+        try {
+
+            PreparedStatement ps = db.getConnection(query);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                relationshipList.add(new Relationship(rs.getInt("relationship_id_pk"), rs.getInt("sender_user_id_fk"), rs.getInt("receiver_user_id_fk"), rs.getString("status")));
+            }
+
+            ps.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return relationshipList;
     }
 
     private void deleteRelationship(String query) {

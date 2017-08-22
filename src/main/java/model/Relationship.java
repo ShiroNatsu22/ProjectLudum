@@ -7,7 +7,7 @@ public class Relationship {
     private int receiver_user_id_fk;
     private String status;
 
-    Relationship() {
+    public Relationship() {
 
     }
 

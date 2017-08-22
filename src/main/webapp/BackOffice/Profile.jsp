@@ -64,13 +64,52 @@
                             <li class="list-group-item">
                                 Biography: ${requestScope.currentUser.biography}
                             </li>
-                            <li class="list-group-item">
-                                <form action="<c:url value="/controller/UsersControl" />" method="post">
-                                    <button class="btn btn-primary" name="newRelationshipRequest"
-                                            value="${requestScope.currentUser.user_id_pk}">Send friendship request
-                                    </button>
-                                </form>
-                            </li>
+
+                            <c:if test="${sessionScope.currentUser != null && requestScope.currentUser.user_id_pk != sessionScope.currentUser.user_id_pk}">
+
+                                <!-- Bloque de petición de amistad -->
+                                <li class="list-group-item">
+                                    <form action="<c:url value="/controller/UsersControl" />" method="post">
+
+                                        <c:choose>
+
+                                            <c:when test="${requestScope.currentRelationship.relationship_id_pk == 0}">
+                                                <button class="btn btn-primary" name="newRelationshipRequest"
+                                                        value="${requestScope.currentUser.user_id_pk}">Send friendship request
+                                                </button>
+                                            </c:when>
+
+                                            <c:when test='${requestScope.currentRelationship.status.equals("pending")}'>
+
+                                                <c:choose>
+                                                    <c:when test="${sessionScope.currentUser.user_id_pk == requestScope.currentRelationship.receiver_user_id_fk}">
+                                                        <button class="btn btn-primary" name="acceptRelationship" value="${requestScope.currentUser.user_id_pk}">Accept</button>
+                                                        <button class="btn btn-danger" name="rejectRelationship" value="${requestScope.currentUser.user_id_pk}">Reject</button>
+                                                    </c:when>
+
+                                                    <c:when test="${sessionScope.currentUser.user_id_pk == requestScope.currentRelationship.sender_user_id_fk}">
+                                                        Pending request...
+                                                    </c:when>
+                                                </c:choose>
+
+                                            </c:when>
+
+                                            <c:when test='${requestScope.currentRelationship.status.equals("accepted")}'>
+                                                Friend
+                                                <button class="btn btn-danger" name="rejectRelationship" value="${requestScope.currentUser.user_id_pk}">Delete</button>
+                                            </c:when>
+
+                                        </c:choose>
+
+
+                                    </form>
+                                </li>
+
+                            </c:if>
+
+
+
+
                         </ul>
 
                     </div>
@@ -81,7 +120,7 @@
                 <div class="row">
 
                     <div class="col">
-                        <span class="">Amigos <a href="">(x amigos, ver todos)</a></span>
+                        <span class="">Friends <a href="<c:url value="/BackOffice/FriendList.jsp?id=${requestScope.currentUser.user_id_pk}" />">| See all</a></span>
                     </div>
 
                 </div>
