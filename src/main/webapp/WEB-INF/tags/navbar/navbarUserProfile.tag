@@ -14,12 +14,15 @@
             <a class="dropdown-item"
               ><i
                     class="fa fa-list"></i> Lista de amigos</a>
+            <a class="dropdown-item"
+            ><i class="fa fa-envelope" aria-hidden="true"></i></i> Mis mensajes(num msg)</a>
             <a class="dropdown-item" href="<c:url value="/controller/LogOut" />"><i class="fa fa-sign-out"></i>
                 Logout</a>
         </div>
     </li>
 
 </ul>
+
 
 <a class="navbar-brand" href="<c:url value="/BackOffice/Profile.jsp?id=${sessionScope.currentUser.user_id_pk}" />">
     <img src="http://www.zwiftnation.com/Content/AdminLTE/img/anonymous.png" width="30" height="30" alt="userImage">

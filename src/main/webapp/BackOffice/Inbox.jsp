@@ -16,16 +16,16 @@
                 <div class="col">
                     <div class="row">
                         <div class="col">
-                            <ul id="friend-nav" class="nav nav-tabs" role="tablist">
+                            <ul id="messenger-nav" class="nav nav-tabs" role="tablist">
 
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="#friend" id="friend-tab" role="tab"
-                                       data-toggle="tab" aria-controls="friend" aria-expanded="true">Amigos</a>
+                                    <a class="nav-link active" href="#received" id="received-tab" role="tab"
+                                       data-toggle="tab" aria-controls="received" aria-expanded="true">Mensajes recibidos</a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#request" role="tab" id="request-tab" data-toggle="tab"
-                                       aria-controls="request">Peticiones de amistad</a>
+                                    <a class="nav-link" href="#send" role="tab" id="send-tab" data-toggle="tab"
+                                       aria-controls="request">Mensajes enviados</a>
                                 </li>
 
 
@@ -36,16 +36,17 @@
             </div>
             <div id="friend-nav-content" class="tab-content">
 
-                <div role="tabpanel" class="tab-pane fade show active" id="friend" aria-labelledby="friend-tab">
+                <div role="tabpanel" class="tab-pane fade show active" id="received" aria-labelledby="received-tab">
                     <div class="row">
                         <div class="col">
                             <table class="table table-hover table-stripped table-bordered game-list-table">
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Image</th>
-                                    <th>Name</th>
-                                    <th>Delete friend</th>
+                                    <th>Imagen</th>
+                                    <th>Nombre</th>
+                                    <th>Mensaje</th>
+                                    <th>Borrar</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -58,7 +59,8 @@
                                         </div>
                                     </td>
                                     <td>Albatros</td>
-                                    <td> <button name="deleteFriend" value=""><i class="fa fa-trash"></i>
+                                    <td>Adios</td>
+                                    <td> <button name="deleteMessage" value=""><i class="fa fa-trash"></i>
                                     </button>
                                     </td>
                                 </tr>
@@ -71,7 +73,8 @@
                                         </div>
                                     </td>
                                     <td>Hipito</td>
-                                    <td> <button name="deleteFriend" value=""><i class="fa fa-trash"></i>
+                                    <td>Hola</td>
+                                    <td> <button name="deleteMessage" value=""><i class="fa fa-trash"></i>
                                     </button>
                                     </td>
                                 </tr>
@@ -81,17 +84,17 @@
                     </div>
                 </div>
 
-                <div role="tabpanel" class="tab-pane fade" id="request" aria-labelledby="request-tab">
+                <div role="tabpanel" class="tab-pane fade" id="send" aria-labelledby="send-tab">
                     <div class="row">
                         <div class="col">
                             <table class="table table-hover table-stripped table-bordered game-list-table">
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Image</th>
-                                    <th>Name</th>
-                                    <th>Status</th>
-
+                                    <th>Imagen</th>
+                                    <th>Nombre</th>
+                                    <th>Mensaje</th>
+                                    <th>Borrar</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -105,6 +108,9 @@
                                     </td>
                                     <td>Albatros</td>
                                     <td><i class="fa fa-check-circle" aria-hidden="true"></i></td>
+                                    <td> <button name="deleteMessage" value=""><i class="fa fa-trash"></i>
+                                    </button>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th scope="row">2</th>
@@ -115,8 +121,10 @@
                                         </div>
                                     </td>
                                     <td>Hipito</td>
-                                    <td>Pending</td>
-
+                                    <td>Adios</td>
+                                    <td> <button name="deleteMessage" value=""><i class="fa fa-trash"></i>
+                                    </button>
+                                    </td>
                                 </tr>
                                 </tbody>
                             </table>
