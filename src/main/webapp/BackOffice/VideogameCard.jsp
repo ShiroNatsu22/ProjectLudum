@@ -130,126 +130,126 @@
 
 
             <div class="row mb-2">
-                <div class="col col-12 col-lg-6">
-                    <div class="row">
-                        <div class="col">
-                            <span>People:</span>
+                <div class="row">
+                    <div class="col">
+                        <div class="row">
+                            <div class="col">
+                                <span>Characters:</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col hidden-sm-down">
+                                <img class="img-fluid imag-responsive"
+                                     src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
+                                     alt="gameImg">
+                            </div>
+                            <div class="col">
+                                <span>Hideo GODjima</span>
+
+                            </div>
+
+
+                            <div class="col hidden-sm-down">
+                                <img class="img-fluid imag-responsive"
+                                     src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
+                                     alt="gameImg">
+                            </div>
+                            <div class="col">
+                                <span>Hideo GODjima</span>
+
+                            </div>
+
+
+                            <div class="col hidden-sm-down">
+                                <img class="img-fluid imag-responsive"
+                                     src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
+                                     alt="gameImg">
+                            </div>
+                            <div class="col">
+                                <span>Hideo GODjima</span>
+
+                            </div>
+
+                            <div class="col hidden-sm-down">
+                                <img class="img-fluid imag-responsive"
+                                     src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
+                                     alt="gameImg">
+                            </div>
+                            <div class="col">
+                                <span>Hideo GODjima</span>
+
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col">
+                                <button>Show me more</button>
+                            </div>
                         </div>
                     </div>
-                    <div class="row mb-2">
-                        <div class="col-6 hidden-sm-down">
-                            <img class="img-fluid imag-responsive"
-                                 src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
-                                 alt="gameImg">
-                        </div>
-                        <div class="col-6">
-                            <span>Hideo GODjima</span>
 
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="row">
+                            <div class="col">
+                                <span>People:</span>
+                            </div>
                         </div>
-                        <div class="col hidden-lg-up">
-                            <span>Hideo GODjima</span>
-                        </div>
-                    </div>
+                        <div class="row">
+                            <div class="col hidden-sm-down">
+                                <img class="img-fluid imag-responsive"
+                                     src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
+                                     alt="gameImg">
+                            </div>
+                            <div class="col">
+                                <span>Hideo GODjima</span>
 
-                    <div class="row mb-2">
-                        <div class="col-6 hidden-sm-down">
-                            <img class="img-fluid imag-responsive"
-                                 src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
-                                 alt="gameImg">
-                        </div>
-                        <div class="col-6">
-                            <span>Hideo GODjima</span>
-
-                        </div>
-                        <div class="col hidden-lg-up">
-                            <span>Hideo GODjima</span>
-                        </div>
-                    </div>
-
-                    <div class="row mb-2">
-                        <div class="col-6 hidden-sm-down">
-                            <img class="img-fluid imag-responsive"
-                                 src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
-                                 alt="gameImg">
-                        </div>
-                        <div class="col-6">
-                            <span>Hideo GODjima</span>
-
-                        </div>
-                        <div class="col hidden-lg-up">
-                            <span>Hideo GODjima</span>
-                        </div>
-                    </div>
+                            </div>
 
 
+                            <div class="col hidden-sm-down">
+                                <img class="img-fluid imag-responsive"
+                                     src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
+                                     alt="gameImg">
+                            </div>
+                            <div class="col">
+                                <span>Hideo GODjima</span>
 
-                    <div class="row mb-2">
-                        <div class="col">
-                            <button>Show me more</button>
+                            </div>
+
+
+                            <div class="col hidden-sm-down">
+                                <img class="img-fluid imag-responsive"
+                                     src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
+                                     alt="gameImg">
+                            </div>
+                            <div class="col">
+                                <span>Hideo GODjima</span>
+
+                            </div>
+
+                            <div class="col hidden-sm-down">
+                                <img class="img-fluid imag-responsive"
+                                     src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
+                                     alt="gameImg">
+                            </div>
+                            <div class="col">
+                                <span>Hideo GODjima</span>
+
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col">
+                                <button>Show me more</button>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-
-                <div class="col col-12 col-lg-6">
-                    <div class="row">
-                        <div class="col">
-                            <span>Characters:</span>
-                        </div>
-                    </div>
-                    <div class="row mb-2">
-                        <div class="col-6 hidden-sm-down">
-                            <img class="img-fluid imag-responsive"
-                                 src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
-                                 alt="gameImg">
-                        </div>
-                        <div class="col-6">
-                            <span>Hideo GODjima</span>
-
-                        </div>
-                        <div class="col hidden-lg-up">
-                            <span>Hideo GODjima</span>
-                        </div>
-                    </div>
-
-                    <div class="row mb-2">
-                        <div class="col-6 hidden-sm-down">
-                            <img class="img-fluid imag-responsive"
-                                 src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
-                                 alt="gameImg">
-                        </div>
-                        <div class="col-6">
-                            <span>Hideo GODjima</span>
-
-                        </div>
-                        <div class="col hidden-lg-up">
-                            <span>Hideo GODjima</span>
-                        </div>
-                    </div>
-
-                    <div class="row mb-2">
-                        <div class="col-6 hidden-sm-down">
-                            <img class="img-fluid imag-responsive"
-                                 src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
-                                 alt="gameImg">
-                        </div>
-                        <div class="col-6">
-                            <span>Hideo GODjima</span>
-
-                        </div>
-                        <div class="col hidden-lg-up">
-                            <span>Hideo GODjima</span>
-                        </div>
-                    </div>
-
-
-
-                    <div class="row mb-2">
-                        <div class="col">
-                            <button>Show me more</button>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 
