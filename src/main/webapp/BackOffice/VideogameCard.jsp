@@ -32,12 +32,12 @@
 
 
                 <div class="row">
-                    <div class="col game-attribute mt-2">
+                    <div class="col card-attribute mt-2">
                         Name: ${requestScope.currentVideogame.name}
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col game-attribute mt-2">
+                    <div class="col card-attribute mt-2">
                         Developer:
                         <c:forEach var="developer" items="${requestScope.currentVideogameDeveloperList}">
                             <a class="ml-1"
@@ -46,7 +46,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col game-attribute mt-2">
+                    <div class="col card-attribute mt-2">
                         Publisher:
                         <c:forEach var="publisher" items="${requestScope.currentVideogamePublisherList}">
                             <a class="ml-1"
@@ -55,22 +55,22 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col game-attribute mt-2">
+                    <div class="col card-attribute mt-2">
                         Genre:
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col game-attribute mt-2">
+                    <div class="col card-attribute mt-2">
                         Platform:
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col hidden-xs game-attribute mt-2">
+                    <div class="col hidden-xs card-attribute mt-2">
                         Number of players:
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col game-attribute mt-2">
+                    <div class="col card-attribute mt-2">
                         PEGI:
                     </div>
                 </div>
