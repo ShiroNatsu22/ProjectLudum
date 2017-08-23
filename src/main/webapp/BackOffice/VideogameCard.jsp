@@ -20,48 +20,17 @@
 
         <div class="row">
 
-            <div class="col-4 ">
-                <div id="card-effect">
-                    <div class="row">
-                        <div class="col image">
-                            <img class="img-fluid imag-responsive"
-                                 src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
-                                 alt="gameImg">
-                        </div>
-                    </div>
-
-
-                    <div class="row">
-                        <div class="col ">
-                            <div id="status-selection">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="row mt-5 mb-5">
-                                            <div class="col-6">
-                                                <select class="custom-select ml-5">
-                                                    <option selected>Select one state</option>
-                                                    <option value=completed>Completed</option>
-                                                    <option value="playing">Playing</option>
-                                                    <option value="dropped">Dropped</option>
-                                                    <option value="planToPlay">Plan to play</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-4 mt-2 ml-4">
-                                                <div class="row">
-                                                    <div class="col ">
-                                                        <button> Send</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        <div class="col col-12 col-xl-4 col-md-12 ">
+            <div id="card-effect">
+                <div class="row">
+                    <div class="col image">
+                        <img class="img-fluid imag-responsive"
+                             src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
+                             alt="gameImg">
                     </div>
                 </div>
-            </div>
-            <div class="col-8">
+
+
                 <div class="row">
                     <div class="col game-attribute mt-2">
                         Name: ${requestScope.currentVideogame.name}
@@ -96,7 +65,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col game-attribute mt-2">
+                    <div class="col hidden-xs game-attribute mt-2">
                         Number of players:
                     </div>
                 </div>
@@ -105,72 +74,182 @@
                         PEGI:
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-6 game-element  border-right-0 border-left-0">
-                        <span>People</span>
-                        <div class="row mb-2">
-                            <div class="col">
-                                <img class="img-fluid imag-responsive"
-                                     src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
-                                     alt="gameImg">
-                            </div>
 
-                            <div class="col">
-                                <img class="img-fluid imag-responsive"
-                                     src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
-                                     alt="gameImg">
-                            </div>
 
-                            <div class="col">
-                                <img class="img-fluid imag-responsive"
-                                     src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
-                                     alt="gameImg">
-                            </div>
+            </div>
+        </div>
+
+        <div class="col col-12 col-lg-12 col-xl-8">
+            <div class="row">
+                <div class="col ">
+
+                    <div class="row">
+                        <div class="col col-sm-12 mt-2 other-info">
+                            <p>${requestScope.currentVideogame.description}</p>
                         </div>
-                        <div class="row">
-                            <div class="col">
-                                <button>Show me more</button>
-                            </div>
-                        </div>
-
                     </div>
 
-
-                    <div class="col-6 game-element border-right-0">
-                        <span>Characters</span>
-                        <div class="row mb-2">
-                            <div class="col">
-                                <img class="img-fluid imag-responsive"
-                                     src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
-                                     alt="gameImg">
-                            </div>
-
-                            <div class="col">
-                                <img class="img-fluid imag-responsive"
-                                     src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
-                                     alt="gameImg">
-                            </div>
-
-                            <div class="col">
-                                <img class="img-fluid imag-responsive"
-                                     src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
-                                     alt="gameImg">
-                            </div>
-                        </div>
+                    <div id="status-selection">
                         <div class="row">
-                            <div class="col">
-                                <button>Show me more</button>
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col">
+                                        Mean score:
+                                    </div>
+                                    <div class="col">
+                                        <select class="custom-select ml-5">
+                                            <option selected>Select one state</option>
+                                            <option value="completed">Completed</option>
+                                            <option value="playing">Playing</option>
+                                            <option value="dropped">Dropped</option>
+                                            <option value="planToPlay">Plan to play</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col">
+                                        <select class="custom-select ml-5">
+                                            <option selected>Score</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
 
-        <div class="row">
-            <div class="col col-sm-12 mt-2 other-info">
-                <p>${requestScope.currentVideogame.description}</p>
+            <div class="row mb-2">
+                <div class="col col-12 col-lg-6">
+                    <div class="row">
+                        <div class="col">
+                            <span>People:</span>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-6 hidden-sm-down">
+                            <img class="img-fluid imag-responsive"
+                                 src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
+                                 alt="gameImg">
+                        </div>
+                        <div class="col-6">
+                            <span>Hideo GODjima</span>
+
+                        </div>
+                        <div class="col hidden-lg-up">
+                            <span>Hideo GODjima</span>
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="col-6 hidden-sm-down">
+                            <img class="img-fluid imag-responsive"
+                                 src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
+                                 alt="gameImg">
+                        </div>
+                        <div class="col-6">
+                            <span>Hideo GODjima</span>
+
+                        </div>
+                        <div class="col hidden-lg-up">
+                            <span>Hideo GODjima</span>
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="col-6 hidden-sm-down">
+                            <img class="img-fluid imag-responsive"
+                                 src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
+                                 alt="gameImg">
+                        </div>
+                        <div class="col-6">
+                            <span>Hideo GODjima</span>
+
+                        </div>
+                        <div class="col hidden-lg-up">
+                            <span>Hideo GODjima</span>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row mb-2">
+                        <div class="col">
+                            <button>Show me more</button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col col-12 col-lg-6">
+                    <div class="row">
+                        <div class="col">
+                            <span>Characters:</span>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-6 hidden-sm-down">
+                            <img class="img-fluid imag-responsive"
+                                 src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
+                                 alt="gameImg">
+                        </div>
+                        <div class="col-6">
+                            <span>Hideo GODjima</span>
+
+                        </div>
+                        <div class="col hidden-lg-up">
+                            <span>Hideo GODjima</span>
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="col-6 hidden-sm-down">
+                            <img class="img-fluid imag-responsive"
+                                 src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
+                                 alt="gameImg">
+                        </div>
+                        <div class="col-6">
+                            <span>Hideo GODjima</span>
+
+                        </div>
+                        <div class="col hidden-lg-up">
+                            <span>Hideo GODjima</span>
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="col-6 hidden-sm-down">
+                            <img class="img-fluid imag-responsive"
+                                 src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
+                                 alt="gameImg">
+                        </div>
+                        <div class="col-6">
+                            <span>Hideo GODjima</span>
+
+                        </div>
+                        <div class="col hidden-lg-up">
+                            <span>Hideo GODjima</span>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row mb-2">
+                        <div class="col">
+                            <button>Show me more</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
