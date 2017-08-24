@@ -15,8 +15,8 @@
             <a class="dropdown-item" href="<c:url value="/BackOffice/FriendList.jsp?id=${sessionScope.currentUser.user_id_pk}" />">
                 <i class="fa fa-list"></i> Friends
             </a>
-            <a class="dropdown-item">
-                <i class="fa fa-envelope"></i></i> Messages(num msg)
+            <a class="dropdown-item" href="<c:url value="/BackOffice/MyMessages.jsp" />">
+                <i class="fa fa-envelope"></i> Messages(num msg)
             </a>
             <a class="dropdown-item" href="<c:url value="/controller/LogOut" />">
                 <i class="fa fa-sign-out"></i> Logout

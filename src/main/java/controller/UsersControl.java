@@ -1,8 +1,10 @@
 package controller;
 
 import dao.*;
+import model.PrivateMessage;
 import model.Relationship;
 import model.User;
+import sun.plugin2.message.Message;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,8 +25,10 @@ public class UsersControl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        HttpSession session = req.getSession(true);
         String id = req.getParameter("id");
         UserDAO userDAOImpl = new UserDAOImpl();
+        User currentUser = (User) session.getAttribute("currentUser");
 
         // Se comprueba que haya una id del usuario en los parámetros
         if (id != null) {
@@ -51,9 +55,21 @@ public class UsersControl extends HttpServlet {
             req.setAttribute("friendRequestsCurrentUser", getUserFriendRequests(user_id_pk));
 
         }
-        // Se obtiene la lista completa de usuarios
         else {
 
+            PrivateMessageDAO privateMessageDAO = new PrivateMessageDAOImpl();
+            List<PrivateMessage> receivedMessages = getUserReceivedMessages(currentUser.getUser_id_pk());
+            List<PrivateMessage> sentMessages = getUserSentMessages(currentUser.getUser_id_pk());
+
+            // Se obtienen todos los mensajes privados enviados por el usuario actual
+            req.setAttribute("sentMessages", sentMessages);
+            req.setAttribute("sentMessagesUser", getSentMessagesUser(sentMessages));
+
+            // Se obtienen todos los mensajes privados recibidos por el usuario actual
+            req.setAttribute("receivedMessages", receivedMessages);
+            req.setAttribute("receivedMessagesUser", getReceivedMessagesUser(receivedMessages));
+
+            // Se obtiene la lista completa de usuarios
             req.setAttribute("userList", userDAOImpl.getAllUsers());
 
         }
@@ -72,6 +88,7 @@ public class UsersControl extends HttpServlet {
         String relationshipRequest = req.getParameter("newRelationshipRequest");
         String acceptRelationship = req.getParameter("acceptRelationship");
         String rejectRelationship = req.getParameter("rejectRelationship");
+        String sendPrivateMessage = req.getParameter("sendPrivateMessage");
 
         // Eliminar usuario
         if (user_id_pk != null) {
@@ -96,6 +113,19 @@ public class UsersControl extends HttpServlet {
             // En caso de aceptar la relación
             if (acceptRelationship != null)
                 relationshipDAO.createRelationship(new Relationship(0, previousRelationship.getSender_user_id_fk(), previousRelationship.getReceiver_user_id_fk(), "accepted"));
+
+        }
+        // Enviar mensaje privado
+        else if (sendPrivateMessage != null) {
+
+            PrivateMessageDAO privateMessageDAO = new PrivateMessageDAOImpl();
+            int sender_user_id_fk = currentUser.getUser_id_pk();
+            int receiver_user_id_fk = Integer.parseInt(sendPrivateMessage);
+            String subject = req.getParameter("subject");
+            String content = req.getParameter("content");
+
+            privateMessageDAO.createPrivateMessage(new PrivateMessage(0, sender_user_id_fk, sender_user_id_fk, receiver_user_id_fk, subject, content, new Date(), false));
+            privateMessageDAO.createPrivateMessage(new PrivateMessage(0, receiver_user_id_fk, sender_user_id_fk, receiver_user_id_fk, subject, content, new Date(), false));
 
         }
         // Crear usuario
@@ -143,6 +173,62 @@ public class UsersControl extends HttpServlet {
                 userList.add(userDAO.getUserByUserID(relationship.getSender_user_id_fk()));
             else
                 userList.add(userDAO.getUserByUserID(relationship.getReceiver_user_id_fk()));
+
+        }
+
+        return userList;
+
+    }
+
+    private List<PrivateMessage> getUserSentMessages(int user_id_pk) {
+        return getUserMessages(user_id_pk, true);
+    }
+
+    private List<PrivateMessage> getUserReceivedMessages(int user_id_pk) {
+        return getUserMessages(user_id_pk, false);
+    }
+
+    private List<PrivateMessage> getUserMessages(int user_id_pk, boolean sender) {
+
+        PrivateMessageDAO privateMessageDAO = new PrivateMessageDAOImpl();
+        List<PrivateMessage> privateMessageList = privateMessageDAO.getAllPrivateMessagesByOwner_user_id_fk(user_id_pk);
+        List<PrivateMessage> resultPrivateMessageList = new ArrayList<PrivateMessage>();
+
+        for (PrivateMessage privateMessage : privateMessageList) {
+
+            if (sender) {
+                if (user_id_pk == privateMessage.getSender_user_id_fk())
+                    resultPrivateMessageList.add(privateMessage);
+            } else {
+                if (user_id_pk == privateMessage.getReceiver_user_id_fk())
+                    resultPrivateMessageList.add(privateMessage);
+            }
+        }
+
+        return resultPrivateMessageList;
+
+    }
+
+    private List<User> getSentMessagesUser(List<PrivateMessage> privateMessageList) {
+        return getMessageUser(privateMessageList, true);
+    }
+
+    private List<User> getReceivedMessagesUser(List<PrivateMessage> privateMessageList) {
+        return getMessageUser(privateMessageList, false);
+    }
+
+    private List<User> getMessageUser(List<PrivateMessage> privateMessageList, boolean sender) {
+
+        UserDAO userDAO = new UserDAOImpl();
+        List<User> userList = new ArrayList<User>();
+
+        for (PrivateMessage privateMessage : privateMessageList) {
+
+            if (sender) {
+                userList.add(userDAO.getUserByUserID(privateMessage.getReceiver_user_id_fk()));
+            } else {
+                userList.add(userDAO.getUserByUserID(privateMessage.getSender_user_id_fk()));
+            }
 
         }
 
