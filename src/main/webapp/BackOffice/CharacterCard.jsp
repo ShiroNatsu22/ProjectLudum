@@ -37,6 +37,25 @@
                     </div>
                 </div>
 
+                <div class="row">
+                    <div class="col card-attribute mt-2">
+                        Gender:
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col card-attribute mt-2">
+                        Age:
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col card-attribute mt-2">
+                        Location:
+                    </div>
+                </div>
+
+
 
             </div>
         </div>

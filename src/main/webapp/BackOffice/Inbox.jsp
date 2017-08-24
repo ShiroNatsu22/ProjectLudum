@@ -39,7 +39,7 @@
                 <div role="tabpanel" class="tab-pane fade show active" id="received" aria-labelledby="received-tab">
                     <div class="row">
                         <div class="col">
-                            <table class="table table-hover table-stripped table-bordered game-list-table">
+                            <table class="table table-hover table-stripped table-bordered table-list">
                                 <thead>
                                 <tr>
                                     <th>#</th>
@@ -87,7 +87,7 @@
                 <div role="tabpanel" class="tab-pane fade" id="send" aria-labelledby="send-tab">
                     <div class="row">
                         <div class="col">
-                            <table class="table table-hover table-stripped table-bordered game-list-table">
+                            <table class="table table-hover table-stripped table-bordered table-list">
                                 <thead>
                                 <tr>
                                     <th>#</th>

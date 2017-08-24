@@ -36,7 +36,7 @@
             <div role="tabpanel" class="tab-pane fade show active" id="friend" aria-labelledby="friend-tab">
                 <div class="row">
                     <div class="col">
-                        <table class="table table-hover table-stripped table-bordered game-list-table" cellspacing="0"
+                        <table class="table table-hover table-stripped table-bordered table-list" cellspacing="0"
                                width="100%">
                             <thead>
 
@@ -79,7 +79,7 @@
             <div role="tabpanel" class="tab-pane fade" id="request" aria-labelledby="request-tab">
                 <div class="row">
                     <div class="col">
-                        <table class="table table-hover table-stripped table-bordered game-list-table">
+                        <table class="table table-hover table-stripped table-bordered table-list">
                             <thead>
                             <tr>
                                 <th>Image</th>

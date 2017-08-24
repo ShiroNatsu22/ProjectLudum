@@ -49,7 +49,7 @@
                 <div role="tabpanel" class="tab-pane fade show active" id="completed" aria-labelledby="completed-tab">
                     <div class="row">
                         <div class="col">
-                            <table class="table table-hover table-stripped table-bordered game-list-table">
+                            <table class="table table-hover table-stripped table-bordered table-list">
                                 <thead>
                                 <tr>
                                     <th>#</th>
@@ -104,7 +104,7 @@
                 <div role="tabpanel" class="tab-pane fade show" id="process" aria-labelledby="process-tab">
                     <div class="row">
                         <div class="col">
-                            <table class="table table-hover table-stripped table-bordered game-list-table">
+                            <table class="table table-hover table-stripped table-bordered table-list">
                                 <thead>
                                 <tr>
                                     <th>#</th>
@@ -159,7 +159,7 @@
                 <div role="tabpanel" class="tab-pane fade show" id="dropped" aria-labelledby="dropped-tab">
                     <div class="row">
                         <div class="col">
-                            <table class="table table-hover table-stripped table-bordered game-list-table">
+                            <table class="table table-hover table-stripped table-bordered table-list">
                                 <thead>
                                 <tr>
                                     <th>#</th>
@@ -214,7 +214,7 @@
                 <div role="tabpanel" class="tab-pane fade show " id="pending" aria-labelledby="pending-tab">
                     <div class="row">
                         <div class="col">
-                            <table class="table table-hover table-stripped table-bordered game-list-table">
+                            <table class="table table-hover table-stripped table-bordered table-list">
                                 <thead>
                                 <tr>
                                     <th>#</th>
@@ -269,7 +269,7 @@
                 <div role="tabpanel" class="tab-pane fade show " id="favorite" aria-labelledby="favorite-tab">
                     <div class="row">
                         <div class="col">
-                            <table class="table table-hover table-stripped table-bordered game-list-table">
+                            <table class="table table-hover table-stripped table-bordered table-list">
                                 <thead>
                                 <tr>
                                     <th>#</th>

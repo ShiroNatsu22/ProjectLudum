@@ -23,23 +23,54 @@
 
 
                             <div class="registrerUser">
-                                <p>Usuario:</p>
+                                <p>(*)Usuer Name:</p>
                                 <input type="text" class="form-control" name="user " id="user" placeholder="Enter username">
                             </div>
 
                             <div class="registrerPass">
-                                <p>Contraseña:</p>
+                                <p>(*)Password:</p>
                                 <input type="password" class="form-control" name="password" id="pass" placeholder="Enter user password">
                             </div>
                             <div class="registrerPass">
-                                <p>Vuelva a introducir la contraseña:</p>
-                                <input type="password" class="form-control" name="password" id="rePass" placeholder="Repeat Password">
+                                <p>(*)Repeat password:</p>
+                                <input type="password" class="form-control" name="password" id="re-Pass" placeholder="Repeat Password">
                             </div>
 
                             <div class="registrerMail">
-                                <p>Introduzca su email:</p>
+                                <p>(*)Enter email:</p>
                                 <input type="email" class="form-control" name="password" id="email" placeholder="Enter email">
                             </div>
+
+                            <div class="registrerMail">
+                                <p>(*)Repeat email email:</p>
+                                <input type="email" class="form-control" name="password" id="re-email" placeholder="Repeat email">
+                            </div>
+
+                            <div class="registrerGender">
+                                <p>Gender:</p>
+                                <select class="custom-select ">
+                                    <option selected>What is your gender</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="registrerCountry">
+                                <p>Country:</p>
+                                <input type="text" class="form-control" name="password" id="country" placeholder="Where are you from">
+                            </div>
+
+                            <div class="registerBirthday">
+                                <p>Country:</p>
+                                <input type="date" class="form-control" name="password" id="birthday" placeholder="When is your birthday?">
+                            </div>
+
+                            <div class="registerBiography">
+                                <p>Something about you:</p>
+                                <input type="text" class="form-control" name="password" id="biography" placeholder="Enter some text">
+                            </div>
+
 
 
                             <div class="form-group" id="button">
