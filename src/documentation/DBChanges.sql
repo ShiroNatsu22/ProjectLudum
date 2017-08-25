@@ -158,3 +158,35 @@ FOR EACH ROW
     END IF;
   END$$
 DELIMITER ;
+
+/* PAJ 24/08/2017 - Creada la tabla de los mensajes privados */
+
+CREATE TABLE `gamerlistDB`.`privateMessages` (
+  `privateMessage_id_pk` INT         NOT NULL AUTO_INCREMENT,
+  `owner_user_id_fk`     INT         NOT NULL,
+  `sender_user_id_fk`    INT         NOT NULL,
+  `receiver_user_id_fk`  INT         NOT NULL,
+  `subject`              VARCHAR(30) NULL,
+  `content`              MEDIUMTEXT  NULL,
+  `sended`               TIMESTAMP   NULL,
+  `readed`               TINYINT     NULL,
+  PRIMARY KEY (`privateMessage_id_pk`),
+  INDEX `owner_idx` (`owner_user_id_fk` ASC),
+  INDEX `sender_idx` (`sender_user_id_fk` ASC),
+  INDEX `receiver_idx` (`receiver_user_id_fk` ASC),
+  CONSTRAINT `owner`
+  FOREIGN KEY (`owner_user_id_fk`)
+  REFERENCES `gamerlistDB`.`users` (`user_id_pk`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `sender`
+  FOREIGN KEY (`sender_user_id_fk`)
+  REFERENCES `gamerlistDB`.`users` (`user_id_pk`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `receiver`
+  FOREIGN KEY (`receiver_user_id_fk`)
+  REFERENCES `gamerlistDB`.`users` (`user_id_pk`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+);

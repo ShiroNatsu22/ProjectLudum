@@ -105,6 +105,12 @@
                                     </form>
                                 </li>
 
+                                <li class="list-group-item">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createPrivateMessage">
+                                        Send message
+                                    </button>
+                                </li>
+
                             </c:if>
 
 
@@ -361,6 +367,33 @@
                 </div>
             </div>
 
+        </div>
+
+        <!-- Modal para enviar mensajes privados -->
+        <div class="modal fade" id="createPrivateMessage" tabindex="-1" role="dialog" aria-labelledby="createPrivateMessageLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Send message</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span>&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <form id="privateMessageForm" action="<c:url value="/controller/UsersControl" />" method="post">
+                            Subject <input name="subject">
+                            Message
+                            <textarea name="content"></textarea>
+
+                        </form>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button form="privateMessageForm" name="sendPrivateMessage" value="${requestScope.currentUser.user_id_pk}" class="btn btn-primary">Send</button>
+                    </div>
+                </div>
+            </div>
         </div>
 
 
