@@ -41,8 +41,8 @@
                             <thead>
 
                             <tr>
-                                <th>Name</th>
                                 <th>Image</th>
+                                <th>Name</th>
                                 <th>Delete friend</th>
                             </tr>
 
@@ -53,11 +53,12 @@
 
                                 <tr>
                                     <td class="align-middle">
-                                        <a href="<c:url value="/BackOffice/Profile.jsp?id=${friend.user_id_pk}" />">${friend.username}</a>
-                                    </td>
-                                    <td class="align-middle">
                                         <img height="50" width="50"
                                              src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
+                                    </td>
+                                    <td class="align-middle">
+                                        <a href="<c:url value="/BackOffice/Profile.jsp?id=${friend.user_id_pk}" />">${friend.username}</a>
+
                                     </td>
                                     <td class="align-middle">
                                         <form action="<c:url value="/controller/UsersControl" />" method="post">
@@ -79,7 +80,8 @@
             <div role="tabpanel" class="tab-pane fade" id="request" aria-labelledby="request-tab">
                 <div class="row">
                     <div class="col">
-                        <table class="table table-hover table-stripped table-bordered table-list">
+                        <table class="table table-hover table-stripped table-bordered table-list" cellspacing="0"
+                               width="100%">
                             <thead>
                             <tr>
                                 <th>Image</th>
