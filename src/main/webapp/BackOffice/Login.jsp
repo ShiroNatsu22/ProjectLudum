@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <jsp:include page="/controller/VideogamesControl"/>
-<link type="text/css" rel="stylesheet" href="<c:url value="../lib/css/login.min.css" />" />
 
 <tag:pageMaster>
 

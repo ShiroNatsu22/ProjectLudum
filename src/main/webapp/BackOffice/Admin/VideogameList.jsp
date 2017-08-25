@@ -18,7 +18,7 @@
         </button>
 
         <%-- Table that prints a list of all videogames --%>
-        <table class="table table-hover table-bordered">
+        <table class="table table-hover table-bordered table-list">
             <thead>
             <tr class="bg-primary text-white">
                 <th>Name</th>
@@ -61,31 +61,50 @@
 
                     <div class="modal-body">
                         <form action="<c:url value="/controller/VideogamesControl"/>" method="post">
-                            <div class="form-group">
-                                <label for="newName">Name</label>
-                                <input class="form-control" id="newName" name="name"
-                                       placeholder="Enter new name">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="newName">Name</label>
+                                        <input class="form-control" id="newName" name="name"
+                                               placeholder="Enter new name">
+                                    </div>
+                                </div>
                             </div>
-
-                            <div class="form-group">
-                                <label for="newDescription">Description</label>
-                                <textarea class="form-control" id="newDescription" name="description"
-                                          rows="3"></textarea>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="newDescription">Description</label>
+                                        <textarea class="form-control" id="newDescription" name="description"
+                                                  rows="3"></textarea>
+                                    </div>
+                                </div>
                             </div>
+                            <div class="row">
+                                <div class="col">
+                                    <label for="newDeveloper_id_fk">
+                                        Select developers
+                                        <select class="col-6" id="newDeveloper_id_fk" name="developer_company_id_fk" multiple>
+                                            <c:forEach var="developer" items="${requestScope.companyList}">
+                                                <option value="${developer.company_id_pk}">${developer.name}</option>
+                                            </c:forEach>
+                                        </select>
+                                    </label>
+                                    <label for="newPublisher_id_fk">
+                                        Select publishers
 
-                            <select id="newDeveloper_id_fk" name="developer_company_id_fk" multiple>
-                                <c:forEach var="developer" items="${requestScope.companyList}">
-                                    <option value="${developer.company_id_pk}">${developer.name}</option>
-                                </c:forEach>
-                            </select>
-
-                            <select id="newPublisher_id_fk" name="publisher_company_id_fk" multiple>
-                                <c:forEach var="publisher" items="${requestScope.companyList}">
-                                    <option value="${publisher.company_id_pk}">${publisher.name}</option>
-                                </c:forEach>
-                            </select>
-
-                            <button class="btn btn-primary">Add videogame</button>
+                                        <select class="col-6" id="newPublisher_id_fk" name="publisher_company_id_fk" multiple>
+                                            <c:forEach var="publisher" items="${requestScope.companyList}">
+                                                <option value="${publisher.company_id_pk}">${publisher.name}</option>
+                                            </c:forEach>
+                                        </select>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <button class="btn btn-primary">Add videogame</button>
+                                </div>
+                            </div>
                         </form>
                     </div>
 

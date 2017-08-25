@@ -2,58 +2,131 @@
 <%@ taglib prefix="tag" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+
 <jsp:include page="/controller/CompaniesControl"/>
+
 
 <tag:pageMaster>
 
     <jsp:attribute name="head">
-        <title>Provisional</title>
+        <title>${requestScope.currentCompany.getName()}</title>
     </jsp:attribute>
 
     <jsp:body>
 
         <div class="row">
-            <div class="col">
-                <h3>${requestScope.currentCompany.getName()}</h3>
+            <div class="col game-title">
+                <h3>${requestScope.currentVideogame.name}</h3>
             </div>
         </div>
 
         <div class="row">
 
-            <div class="col-4 image">
-                <img class="img-fluid imag-responsive"
-                     src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
-                     alt="gameImg">
-            </div>
+        <div class="col col-12 col-xl-4 col-md-12 ">
+            <div id="card-effect">
+                <div class="row">
+                    <div class="col image">
+                        <img class="img-fluid imag-responsive"
+                             src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
+                             alt="gameImg">
+                    </div>
+                </div>
 
-            <div class="col">
+                <div class="col">
+                    <div class="row card-attribute">
+                        <div class="col mt-2">
+                            Name: ${requestScope.currentCompany.getName()}                        </div>
+                    </div>
+                    <div class="row card-attribute">
+                        <div class="col  mt-2">
+                            Founded: ${requestScope.currentCompany.getFounded()}
 
-                <ul class="list-group">
-                    <li class="list-group-item">
-                        Name: ${requestScope.currentCompany.getName()}
-                    </li>
-                    <li class="list-group-item">
-                        Founded: ${requestScope.currentCompany.getFounded()}
-                    </li>
-                    <li class="list-group-item">
-                        Games developed:
-                        <c:forEach var="videogame" items="${requestScope.currentCompanyDeveloperList}">
-                            <a class="ml-1"
-                               href="<c:url value="/BackOffice/VideogameCard.jsp?id=${videogame.videogame_id_pk}" />">${videogame.name}</a>
-                        </c:forEach>
-                    </li>
-                    <li class="list-group-item">
-                        Games published:
-                        <c:forEach var="videogame" items="${requestScope.currentCompanyPublisherList}">
-                            <a class="ml-1"
-                               href="<c:url value="/BackOffice/VideogameCard.jsp?id=${videogame.videogame_id_pk}" />">${videogame.name}</a>
-                        </c:forEach>
-                    </li>
-                </ul>
+                        </div>
+                    </div>
+                </div>
 
             </div>
-
         </div>
+
+        <div class="col col-12 col-lg-12 col-xl-8">
+            <div class="row">
+                <div class="col ">
+
+                    <div class="row">
+                        <div class="col col-sm-12 mt-2 other-info">
+                            <p>sadfsadfsadfsafasdfasdfsafasfasfasfasf sdaff asd fas f sadfas f</p>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <!--ANOTACION PARA PABLO: EL PRIMER ELEMENTO DEBE TENER UN ML-3 Y EL ULTIMO UN MR-3 SINOS QUEDA, SI TE FIJAS
+            HAY UN hidden-lg-up, ESO SIRVE PARA QUE LAS PANTALLAS DE LG PARA ARRIBA SE OCULTARAN, Y ESA PARTE SOLO SE MOSTRARA EN MOBIL
+            -->
+            <div class="row mt-5">
+                <div class="col">
+                    <div class="row">
+                        <div class="col">
+
+                            <div class="rounded info-card">
+                                <div class="row mt-4">
+                                    <div class="col col-12 mb-2">
+                                        <span class="separator-title ml-4 mb-2">Games developed: <button type="button" class="btn show-button">Show me more</button> </span>
+                                    </div>
+                                </div>
+                                <div class="row mb-4">
+                                    <div class="col hidden-md-down ml-3 separator">
+
+                                        <c:forEach var="videogame" items="${requestScope.currentCompanyDeveloperList}">
+                                            <img class="img-fluid imag-responsive"
+                                                 src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
+                                                 alt="gameImg">
+
+                                            <a class="ml-1"
+                                               href="<c:url value="/BackOffice/VideogameCard.jsp?id=${videogame.videogame_id_pk}" />">${videogame.name}</a>
+                                        </c:forEach>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row mt-4">
+                        <div class="col">
+                            <div class="rounded info-card">
+                                <div class="row mt-4">
+                                    <div class="col mb-2">
+                                        <span class="separator-title ml-4 mb-2">People: <button type="button" class="btn show-button">Show me more</button></span>
+                                    </div>
+                                </div>
+                                <div class="row mb-4">
+                                    <div class="col hidden-md-down ml-3 separator">
+
+                                        <c:forEach var="videogame" items="${requestScope.currentCompanyPublisherList}">
+                                            <img class="img-fluid imag-responsive"
+                                                 src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
+                                                 alt="gameImg">
+                                            
+                                            <a class="ml-1"
+                                               href="<c:url value="/BackOffice/VideogameCard.jsp?id=${videogame.videogame_id_pk}" />">${videogame.name}</a>
+                                        </c:forEach>
+                                    </div>
+
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
     </jsp:body>
 

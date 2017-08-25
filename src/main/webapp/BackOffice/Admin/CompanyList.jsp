@@ -18,7 +18,7 @@
         </button>
 
         <%-- Table that prints a list of all companies --%>
-        <table class="table table-hover table-bordered">
+        <table class="table table-hover table-bordered table-list cell-border">
             <thead>
             <tr class="bg-primary text-white">
                 <th>Name</th>
@@ -48,6 +48,7 @@
         </table>
 
         <%-- Modal with the form that creates new users --%>
+
         <div class="modal fade" id="modalAddCompany" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -58,37 +59,58 @@
                             <span>&times;</span>
                         </button>
                     </div>
-
-                    <div class="modal-body">
-                        <form action="<c:url value="/controller/CompaniesControl"/>" method="post">
-                            <div class="form-group">
-                                <label for="newName">Name</label>
-                                <input class="form-control" id="newName" name="name"
-                                       placeholder="Enter new name">
+                    <div class="row">
+                        <div class="col">
+                            <div class="modal-body">
+                                <form action="<c:url value="/controller/CompaniesControl"/>" method="post">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="newName">Name</label>
+                                                <input class="form-control" id="newName" name="name"
+                                                       placeholder="Enter new name">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="newFounded">Founded</label>
+                                                <input type="date" class="" id="newFounded" name="founded"
+                                                       placeholder="Enter new founded">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="newDeveloperVideogame_id_fk">
+                                                Select develovper
+                                                <select class=col-6 id="newDeveloperVideogame_id_fk" name="developer_videogame_id_fk" multiple="multiple">
+                                                    <c:forEach var="videogame" items="${requestScope.videogameList}">
+                                                        <option value="${videogame.videogame_id_pk}">${videogame.name}</option>
+                                                    </c:forEach>
+                                                </select>
+                                            </label>
+                                            <label for="newPublisherVideogame_id_fk">
+                                                Select publisher
+                                                <select class="col-6" id="newPublisherVideogame_id_fk" name="publisher_videogame_id_fk" multiple="multiple">
+                                                    <c:forEach var="videogame" items="${requestScope.videogameList}">
+                                                        <option value="${videogame.videogame_id_pk}">${videogame.name}</option>
+                                                    </c:forEach>
+                                                </select>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <button class="btn btn-primary">Add company</button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
 
-                            <div class="form-group">
-                                <label for="newFounded">Founded</label>
-                                <input type="date" class="" id="newFounded" name="founded"
-                                       placeholder="Enter new founded">
-                            </div>
-
-                            <select id="newDeveloperVideogame_id_fk" name="developer_videogame_id_fk" multiple>
-                                <c:forEach var="videogame" items="${requestScope.videogameList}">
-                                    <option value="${videogame.videogame_id_pk}">${videogame.name}</option>
-                                </c:forEach>
-                            </select>
-
-                            <select id="newPublisherVideogame_id_fk" name="publisher_videogame_id_fk" multiple>
-                                <c:forEach var="videogame" items="${requestScope.videogameList}">
-                                    <option value="${videogame.videogame_id_pk}">${videogame.name}</option>
-                                </c:forEach>
-                            </select>
-
-                            <button class="btn btn-primary">Add company</button>
-                        </form>
+                        </div>
                     </div>
-
                 </div>
             </div>
         </div>

@@ -2,7 +2,6 @@
 <%@ taglib prefix="tag" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<link rel="stylesheet" href="../lib/css/cardCss.min.css">
 <tag:pageMaster>
 
     <jsp:attribute name="head">
@@ -30,26 +29,26 @@
                 </div>
 
                 <div class="col">
-                    <div class="row">
-                        <div class="col card-attribute mt-2">
+                    <div class="row card-attribute">
+                        <div class="col  mt-2">
                             Name: Ragnar Lodbrock
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col card-attribute mt-2">
+                    <div class="row card-attribute">
+                        <div class="col  mt-2">
                             Name: Macho peluo
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col card-attribute mt-2">
+                    <div class="row card-attribute">
+                        <div class="col  mt-2">
                             Name: 30
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col card-attribute mt-2">
+                    <div class="row card-attribute">
+                        <div class="col  mt-2">
                             Location: Kattegat
                         </div>
                     </div>
@@ -84,7 +83,7 @@
                             <div class="rounded info-card">
                                 <div class="row mt-4">
                                     <div class="col col-12 mb-2">
-                                        <span class="separator-title ml-4 mb-2">GAMES APPEARED: <button type="button" class="btn">Show me more</button> </span>
+                                        <span class="separator-title ml-4 mb-2">GAMES APPEARED: <button type="button" class="btn show-button">Show me more</button> </span>
                                     </div>
                                 </div>
                                 <div class="row mb-4">
