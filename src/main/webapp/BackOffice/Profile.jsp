@@ -171,43 +171,53 @@
 
 
                 <div class="row">
-                    <div class="completed-game col">10</div>
-                    <div class="playing-game col ">10</div>
-                </div>
-
-                <div class="row">
-                    <div class="dropped-game col ">10</div>
-                    <div class="pending-game col ">10</div>
+                    <div class="completed-game col"></div>
+                    <div class="playing-game col "></div>
+                    <div class="dropped-game col "></div>
+                    <div class="pending-game col "></div>
                 </div>
 
                 <div class="row mt-3 mb-3">
 
-                    <div class="completed-leyend d-inline-block"></div>
-                    <span class="d-inline">Completed games</span>
+                    <div class="col-4">
+                        <div class="row">
+                            <div class="completed-leyend d-inline-block"></div>
+                            <div class="d-inline">Completed games:<span class="total-completed">10</span></div>
+                        </div>
+                        <div class="row">
+                            <div class="playing-leyend d-inline-block"></div>
+                            <div class="d-inline">Playing games:<span class="total-playing">10</span></div>
+                        </div>
+                    </div>
 
+                    <div class="col-4">
+                        <div class="row">
+                            <div class="dropped-leyend d-inline-block"></div>
+                            <div class="d-inline">Dropped games:<span class="total-dropped">10</span></div>
+                        </div>
+                        <div class="row">
+                            <div class="pending-leyend d-inline-block"></div>
+                            <div class="d-inline">Pending games: <span class="total-pending">10</span></div>
+                        </div>
+                    </div>
 
-                    <div class="playing-leyend d-inline-block"></div>
-                    <span class="d-inline">Playing games</span>
-
-                    <div class="dropped-leyend d-inline-block"></div>
-                    <span class="d-inline">Dropped games</span>
-
-                    <div class="pending-leyend d-inline-block"></div>
-                    <span class="d-inline">Pending games</span>
-
+                    <div class="col-4">
+                        Total entries:<span class="total-entry"></span>
+                    </div>
                 </div>
+
 
                 <div class="row">
 
                     <div class="col">
-                        <div class="row">
-                            <div class="col" style="background: lightblue;"><span
+                        <div class="row mt-3">
+                            <div class="col playing-game"><span
                                     class="col">Last 3 updates</span>
                                 <button class="float-right">Show More</button>
                             </div>
                         </div>
 
-                        <div class="row">
+                        <div class="row game-status-section rounded-bottom ">
 
                             <div class="col"><img
                                     src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a"
@@ -231,14 +241,14 @@
                 <div class="row">
 
                     <div class="col">
-                        <div class="row">
-                            <div class="col" style="background: lightgreen;"><span
+                        <div class="row mt-3">
+                            <div class="col completed-game" ><span
                                     class="col">Last 3 completed</span>
                                 <button class="float-right">Show More</button>
                             </div>
                         </div>
 
-                        <div class="row">
+                        <div class="row game-status-section rounded-bottom">
 
                             <div class="col"><img
                                     src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a"
@@ -263,14 +273,14 @@
                 <div class="row">
 
                     <div class="col">
-                        <div class="row">
-                            <div class="col" style="background: lightcoral;"><span
+                        <div class="row mt-3">
+                            <div class="col dropped-game"><span
                                     class="col">Last 3 dropped</span>
                                 <button class="float-right">Show More</button>
                             </div>
                         </div>
 
-                        <div class="row">
+                        <div class="row game-status-section rounded-bottom">
 
                             <div class="col"><img
                                     src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a"
@@ -295,14 +305,14 @@
                 <div class="row">
 
                     <div class="col">
-                        <div class="row">
+                        <div class="row mt-3">
                             <div class="col" style="background: lightpink;"><span
                                     class="col">TOP 3 favorites </span>
                                 <button class="float-right">Show More</button>
                             </div>
                         </div>
 
-                        <div class="row">
+                        <div class="row game-status-section rounded-bottom">
 
                             <div class="col"><img
                                     src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a"
@@ -329,14 +339,14 @@
                 <div class="row">
 
                     <div class="col">
-                        <div class="row">
-                            <div class="col" style="background: lightgrey;"><span
+                        <div class="row mt-3">
+                            <div class="col pending-game"><span
                                     class="col">Last 3 pending</span>
                                 <button class="float-right">Show More</button>
                             </div>
                         </div>
 
-                        <div class="row">
+                        <div class="row game-status-section rounded-bottom">
 
                             <div class="col"><img
                                     src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a"

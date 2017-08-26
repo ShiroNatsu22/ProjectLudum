@@ -62,6 +62,8 @@
 
 <script src="../../lib/js/libraries.min.js"></script>
 
+<script src="../../lib/js/calculations.min.js"></script>
+
 
 
 </body>
