@@ -2,8 +2,6 @@
 <%@ taglib prefix="tag" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<jsp:include page="/controller/UsersControl"/>
-
 <tag:pageMaster>
 
     <jsp:attribute name="head">
@@ -51,8 +49,13 @@
                             <c:forEach var="message" varStatus="count" items="${requestScope.receivedMessages}">
                                 <tr>
                                     <td>
-                                        <form action="<c:url value="/controller/UsersControl" />" method="post">
-                                            <button class="btn" name="readedPrivateMessage" value="${message.privateMessage_id_pk}">${message.readed}</button>
+                                        <form action="<c:url value="/controller/PrivateMessagesControl" />" method="post">
+                                            <button class="btn btn-primary" name="readedPrivateMessage" value="${message.privateMessage_id_pk}">
+                                                <c:choose>
+                                                    <c:when test="${!(message.readed)}"><i class="fa fa-envelope"></i></c:when>
+                                                    <c:when test="${message.readed}"><i class="fa fa-envelope-open"></i></c:when>
+                                                </c:choose>
+                                            </button>
                                         </form>
 
                                     </td>
@@ -63,7 +66,7 @@
                                     <td>${message.content}</td>
                                     <td>${message.sended}</td>
                                     <td>
-                                        <form action="<c:url value="/controller/UsersControl" />" method="post">
+                                        <form action="<c:url value="/controller/PrivateMessagesControl" />" method="post">
                                             <button class="btn btn-danger" name="deletePrivateMessage" value="${message.privateMessage_id_pk}">
                                                 <i class="fa fa-trash"></i></button>
                                         </form>
@@ -101,7 +104,7 @@
                                     <td>${message.content}</td>
                                     <td>${message.sended}</td>
                                     <td>
-                                        <form action="<c:url value="/controller/UsersControl" />" method="post">
+                                        <form action="<c:url value="/controller/PrivateMessagesControl" />" method="post">
                                             <button class="btn btn-danger" name="deletePrivateMessage" value="${message.privateMessage_id_pk}">
                                                 <i class="fa fa-trash"></i></button>
                                         </form>

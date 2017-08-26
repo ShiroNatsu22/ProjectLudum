@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <jsp:include page="/controller/UsersControl"/>
+<jsp:include page="/controller/RelationshipsControl"/>
 
 <tag:pageMaster>
 
@@ -85,22 +86,20 @@
 
                     <!-- Bloque de petición de amistad -->
                     <li class="list-group-item">
-                        <form action="<c:url value="/controller/UsersControl" />" method="post">
+                        <form action="<c:url value="/controller/RelationshipsControl" />" method="post">
 
                             <c:choose>
 
                                 <c:when test="${requestScope.currentRelationship.relationship_id_pk == 0}">
-                                    <button class="btn btn-primary" name="newRelationshipRequest"
-                                            value="${requestScope.currentUser.user_id_pk}">Send friendship request
-                                    </button>
+                                    <button class="btn btn-primary" name="newRelationshipRequest" value="${requestScope.currentUser.user_id_pk}">Send friendship request</button>
                                 </c:when>
 
                                 <c:when test='${requestScope.currentRelationship.status.equals("pending")}'>
 
                                     <c:choose>
                                         <c:when test="${sessionScope.currentUser.user_id_pk == requestScope.currentRelationship.receiver_user_id_fk}">
-                                            <button class="btn btn-primary" name="acceptRelationship" value="${requestScope.currentUser.user_id_pk}">Accept</button>
-                                            <button class="btn btn-danger" name="rejectRelationship" value="${requestScope.currentUser.user_id_pk}">Reject</button>
+                                            <button class="btn btn-primary" name="acceptRelationship" value="${requestScope.currentRelationship.sender_user_id_fk}">Accept</button>
+                                            <button class="btn btn-danger" name="rejectRelationship" value="${requestScope.currentRelationship.sender_user_id_fk}">Reject</button>
                                         </c:when>
 
                                         <c:when test="${sessionScope.currentUser.user_id_pk == requestScope.currentRelationship.sender_user_id_fk}">
@@ -138,7 +137,7 @@
                     <div class="row">
 
                         <div class="col">
-                            <span class="">Friends <a href="<c:url value="/BackOffice/FriendList.jsp?id=${requestScope.currentUser.user_id_pk}" />"><button> See all</button></a></span>
+                            <span class="">${requestScope.friendsCurrentUser.size()} Friends <a href="<c:url value="/BackOffice/FriendList.jsp?id=${requestScope.currentUser.user_id_pk}" />"><button> See all</button></a></span>
                         </div>
 
                     </div>
@@ -149,23 +148,25 @@
                         <div class="col  my-2">
 
                             <div class="row ml-3 mr-3">
-                                <div class="col">
-                                    <img class="  img-fluid"
-                                         src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
-                                </div>
-                                <div class="col">
-                                    <img class="  img-fluid"
-                                         src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
-                                </div>
-                                <div class="col">
-                                    <img class=" img-fluid"
-                                         src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
-                                </div>
+
+                                <c:forEach var="friend" varStatus="count" items="${requestScope.friendsCurrentUser}">
+                                    <c:if test="${friend != null}">
+                                        <c:if test="${count.index < 3}">
+                                            <div class="col">
+                                                    ${friend.username}
+                                                <!--<img class="  img-fluid" src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">-->
+                                            </div>
+                                        </c:if>
+                                    </c:if>
+
+                                </c:forEach>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
             <!-- Bloque derecho -->
             <div class="status col col-md-12 col-sm-12 col-12 col-lg-8">
 
