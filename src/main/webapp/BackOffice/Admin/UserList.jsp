@@ -63,41 +63,77 @@
 
                     <div class="modal-body">
                         <form action="<c:url value="/controller/UsersControl"/>" method="post">
-                            <div class="form-group">
-                                <label for="newUsername">Username</label>
-                                <input class="form-control" id="newUsername" name="username"
-                                       placeholder="Enter new username">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="newUsername">Username</label>
+                                        <input class="form-control" id="newUsername" name="username"
+                                               placeholder="Enter new username">
+                                    </div>
+                                </div>
                             </div>
 
-                            <div class="form-group">
-                                <label for="newPassword">Password</label>
-                                <input type="password" class="form-control" id="newPassword" name="password"
-                                       placeholder="Enter new password">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="newPassword">Password</label>
+                                        <input type="password" class="form-control" id="newPassword" name="password"
+                                               placeholder="Enter new password">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input" id="newAdmin" name="admin"
+                                                   value="true">
+                                            Is admin?
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    Name: <input name="name">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    Surname: <input name="surname">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    Gender: <input name="gender">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    Country: <input name="country">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    Email: <input type="email" name="email">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    Birthday: <input type="date" name="birthday">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    Biography: <textarea name="biography"></textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <button class="btn btn-primary">Add user</button>
+                                </div>
                             </div>
 
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input type="checkbox" class="form-check-input" id="newAdmin" name="admin"
-                                           value="true">
-                                    Is admin?
-                                </label>
-                            </div>
-
-                            Name: <input name="name"><br>
-
-                            Surname: <input name="surname"><br>
-
-                            Gender: <input name="gender"><br>
-
-                            Country: <input name="country"><br>
-
-                            Email: <input type="email" name="email"><br>
-
-                            Birthday: <input type="date" name="birthday"><br>
-
-                            Biography: <textarea name="biography"></textarea><br>
-
-                            <button class="btn btn-primary">Add user</button>
                         </form>
                     </div>
 
