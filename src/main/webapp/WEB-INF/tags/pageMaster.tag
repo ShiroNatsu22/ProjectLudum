@@ -17,8 +17,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap4.min.css" rel="stylesheet" />
     <link type="text/css" rel="stylesheet" href="../../lib/css/login.min.css" />
-    <link rel="stylesheet" href="../lib/css/cardCss.min.css">
-    <link rel="stylesheet" href="../lib/css/main.min.css">
+    <link rel="stylesheet" href="../lib/css/all.min.css">
 
 
 

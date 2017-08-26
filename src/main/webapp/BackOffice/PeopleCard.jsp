@@ -16,7 +16,7 @@
             </div>
         </div>
 
-        <div class="row">
+
 
         <div class="col col-12 col-xl-4 col-md-12 ">
             <div id="card-effect">
@@ -153,6 +153,7 @@
                 </div>
             </div>
         </div>
+
 
 
     </jsp:body>

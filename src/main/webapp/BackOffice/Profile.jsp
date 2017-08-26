@@ -11,8 +11,6 @@
     </jsp:attribute>
 
     <jsp:body>
-
-        <!-- Título -->
         <div class="row">
             <div class="col user-name">
                 <h3>${requestScope.currentUser.username}</h3>
@@ -22,153 +20,181 @@
         <!-- Bloque información usuario -->
         <div class="row">
 
-            <!-- Bloque izquierdo -->
-            <div class="content-info col-4">
+            <div class="col col-12 col-lg-4 col-sm-12 ">
+                <div id="card-effect">
+                    <!-- Título -->
 
-                <!-- Imagen usuario -->
-                <div class="row">
-                    <div class="col image">
-                        <img class="img-fluid"
-                             src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
-                             alt="gameImg">
+                    <div class="row">
+                        <div class="col image">
+                            <img class="img-fluid imag-responsive"
+                                 src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
+                                 alt="gameImg">
+                        </div>
+
+
                     </div>
-                </div>
-
-                <!-- Lista con información del usuario -->
-                <div class="row">
 
                     <div class="col">
-
-                        <ul class="list-group">
-                            <li class="list-group-item">
+                        <div class="row card-attribute">
+                            <div class="col mt-2">
                                 Registered: ${requestScope.currentUser.registration}
-                            </li>
-                            <li class="list-group-item">
+                            </div>
+                        </div>
+
+                        <div class="row card-attribute">
+                            <div class="col mt-2">
                                 Name: ${requestScope.currentUser.name}, ${requestScope.currentUser.surname}
-                            </li>
-                            <li class="list-group-item">
+                            </div>
+                        </div>
+
+                        <div class="row card-attribute">
+                            <div class="col mt-2">
                                 Age: calculo de JS
-                            </li>
-                            <li class="list-group-item">
+                            </div>
+                        </div>
+
+                        <div class="row card-attribute">
+                            <div class="col mt-2">
                                 Gender: ${requestScope.currentUser.gender}
-                            </li>
-                            <li class="list-group-item">
+                            </div>
+                        </div>
+
+                        <div class="row card-attribute">
+                            <div class="col mt-2">
                                 Country: ${requestScope.currentUser.country}
-                            </li>
-                            <li class="list-group-item">
+                            </div>
+                        </div>
+
+                        <div class="row card-attribute">
+                            <div class="col mt-2">
                                 Email: ${requestScope.currentUser.email}
-                            </li>
-                            <li class="list-group-item">
+                            </div>
+                        </div>
+
+                        <div class="row card-attribute">
+                            <div class="col mt-2">
                                 BirthDay: ${requestScope.currentUser.birthday}
-                            </li>
-                            <li class="list-group-item">
-                                Biography: ${requestScope.currentUser.biography}
-                            </li>
-
-                            <c:if test="${sessionScope.currentUser != null && requestScope.currentUser.user_id_pk != sessionScope.currentUser.user_id_pk}">
-
-                                <!-- Bloque de petición de amistad -->
-                                <li class="list-group-item">
-                                    <form action="<c:url value="/controller/UsersControl" />" method="post">
-
-                                        <c:choose>
-
-                                            <c:when test="${requestScope.currentRelationship.relationship_id_pk == 0}">
-                                                <button class="btn btn-primary" name="newRelationshipRequest"
-                                                        value="${requestScope.currentUser.user_id_pk}">Send friendship request
-                                                </button>
-                                            </c:when>
-
-                                            <c:when test='${requestScope.currentRelationship.status.equals("pending")}'>
-
-                                                <c:choose>
-                                                    <c:when test="${sessionScope.currentUser.user_id_pk == requestScope.currentRelationship.receiver_user_id_fk}">
-                                                        <button class="btn btn-primary" name="acceptRelationship" value="${requestScope.currentUser.user_id_pk}">Accept</button>
-                                                        <button class="btn btn-danger" name="rejectRelationship" value="${requestScope.currentUser.user_id_pk}">Reject</button>
-                                                    </c:when>
-
-                                                    <c:when test="${sessionScope.currentUser.user_id_pk == requestScope.currentRelationship.sender_user_id_fk}">
-                                                        Pending request...
-                                                    </c:when>
-                                                </c:choose>
-
-                                            </c:when>
-
-                                            <c:when test='${requestScope.currentRelationship.status.equals("accepted")}'>
-                                                Friend
-                                                <button class="btn btn-danger" name="rejectRelationship" value="${requestScope.currentUser.user_id_pk}">Delete</button>
-                                            </c:when>
-
-                                        </c:choose>
-
-
-                                    </form>
-                                </li>
-
-                                <li class="list-group-item">
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createPrivateMessage">
-                                        Send message
-                                    </button>
-                                </li>
-
-                            </c:if>
-
-
-                        </ul>
+                            </div>
+                        </div>
 
                     </div>
 
                 </div>
+
+                <c:if test="${sessionScope.currentUser != null && requestScope.currentUser.user_id_pk != sessionScope.currentUser.user_id_pk}">
+
+                    <!-- Bloque de petición de amistad -->
+                    <li class="list-group-item">
+                        <form action="<c:url value="/controller/UsersControl" />" method="post">
+
+                            <c:choose>
+
+                                <c:when test="${requestScope.currentRelationship.relationship_id_pk == 0}">
+                                    <button class="btn btn-primary" name="newRelationshipRequest"
+                                            value="${requestScope.currentUser.user_id_pk}">Send friendship request
+                                    </button>
+                                </c:when>
+
+                                <c:when test='${requestScope.currentRelationship.status.equals("pending")}'>
+
+                                    <c:choose>
+                                        <c:when test="${sessionScope.currentUser.user_id_pk == requestScope.currentRelationship.receiver_user_id_fk}">
+                                            <button class="btn btn-primary" name="acceptRelationship" value="${requestScope.currentUser.user_id_pk}">Accept</button>
+                                            <button class="btn btn-danger" name="rejectRelationship" value="${requestScope.currentUser.user_id_pk}">Reject</button>
+                                        </c:when>
+
+                                        <c:when test="${sessionScope.currentUser.user_id_pk == requestScope.currentRelationship.sender_user_id_fk}">
+                                            Pending request...
+                                        </c:when>
+                                    </c:choose>
+
+                                </c:when>
+
+                                <c:when test='${requestScope.currentRelationship.status.equals("accepted")}'>
+                                    Friend
+                                    <button class="btn btn-danger" name="rejectRelationship" value="${requestScope.currentUser.user_id_pk}">Delete</button>
+                                </c:when>
+
+                            </c:choose>
+
+
+                        </form>
+                    </li>
+
+                    <li class="list-group-item">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createPrivateMessage">
+                            Send message
+                        </button>
+                    </li>
+
+                </c:if>
+
+
+                </ul>
+
 
                 <!-- Sección de amigos -->
-                <div class="row">
+                <div class="mt-2">
+                    <div class="row">
 
-                    <div class="col">
-                        <span class="">Friends <a href="<c:url value="/BackOffice/FriendList.jsp?id=${requestScope.currentUser.user_id_pk}" />">| See all</a></span>
+                        <div class="col">
+                            <span class="">Friends <a href="<c:url value="/BackOffice/FriendList.jsp?id=${requestScope.currentUser.user_id_pk}" />"><button> See all</button></a></span>
+                        </div>
+
                     </div>
 
-                </div>
 
-                <div class="row">
+                    <div class="row">
 
-                    <div class="col my-2">
+                        <div class="col  my-2">
 
-                        <div class="row">
-                            <div class="col">
-                                <img class="img-fluid"
-                                     src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
-                            </div>
-                            <div class="col">
-                                <img class="img-fluid"
-                                     src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
-                            </div>
-                            <div class="col">
-                                <img class="img-fluid"
-                                     src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
+                            <div class="row ml-3 mr-3">
+                                <div class="col">
+                                    <img class="  img-fluid"
+                                         src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
+                                </div>
+                                <div class="col">
+                                    <img class="  img-fluid"
+                                         src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
+                                </div>
+                                <div class="col">
+                                    <img class=" img-fluid"
+                                         src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
+                                </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
-
             </div>
-
             <!-- Bloque derecho -->
-            <div class="status col-8">
+            <div class="status col col-md-12 col-sm-12 col-12 col-lg-8">
 
 
                 <div class="row">
-                    <div style="background:lightgreen" class="col">10</div>
-                    <div style="background:lightblue" class="col ">10</div>
+                    <div class="completed-game col">10</div>
+                    <div class="playing-game col ">10</div>
                 </div>
 
                 <div class="row">
-                    <div style="background:lightcoral" class="col ">10</div>
-                    <div style="background:lightgray" class="col ">10</div>
+                    <div class="dropped-game col ">10</div>
+                    <div class="pending-game col ">10</div>
                 </div>
 
-                <div class="row">
-                    <div class="col">Completados Jugando Dropeados Por jugar</div>
+                <div class="row mt-3 mb-3">
+
+                    <div class="completed-leyend d-inline-block"></div>
+                    <span class="d-inline">Completed games</span>
+
+
+                    <div class="playing-leyend d-inline-block"></div>
+                    <span class="d-inline">Playing games</span>
+
+                    <div class="dropped-leyend d-inline-block"></div>
+                    <span class="d-inline">Dropped games</span>
+
+                    <div class="pending-leyend d-inline-block"></div>
+                    <span class="d-inline">Pending games</span>
+
                 </div>
 
                 <div class="row">
@@ -176,8 +202,8 @@
                     <div class="col">
                         <div class="row">
                             <div class="col" style="background: lightblue;"><span
-                                    class="col">Ultimas 3 actualizaciones</span>
-                                <button>Ver mas</button>
+                                    class="col">Last 3 updates</span>
+                                <button class="float-right">Show More</button>
                             </div>
                         </div>
 
@@ -207,8 +233,8 @@
                     <div class="col">
                         <div class="row">
                             <div class="col" style="background: lightgreen;"><span
-                                    class="col">Ultimos 3 completados</span>
-                                <button>Ver mas</button>
+                                    class="col">Last 3 completed</span>
+                                <button class="float-right">Show More</button>
                             </div>
                         </div>
 
@@ -239,8 +265,8 @@
                     <div class="col">
                         <div class="row">
                             <div class="col" style="background: lightcoral;"><span
-                                    class="col">Ultimos 3 dropeados</span>
-                                <button>Ver mas</button>
+                                    class="col">Last 3 dropped</span>
+                                <button class="float-right">Show More</button>
                             </div>
                         </div>
 
@@ -271,8 +297,8 @@
                     <div class="col">
                         <div class="row">
                             <div class="col" style="background: lightpink;"><span
-                                    class="col">TOP 3 juegos favoritos</span>
-                                <button>Ver mas</button>
+                                    class="col">TOP 3 favorites </span>
+                                <button class="float-right">Show More</button>
                             </div>
                         </div>
 
@@ -305,8 +331,8 @@
                     <div class="col">
                         <div class="row">
                             <div class="col" style="background: lightgrey;"><span
-                                    class="col">Ultimos 3 pendientes</span>
-                                <button>Ver mas</button>
+                                    class="col">Last 3 pending</span>
+                                <button class="float-right">Show More</button>
                             </div>
                         </div>
 
