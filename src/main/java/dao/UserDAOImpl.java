@@ -86,13 +86,9 @@ public class UserDAOImpl implements UserDAO {
     public void deleteUser(int user_id_pk) {
 
         try {
-            RelationshipDAO relationshipDAO = new RelationshipDAOImpl();
+
             String query = String.format("DELETE FROM users WHERE users.user_id_pk = %d", user_id_pk);
 
-            // Borramos las posibles relaciones con otros usuarios
-            relationshipDAO.deleteRelationshipsByUserID(user_id_pk);
-
-            // Borramos al usuario
             PreparedStatement ps = db.getConnection(query);
 
             ps.execute();

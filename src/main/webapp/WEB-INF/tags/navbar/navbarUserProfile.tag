@@ -1,6 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ tag description="User profile in navbar" pageEncoding="UTF-8" %>
 
+<jsp:include page="/controller/UsersControl"/>
+
 <ul class="navbar-nav">
 
     <li class="nav-item dropdown">
@@ -16,7 +18,7 @@
                 <i class="fa fa-list"></i> Friends
             </a>
             <a class="dropdown-item" href="<c:url value="/BackOffice/MyMessages.jsp" />">
-                <i class="fa fa-envelope"></i> Messages(num msg)
+                <i class="fa fa-envelope"></i> Messages ${requestScope.readedMessagesCount}
             </a>
             <a class="dropdown-item" href="<c:url value="/controller/LogOut" />">
                 <i class="fa fa-sign-out"></i> Logout
