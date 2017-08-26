@@ -18,7 +18,7 @@
     <link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap4.min.css" rel="stylesheet" />
     <link type="text/css" rel="stylesheet" href="../../lib/css/login.min.css" />
     <link rel="stylesheet" href="../lib/css/cardCss.min.css">
-    <link rel="stylesheet" href="../lib/css/lists.min.css">
+    <link rel="stylesheet" href="../lib/css/main.min.css">
 
 
 
@@ -46,7 +46,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
-
 
 
 <!-- Datatables -->

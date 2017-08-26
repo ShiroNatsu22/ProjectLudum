@@ -72,9 +72,7 @@
                 </div>
             </div>
 
-            <!--ANOTACION PARA PABLO: EL PRIMER ELEMENTO DEBE TENER UN ML-3 Y EL ULTIMO UN MR-3 SINOS QUEDA, SI TE FIJAS
-            HAY UN hidden-lg-up, ESO SIRVE PARA QUE LAS PANTALLAS DE LG PARA ARRIBA SE OCULTARAN, Y ESA PARTE SOLO SE MOSTRARA EN MOBIL
-            -->
+
             <div class="row mt-5">
                 <div class="col">
                     <div class="row">
@@ -82,25 +80,25 @@
 
                             <div class="rounded info-card">
                                 <div class="row mt-4">
-                                    <div class="col col-12 mb-2">
-                                        <span class="separator-title ml-4 mb-2">Games made: <button type="button" class="btn show-button">Show me more</button> </span>
+                                    <div class="col mb-2">
+                                        <span class="separator-title ml-4 mb-2">Games Made: <button type="button" class="btn hidden-sm-down show-button">Show me more</button></span>
                                     </div>
                                 </div>
                                 <div class="row mb-4">
-                                    <div class="col hidden-md-down ml-3 separator">
+                                    <div class="col hidden-sm-down ml-3 separator">
                                         <img class="img-fluid imag-responsive"
                                              src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
                                              alt="gameImg">
 
                                         <span>Hideo GODjima</span>
                                     </div>
-                                    <div class="col ml-4 col-5 hidden-lg-up">
+                                    <div class="col ml-4 col-5 hidden-md-up section-content">
                                         <span>Hideo GODjima</span>
 
                                     </div>
 
 
-                                    <div class="col hidden-md-down separator">
+                                    <div class="col hidden-sm-down separator">
                                         <img class="img-fluid imag-responsive"
                                              src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
                                              alt="gameImg">
@@ -108,36 +106,44 @@
                                         <span>Hideo GODjima</span>
 
                                     </div>
-                                    <div class="col col-5 hidden-lg-up">
+                                    <div class="col col-5 hidden-md-up section-content">
                                         <span>Hideo GODjima</span>
 
                                     </div>
 
 
-                                    <div class="col hidden-md-down separator">
+                                    <div class="col hidden-sm-down separator">
                                         <img class="img-fluid imag-responsive"
                                              src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
                                              alt="gameImg">
                                         <span>Hideo GODjima</span>
                                     </div>
-                                    <div class="col ml-4 col-5 hidden-lg-up">
+                                    <div class="col ml-4 col-5 hidden-md-up section-content">
                                         <span>Hideo GODjima</span>
 
                                     </div>
 
-                                    <div class="col hidden-md-down mr-3">
+                                    <div class="col hidden-sm-down mr-3">
                                         <img class="img-fluid imag-responsive"
                                              src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
                                              alt="gameImg">
 
                                         <span>Hideo GODjima</span>
                                     </div>
-                                    <div class="col col-5  hidden-lg-up">
+                                    <div class="col  col-5 hidden-md-up section-content">
                                         <span>Hideo GODjima</span>
 
                                     </div>
                                 </div>
 
+                                <!-- MOBILE -->
+                                <div class="row  mb-2 mr-1 hidden-md-up">
+                                    <div class="col ">
+                                        <button type="button" class="btn show-button float-right">Show me more</button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <!--END MOBILE -->
                             </div>
                         </div>
 
