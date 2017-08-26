@@ -6,8 +6,8 @@ public class PrivateMessage {
 
     private int privateMessage_id_pk;
     private int owner_user_id_fk;
-    private int sender_user_id_fk;
-    private int receiver_user_id_fk;
+    private String senderUsername;
+    private String receiverUsername;
     private String subject;
     private String content;
     private Date sended;
@@ -17,11 +17,11 @@ public class PrivateMessage {
 
     }
 
-    public PrivateMessage(int privateMessage_id_pk, int owner_user_id_fk, int sender_user_id_fk, int receiver_user_id_fk, String subject, String content, Date sended, boolean readed) {
+    public PrivateMessage(int privateMessage_id_pk, int owner_user_id_fk, String senderUsername, String receiverUsername, String subject, String content, Date sended, boolean readed) {
         this.privateMessage_id_pk = privateMessage_id_pk;
         this.owner_user_id_fk = owner_user_id_fk;
-        this.sender_user_id_fk = sender_user_id_fk;
-        this.receiver_user_id_fk = receiver_user_id_fk;
+        this.senderUsername = senderUsername;
+        this.receiverUsername = receiverUsername;
         this.subject = subject;
         this.content = content;
         this.sended = sended;
@@ -44,20 +44,20 @@ public class PrivateMessage {
         this.owner_user_id_fk = owner_user_id_fk;
     }
 
-    public int getSender_user_id_fk() {
-        return sender_user_id_fk;
+    public String getSenderUsername() {
+        return senderUsername;
     }
 
-    public void setSender_user_id_fk(int sender_user_id_fk) {
-        this.sender_user_id_fk = sender_user_id_fk;
+    public void setSenderUsername(String senderUsername) {
+        this.senderUsername = senderUsername;
     }
 
-    public int getReceiver_user_id_fk() {
-        return receiver_user_id_fk;
+    public String getReceiverUsername() {
+        return receiverUsername;
     }
 
-    public void setReceiver_user_id_fk(int receiver_user_id_fk) {
-        this.receiver_user_id_fk = receiver_user_id_fk;
+    public void setReceiverUsername(String receiverUsername) {
+        this.receiverUsername = receiverUsername;
     }
 
     public String getSubject() {

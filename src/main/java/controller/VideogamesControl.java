@@ -65,6 +65,7 @@ public class VideogamesControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        req.setCharacterEncoding("UTF-8");
         VideogameDAO videogameDAO = new VideogameDAOImpl();
         String videogame_id_pk = req.getParameter("deleteVideogame");
 

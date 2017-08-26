@@ -67,6 +67,7 @@ public class CompaniesControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        req.setCharacterEncoding("UTF-8");
         CompanyDAO companyDAO = new CompanyDAOImpl();
         String company_id_pk = req.getParameter("deleteCompany");
 

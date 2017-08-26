@@ -76,14 +76,7 @@ public class CompanyDAOImpl implements CompanyDAO {
 
         try {
 
-            // Borramos la relación entre company y developer
-            String query = String.format("DELETE FROM gamerlistDB.developers WHERE company_id_fk = %d;", company_id_pk);
-
-            // Borramos la relación entre company y publisher
-            query += String.format("DELETE FROM gamerlistDB.publishers WHERE company_id_fk = %d;", company_id_pk);
-
-            // Borramos la empresa
-            query += String.format("DELETE FROM companies WHERE companies.company_id_pk = %d", company_id_pk);
+            String query = String.format("DELETE FROM companies WHERE companies.company_id_pk = %d", company_id_pk);
 
             PreparedStatement ps = db.getConnection(query);
 

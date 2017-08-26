@@ -47,7 +47,7 @@
             </tbody>
         </table>
 
-        <%-- Modal with the form that creates new users --%>
+        <%-- Modal with the form that creates new videogames --%>
         <div class="modal fade" id="modalAddVideogame" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -60,7 +60,7 @@
                     </div>
 
                     <div class="modal-body">
-                        <form action="<c:url value="/controller/VideogamesControl"/>" method="post">
+                        <form action="<c:url value="/controller/VideogamesControl"/>" method="post" accept-charset="UTF-8">
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">

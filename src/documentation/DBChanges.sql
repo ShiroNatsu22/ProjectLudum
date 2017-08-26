@@ -56,13 +56,13 @@ CREATE TABLE `gamerlistDB`.`developers` (
   CONSTRAINT `company_id_fk`
   FOREIGN KEY (`company_id_fk`)
   REFERENCES `gamerlistDB`.`companies` (`company_id_pk`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `videogame_id_fk`
   FOREIGN KEY (`videogame_id_fk`)
   REFERENCES `gamerlistDB`.`videogames` (`videogame_id_pk`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
 );
 
 /* PAJ 17/08/2017 - Creada la tabla intermedia publishers, que relaciona videogames y companies */
@@ -78,13 +78,13 @@ CREATE TABLE `gamerlistDB`.`publishers` (
   CONSTRAINT `videogame`
   FOREIGN KEY (`videogame_id_fk`)
   REFERENCES `gamerlistDB`.`videogames` (`videogame_id_pk`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `company`
   FOREIGN KEY (`company_id_fk`)
   REFERENCES `gamerlistDB`.`companies` (`company_id_pk`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
 );
 
 /* PAJ 20/08/2017 - Agregados campos a la tabla del usuario */
@@ -123,13 +123,13 @@ CREATE TABLE `gamerlistDB`.`relationships` (
   CONSTRAINT `sender_user`
   FOREIGN KEY (`sender_user_id_fk`)
   REFERENCES `gamerlistDB`.`users` (`user_id_pk`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `receiver_user`
   FOREIGN KEY (`receiver_user_id_fk`)
   REFERENCES `gamerlistDB`.`users` (`user_id_pk`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
 );
 DROP TRIGGER IF EXISTS `gamerlistDB`.`relationships_BEFORE_INSERT`;
 
@@ -164,29 +164,17 @@ DELIMITER ;
 CREATE TABLE `gamerlistDB`.`privateMessages` (
   `privateMessage_id_pk` INT         NOT NULL AUTO_INCREMENT,
   `owner_user_id_fk`     INT         NOT NULL,
-  `sender_user_id_fk`    INT         NOT NULL,
-  `receiver_user_id_fk`  INT         NOT NULL,
+  `senderUsername`       VARCHAR(30) NOT NULL,
+  `receiverUsername`     VARCHAR(30) NOT NULL,
   `subject`              VARCHAR(30) NULL,
   `content`              MEDIUMTEXT  NULL,
   `sended`               TIMESTAMP   NULL,
   `readed`               TINYINT     NULL,
   PRIMARY KEY (`privateMessage_id_pk`),
   INDEX `owner_idx` (`owner_user_id_fk` ASC),
-  INDEX `sender_idx` (`sender_user_id_fk` ASC),
-  INDEX `receiver_idx` (`receiver_user_id_fk` ASC),
   CONSTRAINT `owner`
   FOREIGN KEY (`owner_user_id_fk`)
   REFERENCES `gamerlistDB`.`users` (`user_id_pk`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `sender`
-  FOREIGN KEY (`sender_user_id_fk`)
-  REFERENCES `gamerlistDB`.`users` (`user_id_pk`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `receiver`
-  FOREIGN KEY (`receiver_user_id_fk`)
-  REFERENCES `gamerlistDB`.`users` (`user_id_pk`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
 );

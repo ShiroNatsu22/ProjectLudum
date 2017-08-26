@@ -50,12 +50,24 @@
                             <tbody>
                             <c:forEach var="message" varStatus="count" items="${requestScope.receivedMessages}">
                                 <tr>
-                                    <td>${message.readed}</td>
-                                    <td>${requestScope.receivedMessagesUser.get(count.index).username}</td>
+                                    <td>
+                                        <form action="<c:url value="/controller/UsersControl" />" method="post">
+                                            <button class="btn" name="readedPrivateMessage" value="${message.privateMessage_id_pk}">${message.readed}</button>
+                                        </form>
+
+                                    </td>
+                                    <td>
+                                        <a href="<c:url value="/BackOffice/Profile.jsp?id=${requestScope.receivedMessagesUser.get(count.index).user_id_pk}" />">${message.senderUsername}</a>
+                                    </td>
                                     <td>${message.subject}</td>
                                     <td>${message.content}</td>
                                     <td>${message.sended}</td>
-                                    <td>Delete</td>
+                                    <td>
+                                        <form action="<c:url value="/controller/UsersControl" />" method="post">
+                                            <button class="btn btn-danger" name="deletePrivateMessage" value="${message.privateMessage_id_pk}">
+                                                <i class="fa fa-trash"></i></button>
+                                        </form>
+                                    </td>
                                 </tr>
                             </c:forEach>
 
@@ -71,7 +83,6 @@
                         <table class="table table-hover table-stripped table-bordered table-list">
                             <thead>
                             <tr>
-                                <th>Read/Unread</th>
                                 <th>User</th>
                                 <th>Subject</th>
                                 <th>Content</th>
@@ -83,12 +94,18 @@
 
                             <c:forEach var="message" varStatus="count" items="${requestScope.sentMessages}">
                                 <tr>
-                                    <td>${message.readed}</td>
-                                    <td>${requestScope.sentMessagesUser.get(count.index).username}</td>
+                                    <td>
+                                        <a href="<c:url value="/BackOffice/Profile.jsp?id=${requestScope.sentMessagesUser.get(count.index).user_id_pk}" />">${message.receiverUsername}</a>
+                                    </td>
                                     <td>${message.subject}</td>
                                     <td>${message.content}</td>
                                     <td>${message.sended}</td>
-                                    <td>Delete</td>
+                                    <td>
+                                        <form action="<c:url value="/controller/UsersControl" />" method="post">
+                                            <button class="btn btn-danger" name="deletePrivateMessage" value="${message.privateMessage_id_pk}">
+                                                <i class="fa fa-trash"></i></button>
+                                        </form>
+                                    </td>
                                 </tr>
                             </c:forEach>
 
