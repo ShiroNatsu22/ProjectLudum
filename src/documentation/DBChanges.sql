@@ -178,3 +178,29 @@ CREATE TABLE `gamerlistDB`.`privateMessages` (
     ON DELETE CASCADE
     ON UPDATE CASCADE
 );
+
+/* PAJ 27/08/2017 - Creada la tabla userSelectedVideogames para que los usuarios puedan seleccionar un juego y mostrarlo en su lista */
+
+CREATE TABLE `gamerlistDB`.`userSelectedVideogames` (
+  `userSelectedVideogame_id_pk` INT         NOT NULL AUTO_INCREMENT,
+  `user_id_fk`                  INT         NOT NULL,
+  `videogame_id_fk`             INT         NOT NULL,
+  `status`                      VARCHAR(20) NOT NULL
+  COMMENT '- PlanToPlay\n- Playing\n- Completed\n- Dropped',
+  `rating`                      INT         NULL
+  COMMENT 'Puntuacion dada por el usuario del 0 al 10',
+  PRIMARY KEY (`userSelectedVideogame_id_pk`),
+  INDEX `user_id_fk_idx` (`user_id_fk` ASC),
+  INDEX `videogame_id_fk_idx` (`videogame_id_fk` ASC),
+  UNIQUE INDEX `userVideogame` (`user_id_fk` ASC, `videogame_id_fk` ASC),
+  CONSTRAINT `user_id`
+  FOREIGN KEY (`user_id_fk`)
+  REFERENCES `gamerlistDB`.`users` (`user_id_pk`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `videogame_id`
+  FOREIGN KEY (`videogame_id_fk`)
+  REFERENCES `gamerlistDB`.`videogames` (`videogame_id_pk`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+);

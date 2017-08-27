@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <jsp:include page="/controller/VideogamesControl"/>
+<jsp:include page="/controller/UserSelectedVideogamesControl"/>
 
 <tag:cardTemplate>
 
@@ -77,49 +78,64 @@
 
     <jsp:attribute name="rightBlock">
 
+        <!-- Bloque de biografía -->
         <div class="row">
             <div class="col">
                     ${requestScope.currentVideogame.description}
             </div>
         </div>
 
-        <div class="row">
-            <div class="col py-2" style="border: 1px solid lightgrey; background: #f7f7f9">
-                <form>
+        <c:if test="${sessionScope.currentUser != null}">
+            <!-- Bloque de agregar juego a la lista y puntuarlo -->
+            <div class="row">
+                <div class="col py-2" style="border: 1px solid lightgrey; background: #f7f7f9">
+                    <form id="formAddGame" action="<c:url value="/controller/UserSelectedVideogamesControl"/>" method="post">
 
                         <div class="row">
                             <div class="col">
-                                Mean score: 5 <i class="fa fa-star"></i>
+                                <c:choose>
+                                    <c:when test="${requestScope.currentUserSelectedVideogame.userSelectedVideogame_id_pk != 0}">
+                                        <button class="btn btn-primary" name="updateUserList" value="${param["id"]}">Update</button>
+                                        <button class="btn btn-danger" name="deleteFromUserList" value="${param["id"]}">
+                                            <i class="fa fa-trash"></i></button>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <button class="btn" name="addToUserList" value="${param["id"]}">Add to list</button>
+                                    </c:otherwise>
+                                </c:choose>
                             </div>
                             <div class="col" style="border-color: lightgrey; border-width: 1px; border-style: none solid">
-                                <select class="form-control">
-                                    <option selected>Select one state</option>
-                                    <option value="completed">Completed</option>
-                                    <option value="playing">Playing</option>
-                                    <option value="dropped">Dropped</option>
-                                    <option value="planToPlay">Plan to play</option>
+                                <select form="formAddGame" name="status" class="form-control">
+                                    <option value="none">Select one state</option>
+                                    <option value="completed"
+                                            <c:if test="${requestScope.currentUserSelectedVideogame.status.equals('completed')}">selected</c:if>>Completed
+                                    </option>
+                                    <option value="playing"
+                                            <c:if test="${requestScope.currentUserSelectedVideogame.status.equals('playing')}">selected</c:if>>Playing
+                                    </option>
+                                    <option value="dropped"
+                                            <c:if test="${requestScope.currentUserSelectedVideogame.status.equals('dropped')}">selected</c:if>>Dropped
+                                    </option>
+                                    <option value="planToPlay"
+                                            <c:if test="${requestScope.currentUserSelectedVideogame.status.equals('planToPlay')}">selected</c:if>>Plan to play
+                                    </option>
                                 </select>
                             </div>
                             <div class="col">
-                                <select class="form-control">
-                                    <option selected>Score</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
+                                <select form="formAddGame" name="rating" class="form-control">
+                                    <option value="-1">Select score</option>
+                                    <c:forEach varStatus="index" begin="0" end="10">
+                                        <option value="${index.index}"
+                                                <c:if test="${requestScope.currentUserSelectedVideogame.rating == index.index}">selected</c:if>>${index.index}</option>
+                                    </c:forEach>
                                 </select>
                             </div>
                         </div>
 
-                </form>
+                    </form>
+                </div>
             </div>
-        </div>
+        </c:if>
 
         <div class="row mt-5">
             <div class="col">

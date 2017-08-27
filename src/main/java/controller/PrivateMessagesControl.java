@@ -21,6 +21,7 @@ public class PrivateMessagesControl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        req.setCharacterEncoding("UTF-8");
         User currentUser = (User) req.getSession(true).getAttribute("currentUser");
 
         List<PrivateMessage> receivedMessages = getUserReceivedMessages(currentUser.getUser_id_pk());
@@ -51,9 +52,9 @@ public class PrivateMessagesControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        req.setCharacterEncoding("UTF-8");
         UserDAO userDAO = new UserDAOImpl();
         PrivateMessageDAO privateMessageDAO = new PrivateMessageDAOImpl();
-        req.setCharacterEncoding("UTF-8");
         HttpSession session = req.getSession(true);
 
         User currentUser = (User) session.getAttribute("currentUser");

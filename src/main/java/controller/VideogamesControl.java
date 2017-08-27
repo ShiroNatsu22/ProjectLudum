@@ -21,6 +21,7 @@ public class VideogamesControl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        req.setCharacterEncoding("UTF-8");
         VideogameDAO videogameDAO = new VideogameDAOImpl();
         String id = req.getParameter("id");
 

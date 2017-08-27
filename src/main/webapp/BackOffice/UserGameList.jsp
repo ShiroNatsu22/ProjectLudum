@@ -54,15 +54,19 @@
                         <table class="table table-hover table-stripped responsive table-bordered table-list">
                             <thead>
                             <tr>
-                                <th>Imagen</th>
-                                <th>Titulo</th>
-                                <th>Estado</th>
-                                <th>Puntuación</th>
-                                <th>Eliminar juego</th>
-
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Status</th>
+                                <th>Rating</th>
+                                <th>Delete</th>
                             </tr>
                             </thead>
                             <tbody>
+
+                            <c:forEach var="userSelectedVideogame" items="${requestScope.currentUserSelectedVideogamesList}">
+
+                            </c:forEach>
+
                             <tr>
                                 <td><img class="img-fluid"
                                          src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
