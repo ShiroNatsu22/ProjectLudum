@@ -53,7 +53,7 @@
         <div class="row">
             <div class="col ">
 
-                <div class="row">
+                <div class="row ">
                     <div class="col col-sm-12 mt-2 other-info">
                         <p>sadfsadfsadfsafasdfasdfsafasfasfasfasf sdaff asd fas f sadfas f</p>
                     </div>
@@ -65,10 +65,10 @@
 
         <div class="row mt-5">
             <div class="col">
-                <div class="row">
+                <div class="row separator-bottom separator-top">
                     <div class="col">
 
-                        <div class="rounded info-card">
+                        <div class="rounded ">
                             <div class="row mt-4">
                                 <div class="col mb-2">
                                     <span class="separator-title ml-4 mb-2">Games Developed: <button type="button" class="btn hidden-sm-down show-button">Show me more</button></span>
@@ -77,7 +77,7 @@
                             <div class="row mb-4">
 
                                 <c:forEach var="videogame" items="${requestScope.currentCompanyDeveloperList}">
-                                    <div class="col  ml-3 separator">
+                                    <div class="col  ml-3 separator-right">
 
                                         <img class="img-fluid hidden-sm-down imag-responsive"
                                              src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
@@ -110,7 +110,7 @@
 
                 <div class="row mt-4">
                     <div class="col">
-                        <div class="rounded info-card">
+                        <div class="rounded ">
                             <div class="row mt-4">
                                 <div class="col mb-2">
                                     <span class="separator-title ml-4 mb-2">Games Published: <button type="button" class="btn hidden-sm-down show-button">Show me more</button></span>
@@ -119,7 +119,7 @@
                             <div class="row mb-4">
 
                                 <c:forEach var="videogame" items="${requestScope.currentCompanyPublisherList}">
-                                    <div class="col  ml-3 separator">
+                                    <div class="col  ml-3 separator-right">
 
                                         <img class="img-fluid hidden-sm-down imag-responsive"
                                              src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"

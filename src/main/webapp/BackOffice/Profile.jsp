@@ -231,7 +231,7 @@
                             </div>
                         </div>
 
-                        <div class="row">
+                        <div class="row ">
                             <div class="col-lg-6 col-4"><img
                                     src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a"
                                     class="col-8 img-fluid hidden-sm-down imag-responsive"><span class="col-4">5 <i class="fa fa-star"
