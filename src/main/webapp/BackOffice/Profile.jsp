@@ -30,45 +30,58 @@
             </div>
 
             <div class="col">
-                <div class="row card-attribute">
+
+                <div class="row ">
+                    <div class="col principal-info mt-2">
+                            ${requestScope.currentUser.username}'s info
+                    </div>
+                </div>
+
+
+                <div class="row ">
                     <div class="col mt-2">
                         Registered: ${requestScope.currentUser.registration}
                     </div>
                 </div>
 
-                <div class="row card-attribute">
+                <div class="row ">
                     <div class="col mt-2">
                         Name: ${requestScope.currentUser.name}, ${requestScope.currentUser.surname}
                     </div>
                 </div>
 
-                <div class="row card-attribute">
+                <div class="row ">
                     <div class="col mt-2">
                         Age: calculo de JS
                     </div>
                 </div>
 
-                <div class="row card-attribute">
+                <div class="row ">
                     <div class="col mt-2">
                         Gender: ${requestScope.currentUser.gender}
                     </div>
                 </div>
 
-                <div class="row card-attribute">
+                <div class="row ">
                     <div class="col mt-2">
                         Country: ${requestScope.currentUser.country}
                     </div>
                 </div>
 
-                <div class="row card-attribute">
+                <div class="row ">
                     <div class="col mt-2">
                         Email: ${requestScope.currentUser.email}
                     </div>
                 </div>
 
-                <div class="row card-attribute">
+                <div class="row ">
                     <div class="col mt-2">
                         BirthDay: ${requestScope.currentUser.birthday}
+                    </div>
+                </div>
+
+                <div class="row ">
+                    <div class="col principal-info mt-2">
                     </div>
                 </div>
 
@@ -200,7 +213,7 @@
             <div class="col">
                 <div class="row mt-3">
                     <div class="col playing-game"><span
-                            class="col">Last 3 updates</span>
+                            class="col">Last updates</span>
                         <button class="float-right">Show More</button>
                     </div>
                 </div>
@@ -226,137 +239,6 @@
             </div>
         </div>
 
-        <div class="row">
-
-            <div class="col">
-                <div class="row mt-3">
-                    <div class="col completed-game"><span
-                            class="col">Last 3 completed</span>
-                        <button class="float-right">Show More</button>
-                    </div>
-                </div>
-
-                <div class="row game-status-section rounded-bottom">
-
-                    <div class="col"><img
-                            src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a"
-                            class="col-8"><span class="col-4">5 <i class="fa fa-star"
-                                                                   aria-hidden="true"></i></span><span
-                            class="col-12">Vikings</span></div>
-                    <div class="col"><img
-                            src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg"
-                            alt="s" class="col-8"><span class="col-4">5 <i class="fa fa-star"
-                                                                           aria-hidden="true"></i></span><span
-                            class="col-12">Kingdom hearts</span></div>
-                    <div class="col"><img
-                            src="http://www.hobbyconsolas.com/sites/hobbyconsolas.com/public/media/image/2015/09/518036-que-no-esta-tema-principal-metal-gear-solid-phantom-pain.jpg"
-                            alt="d" class="col-8"><span class="col-4">5 <i class="fa fa-star"
-                                                                           aria-hidden="true"></i></span><span
-                            class="col-12">Metal Gear solid</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-
-            <div class="col">
-                <div class="row mt-3">
-                    <div class="col dropped-game"><span
-                            class="col">Last 3 dropped</span>
-                        <button class="float-right">Show More</button>
-                    </div>
-                </div>
-
-                <div class="row game-status-section rounded-bottom">
-
-                    <div class="col"><img
-                            src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a"
-                            class="col-8"><span class="col-4">5 <i class="fa fa-star"
-                                                                   aria-hidden="true"></i></span><span
-                            class="col-12">Vikings</span>
-                    </div>
-                    <div class="col"><img
-                            src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg"
-                            alt="s" class="col-8"><span class="col-4">5 <i class="fa fa-star"
-                                                                           aria-hidden="true"></i></span><span
-                            class="col-12">Kingdom hearts</span></div>
-                    <div class="col"><img
-                            src="http://www.hobbyconsolas.com/sites/hobbyconsolas.com/public/media/image/2015/09/518036-que-no-esta-tema-principal-metal-gear-solid-phantom-pain.jpg"
-                            alt="d" class="col-8"><span class="col-4">5 <i class="fa fa-star"
-                                                                           aria-hidden="true"></i></span><span
-                            class="col-12">Metal Gear solid</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-
-            <div class="col">
-                <div class="row mt-3">
-                    <div class="col" style="background: lightpink;"><span
-                            class="col">TOP 3 favorites </span>
-                        <button class="float-right">Show More</button>
-                    </div>
-                </div>
-
-                <div class="row game-status-section rounded-bottom">
-
-                    <div class="col"><img
-                            src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a"
-                            class="col-8"><span class="col-4">5 <i class="fa fa-star"
-                                                                   aria-hidden="true"></i></span><span
-                            class="col-12">Vikings</span>
-                    </div>
-                    <div class="col"><img
-                            src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg"
-                            alt="s" class="col-8"><span class="col-4">5 <i class="fa fa-star"
-                                                                           aria-hidden="true"></i></span><span
-                            class="col-12">Kingdom hearts</span>
-                    </div>
-                    <div class="col"><img
-                            src="http://www.hobbyconsolas.com/sites/hobbyconsolas.com/public/media/image/2015/09/518036-que-no-esta-tema-principal-metal-gear-solid-phantom-pain.jpg"
-                            alt="d" class="col-8"><span class="col-4">5 <i class="fa fa-star"
-                                                                           aria-hidden="true"></i></span><span
-                            class="col-12">Metal Gear solid</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-
-            <div class="col">
-                <div class="row mt-3">
-                    <div class="col pending-game"><span
-                            class="col">Last 3 pending</span>
-                        <button class="float-right">Show More</button>
-                    </div>
-                </div>
-
-                <div class="row game-status-section rounded-bottom">
-
-                    <div class="col"><img
-                            src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a"
-                            class="col-8"><span class="col-4">5 <i class="fa fa-star"
-                                                                   aria-hidden="true"></i></span><span
-                            class="col-12">Vikings</span>
-                    </div>
-                    <div class="col"><img
-                            src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg"
-                            alt="s" class="col-8"><span class="col-4">5 <i class="fa fa-star"
-                                                                           aria-hidden="true"></i></span><span
-                            class="col-12">Kingdom hearts</span>
-                    </div>
-                    <div class="col"><img
-                            src="http://www.hobbyconsolas.com/sites/hobbyconsolas.com/public/media/image/2015/09/518036-que-no-esta-tema-principal-metal-gear-solid-phantom-pain.jpg"
-                            alt="d" class="col-8"><span class="col-4">5 <i class="fa fa-star"
-                                                                           aria-hidden="true"></i></span><span
-                            class="col-12">Metal Gear solid</span>
-                    </div>
-                </div>
-            </div>
-        </div>
     </jsp:attribute>
 
     <jsp:attribute name="modalBlock">
