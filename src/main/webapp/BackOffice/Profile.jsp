@@ -379,7 +379,7 @@
                 </div>
             </div>
         </div>
-        </div>
+
 
     </jsp:attribute>
 

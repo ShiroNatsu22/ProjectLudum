@@ -25,6 +25,11 @@
             </div>
 
             <div class="col">
+                <div class="row ">
+                    <div class="col separator-bottom mt-2">
+                            ${requestScope.currentCompany.name}'s info
+                    </div>
+                </div>
                 <div class="row card-attribute">
                     <div class="col mt-2">
                         Name: ${requestScope.currentCompany.getName()}                        </div>
@@ -33,6 +38,10 @@
                     <div class="col  mt-2">
                         Founded: ${requestScope.currentCompany.getFounded()}
 
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col separator-bottom mt-2">
                     </div>
                 </div>
             </div>
