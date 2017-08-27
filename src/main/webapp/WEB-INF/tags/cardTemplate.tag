@@ -50,50 +50,58 @@
         </div>
 
         <!-- Bloque derecho -->
-        <div class="col" style="border-left:1px solid lightgrey">
+        <div class="col-12 col-lg-8 right-block separator-left">
             <div class="col-12">
                 <jsp:invoke fragment="rightBlock"/>
             </div>
 
         </div>
 
-    </div>
-
-    <!-- Bloque comentarios -->
-    <div class="row">
-        <div class="col">
-                <span>
-                    Comentarios:
-                </span>
-        </div>
-    </div>
-
-    <div class="row">
-
-        <div class="col comments">
-            <div class="row">
-
-                <div class="col-2">
-                    <img class="img-fluid"
-                         src="https://upload.wikimedia.org/wikipedia/en/b/b4/Jaime_Lannister-Nikolaj_Coster-Waldau.jpg"
-                         alt="Jaimito">
-                </div>
-                <div class="col">
-                    <div class="author col-2"> Escrito por USUARIO</div>
-                    <div class="col-10">
-                        INSERTAR TEXTO DE COMENTARIO
-                        Ete juego e mu vueno me dibierto muxo jugandolo y sabes matando y eso parese el cod
-                    </div>
-                </div>
-
+        <div class="row py-3 px-3">
+            <div class="col">
+                <div class="separator-bottom"></div>
             </div>
         </div>
 
+        <!-- Bloque comentarios -->
+        <div class="row">
+
+            <div class="col">
+                <span>
+                    Comentarios:
+                </span>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col comments">
+                <div class="row">
+
+                    <div class="col-2">
+                        <img class="img-fluid"
+                             src="https://upload.wikimedia.org/wikipedia/en/b/b4/Jaime_Lannister-Nikolaj_Coster-Waldau.jpg"
+                             alt="Jaimito">
+                    </div>
+                    <div class="col">
+                        <div class="author col-2"> Escrito por USUARIO</div>
+                        <div class="col-10">
+                            INSERTAR TEXTO DE COMENTARIO
+                            Ete juego e mu vueno me dibierto muxo jugandolo y sabes matando y eso parese el cod
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
     </div>
-
-    <jsp:invoke fragment="modalBlock"/>
-
 </div>
+
+
+<jsp:invoke fragment="modalBlock"/>
+
+
 <!-- JQuery -->
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
@@ -119,7 +127,7 @@
 
 <script src="../../lib/js/libraries.min.js"></script>
 
-<script src="../../lib/js/calculations.min.js"></script>
+<script src="../../lib/js/toggle-classes.min.js"></script>
 
 
 </body>

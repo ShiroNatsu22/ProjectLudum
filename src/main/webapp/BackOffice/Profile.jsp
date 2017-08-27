@@ -13,6 +13,7 @@
 
     <jsp:attribute name="subtitle">
         ${requestScope.currentUser.username}
+        <button class="btn">Edit profile</button>
     </jsp:attribute>
 
     <jsp:attribute name="leftBlock">
@@ -32,7 +33,7 @@
             <div class="col">
 
                 <div class="row ">
-                    <div class="col principal-info mt-2">
+                    <div class="col separator-bottom mt-2">
                             ${requestScope.currentUser.username}'s info
                     </div>
                 </div>
@@ -81,7 +82,7 @@
                 </div>
 
                 <div class="row ">
-                    <div class="col principal-info mt-2">
+                    <div class="col separator-bottom mt-2">
                     </div>
                 </div>
 
@@ -172,10 +173,12 @@
 
     <jsp:attribute name="rightBlock">
         <div class="row">
-            <div class="completed-game col"></div>
-            <div class="playing-game col "></div>
-            <div class="dropped-game col "></div>
-            <div class="pending-game col "></div>
+
+            <div class="completed-game total-games col"></div>
+            <div class="playing-game total-games col "></div>
+            <div class="dropped-game total-games col "></div>
+            <div class="pending-game total-games col "></div>
+
         </div>
 
         <div class="row mt-3 mb-3">
@@ -205,38 +208,177 @@
             <div class="col-4">
                 Total entries:<span class="total-entry"></span>
             </div>
-        </div>
 
+
+        </div>
 
         <div class="row">
 
             <div class="col">
-                <div class="row mt-3">
-                    <div class="col playing-game"><span
-                            class="col">Last updates</span>
-                        <button class="float-right">Show More</button>
+
+                <div class="row ">
+                    <div class="col separator-bottom mt-2">
+
                     </div>
                 </div>
 
-                <div class="row game-status-section rounded-bottom ">
+                <div class="row">
+                    <div class="col">
+                        <div class="row mt-3">
+                            <div class="col">
+                                <span class="col">Last updates</span>
 
-                    <div class="col"><img
-                            src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a"
-                            class="col-8"><span class="col-4">5 <i class="fa fa-star"
-                                                                   aria-hidden="true"></i></span><span
-                            class="col-12">Vikings</span></div>
-                    <div class="col"><img
-                            src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg"
-                            alt="s" class="col-8"><span class="col-4">5 <i class="fa fa-star"
-                                                                           aria-hidden="true"></i></span><span
-                            class="col-12">Kingdom hearts</span></div>
-                    <div class="col"><img
-                            src="http://www.hobbyconsolas.com/sites/hobbyconsolas.com/public/media/image/2015/09/518036-que-no-esta-tema-principal-metal-gear-solid-phantom-pain.jpg"
-                            alt="d" class="col-8"><span class="col-4">5 <i class="fa fa-star"
-                                                                           aria-hidden="true"></i></span><span
-                            class="col-12">Metal Gear solid</span></div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-6 col-4"><img
+                                    src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a"
+                                    class="col-8 img-fluid hidden-sm-down imag-responsive"><span class="col-4">5 <i class="fa fa-star"
+                                                                                                     aria-hidden="true"></i></span><span
+                                    class="col-12">Vikings</span></div>
+                            <div class="col-lg-6 col-4"><img
+                                    src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg"
+                                    alt="s" class="col-8 hidden-sm-down img-fluid imag-responsive"><span class="col-4">5 <i class="fa fa-star"
+                                                                                                             aria-hidden="true"></i></span><span
+                                    class="col-12">Kingdom hearts</span></div>
+
+                            <div class="col-lg-6 col-4"><img
+                                    src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg"
+                                    alt="s" class="col-8 hidden-sm-down img-fluid imag-responsive"><span class="col-4">5 <i class="fa fa-star"
+                                                                                                                            aria-hidden="true"></i></span><span
+                                    class="col-12">Kingdom hearts</span></div>
+
+                            <div class="col-lg-6 col-4"><img
+                                    src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg"
+                                    alt="s" class="col-8 hidden-sm-down img-fluid imag-responsive"><span class="col-4">5 <i class="fa fa-star"
+                                                                                                                            aria-hidden="true"></i></span><span
+                                    class="col-12">Kingdom hearts</span></div>
+                            <div class="col-lg-6 col-4"><img
+                                    src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg"
+                                    alt="s" class="col-8 hidden-sm-down img-fluid imag-responsive"><span class="col-4">5 <i class="fa fa-star"
+                                                                                                                            aria-hidden="true"></i></span><span
+                                    class="col-12">Kingdom hearts</span></div>
+
+                            <div class="col-lg-6 col-4"><img
+                                    src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg"
+                                    alt="s" class="col-8 hidden-sm-down img-fluid imag-responsive"><span class="col-4">5 <i class="fa fa-star"
+                                                                                                                            aria-hidden="true"></i></span><span
+                                    class="col-12">Kingdom hearts</span></div>
+
+                        </div>
+                        <div class="col">
+
+                            <button class="btn float-right">Show More</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row ">
+                    <div class="col separator-bottom mt-2">
+
+                    </div>
+                </div>
+
+                <div class="row py-3">
+                    <div class="col-lg-4 col-12 separator-right  put-separator">
+                        <div class="row">
+                            <div class=" col">
+                                Favorite games
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-lg-12"><img
+                                    src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a"
+                                    class="col  img-fluid imag-responsive hidden-sm-down">
+                                <span class="col ">Vikings</span></div>
+
+                            <div class="col col-lg-12"><img
+                                    src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg"
+                                    alt="s" class="col img-fluid imag-responsive hidden-sm-down">
+                                <span class="col">Kingdom hearts</span></div>
+
+                            <div class="col col-lg-12"><img
+                                    src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg"
+                                    alt="s" class="col img-fluid imag-responsive hidden-sm-down">
+                                <span class="col">Kingdom hearts</span></div>
+                        </div>
+                        <div class="row float-right">
+                            <div class="col">
+                                <button class="btn">Show more</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-4 col-12 separator-right put-separator">
+                        <div class="row">
+                            <div class=" col">
+                                Favorite characters
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="row">
+                                    <div class="col col-lg-12"><img
+                                            src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a"
+                                            class="col img-fluid imag-responsive hidden-sm-down"><span
+                                            class="col ">Vikings</span>
+                                    </div>
+
+                                    <div class="col col-lg-12"><img
+                                            src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg"
+                                            alt="s" class="col img-fluid imag-responsive hidden-sm-down"><span
+                                            class="col">Kingdom hearts</span></div>
+
+                                    <div class="col col-lg-12"><img
+                                            src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg"
+                                            alt="s" class="col img-fluid imag-responsive hidden-sm-down"><span
+                                            class="col">Kingdom hearts</span></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <button class="btn float-right">Show more</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-12 ">
+                        <div class="row">
+                            <div class=" col">
+                                Favorite people
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-lg-12"><img
+                                    src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a"
+                                    class="col img-fluid imag-responsive hidden-sm-down"><span
+                                    class="col">Vikings</span></div>
+
+                            <div class="col col-lg-12"><img
+                                    src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg"
+                                    alt="s" class="col img-fluid imag-responsive hidden-sm-down"><span
+                                    class="col-12">Kingdom hearts</span></div>
+
+                            <div class="col col-lg-12"><img
+                                    src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg"
+                                    alt="s" class="col img-fluid imag-responsive hidden-sm-down"><span
+                                    class="col">Kingdom hearts</span></div>
+
+
+                        </div>
+                        <div class="row float-right">
+                            <div class="col">
+                                <button class="btn">Show more</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
         </div>
 
     </jsp:attribute>
