@@ -50,8 +50,8 @@ public class UserSelectedVideogamesDAOImpl implements UserSelectedVideogamesDAO 
             String query = "INSERT INTO userSelectedVideogames (user_id_fk, videogame_id_fk, status, rating) VALUES(?,?,?,?)";
             PreparedStatement ps = db.getConnection(query);
 
-            ps.setInt(1, userSelectedVideogames.getUser_id_fk());
-            ps.setInt(2, userSelectedVideogames.getVideogame_id_fk());
+            ps.setInt(1, userSelectedVideogames.getUser_id_fk().getUser_id_pk());
+            ps.setInt(2, userSelectedVideogames.getVideogame_id_fk().getVideogame_id_pk());
             ps.setString(3, userSelectedVideogames.getStatus());
             ps.setInt(4, userSelectedVideogames.getRating());
             ps.execute();

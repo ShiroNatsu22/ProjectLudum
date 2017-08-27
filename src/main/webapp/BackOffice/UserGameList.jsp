@@ -2,6 +2,7 @@
 <%@ taglib prefix="tag" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<jsp:include page="/controller/UserSelectedVideogamesControl"/>
 
 <tag:pageMaster>
 
@@ -18,29 +19,28 @@
 
                         <ul id="user-list-nav" class="nav nav-tabs hidden-sm-down" role="tablist">
 
-                                <li class="nav-item">
-                                    <a class="nav-link active" href="#completed" id="completed-tab" role="tab"
-                                       data-toggle="tab" aria-controls="completed" aria-expanded="true">Completed</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link " href="#process" id="process-tab" role="tab"
-                                       data-toggle="tab" aria-controls="process" aria-expanded="true">In process</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link " href="#dropped" id="dropped-tab" role="tab"
-                                       data-toggle="tab" aria-controls="dropped" aria-expanded="true">Dropped</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link " href="#pending" id="pending-tab" role="tab"
-                                       data-toggle="tab" aria-controls="pending" aria-expanded="true">Pending</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link " href="#favorite" id="favorite-tab" role="tab"
-                                       data-toggle="tab" aria-controls="favorite" aria-expanded="true">Favorites</a>
-                                </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#completed" id="completed-tab" role="tab"
+                                   data-toggle="tab" aria-controls="completed">Completed</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="#playing" id="playing-tab" role="tab"
+                                   data-toggle="tab" aria-controls="process">Playing</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="#dropped" id="dropped-tab" role="tab"
+                                   data-toggle="tab" aria-controls="dropped">Dropped</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="#planToPlay" id="planToPlay-tab" role="tab"
+                                   data-toggle="tab" aria-controls="pending">Plan to play</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="#favorite" id="favorite-tab" role="tab"
+                                   data-toggle="tab" aria-controls="favorite">Favorites</a>
+                            </li>
 
                         </ul>
-
 
                     </div>
                 </div>
@@ -51,121 +51,99 @@
             <div role="tabpanel" class="tab-pane fade show active" id="completed" aria-labelledby="completed-tab">
                 <div class="row">
                     <div class="col">
-                        <table class="table table-hover table-stripped responsive table-bordered table-list">
+                        <table class="table table-hover table-stripped responsive table-list" width="100%">
                             <thead>
                             <tr>
+                                <th>#</th>
                                 <th>Image</th>
                                 <th>Name</th>
-                                <th>Status</th>
                                 <th>Rating</th>
-                                <th>Delete</th>
+                                <c:if test="${sessionScope.currentUser.user_id_pk == param['id']}">
+                                    <th>Delete</th>
+                                </c:if>
                             </tr>
                             </thead>
                             <tbody>
 
-                            <c:forEach var="userSelectedVideogame" items="${requestScope.currentUserSelectedVideogamesList}">
-
+                            <c:forEach var="userSelectedVideogame" varStatus="count" items="${requestScope.currentUserSelectedVideogamesList}">
+                                <c:if test="${userSelectedVideogame.status.equals('completed')}">
+                                    <tr>
+                                        <td>
+                                                ${count.count}
+                                        </td>
+                                        <td>
+                                            <img class="img-fluid" width="50" height="50" src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
+                                        </td>
+                                        <td>
+                                            <a href="<c:url value="/BackOffice/VideogameCard.jsp?id=${userSelectedVideogame.videogame_id_fk.videogame_id_pk}"/>">${userSelectedVideogame.videogame_id_fk.name}</a>
+                                        </td>
+                                        <td>
+                                                ${userSelectedVideogame.rating}
+                                        </td>
+                                        <c:if test="${sessionScope.currentUser.user_id_pk == param['id']}">
+                                            <td>
+                                                <form action="<c:url value="/controller/UserSelectedVideogamesControl"/>" method="post">
+                                                    <button class="btn btn-danger" name="deleteFromUserList" value="${userSelectedVideogame.videogame_id_fk.videogame_id_pk}">
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </c:if>
+                                    </tr>
+                                </c:if>
                             </c:forEach>
 
-                            <tr>
-                                <td><img class="img-fluid"
-                                         src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
-                                </td>
-                                <td>Vikings</td>
-                                <td>Completado</td>
-                                <td>10</td>
-                                <td>
-                                    <button name="deleteMessage" value=""><i class="fa fa-trash"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-
-                                <td><img class="img-fluid"
-                                         src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
-                                </td>
-                                <td>Kingdom hearts</td>
-                                <td>Completado</td>
-                                <td>10</td>
-                                <td>
-                                    <button name="deleteMessage" value=""><i class="fa fa-trash"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-
-                                <td><img class="img-fluid"
-                                         src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
-                                </td>
-                                <td>Metal Gear Solid</td>
-                                <td>Completado</td>
-                                <td>10</td>
-                                <td>
-                                    <button name="deleteMessage" value=""><i class="fa fa-trash"></i>
-                                    </button>
-                                </td>
-                            </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
 
-            <div role="tabpanel" class="tab-pane fade show" id="process" aria-labelledby="process-tab">
+            <div role="tabpanel" class="tab-pane fade show" id="playing" aria-labelledby="process-tab">
                 <div class="row">
                     <div class="col">
-                        <table class="table table-hover table-stripped responsive table-bordered table-list">
+                        <table class="table table-hover table-stripped responsive table-list" width="100%">
                             <thead>
                             <tr>
-
-                                <th>Imagen</th>
-                                <th>Titulo</th>
-                                <th>Estado</th>
-                                <th>Puntuación</th>
-                                <th>Eliminar juego</th>
-
+                                <th>#</th>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Rating</th>
+                                <c:if test="${sessionScope.currentUser.user_id_pk == param['id']}">
+                                    <th>Delete</th>
+                                </c:if>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
 
-                                <td><img class="img-fluid"
-                                         src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
-                                </td>
-                                <td>Vikings</td>
-                                <td>Completado</td>
-                                <td>10</td>
-                                <td>
-                                    <button name="deleteMessage" value=""><i class="fa fa-trash"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
+                            <c:forEach var="userSelectedVideogame" varStatus="count" items="${requestScope.currentUserSelectedVideogamesList}">
+                                <c:if test="${userSelectedVideogame.status.equals('playing')}">
+                                    <tr>
+                                        <td>
+                                                ${count.count}
+                                        </td>
+                                        <td>
+                                            <img class="img-fluid" width="50" height="50" src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
+                                        </td>
+                                        <td>
+                                            <a href="<c:url value="/BackOffice/VideogameCard.jsp?id=${userSelectedVideogame.videogame_id_fk.videogame_id_pk}"/>">${userSelectedVideogame.videogame_id_fk.name}</a>
+                                        </td>
+                                        <td>
+                                                ${userSelectedVideogame.rating}
+                                        </td>
+                                        <c:if test="${sessionScope.currentUser.user_id_pk == param['id']}">
+                                            <td>
+                                                <form action="<c:url value="/controller/UserSelectedVideogamesControl"/>" method="post">
+                                                    <button class="btn btn-danger" name="deleteFromUserList" value="${userSelectedVideogame.videogame_id_fk.videogame_id_pk}">
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </c:if>
+                                    </tr>
+                                </c:if>
+                            </c:forEach>
 
-                                <td><img class="img-fluid"
-                                         src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
-                                </td>
-                                <td>Kingdom hearts</td>
-                                <td>Completado</td>
-                                <td>10</td>
-                                <td>
-                                    <button name="deleteMessage" value=""><i class="fa fa-trash"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-
-                                <td><img class="img-fluid"
-                                         src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
-                                </td>
-                                <td>Metal Gear Solid</td>
-                                <td>Completado</td>
-                                <td>10</td>
-                                <td>
-                                    <button name="deleteMessage" value=""><i class="fa fa-trash"></i>
-                                    </button>
-                                </td>
-                            </tr>
                             </tbody>
                         </table>
                     </div>
@@ -175,119 +153,98 @@
             <div role="tabpanel" class="tab-pane fade show" id="dropped" aria-labelledby="dropped-tab">
                 <div class="row">
                     <div class="col">
-                        <table class="table table-hover table-stripped responsive table-bordered table-list">
+                        <table class="table table-hover table-stripped responsive table-list" width="100%">
                             <thead>
                             <tr>
-
-                                <th>Imagen</th>
-                                <th>Titulo</th>
-                                <th>Estado</th>
-                                <th>Puntuación</th>
-                                <th>Eliminar juego</th>
-
+                                <th>#</th>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Rating</th>
+                                <c:if test="${sessionScope.currentUser.user_id_pk == param['id']}">
+                                    <th>Delete</th>
+                                </c:if>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
 
-                                <td><img class="img-fluid"
-                                         src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
-                                </td>
-                                <td>Vikings</td>
-                                <td>Completado</td>
-                                <td>10</td>
-                                <td>
-                                    <button name="deleteMessage" value=""><i class="fa fa-trash"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
+                            <c:forEach var="userSelectedVideogame" varStatus="count" items="${requestScope.currentUserSelectedVideogamesList}">
+                                <c:if test="${userSelectedVideogame.status.equals('dropped')}">
+                                    <tr>
+                                        <td>
+                                                ${count.count}
+                                        </td>
+                                        <td>
+                                            <img class="img-fluid" width="50" height="50" src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
+                                        </td>
+                                        <td>
+                                            <a href="<c:url value="/BackOffice/VideogameCard.jsp?id=${userSelectedVideogame.videogame_id_fk.videogame_id_pk}"/>">${userSelectedVideogame.videogame_id_fk.name}</a>
+                                        </td>
+                                        <td>
+                                                ${userSelectedVideogame.rating}
+                                        </td>
+                                        <c:if test="${sessionScope.currentUser.user_id_pk == param['id']}">
+                                            <td>
+                                                <form action="<c:url value="/controller/UserSelectedVideogamesControl"/>" method="post">
+                                                    <button class="btn btn-danger" name="deleteFromUserList" value="${userSelectedVideogame.videogame_id_fk.videogame_id_pk}">
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </c:if>
+                                    </tr>
+                                </c:if>
+                            </c:forEach>
 
-                                <td><img class="img-fluid"
-                                         src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
-                                </td>
-                                <td>Kingdom hearts</td>
-                                <td>Completado</td>
-                                <td>10</td>
-                                <td>
-                                    <button name="deleteMessage" value=""><i class="fa fa-trash"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-
-                                <td><img class="img-fluid"
-                                         src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
-                                </td>
-                                <td>Metal Gear Solid</td>
-                                <td>Completado</td>
-                                <td>10</td>
-                                <td>
-                                    <button name="deleteMessage" value=""><i class="fa fa-trash"></i>
-                                    </button>
-                                </td>
-                            </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
 
-            <div role="tabpanel" class="tab-pane fade show " id="pending" aria-labelledby="pending-tab">
+            <div role="tabpanel" class="tab-pane fade show " id="planToPlay" aria-labelledby="pending-tab">
                 <div class="row">
                     <div class="col">
-                        <table class="table table-hover table-stripped responsive table-bordered table-list">
+                        <table class="table table-hover table-stripped responsive table-list" width="100%">
                             <thead>
                             <tr>
-
-                                <th>Imagen</th>
-                                <th>Titulo</th>
-                                <th>Estado</th>
-                                <th>Puntuación</th>
-                                <th>Eliminar juego</th>
-
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Rating</th>
+                                <c:if test="${sessionScope.currentUser.user_id_pk == param['id']}">
+                                    <th>Delete</th>
+                                </c:if>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
 
-                                <td><img class="img-fluid"
-                                         src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
-                                </td>
-                                <td>Vikings</td>
-                                <td>Completado</td>
-                                <td>10</td>
-                                <td>
-                                    <button name="deleteMessage" value=""><i class="fa fa-trash"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
+                            <c:forEach var="userSelectedVideogame" varStatus="count" items="${requestScope.currentUserSelectedVideogamesList}">
+                                <c:if test="${userSelectedVideogame.status.equals('planToPlay')}">
+                                    <tr>
+                                        <td>
+                                                ${count.count}
+                                        </td>
+                                        <td>
+                                            <img class="img-fluid" width="50" height="50" src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
+                                        </td>
+                                        <td>
+                                            <a href="<c:url value="/BackOffice/VideogameCard.jsp?id=${userSelectedVideogame.videogame_id_fk.videogame_id_pk}"/>">${userSelectedVideogame.videogame_id_fk.name}</a>
+                                        </td>
+                                        <td>
+                                                ${userSelectedVideogame.rating}
+                                        </td>
+                                        <c:if test="${sessionScope.currentUser.user_id_pk == param['id']}">
+                                            <td>
+                                                <form action="<c:url value="/controller/UserSelectedVideogamesControl"/>" method="post">
+                                                    <button class="btn btn-danger" name="deleteFromUserList" value="${userSelectedVideogame.videogame_id_fk.videogame_id_pk}">
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </c:if>
+                                    </tr>
+                                </c:if>
+                            </c:forEach>
 
-                                <td><img class="img-fluid"
-                                         src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
-                                </td>
-                                <td>Kingdom hearts</td>
-                                <td>Completado</td>
-                                <td>10</td>
-                                <td>
-                                    <button name="deleteMessage" value=""><i class="fa fa-trash"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-
-                                <td><img class="img-fluid"
-                                         src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
-                                </td>
-                                <td>Metal Gear Solid</td>
-                                <td>Completado</td>
-                                <td>10</td>
-                                <td>
-                                    <button name="deleteMessage" value=""><i class="fa fa-trash"></i>
-                                    </button>
-                                </td>
-                            </tr>
                             </tbody>
                         </table>
                     </div>

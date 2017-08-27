@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @WebServlet("/controller/UserSelectedVideogamesControl")
 public class UserSelectedVideogamesControl extends HttpServlet {
@@ -29,7 +30,8 @@ public class UserSelectedVideogamesControl extends HttpServlet {
         if (id != null) {
 
             UserSelectedVideogames userSelectedVideogames = new UserSelectedVideogames();
-            List<UserSelectedVideogames> userSelectedVideogamesList = new ArrayList<UserSelectedVideogames>();
+            List<UserSelectedVideogames> userSelectedVideogamesList;
+            List<Integer> videogamesCount = new ArrayList<>();
 
             // En caso de haber una relación con el juego actual
             if (currentUser != null) {
@@ -40,11 +42,16 @@ public class UserSelectedVideogamesControl extends HttpServlet {
 
             }
 
-            // Obtenemos todos las relaciones del usuario actual y las separamos por estado
+            // Obtenemos todos las relaciones del usuario actual
             userSelectedVideogamesList = userSelectedVideogamesDAO.getAllUserSelectedVideogamesByUser_id_fk(Integer.parseInt(id));
+            videogamesCount.add((int) userSelectedVideogamesList.stream().filter(svl -> svl.getStatus().equals("completed")).count());
+            videogamesCount.add((int) userSelectedVideogamesList.stream().filter(svl -> svl.getStatus().equals("playing")).count());
+            videogamesCount.add((int) userSelectedVideogamesList.stream().filter(svl -> svl.getStatus().equals("dropped")).count());
+            videogamesCount.add((int) userSelectedVideogamesList.stream().filter(svl -> svl.getStatus().equals("planToPlay")).count());
 
             req.setAttribute("currentUserSelectedVideogame", userSelectedVideogames);
             req.setAttribute("currentUserSelectedVideogamesList", userSelectedVideogamesList);
+            req.setAttribute("currentUserSelectedVideogamesCount", videogamesCount);
 
         }
 

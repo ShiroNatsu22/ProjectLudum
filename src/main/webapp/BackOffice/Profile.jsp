@@ -4,6 +4,7 @@
 
 <jsp:include page="/controller/UsersControl"/>
 <jsp:include page="/controller/RelationshipsControl"/>
+<jsp:include page="/controller/UserSelectedVideogamesControl"/>
 
 <tag:cardTemplate>
 
@@ -18,7 +19,6 @@
 
     <jsp:attribute name="leftBlock">
         <div id="card-effect">
-            <!-- Título -->
 
             <div class="row">
                 <div class="col image">
@@ -26,8 +26,12 @@
                          src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
                          alt="gameImg">
                 </div>
+            </div>
 
-
+            <div class="row">
+                <div class="col">
+                    <a class="btn btn-primary" href="<c:url value="/BackOffice/UserGameList.jsp?id=${param['id']}"/>">Gamelist</a>
+                </div>
             </div>
 
             <div class="col">
@@ -174,10 +178,14 @@
     <jsp:attribute name="rightBlock">
         <div class="row">
 
-            <div class="completed-game total-games col"></div>
-            <div class="playing-game total-games col "></div>
-            <div class="dropped-game total-games col "></div>
-            <div class="pending-game total-games col "></div>
+            <div class="col">
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" style="width: 25%; background: #29ba66" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar" role="progressbar" style="width: 25%; background: #719994" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar" role="progressbar" style="width: 25%; background: #a55c52" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar" role="progressbar" style="width: 25%; background: #cfc5c4" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
 
         </div>
 
@@ -186,27 +194,46 @@
             <div class="col-4">
                 <div class="row">
                     <div class="completed-leyend d-inline-block"></div>
-                    <div class="d-inline">Completed games:<span class="total-completed">10</span></div>
+                    <div class="d-inline">Completed games:
+                        <span class="total-completed">
+                                ${requestScope.currentUserSelectedVideogamesCount.get(0)}
+                        </span>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="playing-leyend d-inline-block"></div>
-                    <div class="d-inline">Playing games:<span class="total-playing">10</span></div>
+                    <div class="d-inline">Playing games:
+                        <span class="total-playing">
+                                ${requestScope.currentUserSelectedVideogamesCount.get(1)}
+                        </span>
+                    </div>
                 </div>
             </div>
 
             <div class="col-4">
                 <div class="row">
                     <div class="dropped-leyend d-inline-block"></div>
-                    <div class="d-inline">Dropped games:<span class="total-dropped">10</span></div>
+                    <div class="d-inline">Dropped games:
+                        <span class="total-dropped">
+                                ${requestScope.currentUserSelectedVideogamesCount.get(2)}
+                        </span>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="pending-leyend d-inline-block"></div>
-                    <div class="d-inline">Pending games: <span class="total-pending">10</span></div>
+                    <div class="d-inline">Pending games:
+                        <span class="total-pending">
+                                ${requestScope.currentUserSelectedVideogamesCount.get(3)}
+                        </span>
+                    </div>
                 </div>
             </div>
 
             <div class="col-4">
-                Total entries:<span class="total-entry"></span>
+                Total entries:
+                <span class="total-entry">
+                        ${requestScope.currentUserSelectedVideogamesList.size()}
+                </span>
             </div>
 
 
@@ -235,12 +262,12 @@
                             <div class="col-lg-6 col-4"><img
                                     src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a"
                                     class="col-8 img-fluid hidden-sm-down imag-responsive"><span class="col-4">5 <i class="fa fa-star"
-                                                                                                     aria-hidden="true"></i></span><span
+                                                                                                                    aria-hidden="true"></i></span><span
                                     class="col-12">Vikings</span></div>
                             <div class="col-lg-6 col-4"><img
                                     src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg"
                                     alt="s" class="col-8 hidden-sm-down img-fluid imag-responsive"><span class="col-4">5 <i class="fa fa-star"
-                                                                                                             aria-hidden="true"></i></span><span
+                                                                                                                            aria-hidden="true"></i></span><span
                                     class="col-12">Kingdom hearts</span></div>
 
                             <div class="col-lg-6 col-4"><img
