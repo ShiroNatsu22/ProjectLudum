@@ -27,20 +27,12 @@
             </div>
 
             <div class="col">
-
-                <div class="row ">
-                    <div class="col separator-bottom mt-2">
-                            ${requestScope.currentVideogame.name}'s info
-                    </div>
-                </div>
-
-
-                <div class="row ">
+                <div class="row card-attribute">
                     <div class="col mt-2">
                         Name: ${requestScope.currentVideogame.name}
                     </div>
                 </div>
-                <div class="row ">
+                <div class="row card-attribute">
                     <div class="col  mt-2">
                         Developer:
                         <c:forEach var="developer" items="${requestScope.currentVideogameDeveloperList}">
@@ -49,7 +41,7 @@
                                 </c:forEach>
                     </div>
                 </div>
-                <div class="row ">
+                <div class="row card-attribute">
                     <div class="col  mt-2">
                         Publisher:
                         <c:forEach var="publisher" items="${requestScope.currentVideogamePublisherList}">
@@ -58,34 +50,27 @@
                                 </c:forEach>
                     </div>
                 </div>
-                <div class="row ">
+                <div class="row card-attribute">
                     <div class="col  mt-2">
                         Genre:
                     </div>
                 </div>
-                <div class="row ">
+                <div class="row card-attribute">
                     <div class="col  mt-2">
                         Platform:
                     </div>
                 </div>
-                <div class="row ">
+                <div class="row card-attribute">
                     <div class="col hidden-xs  mt-2">
                         Number of players:
                     </div>
                 </div>
-                <div class="row ">
+                <div class="row card-attribute">
                     <div class="col  mt-2">
                         PEGI:
                     </div>
                 </div>
-
-                <div class="row ">
-                    <div class="col separator-bottom mt-2">
-
-                    </div>
-                </div>
             </div>
-
 
         </div>
 
@@ -154,49 +139,67 @@
 
         <div class="row mt-5">
             <div class="col">
-                <div class="row mt-4 separator-top">
+                <div class="row  separator-top separator-bottom">
                     <div class="col">
+
                         <div class="rounded info-card">
+                            <!-- DESKTOP -->
                             <div class="row mt-4">
-                                <div class="col mb-2">
-                                    <span class="separator-title ml-4 mb-2">Characters: <button type="button" class="btn hidden-sm-down show-button">Show me more</button></span>
+                                <div class="col col-12 mb-2">
+                                    <span class="separator-title ml-4 mb-2">Characters: <button type="button" class="btn show-butto hidden-sm-down">Show me more</button> </span>
                                 </div>
                             </div>
+                            <!-- END DESKTOP -->
                             <div class="row mb-4">
-                                <div class="col ml-3 separator">
-                                    <img class="img-fluid hidden-sm-down  imag-responsive"
+                                <div class="col hidden-sm-down ml-3 separator">
+                                    <img class="img-fluid imag-responsive"
                                          src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
                                          alt="gameImg">
 
                                     <span>Hideo GODjima</span>
                                 </div>
+                                <div class="col ml-4 col-5 hidden-md-up section-content">
+                                    <span>Hideo GODjima</span>
+
+                                </div>
 
 
-                                <div class="col  separator">
-                                    <img class="img-fluid hidden-sm-down  imag-responsive"
+                                <div class="col hidden-sm-down separator">
+                                    <img class="img-fluid imag-responsive"
                                          src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
                                          alt="gameImg">
 
                                     <span>Hideo GODjima</span>
 
                                 </div>
+                                <div class="col col-5 hidden-md-up section-content">
+                                    <span>Hideo GODjima</span>
+
+                                </div>
 
 
-                                <div class="col separator">
-                                    <img class="img-fluid hidden-sm-down  imag-responsive"
+                                <div class="col hidden-sm-down separator">
+                                    <img class="img-fluid imag-responsive"
                                          src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
                                          alt="gameImg">
                                     <span>Hideo GODjima</span>
                                 </div>
+                                <div class="col ml-4 col-5 hidden-md-up section-content">
+                                    <span>Hideo GODjima</span>
 
-                                <div class="col  mr-3">
-                                    <img class="img-fluid hidden-sm-down  imag-responsive"
+                                </div>
+
+                                <div class="col hidden-sm-down mr-3">
+                                    <img class="img-fluid imag-responsive"
                                          src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
                                          alt="gameImg">
 
                                     <span>Hideo GODjima</span>
                                 </div>
+                                <div class="col col-5  hidden-md-up section-content">
+                                    <span>Hideo GODjima</span>
 
+                                </div>
                             </div>
 
                             <!-- MOBILE -->
@@ -207,12 +210,13 @@
                                 </div>
                             </div>
                             <!--END MOBILE -->
-                        </div>
 
+                        </div>
                     </div>
+
                 </div>
 
-                <div class="row mt-4 separator-top">
+                <div class="row mt-4">
                     <div class="col">
                         <div class="rounded info-card">
                             <div class="row mt-4">

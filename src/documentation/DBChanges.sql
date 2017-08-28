@@ -204,3 +204,28 @@ CREATE TABLE `gamerlistDB`.`userSelectedVideogames` (
     ON DELETE CASCADE
     ON UPDATE CASCADE
 );
+
+/* PAJ 28/08/2017 - Creada la tabla de juegos favoritos */
+
+CREATE TABLE `gamerlistDB`.`favoriteGames` (
+  `favoriteGame_id_pk` INT NOT NULL AUTO_INCREMENT,
+  `user_id_fk`         INT NOT NULL,
+  `videogame_id_fk`    INT NOT NULL,
+  PRIMARY KEY (`favoriteGame_id_pk`),
+  INDEX `user_idx` (`user_id_fk` ASC),
+  INDEX `videogame_idx` (`videogame_id_fk` ASC),
+  UNIQUE INDEX `userVideogame` (`user_id_fk` ASC, `videogame_id_fk` ASC),
+  CONSTRAINT `favoriteGames_user`
+  FOREIGN KEY (`user_id_fk`)
+  REFERENCES `gamerlistDB`.`users` (`user_id_pk`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `favoriteGames_videogame`
+  FOREIGN KEY (`videogame_id_fk`)
+  REFERENCES `gamerlistDB`.`videogames` (`videogame_id_pk`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+);
+
+
+
