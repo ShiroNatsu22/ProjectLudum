@@ -32,7 +32,8 @@
                 </div>
                 <div class="row card-attribute">
                     <div class="col mt-2">
-                        Name: ${requestScope.currentCompany.getName()}                        </div>
+                        Name: ${requestScope.currentCompany.getName()}
+                    </div>
                 </div>
                 <div class="row card-attribute">
                     <div class="col  mt-2">
@@ -75,22 +76,30 @@
                                 </div>
                             </div>
                             <div class="row mb-4">
+                                <c:choose>
+                                    <c:when test="${requestScope.currentCompanyDeveloperList.isEmpty()}">
+                                            No information available
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:forEach var="videogame" varStatus="index" items="${requestScope.currentCompanyDeveloperList}">
 
-                                <c:forEach var="videogame" items="${requestScope.currentCompanyDeveloperList}">
-                                    <div class="col  ml-3 separator-right">
+                                    <c:if test="${index.index < 3}">
+                                        <div class="col <c:if test="${!(index.last)}">separator-right</c:if>">
 
-                                        <img class="img-fluid hidden-sm-down imag-responsive"
-                                             src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
-                                             alt="gameImg">
+                                            <img class="img-fluid hidden-sm-down imag-responsive"
+                                                 src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
+                                                 alt="gameImg">
 
-                                        <a class="ml-1"
-                                           href="<c:url value="/BackOffice/VideogameCard.jsp?id=${videogame.videogame_id_pk}" />">${videogame.name}
-                                        </a>
+                                            <a class="ml-1"
+                                               href="<c:url value="/BackOffice/VideogameCard.jsp?id=${videogame.videogame_id_pk}" />">${videogame.name}
+                                            </a>
 
-                                    </div>
-
+                                        </div>
+                                    </c:if>
 
                                 </c:forEach>
+                                    </c:otherwise>
+                                </c:choose>
 
 
                                 <!-- MOBILE -->
@@ -119,7 +128,7 @@
                             <div class="row mb-4">
 
                                 <c:forEach var="videogame" items="${requestScope.currentCompanyPublisherList}">
-                                    <div class="col  ml-3 separator-right">
+                                    <div class="col separator-right">
 
                                         <img class="img-fluid hidden-sm-down imag-responsive"
                                              src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"

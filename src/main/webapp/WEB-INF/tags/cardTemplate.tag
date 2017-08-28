@@ -57,7 +57,7 @@
 
         </div>
         <div class="col-12">
-            <div class="row py-3 px-3">
+            <div class="row py-3">
                 <div class="col">
                     <div class="separator-bottom"></div>
                 </div>

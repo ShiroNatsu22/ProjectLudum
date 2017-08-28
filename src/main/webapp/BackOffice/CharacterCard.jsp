@@ -23,6 +23,12 @@
             </div>
 
             <div class="col">
+                <div class="row ">
+                    <div class="col px-0 separator-bottom mt-2">
+                        Characters's info
+                    </div>
+                </div>
+
                 <div class="row card-attribute">
                     <div class="col  mt-2">
                         Name: Ragnar Lodbrock
@@ -31,13 +37,13 @@
 
                 <div class="row card-attribute">
                     <div class="col  mt-2">
-                        Name: Macho peluo
+                        Gender: Macho peluo
                     </div>
                 </div>
 
                 <div class="row card-attribute">
                     <div class="col  mt-2">
-                        Name: 30
+                        Age: 30
                     </div>
                 </div>
 
@@ -46,8 +52,11 @@
                         Location: Kattegat
                     </div>
                 </div>
+                <div class="col  separator-bottom mt-2">
 
+                </div>
             </div>
+
 
         </div>
     </jsp:attribute>
@@ -66,9 +75,7 @@
             </div>
         </div>
 
-        <!--ANOTACION PARA PABLO: EL PRIMER ELEMENTO DEBE TENER UN ML-3 Y EL ULTIMO UN MR-3 SINOS QUEDA, SI TE FIJAS
-        HAY UN hidden-lg-up, ESO SIRVE PARA QUE LAS PANTALLAS DE LG PARA ARRIBA SE OCULTARAN, Y ESA PARTE SOLO SE MOSTRARA EN MOBIL
-        -->
+
         <div class="row mt-5">
             <div class="col">
                 <div class="row  separator-top separator-bottom">

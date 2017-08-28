@@ -84,7 +84,7 @@
                                     <div class="row">
                                         <div class="col">
                                             <label for="newDeveloperVideogame_id_fk">
-                                                Select develovper
+                                                Games developed
                                                 <select class=col-6 id="newDeveloperVideogame_id_fk" name="developer_videogame_id_fk" multiple="multiple">
                                                     <c:forEach var="videogame" items="${requestScope.videogameList}">
                                                         <option value="${videogame.videogame_id_pk}">${videogame.name}</option>
@@ -92,7 +92,7 @@
                                                 </select>
                                             </label>
                                             <label for="newPublisherVideogame_id_fk">
-                                                Select publisher
+                                                Select published
                                                 <select class="col-6" id="newPublisherVideogame_id_fk" name="publisher_videogame_id_fk" multiple="multiple">
                                                     <c:forEach var="videogame" items="${requestScope.videogameList}">
                                                         <option value="${videogame.videogame_id_pk}">${videogame.name}</option>
