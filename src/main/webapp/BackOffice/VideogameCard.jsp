@@ -4,6 +4,7 @@
 
 <jsp:include page="/controller/VideogamesControl"/>
 <jsp:include page="/controller/UserSelectedVideogamesControl"/>
+<jsp:include page="/controller/FavoriteGamesControl"/>
 
 <tag:cardTemplate>
 
@@ -68,6 +69,21 @@
                 <div class="row card-attribute">
                     <div class="col  mt-2">
                         PEGI:
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col pt-2">
+                        <form action="<c:url value="/controller/FavoriteGamesControl"/>" method="post">
+                            <c:choose>
+                                <c:when test="${requestScope.currentFavoriteGame.favoriteGame_id_pk != 0}">
+                                    <button name="deleteFavoriteGame" value="${param["id"]}">Delete from favorites</button>
+                                </c:when>
+                                <c:otherwise>
+                                    <button name="addFavoriteGame" value="${param["id"]}">Add to favorites</button>
+                                </c:otherwise>
+                            </c:choose>
+
+                        </form>
                     </div>
                 </div>
             </div>

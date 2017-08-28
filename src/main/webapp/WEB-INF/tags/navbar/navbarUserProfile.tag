@@ -22,8 +22,11 @@
                href="<c:url value="/BackOffice/Profile.jsp?id=${sessionScope.currentUser.user_id_pk}" />">
                 <i class="fa fa-id-card"></i> Profile
             </a>
+            <a class="dropdown-item" href="<c:url value="/BackOffice/UserGameList.jsp?id=${sessionScope.currentUser.user_id_pk}"/>">
+                <i class="fa fa-list"></i> Gamelist
+            </a>
             <a class="dropdown-item" href="<c:url value="/BackOffice/FriendList.jsp?id=${sessionScope.currentUser.user_id_pk}" />">
-                <i class="fa fa-list"></i> Friends
+                <i class="fa fa-users"></i> Friends
             </a>
             <a class="dropdown-item" href="<c:url value="/BackOffice/MyMessages.jsp" />">
                 <i class="fa fa-envelope"></i> Messages
