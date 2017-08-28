@@ -66,7 +66,7 @@
 
         <div class="row mt-5">
             <div class="col">
-                <div class="row separator-bottom separator-top">
+                <div class="row separator-top">
                     <div class="col">
 
                         <div class="rounded ">
@@ -117,7 +117,7 @@
 
                 </div>
 
-                <div class="row mt-4">
+                <div class="row mt-4 separator-top">
                     <div class="col">
                         <div class="rounded ">
                             <div class="row mt-4">
