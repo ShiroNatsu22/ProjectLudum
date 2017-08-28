@@ -71,7 +71,7 @@
         -->
         <div class="row mt-5">
             <div class="col">
-                <div class="row">
+                <div class="row  separator-top separator-bottom">
                     <div class="col">
 
                         <div class="rounded info-card">

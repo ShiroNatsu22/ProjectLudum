@@ -424,7 +424,7 @@
                     </div>
                     <div class="modal-body">
 
-                        <form id="privateMessageForm" action="<c:url value="/controller/UsersControl" />" method="post">
+                        <form id="privateMessageForm" action="<c:url value="/controller/PrivateMessagesControl" />" method="post">
                             Subject <input name="subject">
                             Message
                             <textarea name="content"></textarea>

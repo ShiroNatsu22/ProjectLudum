@@ -79,7 +79,7 @@
     <jsp:attribute name="rightBlock">
 
         <!-- Bloque de biografía -->
-        <div class="row">
+        <div class="row ">
             <div class="col">
                     ${requestScope.currentVideogame.description}
             </div>
@@ -87,11 +87,11 @@
 
         <c:if test="${sessionScope.currentUser != null}">
             <!-- Bloque de agregar juego a la lista y puntuarlo -->
-            <div class="row">
+            <div class="row ">
                 <div class="col py-2" style="border: 1px solid lightgrey; background: #f7f7f9">
                     <form id="formAddGame" action="<c:url value="/controller/UserSelectedVideogamesControl"/>" method="post">
 
-                        <div class="row">
+                        <div class="row ">
                             <div class="col">
                                 <c:choose>
                                     <c:when test="${requestScope.currentUserSelectedVideogame.userSelectedVideogame_id_pk != 0}">
@@ -139,7 +139,7 @@
 
         <div class="row mt-5">
             <div class="col">
-                <div class="row">
+                <div class="row  separator-top separator-bottom">
                     <div class="col">
 
                         <div class="rounded info-card">
