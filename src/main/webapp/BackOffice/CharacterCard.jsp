@@ -78,66 +78,57 @@
 
         <div class="row mt-5">
             <div class="col">
-                <div class="row  separator-top separator-bottom">
+                <div class="row  separator-top ">
                     <div class="col">
 
                         <div class="rounded info-card">
+                            <!-- DESKTOP -->
                             <div class="row mt-4">
                                 <div class="col col-12 mb-2">
-                                    <span class="separator-title ml-4 mb-2">GAMES APPEARED: <button type="button" class="btn show-button">Show me more</button> </span>
+                                    <span class="separator-title mb-2">Games appeared: <button type="button" class="btn show-butto hidden-sm-down">Show me more</button> </span>
                                 </div>
                             </div>
+                            <!-- END DESKTOP -->
                             <div class="row mb-4">
-                                <div class="col hidden-md-down ml-3 separator">
-                                    <img class="img-fluid imag-responsive"
+                                <div class="col separator">
+                                    <div class=" game-title">Hideo Godjima</div>
+                                    <img class="img-fluid  hidden-sm-down imag-responsive"
                                          src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
                                          alt="gameImg">
-
-                                    <span>Hideo GODjima</span>
-                                </div>
-                                <div class="col ml-4 col-5 hidden-lg-up">
-                                    <span>Hideo GODjima</span>
-
                                 </div>
 
 
-                                <div class="col hidden-md-down separator">
-                                    <img class="img-fluid imag-responsive"
+                                <div class="col  separator">
+                                    <div class=" game-title">Hideo Godjima</div>
+                                    <img class="img-fluid  hidden-sm-down imag-responsive"
                                          src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
                                          alt="gameImg">
-
-                                    <span>Hideo GODjima</span>
-
-                                </div>
-                                <div class="col col-5 hidden-lg-up">
-                                    <span>Hideo GODjima</span>
-
                                 </div>
 
 
-                                <div class="col hidden-md-down separator">
-                                    <img class="img-fluid imag-responsive"
+                                <div class="col separator">
+                                    <div class=" game-title">Hideo Godjima</div>
+                                    <img class="img-fluid  hidden-sm-down imag-responsive"
                                          src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
                                          alt="gameImg">
-                                    <span>Hideo GODjima</span>
-                                </div>
-                                <div class="col ml-4 col-5 hidden-lg-up">
-                                    <span>Hideo GODjima</span>
-
                                 </div>
 
-                                <div class="col hidden-md-down mr-3">
-                                    <img class="img-fluid imag-responsive"
+                                <div class="col separator">
+                                    <div class=" game-title">Hideo Godjima</div>
+                                    <img class="img-fluid  hidden-sm-down imag-responsive"
                                          src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
                                          alt="gameImg">
-
-                                    <span>Hideo GODjima</span>
-                                </div>
-                                <div class="col col-5  hidden-lg-up">
-                                    <span>Hideo GODjima</span>
-
                                 </div>
                             </div>
+
+                            <!-- MOBILE -->
+                            <div class="row  mb-2 mr-1 hidden-md-up">
+                                <div class="col ">
+                                    <button type="button" class="btn show-button float-right">Show me more</button>
+                                    </span>
+                                </div>
+                            </div>
+                            <!--END MOBILE -->
 
                         </div>
                     </div>

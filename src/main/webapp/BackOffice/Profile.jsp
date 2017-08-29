@@ -257,22 +257,22 @@
                             <div class="col-12">
                                 <div class="row">
 
-                                    <div class="col-6 px-0 ">
+                                    <div class="col-6  ">
                                         <div class="col-12 px-0 col-md-4 game-title put-inline no-inline">Kingdom Hearts</div>
                                         <div class="col-12 px-0 put-inline no-inline col-md-4 "> 5 <i class="fa fa-star" aria-hidden="true"></i></div>
-                                        <div class="col-12 px-0 put-inline no-inline col-md-4 "> Completed<i class="fa fa-star" aria-hidden="true"></i></div>
+                                        <div class="col-12 px-0 put-inline no-inline col-md-4 "> Completed</div>
 
-                                        <img src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a" class="col-12 img-fluid hidden-sm-down imag-responsive">
+                                        <img src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a" class="col-12 px-0 img-fluid hidden-sm-down imag-responsive">
 
                                     </div>
 
-                                    <div class="col-6 px-0 ">
+                                    <div class="col-6">
                                         <div class="col-12 px-0 col-md-4 game-title put-inline no-inline">Vikings</div>
                                         <div class="col-12 px-0 put-inline no-inline col-md-4 "> 5 <i class="fa fa-star" aria-hidden="true"></i></div>
-                                        <div class="col-12 px-0 put-inline no-inline col-md-4 "> Completed<i class="fa fa-star" aria-hidden="true"></i></div>
+                                        <div class="col-12 px-0 put-inline no-inline col-md-4 "> Completed</div>
 
 
-                                        <img src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a" class="col-12 img-fluid hidden-sm-down imag-responsive">
+                                        <img src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a" class="col-12  px-0 img-fluid hidden-sm-down imag-responsive">
 
                                     </div>
 
@@ -280,24 +280,16 @@
                                 </div>
                                 <div class="row">
 
-                                    <div class="col-6 px-0 ">
+                                    <div class="col-6  ">
                                         <div class="col-12 px-0 col-md-4 game-title put-inline no-inline">Kingdom Hearts</div>
                                         <div class="col-12 px-0 put-inline no-inline col-md-4 "> 5 <i class="fa fa-star" aria-hidden="true"></i></div>
-                                        <div class="col-12 px-0 put-inline no-inline col-md-4 "> Completed<i class="fa fa-star" aria-hidden="true"></i></div>
+                                        <div class="col-12 px-0 put-inline no-inline col-md-4 "> Completed</div>
 
-                                        <img src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a" class="col-12 img-fluid hidden-sm-down imag-responsive">
-
-                                    </div>
-
-                                    <div class="col-6 px-0 ">
-                                        <div class="col-12 px-0 col-md-4 game-title put-inline no-inline">Vikings</div>
-                                        <div class="col-12 px-0 put-inline no-inline col-md-4 "> 5 <i class="fa fa-star" aria-hidden="true"></i></div>
-                                        <div class="col-12 px-0 put-inline no-inline col-md-4 "> Completed<i class="fa fa-star" aria-hidden="true"></i></div>
-
-
-                                        <img src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a" class="col-12 img-fluid hidden-sm-down imag-responsive">
+                                        <img src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a" class="col-12 px-0 img-fluid hidden-sm-down imag-responsive">
 
                                     </div>
+
+
 
 
                                 </div>
@@ -330,18 +322,18 @@
                         <div class="row">
                             <div class="col-4 col-lg-12"><img
                                     src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a"
-                                    class="col  img-fluid imag-responsive hidden-sm-down">
-                                <span class="col ">Vikings</span></div>
+                                    class="col  px-0 img-fluid imag-responsive hidden-sm-down">
+                                <span class="col px-0">Vikings</span></div>
 
                             <div class="col-4 col-lg-12"><img
                                     src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg"
-                                    alt="s" class="col img-fluid imag-responsive hidden-sm-down">
-                                <span class="col">Kingdom hearts</span></div>
+                                    alt="s" class="col px-0 img-fluid imag-responsive hidden-sm-down">
+                                <span class="col px-0">Kingdom hearts</span></div>
 
                             <div class="col-4 col-lg-12"><img
                                     src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg"
-                                    alt="s" class="col img-fluid imag-responsive hidden-sm-down">
-                                <span class="col">Kingdom hearts</span></div>
+                                    alt="s" class="col px-0 img-fluid imag-responsive hidden-sm-down">
+                                <span class="col px-0">Kingdom hearts</span></div>
                         </div>
                         <div class="row float-right">
                             <div class="col mt-2">
@@ -363,19 +355,19 @@
                                 <div class="row">
                                     <div class="col-4 col-lg-12"><img
                                             src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a"
-                                            class="col img-fluid imag-responsive hidden-sm-down"><span
-                                            class="col ">Vikings</span>
+                                            class="col px-0 img-fluid imag-responsive hidden-sm-down"><span
+                                            class="col px-0 ">Vikings</span>
                                     </div>
 
                                     <div class="col-4 col-lg-12"><img
                                             src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg"
-                                            alt="s" class="col img-fluid imag-responsive hidden-sm-down"><span
-                                            class="col">Kingdom hearts</span></div>
+                                            alt="s" class="col px-0  img-fluid imag-responsive hidden-sm-down"><span
+                                            class="col px-0">Kingdom hearts</span></div>
 
                                     <div class="col-4 col-lg-12"><img
                                             src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg"
-                                            alt="s" class="col img-fluid imag-responsive hidden-sm-down"><span
-                                            class="col">Kingdom hearts</span></div>
+                                            alt="s" class="col px-0 img-fluid imag-responsive hidden-sm-down"><span
+                                            class="col px-0">Kingdom hearts</span></div>
                                 </div>
                                 <div class="row">
                                     <div class="col  mt-2">
@@ -395,18 +387,18 @@
                         <div class="row">
                             <div class="col-4 col-lg-12"><img
                                     src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a"
-                                    class="col img-fluid imag-responsive hidden-sm-down"><span
-                                    class="col">Vikings</span></div>
+                                    class="col px-0 img-fluid imag-responsive hidden-sm-down"><span
+                                    class="col px-0">Vikings</span></div>
 
                             <div class="col-4 col-lg-12"><img
                                     src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg"
-                                    alt="s" class="col img-fluid imag-responsive hidden-sm-down"><span
-                                    class="col-12">Kingdom hearts</span></div>
+                                    alt="s" class="col px-0 img-fluid imag-responsive hidden-sm-down"><span
+                                    class="col-12 px-0">Kingdom hearts</span></div>
 
                             <div class="col-4 col-lg-12"><img
                                     src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg"
-                                    alt="s" class="col img-fluid imag-responsive hidden-sm-down"><span
-                                    class="col">Kingdom hearts</span></div>
+                                    alt="s" class="col px-0 img-fluid imag-responsive hidden-sm-down"><span
+                                    class="col px-0">Kingdom hearts</span></div>
 
 
                         </div>

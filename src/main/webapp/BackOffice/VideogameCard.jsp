@@ -13,7 +13,19 @@
     </jsp:attribute>
 
     <jsp:attribute name="subtitle">
-        ${requestScope.currentVideogame.name}
+        ${requestScope.currentVideogame.name}  <c:if test="${sessionScope.currentUser != null}">
+                <form action="<c:url value="/controller/FavoriteGamesControl"/>" class="d-inline" method="post">
+                            <c:choose>
+                                <c:when test="${requestScope.currentFavoriteGame.favoriteGame_id_pk != 0}">
+                                    <button class="btn btn-link favorite-btn delete-favorite" name="deleteFavoriteGame" value="${param["id"]}">(Delete from favorites)</button>
+                                </c:when>
+                                <c:otherwise>
+                                   <button class="btn btn-link favorite-btn add-favorite" name="addFavoriteGame" value="${param["id"]}">(Add to favorites)</button>
+                                </c:otherwise>
+                            </c:choose>
+
+                        </form>
+                </c:if>
     </jsp:attribute>
 
     <jsp:attribute name="leftBlock">
@@ -28,7 +40,15 @@
             </div>
 
             <div class="col">
+
+                <div class="row ">
+                    <div class="col px-0 separator-bottom mt-2">
+                            ${requestScope.currentVideogame.name}'s info
+                    </div>
+                </div>
+
                 <div class="row card-attribute">
+
                     <div class="col mt-2">
                         Name: ${requestScope.currentVideogame.name}
                     </div>
@@ -71,21 +91,14 @@
                         PEGI:
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col pt-2">
-                        <form action="<c:url value="/controller/FavoriteGamesControl"/>" method="post">
-                            <c:choose>
-                                <c:when test="${requestScope.currentFavoriteGame.favoriteGame_id_pk != 0}">
-                                    <button name="deleteFavoriteGame" value="${param["id"]}">Delete from favorites</button>
-                                </c:when>
-                                <c:otherwise>
-                                    <button name="addFavoriteGame" value="${param["id"]}">Add to favorites</button>
-                                </c:otherwise>
-                            </c:choose>
 
-                        </form>
+                <div class="row ">
+                    <div class="col px-0 separator-bottom mt-2">
+
                     </div>
                 </div>
+
+
             </div>
 
         </div>
@@ -103,51 +116,55 @@
 
         <c:if test="${sessionScope.currentUser != null}">
             <!-- Bloque de agregar juego a la lista y puntuarlo -->
-            <div class="row ">
-                <div class="col py-2" style="border: 1px solid lightgrey; background: #f7f7f9">
+            <div class="row  separator-top ">
+                <div class="col py-2 mt-5">
                     <form id="formAddGame" action="<c:url value="/controller/UserSelectedVideogamesControl"/>" method="post">
+                        <div class="col">
+                            <div class="row ">
 
-                        <div class="row ">
-                            <div class="col">
+                                <div class="col-12 col-md-6  ">
                                 <c:choose>
                                     <c:when test="${requestScope.currentUserSelectedVideogame.userSelectedVideogame_id_pk != 0}">
-                                        <button class="btn btn-primary" name="updateUserList" value="${param["id"]}">Update</button>
-                                        <button class="btn btn-danger" name="deleteFromUserList" value="${param["id"]}">
-                                            <i class="fa fa-trash"></i></button>
+                                        <button class="btn btn-primary col-5" name="updateUserList" value="${param["id"]}">Update</button>
+                                        <button class="btn btn-danger  col-6" name="deleteFromUserList" value="${param["id"]}">
+                                            Delete
+                                        </button>
                                     </c:when>
                                     <c:otherwise>
-                                        <button class="btn" name="addToUserList" value="${param["id"]}">Add to list</button>
+                                        <button class="btn col-12" name="addToUserList" value="${param["id"]}">Add to list</button>
                                     </c:otherwise>
                                 </c:choose>
-                            </div>
-                            <div class="col" style="border-color: lightgrey; border-width: 1px; border-style: none solid">
-                                <select form="formAddGame" name="status" class="form-control">
-                                    <option value="none">Select one state</option>
-                                    <option value="completed"
-                                            <c:if test="${requestScope.currentUserSelectedVideogame.status.equals('completed')}">selected</c:if>>Completed
-                                    </option>
-                                    <option value="playing"
-                                            <c:if test="${requestScope.currentUserSelectedVideogame.status.equals('playing')}">selected</c:if>>Playing
-                                    </option>
-                                    <option value="dropped"
-                                            <c:if test="${requestScope.currentUserSelectedVideogame.status.equals('dropped')}">selected</c:if>>Dropped
-                                    </option>
-                                    <option value="planToPlay"
-                                            <c:if test="${requestScope.currentUserSelectedVideogame.status.equals('planToPlay')}">selected</c:if>>Plan to play
-                                    </option>
-                                </select>
-                            </div>
-                            <div class="col">
-                                <select form="formAddGame" name="rating" class="form-control">
-                                    <option value="-1">Select score</option>
-                                    <c:forEach varStatus="index" begin="0" end="10">
+                                </div>
+
+
+                                <div class=" col-12 col-md-3 py-1">
+                                    <select form="formAddGame" name="status" class="form-control">
+                                        <option value="none">Select one state</option>
+                                        <option value="completed"
+                                                <c:if test="${requestScope.currentUserSelectedVideogame.status.equals('completed')}">selected</c:if>>Completed
+                                        </option>
+                                        <option value="playing"
+                                                <c:if test="${requestScope.currentUserSelectedVideogame.status.equals('playing')}">selected</c:if>>Playing
+                                        </option>
+                                        <option value="dropped"
+                                                <c:if test="${requestScope.currentUserSelectedVideogame.status.equals('dropped')}">selected</c:if>>Dropped
+                                        </option>
+                                        <option value="planToPlay"
+                                                <c:if test="${requestScope.currentUserSelectedVideogame.status.equals('planToPlay')}">selected</c:if>>Plan to play
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="col-12 col-md-3 py-1">
+                                    <select form="formAddGame" name="rating" class="form-control">
+                                        <option value="-1">Select score</option>
+                                        <c:forEach varStatus="index" begin="0" end="10">
                                         <option value="${index.index}"
                                                 <c:if test="${requestScope.currentUserSelectedVideogame.rating == index.index}">selected</c:if>>${index.index}</option>
                                     </c:forEach>
-                                </select>
+                                    </select>
+                                </div>
                             </div>
                         </div>
-
                     </form>
                 </div>
             </div>
@@ -155,66 +172,46 @@
 
         <div class="row mt-5">
             <div class="col">
-                <div class="row  separator-top separator-bottom">
+                <div class="row  separator-top ">
                     <div class="col">
 
                         <div class="rounded info-card">
                             <!-- DESKTOP -->
                             <div class="row mt-4">
                                 <div class="col col-12 mb-2">
-                                    <span class="separator-title ml-4 mb-2">Characters: <button type="button" class="btn show-butto hidden-sm-down">Show me more</button> </span>
+                                    <span class="separator-title mb-2">Characters: <button type="button" class="btn show-butto hidden-sm-down">Show me more</button> </span>
                                 </div>
                             </div>
                             <!-- END DESKTOP -->
                             <div class="row mb-4">
-                                <div class="col hidden-sm-down ml-3 separator">
-                                    <img class="img-fluid imag-responsive"
+                                <div class="col separator">
+                                    <div class=" game-title">Hideo Godjima</div>
+                                    <img class="img-fluid  hidden-sm-down imag-responsive"
                                          src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
                                          alt="gameImg">
-
-                                    <span>Hideo GODjima</span>
-                                </div>
-                                <div class="col ml-4 col-5 hidden-md-up section-content">
-                                    <span>Hideo GODjima</span>
-
                                 </div>
 
 
-                                <div class="col hidden-sm-down separator">
-                                    <img class="img-fluid imag-responsive"
+                                <div class="col  separator">
+                                    <div class=" game-title">Hideo Godjima</div>
+                                    <img class="img-fluid  hidden-sm-down imag-responsive"
                                          src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
                                          alt="gameImg">
-
-                                    <span>Hideo GODjima</span>
-
-                                </div>
-                                <div class="col col-5 hidden-md-up section-content">
-                                    <span>Hideo GODjima</span>
-
                                 </div>
 
 
-                                <div class="col hidden-sm-down separator">
-                                    <img class="img-fluid imag-responsive"
+                                <div class="col separator">
+                                    <div class=" game-title">Hideo Godjima</div>
+                                    <img class="img-fluid  hidden-sm-down imag-responsive"
                                          src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
                                          alt="gameImg">
-                                    <span>Hideo GODjima</span>
-                                </div>
-                                <div class="col ml-4 col-5 hidden-md-up section-content">
-                                    <span>Hideo GODjima</span>
-
                                 </div>
 
-                                <div class="col hidden-sm-down mr-3">
-                                    <img class="img-fluid imag-responsive"
+                                <div class="col separator">
+                                    <div class=" game-title">Hideo Godjima</div>
+                                    <img class="img-fluid  hidden-sm-down imag-responsive"
                                          src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
                                          alt="gameImg">
-
-                                    <span>Hideo GODjima</span>
-                                </div>
-                                <div class="col col-5  hidden-md-up section-content">
-                                    <span>Hideo GODjima</span>
-
                                 </div>
                             </div>
 
@@ -232,49 +229,47 @@
 
                 </div>
 
-                <div class="row mt-4">
+                <div class="row  separator-top ">
                     <div class="col">
+
                         <div class="rounded info-card">
+                            <!-- DESKTOP -->
                             <div class="row mt-4">
-                                <div class="col mb-2">
-                                    <span class="separator-title ml-4 mb-2">People: <button type="button" class="btn hidden-sm-down show-button">Show me more</button></span>
+                                <div class="col col-12 mb-2">
+                                    <span class="separator-title mb-2">People: <button type="button" class="btn show-butto hidden-sm-down">Show me more</button> </span>
                                 </div>
                             </div>
+                            <!-- END DESKTOP -->
                             <div class="row mb-4">
-                                <div class="col ml-3 separator">
-                                    <img class="img-fluid hidden-sm-down  imag-responsive"
+                                <div class="col separator">
+                                    <div class=" game-title">Hideo Godjima</div>
+                                    <img class="img-fluid  hidden-sm-down imag-responsive"
                                          src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
                                          alt="gameImg">
-
-                                    <span>Hideo GODjima</span>
                                 </div>
 
 
                                 <div class="col  separator">
-                                    <img class="img-fluid hidden-sm-down  imag-responsive"
+                                    <div class=" game-title">Hideo Godjima</div>
+                                    <img class="img-fluid  hidden-sm-down imag-responsive"
                                          src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
                                          alt="gameImg">
-
-                                    <span>Hideo GODjima</span>
-
                                 </div>
 
 
                                 <div class="col separator">
-                                    <img class="img-fluid hidden-sm-down  imag-responsive"
+                                    <div class=" game-title">Hideo Godjima</div>
+                                    <img class="img-fluid  hidden-sm-down imag-responsive"
                                          src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
                                          alt="gameImg">
-                                    <span>Hideo GODjima</span>
                                 </div>
 
-                                <div class="col  mr-3">
-                                    <img class="img-fluid hidden-sm-down  imag-responsive"
+                                <div class="col separator">
+                                    <div class=" game-title">Hideo Godjima</div>
+                                    <img class="img-fluid  hidden-sm-down imag-responsive"
                                          src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
                                          alt="gameImg">
-
-                                    <span>Hideo GODjima</span>
                                 </div>
-
                             </div>
 
                             <!-- MOBILE -->
@@ -285,9 +280,10 @@
                                 </div>
                             </div>
                             <!--END MOBILE -->
-                        </div>
 
+                        </div>
                     </div>
+
                 </div>
             </div>
         </div>

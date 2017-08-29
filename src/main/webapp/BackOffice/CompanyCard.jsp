@@ -72,7 +72,7 @@
                         <div class="rounded ">
                             <div class="row mt-4">
                                 <div class="col mb-2">
-                                    <span class="separator-title ml-4 mb-2">Games Developed: <button type="button" class="btn hidden-sm-down show-button">Show me more</button></span>
+                                    <span class="separator-title  mb-2">Games Developed: <button type="button" class="btn hidden-sm-down show-button">Show me more</button></span>
                                 </div>
                             </div>
                             <div class="row mb-4">
@@ -122,7 +122,7 @@
                         <div class="rounded ">
                             <div class="row mt-4">
                                 <div class="col mb-2">
-                                    <span class="separator-title ml-4 mb-2">Games Published: <button type="button" class="btn hidden-sm-down show-button">Show me more</button></span>
+                                    <span class="separator-title  mb-2">Games Published: <button type="button" class="btn hidden-sm-down show-button">Show me more</button></span>
                                 </div>
                             </div>
                             <div class="row mb-4">
