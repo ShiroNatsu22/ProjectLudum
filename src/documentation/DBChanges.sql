@@ -227,5 +227,21 @@ CREATE TABLE `gamerlistDB`.`favoriteGames` (
     ON UPDATE CASCADE
 );
 
+/* PAJ 29/08/2017 - Creadas las tablas de personajes y gente */
 
+CREATE TABLE `gamerlistDB`.`characters` (
+  `character_id_pk` INT         NOT NULL AUTO_INCREMENT,
+  `name`            VARCHAR(30) NOT NULL,
+  `biography`       MEDIUMTEXT  NULL,
+  PRIMARY KEY (`character_id_pk`)
+);
+
+CREATE TABLE `gamerlistDB`.`people` (
+  `people_id_pk` INT         NOT NULL AUTO_INCREMENT,
+  `name`         VARCHAR(25) NOT NULL,
+  `surname`      VARCHAR(25) NOT NULL,
+  `birthday`     DATE        NULL,
+  `nationality`  VARCHAR(30) NULL,
+  PRIMARY KEY (`people_id_pk`)
+);
 

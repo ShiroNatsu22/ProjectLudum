@@ -5,6 +5,7 @@
 <jsp:include page="/controller/UsersControl"/>
 <jsp:include page="/controller/RelationshipsControl"/>
 <jsp:include page="/controller/UserSelectedVideogamesControl"/>
+<jsp:include page="/controller/FavoriteGamesControl"/>
 
 <tag:cardTemplate>
 
@@ -14,7 +15,7 @@
 
     <jsp:attribute name="subtitle">
         ${requestScope.currentUser.username}
-        <button class="btn">Edit profile</button>
+        <c:if test="${sessionScope.currentUser.user_id_pk == param['id']}"><button class="btn">Edit profile</button></c:if>
     </jsp:attribute>
 
     <jsp:attribute name="leftBlock">
@@ -175,10 +176,15 @@
 
             <div class="col px-0">
                 <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 25%; background: #29ba66" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                    <div class="progress-bar" role="progressbar" style="width: 25%; background: #719994" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                    <div class="progress-bar" role="progressbar" style="width: 25%; background: #a55c52" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                    <div class="progress-bar" role="progressbar" style="width: 25%; background: #cfc5c4" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                    <c:forEach var="countPercent" varStatus="index" items="${requestScope.currentUserSelectedVideogamesCountPercent}">
+                        <div class="progress-bar" role="progressbar" style="width: ${countPercent}%; background:
+                        <c:choose>
+                        <c:when test="${index.index == 0}">#29ba66</c:when>
+                        <c:when test="${index.index == 1}">#719994</c:when>
+                        <c:when test="${index.index == 2}">#a55c52</c:when>
+                        <c:when test="${index.index == 3}">#cfc5c4</c:when>
+                                </c:choose>" aria-valuenow="${countPercent}" aria-valuemin="0" aria-valuemax="100"></div>
+                    </c:forEach>
                 </div>
             </div>
 
@@ -257,44 +263,35 @@
                             <div class="col-12">
                                 <div class="row">
 
-                                    <div class="col-6  ">
-                                        <div class="col-12 px-0 col-md-4 game-title put-inline no-inline">Kingdom Hearts</div>
-                                        <div class="col-12 px-0 put-inline no-inline col-md-4 "> 5 <i class="fa fa-star" aria-hidden="true"></i></div>
-                                        <div class="col-12 px-0 put-inline no-inline col-md-4 "> Completed</div>
+                                    <c:forEach var="userSelectedVideogame" varStatus="index" items="${requestScope.currentUserSelectedVideogamesListReversed}">
+                                        <c:if test="${index.index < 4}">
+                                            <div class="col-6  ">
+                                                <div class="col-12 px-0 col-md-4 game-title put-inline no-inline">
+                                                    <a href="<c:url value="/BackOffice/VideogameCard.jsp?id=${userSelectedVideogame.videogame_id_fk.videogame_id_pk}" />">${userSelectedVideogame.videogame_id_fk.name}</a>
+                                                </div>
+                                                <div class="col-12 px-0 put-inline no-inline col-md-4 ">
+                                                <c:choose>
+                                                    <c:when test="${userSelectedVideogame.rating == -1}">
+                                                        -
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        ${userSelectedVideogame.rating}
+                                                    </c:otherwise>
+                                                </c:choose> <i class="fa fa-star"></i>
+                                                </div>
+                                                <div class="col-12 px-0 put-inline no-inline col-md-4 ">
+                                                        ${userSelectedVideogame.status}
+                                                </div>
 
-                                        <img src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a" class="col-12 px-0 img-fluid hidden-sm-down imag-responsive">
+                                                <img src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a" class="col-12 px-0 img-fluid hidden-sm-down imag-responsive">
 
-                                    </div>
+                                            </div>
+                                        </c:if>
 
-                                    <div class="col-6">
-                                        <div class="col-12 px-0 col-md-4 game-title put-inline no-inline">Vikings</div>
-                                        <div class="col-12 px-0 put-inline no-inline col-md-4 "> 5 <i class="fa fa-star" aria-hidden="true"></i></div>
-                                        <div class="col-12 px-0 put-inline no-inline col-md-4 "> Completed</div>
-
-
-                                        <img src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a" class="col-12  px-0 img-fluid hidden-sm-down imag-responsive">
-
-                                    </div>
-
-
-                                </div>
-                                <div class="row">
-
-                                    <div class="col-6  ">
-                                        <div class="col-12 px-0 col-md-4 game-title put-inline no-inline">Kingdom Hearts</div>
-                                        <div class="col-12 px-0 put-inline no-inline col-md-4 "> 5 <i class="fa fa-star" aria-hidden="true"></i></div>
-                                        <div class="col-12 px-0 put-inline no-inline col-md-4 "> Completed</div>
-
-                                        <img src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a" class="col-12 px-0 img-fluid hidden-sm-down imag-responsive">
-
-                                    </div>
-
-
+                                    </c:forEach>
 
 
                                 </div>
-
-
 
                             </div>
 
@@ -320,97 +317,111 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-4 col-lg-12"><img
+
+                            <c:forEach var="favoriteGame" varStatus="index" items="${requestScope.currentFavoriteGamesListReversed}">
+                                <c:if test="${index.index < 3}">
+
+                                    <div class="col-4 col-lg-12">
+                                        <img src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a" class="col  px-0 img-fluid imag-responsive hidden-sm-down">
+                                        <a href="${favoriteGame.videogame_id_fk.videogame_id_pk}" class="col px-0">${favoriteGame.videogame_id_fk.name}</a>
+                                    </div>
+
+                                </c:if>
+                            </c:forEach>
+
+                            <!--<div class="col-4 col-lg-12"><img
                                     src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a"
                                     class="col  px-0 img-fluid imag-responsive hidden-sm-down">
                                 <span class="col px-0">Vikings</span></div>
 
                             <div class="col-4 col-lg-12"><img
-                                    src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg"
+                                    src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg"
                                     alt="s" class="col px-0 img-fluid imag-responsive hidden-sm-down">
                                 <span class="col px-0">Kingdom hearts</span></div>
 
                             <div class="col-4 col-lg-12"><img
-                                    src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg"
+                                    src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg"
                                     alt="s" class="col px-0 img-fluid imag-responsive hidden-sm-down">
                                 <span class="col px-0">Kingdom hearts</span></div>
-                        </div>
-                        <div class="row float-right">
-                            <div class="col mt-2">
-                                <button class="btn">Show more</button>
-                            </div>
-                        </div>
-                    </div>
+                            </div>-->
 
-
-                    <div class="col-lg-4 col-12 separator-right put-separator">
-                        <div class="row">
-                            <div class=" section-title  mb-2 col px-1">
-                                Favorite characters
-
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <div class="row">
-                                    <div class="col-4 col-lg-12"><img
-                                            src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a"
-                                            class="col px-0 img-fluid imag-responsive hidden-sm-down"><span
-                                            class="col px-0 ">Vikings</span>
-                                    </div>
-
-                                    <div class="col-4 col-lg-12"><img
-                                            src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg"
-                                            alt="s" class="col px-0  img-fluid imag-responsive hidden-sm-down"><span
-                                            class="col px-0">Kingdom hearts</span></div>
-
-                                    <div class="col-4 col-lg-12"><img
-                                            src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg"
-                                            alt="s" class="col px-0 img-fluid imag-responsive hidden-sm-down"><span
-                                            class="col px-0">Kingdom hearts</span></div>
-                                </div>
-                                <div class="row">
-                                    <div class="col  mt-2">
-                                        <button class="btn  float-right">Show more</button>
-                                    </div>
+                            <div class="row float-right">
+                                <div class="col mt-2">
+                                    <button class="btn">Show more</button>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-12 ">
-                        <div class="row">
-                            <div class=" section-title col  mb-2 px-1">
-                                Favorite people
 
+                        </div>
+
+
+                        <div class="col-lg-4 col-12 separator-right put-separator">
+                            <div class="row">
+                                <div class=" section-title  mb-2 col px-1">
+                                    Favorite characters
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="row">
+                                        <div class="col-4 col-lg-12"><img
+                                                src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a"
+                                                class="col px-0 img-fluid imag-responsive hidden-sm-down"><span
+                                                class="col px-0 ">Vikings</span>
+                                        </div>
+
+                                        <div class="col-4 col-lg-12"><img
+                                                src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg"
+                                                alt="s" class="col px-0  img-fluid imag-responsive hidden-sm-down"><span
+                                                class="col px-0">Kingdom hearts</span></div>
+
+                                        <div class="col-4 col-lg-12"><img
+                                                src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg"
+                                                alt="s" class="col px-0 img-fluid imag-responsive hidden-sm-down"><span
+                                                class="col px-0">Kingdom hearts</span></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col  mt-2">
+                                            <button class="btn  float-right">Show more</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-4 col-lg-12"><img
-                                    src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a"
-                                    class="col px-0 img-fluid imag-responsive hidden-sm-down"><span
-                                    class="col px-0">Vikings</span></div>
+                        <div class="col-lg-4 col-12 ">
+                            <div class="row">
+                                <div class=" section-title col  mb-2 px-1">
+                                    Favorite people
 
-                            <div class="col-4 col-lg-12"><img
-                                    src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg"
-                                    alt="s" class="col px-0 img-fluid imag-responsive hidden-sm-down"><span
-                                    class="col-12 px-0">Kingdom hearts</span></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4 col-lg-12"><img
+                                        src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a"
+                                        class="col px-0 img-fluid imag-responsive hidden-sm-down"><span
+                                        class="col px-0">Vikings</span></div>
 
-                            <div class="col-4 col-lg-12"><img
-                                    src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg"
-                                    alt="s" class="col px-0 img-fluid imag-responsive hidden-sm-down"><span
-                                    class="col px-0">Kingdom hearts</span></div>
+                                <div class="col-4 col-lg-12"><img
+                                        src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg"
+                                        alt="s" class="col px-0 img-fluid imag-responsive hidden-sm-down"><span
+                                        class="col-12 px-0">Kingdom hearts</span></div>
+
+                                <div class="col-4 col-lg-12"><img
+                                        src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg"
+                                        alt="s" class="col px-0 img-fluid imag-responsive hidden-sm-down"><span
+                                        class="col px-0">Kingdom hearts</span></div>
 
 
-                        </div>
-                        <div class="row float-right">
-                            <div class="col  mt-2">
-                                <button class="btn">Show more</button>
+                            </div>
+                            <div class="row float-right">
+                                <div class="col  mt-2">
+                                    <button class="btn">Show more</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
 
     </jsp:attribute>

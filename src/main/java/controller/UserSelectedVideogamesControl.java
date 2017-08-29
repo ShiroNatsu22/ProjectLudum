@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,6 +33,7 @@ public class UserSelectedVideogamesControl extends HttpServlet {
             UserSelectedVideogames userSelectedVideogames = new UserSelectedVideogames();
             List<UserSelectedVideogames> userSelectedVideogamesList;
             List<Integer> videogamesCount = new ArrayList<>();
+            List<Integer> videogamesCountPercent = new ArrayList<>();
 
             // En caso de haber una relación con el juego actual
             if (currentUser != null) {
@@ -44,14 +46,22 @@ public class UserSelectedVideogamesControl extends HttpServlet {
 
             // Obtenemos todos las relaciones del usuario actual
             userSelectedVideogamesList = userSelectedVideogamesDAO.getAllUserSelectedVideogamesByUser_id_fk(Integer.parseInt(id));
+
+            // Obtenemos cuantos juegos por status tiene agregados
             videogamesCount.add((int) userSelectedVideogamesList.stream().filter(svl -> svl.getStatus().equals("completed")).count());
             videogamesCount.add((int) userSelectedVideogamesList.stream().filter(svl -> svl.getStatus().equals("playing")).count());
             videogamesCount.add((int) userSelectedVideogamesList.stream().filter(svl -> svl.getStatus().equals("dropped")).count());
             videogamesCount.add((int) userSelectedVideogamesList.stream().filter(svl -> svl.getStatus().equals("planToPlay")).count());
 
+            // Obtenemos el porcentage de estas cuentas
+            for (Integer count : videogamesCount) videogamesCountPercent.add(count != 0 ? ((count * 100) / 5) : 0);
+
             req.setAttribute("currentUserSelectedVideogame", userSelectedVideogames);
             req.setAttribute("currentUserSelectedVideogamesList", userSelectedVideogamesList);
+            Collections.reverse(userSelectedVideogamesList);
+            req.setAttribute("currentUserSelectedVideogamesListReversed", userSelectedVideogamesList);
             req.setAttribute("currentUserSelectedVideogamesCount", videogamesCount);
+            req.setAttribute("currentUserSelectedVideogamesCountPercent", videogamesCountPercent);
 
         }
 

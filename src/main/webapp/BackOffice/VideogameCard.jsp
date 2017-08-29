@@ -92,6 +92,12 @@
                     </div>
                 </div>
 
+                <div class="row card-attribute">
+                    <div class="col mt-2">
+                        Favorites: ${requestScope.currentFavoriteGamesCount}
+                    </div>
+                </div>
+
                 <div class="row ">
                     <div class="col px-0 separator-bottom mt-2">
 

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 
 @WebServlet("/controller/FavoriteGamesControl")
@@ -39,10 +40,13 @@ public class FavoriteGamesControl extends HttpServlet {
                 // Obtenemos los juegos favoritos del usuario obtenido
                 List<FavoriteGames> favoriteGamesList = favoriteGamesDAO.getAllFavoriteGamesByUser_id_fk(user_id_fk);
 
+                int favoriteGamesCount = (favoriteGamesDAO.getAllFavoriteGamesByVideogame_id_fk(videogame_id_fk)).size();
 
                 req.setAttribute("currentFavoriteGame", currentFavoriteGame);
                 req.setAttribute("currentFavoriteGamesList", favoriteGamesList);
-
+                Collections.reverse(favoriteGamesList);
+                req.setAttribute("currentFavoriteGamesListReversed", favoriteGamesList);
+                req.setAttribute("currentFavoriteGamesCount", favoriteGamesCount);
 
             }
 
