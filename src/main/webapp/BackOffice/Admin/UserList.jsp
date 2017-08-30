@@ -161,12 +161,20 @@
                                 </div>
                             </div>
 
+
                             <div class="row">
                                 <div class="col">
                                     <button class="btn btn-primary">Add user</button>
                                 </div>
                             </div>
 
+                        </form>
+
+                        Prueba de subir imagen
+                        <form id="prueba" method="post" action="<c:url value="/controller/FileUpload"/>" enctype="multipart/form-data">
+                            Select file to upload:
+                            <input type="file" name="dataFile" id="fileChooser"/><br/><br/>
+                            <input form="prueba" type="submit" value="Upload"/>
                         </form>
                     </div>
 
