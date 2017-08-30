@@ -26,6 +26,14 @@
                     <a class="nav-link" href="<c:url value="/BackOffice/Admin/CompanyList.jsp"/>">Company
                         list</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<c:url value="/BackOffice/Admin/CharacterList.jsp"/>">Character
+                        list</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<c:url value="/BackOffice/Admin/PeopleList.jsp"/>">People
+                        list</a>
+                </li>
             </ul>
 
         </div>

@@ -5,6 +5,7 @@
 <jsp:include page="/controller/CompaniesControl"/>
 <jsp:include page="/controller/VideogamesControl"/>
 
+
 <tag:pageMaster>
 
     <jsp:attribute name="head">
@@ -13,7 +14,7 @@
 
     <jsp:body>
 
-        <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#modalAddCompany">Add
+        <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#modalAddCharacter">Add
             company
         </button>
 
@@ -48,8 +49,7 @@
         </table>
 
         <%-- Modal with the form that creates new users --%>
-
-        <div class="modal fade" id="modalAddCompany" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+        <div class="modal fade" id="modalAddCharacter" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
 
@@ -62,50 +62,57 @@
                     <div class="row">
                         <div class="col">
                             <div class="modal-body">
-                                <form action="<c:url value="/controller/CompaniesControl"/>" method="post">
+                                <form action="" method="post">
                                     <div class="row">
                                         <div class="col">
                                             <div class="form-group">
-                                                <label for="newName">Name</label>
-                                                <input class="form-control" id="newName" name="name"
-                                                       placeholder="Enter new name">
+                                                <label for="newCharacterName">Name</label>
+                                                <input class="form-control" id="newCharacterName" name="name"
+                                                       placeholder="Enter character name">
                                             </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="newCharacterGender">
+                                                Select your gender
+                                                <select class="col-6" id="newCharacterGender" name="gender">
+                                                    <option value="M">Male</option>
+                                                    <option value="F">Female</option>
+                                                    <option value="O">Other</option>
+                                                </select>
+                                            </label>
+
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col">
                                             <div class="form-group">
-                                                <label for="newFounded">Founded</label>
-                                                <input type="date" class="" id="newFounded" name="founded"
-                                                       placeholder="Enter new founded">
+                                                <label for="newLocation">Location</label>
+                                                <input class="form-control" id="newLocation" name="location"
+                                                       placeholder="Enter characte location">
                                             </div>
                                         </div>
                                     </div>
+
+
                                     <div class="row">
                                         <div class="col">
-                                            <label for="newDeveloperVideogame_id_fk">
-                                                Games developed
-                                                <select class=col-6 id="newDeveloperVideogame_id_fk" name="developer_videogame_id_fk" multiple="multiple">
-                                                    <c:forEach var="videogame" items="${requestScope.videogameList}">
-                                                        <option value="${videogame.videogame_id_pk}">${videogame.name}</option>
-                                                    </c:forEach>
-                                                </select>
-                                            </label>
-                                            <label for="newPublisherVideogame_id_fk">
-                                                Games published
-                                                <select class="col-6" id="newPublisherVideogame_id_fk" name="publisher_videogame_id_fk" multiple="multiple">
-                                                    <c:forEach var="videogame" items="${requestScope.videogameList}">
-                                                        <option value="${videogame.videogame_id_pk}">${videogame.name}</option>
-                                                    </c:forEach>
-                                                </select>
-                                            </label>
+                                            <div class="form-group">
+                                                <label for="newCharacterBiography">Biography</label>
+                                                <input class="form-control" id="newCharacterBiography" name="biography"
+                                                       placeholder="Enter something about the character">
+                                            </div>
                                         </div>
                                     </div>
+
                                     <div class="row">
                                         <div class="col">
-                                            <button class="btn btn-primary">Add company</button>
+                                            <button class="btn btn-primary">Add character</button>
                                         </div>
                                     </div>
+
                                 </form>
                             </div>
 
@@ -114,7 +121,13 @@
                 </div>
             </div>
         </div>
-
     </jsp:body>
 
 </tag:pageMaster>
+
+
+
+
+
+
+

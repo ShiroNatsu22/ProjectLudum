@@ -3,6 +3,7 @@
 
 <form  action="<c:url value="/controller/Authenticate"/>" method="post">
     <div class="row">
+
         <div class="col">
             <div class="input-group input-group-sm mb-2 mr-sm-2 mb-sm-0">
                 <span class="input-group-addon" id="navLoginUserAddon"><i class="fa fa-user"></i></span>
@@ -16,14 +17,9 @@
                 <input class="form-control" type="password" placeholder="Password" name="password">
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <div class="noAccount">
-                <a href="" data-toggle="modal" data-target="#userRegistration">¿No tienes cuenta? Aqui podras crearte una</a>
-                <button class="btn btn-danger btn-sm my-2 my-sm-0 float-right">LogIn</button>
-            </div>
-        </div>
+
+        <button class="btn btn-danger btn-sm my-2 my-sm-0 mr-2 float-right">LogIn</button>
+        <button type=button class="btn btn-danger btn-sm my-2 my-sm-0 float-right" data-toggle="modal" data-target="#userRegistration">SigIn</button>
     </div>
 
 
@@ -150,3 +146,8 @@
 
                 </form>
             </div>
+        </div>
+    </div>
+</div>
+
+
