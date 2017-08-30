@@ -352,74 +352,74 @@
                             </div>
 
                         </div>
+                    </div>
 
+                    <div class="col-lg-4 col-12 separator-right put-separator">
+                        <div class="row">
+                            <div class=" section-title  mb-2 col px-1">
+                                Favorite characters
 
-                        <div class="col-lg-4 col-12 separator-right put-separator">
-                            <div class="row">
-                                <div class=" section-title  mb-2 col px-1">
-                                    Favorite characters
-
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <div class="row">
-                                        <div class="col-4 col-lg-12"><img
-                                                src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a"
-                                                class="col px-0 img-fluid imag-responsive hidden-sm-down"><span
-                                                class="col px-0 ">Vikings</span>
-                                        </div>
-
-                                        <div class="col-4 col-lg-12"><img
-                                                src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg"
-                                                alt="s" class="col px-0  img-fluid imag-responsive hidden-sm-down"><span
-                                                class="col px-0">Kingdom hearts</span></div>
-
-                                        <div class="col-4 col-lg-12"><img
-                                                src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg"
-                                                alt="s" class="col px-0 img-fluid imag-responsive hidden-sm-down"><span
-                                                class="col px-0">Kingdom hearts</span></div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col  mt-2">
-                                            <button class="btn  float-right">Show more</button>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-12 ">
-                            <div class="row">
-                                <div class=" section-title col  mb-2 px-1">
-                                    Favorite people
+                        <div class="row">
+                            <div class="col">
+                                <div class="row">
+                                    <div class="col-4 col-lg-12"><img
+                                            src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a"
+                                            class="col px-0 img-fluid imag-responsive hidden-sm-down"><span
+                                            class="col px-0 ">Vikings</span>
+                                    </div>
 
+                                    <div class="col-4 col-lg-12"><img
+                                            src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg"
+                                            alt="s" class="col px-0  img-fluid imag-responsive hidden-sm-down"><span
+                                            class="col px-0">Kingdom hearts</span></div>
+
+                                    <div class="col-4 col-lg-12"><img
+                                            src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg"
+                                            alt="s" class="col px-0 img-fluid imag-responsive hidden-sm-down"><span
+                                            class="col px-0">Kingdom hearts</span></div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-4 col-lg-12"><img
-                                        src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a"
-                                        class="col px-0 img-fluid imag-responsive hidden-sm-down"><span
-                                        class="col px-0">Vikings</span></div>
-
-                                <div class="col-4 col-lg-12"><img
-                                        src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg"
-                                        alt="s" class="col px-0 img-fluid imag-responsive hidden-sm-down"><span
-                                        class="col-12 px-0">Kingdom hearts</span></div>
-
-                                <div class="col-4 col-lg-12"><img
-                                        src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg"
-                                        alt="s" class="col px-0 img-fluid imag-responsive hidden-sm-down"><span
-                                        class="col px-0">Kingdom hearts</span></div>
-
-
-                            </div>
-                            <div class="row float-right">
-                                <div class="col  mt-2">
-                                    <button class="btn">Show more</button>
+                                <div class="row">
+                                    <div class="col  mt-2">
+                                        <button class="btn  float-right">Show more</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="col-lg-4 col-12 ">
+                        <div class="row">
+                            <div class=" section-title col  mb-2 px-1">
+                                Favorite people
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4 col-lg-12"><img
+                                    src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a"
+                                    class="col px-0 img-fluid imag-responsive hidden-sm-down"><span
+                                    class="col px-0">Vikings</span></div>
+
+                            <div class="col-4 col-lg-12"><img
+                                    src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg"
+                                    alt="s" class="col px-0 img-fluid imag-responsive hidden-sm-down"><span
+                                    class="col-12 px-0">Kingdom hearts</span></div>
+
+                            <div class="col-4 col-lg-12"><img
+                                    src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg"
+                                    alt="s" class="col px-0 img-fluid imag-responsive hidden-sm-down"><span
+                                    class="col px-0">Kingdom hearts</span></div>
+
+
+                        </div>
+                        <div class="row float-right">
+                            <div class="col  mt-2">
+                                <button class="btn">Show more</button>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 

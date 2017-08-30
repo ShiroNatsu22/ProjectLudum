@@ -95,39 +95,72 @@
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    Name: <input name="name">
+                                    <div class="form-group">
+                                        <label for="newName">Name</label>
+                                        <input class="form-control" id="newName" name="name"
+                                               placeholder="Enter your name">
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    Surname: <input name="surname">
+                                    <div class="form-group">
+                                        <label for="newSurname">Name</label>
+                                        <input class="form-control" id="newSurname" name="surname"
+                                               placeholder="Enter your Surname">
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    Gender: <input name="gender">
+                                    <label for="newGender">
+                                        Select your gender
+                                        <select class="col-6" id="newGender" name="gender">
+                                            <option value="M">Male</option>
+                                            <option value="F">Female</option>
+                                            <option value="O">Other</option>
+                                        </select>
+                                    </label>
+
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    Country: <input name="country">
+                                    <div class="form-group">
+                                        <label for="newCountry">Country</label>
+                                        <input class="form-control" id="newCountry" name="country"
+                                               placeholder="Enter your country">
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    Email: <input type="email" name="email">
+                                    <div class="form-group">
+                                        <label for="newEmail">Email</label>
+                                        <input class="form-control" type="email" id="newEmail" name="email"
+                                               placeholder="Enter your email">
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    Birthday: <input type="date" name="birthday">
+                                    <div class="form-group">
+                                        <label for="newBirthday">Birthday</label>
+                                        <input type="date" class="form-control" id="newBirthday" name="birthday"
+                                               placeholder="Enter your birthday">
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    Biography: <textarea name="biography"></textarea>
+                                    <div class="form-group">
+                                        <label for="newBiography">Biography</label>
+                                        <input class="form-control" id="newBiography" name="biography"
+                                               placeholder="Enter something about you">
+                                    </div>
                                 </div>
                             </div>
+
                             <div class="row">
                                 <div class="col">
                                     <button class="btn btn-primary">Add user</button>

@@ -102,6 +102,19 @@
                             </div>
                             <div class="row">
                                 <div class="col">
+                                    <label for="newCharacter_id_fk">
+                                        Select characters
+                                        <select class="col-6" id="newCharacter_id_fk" name="character_id_fk" multiple>
+                                            <c:forEach var="character" items="${requestScope.characterList}">
+                                                <option value="${character.character_id_pk}">${character.name}</option>
+                                            </c:forEach>
+                                        </select>
+                                    </label>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
                                     <button class="btn btn-primary">Add videogame</button>
                                 </div>
                             </div>
