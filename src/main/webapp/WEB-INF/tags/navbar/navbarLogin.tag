@@ -12,7 +12,7 @@
         <input class="form-control" type="password" placeholder="Password" name="password">
     </div>
     <button class="btn btn-danger btn-sm mr-2 my-2 my-sm-0">LogIn</button>
-        <button type=button class="btn btn-danger btn-sm my-2 my-sm-0 float-right" data-toggle="modal" data-target="#userRegistration">SigIn</button>
+    <button type=button class="btn btn-danger btn-sm my-2 my-sm-0 float-right" data-toggle="modal" data-target="#userRegistration">SigIn</button>
 
 
 </form>
@@ -35,8 +35,8 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label for="newUsername">Username</label>
-                                <input class="form-control" id="newUsername" name="username"
+                                <label for="newUsername">Username(*)</label>
+                                <input class="form-control userRegistration uFill user-notFill" id="newUsername" name="username"
                                        placeholder="Enter new username">
                             </div>
                         </div>
@@ -45,23 +45,31 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label for="newPassword">Password</label>
-                                <input type="password" class="form-control" id="newPassword" name="password"
+                                <label for="newPassword">Password(*)</label>
+                                <input type="password" class="form-control originalPassword passwordRegistation pFill password-notFill" id="newPassword" name="password"
                                        placeholder="Enter new password">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input type="checkbox" class="form-check-input" id="newAdmin" name="admin"
-                                           value="true">
-                                    Is admin?
-                                </label>
+                            <div class="form-group ">
+                                <div class="passwordComprobation errorMessage"></div>
                             </div>
                         </div>
+
                     </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group ">
+                                <label for="newRepeatPassword">Repeat password(*)</label>
+                                <input type="password" class="form-control repeatPassword passwordRegistation pFill password-notFill" id="newRepeatPassword" name="password"
+                                       placeholder="Enter new password">
+                            </div>
+                        </div>
+
+                    </div>
+
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
@@ -74,7 +82,7 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label for="newSurname">Name</label>
+                                <label for="newSurname">Surname</label>
                                 <input class="form-control" id="newSurname" name="surname"
                                        placeholder="Enter your Surname">
                             </div>
@@ -105,8 +113,8 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
-                                <label for="newEmail">Email</label>
-                                <input class="form-control" type="email" id="newEmail" name="email"
+                                <label for="newEmail">Email(*)</label>
+                                <input class="form-control emailRegistration eFill email-notFill" type="email" id="newEmail" name="email"
                                        placeholder="Enter your email">
                             </div>
                         </div>
@@ -132,7 +140,7 @@
 
                     <div class="row">
                         <div class="col">
-                            <button class="btn btn-primary">Add user</button>
+                            <button class="btn addUser btn-primary" disabled="disabled">Add user</button>
                         </div>
                     </div>
 
