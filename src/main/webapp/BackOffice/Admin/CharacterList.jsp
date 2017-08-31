@@ -9,13 +9,13 @@
 <tag:pageMaster>
 
     <jsp:attribute name="head">
-        <title>Companies list</title>
+        <title>Character list</title>
     </jsp:attribute>
 
     <jsp:body>
 
         <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#modalAddCharacter">Add
-            company
+            character
         </button>
 
         <%-- Table that prints a list of all companies --%>
@@ -54,7 +54,7 @@
                 <div class="modal-content">
 
                     <div class="modal-header">
-                        <h5 class="modal-title">Add new company</h5>
+                        <h5 class="modal-title">Add new character</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span>&times;</span>
                         </button>

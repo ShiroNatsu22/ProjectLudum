@@ -29,7 +29,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="<c:url value="/index.jsp"/>">Users</a>
+                    <a class="nav-link" href="<c:url value="/BackOffice/UsersList.jsp"/>">Users</a>
                 </li>
 
 

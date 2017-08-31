@@ -2,7 +2,7 @@
 <%@ taglib prefix="tag" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<jsp:include page="/controller/VideogamesControl"/>
+<jsp:include page="/controller/UsersControl"/>
 
 <tag:pageMaster>
 
@@ -23,12 +23,12 @@
             </thead>
 
             <tbody>
-            <c:forEach items="${requestScope.videogameList}" var="item">
+            <c:forEach items="${requestScope.userList}" var="item">
                 <tr>
                     <td><img class="img-fluid"
                              src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040"></td>
                     <td>
-                        <a href="<c:url value="/BackOffice/Profile.jsp?id=${item.videogame_id_pk}" />">${item.name}</a>
+                        <a href="<c:url value="/BackOffice/Profile.jsp?id=${item.user_id_pk}" />">${item.username}</a>
                     </td>
 
                 </tr>

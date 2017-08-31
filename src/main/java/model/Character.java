@@ -11,7 +11,9 @@ public class Character {
         this.name = name;
         this.biography = biography;
     }
+    public Character(){
 
+    }
     public int getCharacter_id_pk() {
         return character_id_pk;
     }
