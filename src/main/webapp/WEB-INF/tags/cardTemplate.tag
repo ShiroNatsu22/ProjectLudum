@@ -21,7 +21,9 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet"/>
     <link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap4.min.css" rel="stylesheet"/>
     <link type="text/css" rel="stylesheet" href="../../lib/css/login.min.css"/>
-    <link rel="stylesheet" href="../lib/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="../../lib/css/jquery-comments.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../lib/css/all.min.css">
 
 </head>
 
@@ -72,33 +74,24 @@
                     Comentarios:
                 </span>
         </div>
-    </div>
 
-    <div class="row">
 
-        <div class="col comments">
-            <div class="row">
+        <div class="row">
 
-                <div class="col-2">
-                    <img class="img-fluid"
-                         src="https://upload.wikimedia.org/wikipedia/en/b/b4/Jaime_Lannister-Nikolaj_Coster-Waldau.jpg"
-                         alt="Jaimito">
-                </div>
-                <div class="col">
-                    <div class="author col-2"> Escrito por USUARIO</div>
-                    <div class="col-10">
-                        INSERTAR TEXTO DE COMENTARIO
-                        Ete juego e mu vueno me dibierto muxo jugandolo y sabes matando y eso parese el cod
-                    </div>
+
+            <div class="col-12">
+                <div id="comments-container">
+
                 </div>
 
             </div>
         </div>
-
     </div>
 
+</div>
 
-    <jsp:invoke fragment="modalBlock"/>
+
+<jsp:invoke fragment="modalBlock"/>
 
 </div>
 <!-- JQuery -->
@@ -124,9 +117,12 @@
 
 <!-- Libraries -->
 
+<script src="../../lib/js/jquery-comments.min.js"></script>
+
 <script src="../../lib/js/libraries.min.js"></script>
 
 <script src="../../lib/js/toggle-classes.min.js"></script>
+<script src="../../lib/js/global.js"></script>
 
 
 </body>

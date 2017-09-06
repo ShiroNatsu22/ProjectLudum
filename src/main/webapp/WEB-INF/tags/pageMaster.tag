@@ -65,6 +65,7 @@
 <script src="../../lib/js/calculations.min.js"></script>
 
 <script src="../../lib/js/errorControl.min.js"></script>
+<script src="../../lib/js/global.js"></script>
 
 
 </body>
