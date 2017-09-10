@@ -25,7 +25,7 @@
                     <tbody>
                     <c:forEach items="${requestScope.userList}" var="item">
                         <tr>
-                            <td><img class="img-fluid"
+                            <td><img class="img-fluid col-2"
                                      src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
                             </td>
                             <td>

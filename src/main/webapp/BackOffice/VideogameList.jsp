@@ -25,11 +25,11 @@
                     <tbody>
                     <c:forEach items="${requestScope.videogameList}" var="item">
                         <tr>
-                            <td><img class="img-fluid"
+                            <td><img class="img-fluid col-2"
                                      src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
                             </td>
                             <td>
-                                <a href="<c:url value="/BackOffice/Profile.jsp?id=${item.videogame_id_pk}" />">${item.name}</a>
+                                <a href="<c:url value="/BackOffice/VideogameCard.jsp?id=${item.videogame_id_pk}" />">${item.name}</a>
                             </td>
 
                         </tr>

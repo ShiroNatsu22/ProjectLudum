@@ -4,6 +4,7 @@
 
 <jsp:include page="/controller/UserSelectedVideogamesControl"/>
 <jsp:include page="/controller/FavoriteGamesControl"/>
+<jsp:include page="/controller/UsersControl"/>
 
 <tag:pageMaster>
 
@@ -12,7 +13,11 @@
     </jsp:attribute>
 
     <jsp:body>
-
+        <div class="row ">
+            <div class="col px-0 separator-bottom mt-2">
+                    ${requestScope.currentUser.username}'s game list
+            </div>
+        </div>
         <div class="row">
             <div class="col">
                 <div class="row">

@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <jsp:include page="/controller/RelationshipsControl"/>
+<jsp:include page="/controller/UsersControl"/>
 
 <tag:pageMaster>
 
@@ -11,7 +12,11 @@
     </jsp:attribute>
 
     <jsp:body>
-
+        <div class="row ">
+            <div class="col px-0 separator-bottom mt-2">
+                    ${requestScope.currentUser.username}'s friends
+            </div>
+        </div>
         <div class="row">
             <div class="col">
                 <ul id="friend-nav" class="nav nav-tabs" role="tablist">

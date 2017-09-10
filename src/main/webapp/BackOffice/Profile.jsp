@@ -52,7 +52,7 @@
 
                 <div class="row ">
                     <div class="col mt-2">
-                        Name: ${requestScope.currentUser.name}, ${requestScope.currentUser.surname}
+                        Name: ${requestScope.currentUser.name} ${requestScope.currentUser.surname}
                     </div>
                 </div>
 
@@ -173,6 +173,17 @@
 
     <jsp:attribute name="rightBlock">
         <div class="row">
+            <div class="col">
+                <div class="row mt-3">
+                    <div class="col px-0">
+                        <span class="col px-0 section-title">Stats</span>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
 
             <div class="col px-0">
                 <div class="progress">
@@ -262,8 +273,12 @@
                         <div class="row ">
                             <div class="col-12">
                                 <div class="row">
-
-                                    <c:forEach var="userSelectedVideogame" varStatus="index" items="${requestScope.currentUserSelectedVideogamesListReversed}">
+                                    <c:choose>
+                                        <c:when test="${requestScope.currentUserSelectedVideogamesListReversed.size() == 0}">
+                                            <p>No updates yet</p>
+                                        </c:when>
+                                        <c:otherwise>
+                                             <c:forEach var="userSelectedVideogame" varStatus="index" items="${requestScope.currentUserSelectedVideogamesListReversed}">
                                         <c:if test="${index.index < 4}">
                                             <div class="col-6  ">
                                                 <div class="col-12 px-0 col-md-4 game-title put-inline no-inline">
@@ -289,6 +304,8 @@
                                         </c:if>
 
                                     </c:forEach>
+                                        </c:otherwise>
+                                    </c:choose>
 
 
                                 </div>
@@ -317,17 +334,30 @@
                             </div>
                         </div>
                         <div class="row">
+                            <c:choose>
 
-                            <c:forEach var="favoriteGame" varStatus="index" items="${requestScope.currentFavoriteGamesListReversed}">
+                                <c:when test="${requestScope.currentFavoriteGamesListReversed.size() == 0}">
+                                    <p>Not favorite games yet</p>
+                                </c:when>
+                                <c:otherwise>
+                                    <c:forEach var="favoriteGame" varStatus="index" items="${requestScope.currentFavoriteGamesListReversed}">
                                 <c:if test="${index.index < 3}">
 
                                     <div class="col-4 col-lg-12">
                                         <img src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a" class="col  px-0 img-fluid imag-responsive hidden-sm-down">
-                                        <a href="${favoriteGame.videogame_id_fk.videogame_id_pk}" class="col px-0">${favoriteGame.videogame_id_fk.name}</a>
+                                        <a  href="<c:url value="/BackOffice/VideogameCard.jsp?id=${favoriteGame.videogame_id_fk.videogame_id_pk}"/>" class="col px-0">${favoriteGame.videogame_id_fk.name}</a>
                                     </div>
 
                                 </c:if>
                             </c:forEach>
+                                <div class="row float-right">
+                                    <div class="col mt-2">
+                                        <button class="btn">Show more</button>
+                                    </div>
+                                </div>
+                                </c:otherwise>
+                            </c:choose>
+
 
                             <!--<div class="col-4 col-lg-12"><img
                                     src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a"
@@ -345,11 +375,6 @@
                                 <span class="col px-0">Kingdom hearts</span></div>
                             </div>-->
 
-                            <div class="row float-right">
-                                <div class="col mt-2">
-                                    <button class="btn">Show more</button>
-                                </div>
-                            </div>
 
                         </div>
                     </div>

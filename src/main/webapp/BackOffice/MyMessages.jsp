@@ -9,7 +9,11 @@
     </jsp:attribute>
 
     <jsp:body>
-
+        <div class="row ">
+            <div class="col px-0 separator-bottom mt-2">
+                    My messages
+            </div>
+        </div>
         <div class="row">
             <div class="col">
                 <ul id="messenger-nav" class="nav nav-tabs" role="tablist">
