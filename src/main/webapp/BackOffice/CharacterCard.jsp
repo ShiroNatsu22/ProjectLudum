@@ -2,14 +2,16 @@
 <%@ taglib prefix="tag" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<jsp:include page="/controller/CharactersControl"/>
+
 <tag:cardTemplate>
 
     <jsp:attribute name="head">
-        <title>Provisional</title>
+        <title>${requestScope.currentCharacter.name}'s card</title>
     </jsp:attribute>
 
     <jsp:attribute name="subtitle">
-        CHARACTER NAME
+        ${requestScope.currentCharacter.name}
     </jsp:attribute>
 
     <jsp:attribute name="leftBlock">
@@ -31,27 +33,10 @@
 
                 <div class="row card-attribute">
                     <div class="col  mt-2">
-                        Name: Ragnar Lodbrock
+                        Name: ${requestScope.currentCharacter.name}
                     </div>
                 </div>
 
-                <div class="row card-attribute">
-                    <div class="col  mt-2">
-                        Gender: Macho peluo
-                    </div>
-                </div>
-
-                <div class="row card-attribute">
-                    <div class="col  mt-2">
-                        Age: 30
-                    </div>
-                </div>
-
-                <div class="row card-attribute">
-                    <div class="col  mt-2">
-                        Location: Kattegat
-                    </div>
-                </div>
                 <div class="col  separator-bottom mt-2">
 
                 </div>
@@ -63,11 +48,11 @@
 
     <jsp:attribute name="rightBlock">
         <div class="row">
-            <div class="col ">
+            <div class="col">
 
                 <div class="row">
                     <div class="col col-sm-12 mt-2 other-info">
-                        <p>asfdasdfasdf sadf sadf sad fsa f sa f sadf sa fs</p>
+                            ${requestScope.currentCharacter.biography}
                     </div>
                 </div>
 

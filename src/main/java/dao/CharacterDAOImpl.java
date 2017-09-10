@@ -30,23 +30,22 @@ public class CharacterDAOImpl implements CharacterDAO {
 
     @Override
     public Character getCharacterByID(int character_id_pk) {
-        String query = "SELECT * FROM characters WHERE characters.characters = " + String.valueOf(character_id_pk);
-        List<Character> videogameList = getCharacters(query);
 
-        if (!(videogameList.isEmpty()))
-            return videogameList.get(0);
+        String query = String.format("SELECT * FROM characters WHERE characters.character_id_pk = %d", character_id_pk);
+        List<Character> characterList = getCharacters(query);
+
+        if (!(characterList.isEmpty()))
+            return characterList.get(0);
 
         return new Character();
+
     }
 
     @Override
-    public int createCharacter(Character character) {
-
-        int resultCharacter_id_pk = -1;
+    public void createCharacter(Character character) {
 
         try {
 
-            ResultSet rs;
             String query = "INSERT INTO characters (name, biography) VALUES(?,?)";
             PreparedStatement ps = db.getConnection(query);
 
@@ -54,18 +53,11 @@ public class CharacterDAOImpl implements CharacterDAO {
             ps.setString(2, character.getBiography());
             ps.execute();
 
-            rs = ps.getGeneratedKeys();
-
-            if (rs.next())
-                resultCharacter_id_pk = rs.getInt(1);
-
             ps.close();
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        return resultCharacter_id_pk;
 
     }
 

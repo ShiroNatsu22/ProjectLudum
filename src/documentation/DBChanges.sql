@@ -245,3 +245,9 @@ CREATE TABLE `gamerlistDB`.`people` (
   PRIMARY KEY (`people_id_pk`)
 );
 
+/* PAJ 10/09/2017 - Agregado el campo de biografia de la gente */
+
+ALTER TABLE `gamerlistDB`.`people`
+  ADD COLUMN `biography` MEDIUMTEXT NULL
+  AFTER `nationality`;
+
