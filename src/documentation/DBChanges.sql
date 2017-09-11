@@ -251,3 +251,44 @@ ALTER TABLE `gamerlistDB`.`people`
   ADD COLUMN `biography` MEDIUMTEXT NULL
   AFTER `nationality`;
 
+/* PAJ 11/09/2017 - Agregadas las tablas de personajes y personas favoritas */
+
+CREATE TABLE `gamerlistDB`.`favoriteCharacters` (
+  `favoriteCharacter_id_pk` INT NOT NULL AUTO_INCREMENT,
+  `user_id_fk`              INT NOT NULL,
+  `character_id_fk`         INT NOT NULL,
+  PRIMARY KEY (`favoriteCharacter_id_pk`),
+  INDEX `user_idx` (`user_id_fk` ASC),
+  INDEX `character_idx` (`character_id_fk` ASC),
+  UNIQUE INDEX `userCharacter` (`user_id_fk` ASC, `character_id_fk` ASC),
+  CONSTRAINT `favoriteCharacters_user`
+  FOREIGN KEY (`user_id_fk`)
+  REFERENCES `gamerlistDB`.`users` (`user_id_pk`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `favoriteCharacters_character`
+  FOREIGN KEY (`character_id_fk`)
+  REFERENCES `gamerlistDB`.`characters` (`character_id_pk`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+);
+
+CREATE TABLE `gamerlistDB`.`favoritePeople` (
+  `favoritePeople_id_pk` INT NOT NULL AUTO_INCREMENT,
+  `user_id_fk`           INT NOT NULL,
+  `people_id_fk`         INT NOT NULL,
+  PRIMARY KEY (`favoritePeople_id_pk`),
+  INDEX `user_idx` (`user_id_fk` ASC),
+  INDEX `people_idx` (`people_id_fk` ASC),
+  UNIQUE INDEX `userPeople` (`user_id_fk` ASC, `people_id_fk` ASC),
+  CONSTRAINT `favoritePeople_user`
+  FOREIGN KEY (`user_id_fk`)
+  REFERENCES `gamerlistDB`.`users` (`user_id_pk`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `favoritePeople_people`
+  FOREIGN KEY (`people_id_fk`)
+  REFERENCES `gamerlistDB`.`people` (`people_id_pk`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+);

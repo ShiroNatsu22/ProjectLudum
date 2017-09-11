@@ -6,6 +6,8 @@
 <jsp:include page="/controller/RelationshipsControl"/>
 <jsp:include page="/controller/UserSelectedVideogamesControl"/>
 <jsp:include page="/controller/FavoriteGamesControl"/>
+<jsp:include page="/controller/FavoriteCharactersControl"/>
+<jsp:include page="/controller/FavoritePeopleControl"/>
 
 <tag:cardTemplate>
 
@@ -349,40 +351,22 @@
                                 </c:when>
                                 <c:otherwise>
                                     <c:forEach var="favoriteGame" varStatus="index" items="${requestScope.currentFavoriteGamesListReversed}">
-                                <c:if test="${index.index < 3}">
+                                        <c:if test="${index.index < 3}">
 
-                                    <div class="col-4 col-lg-12">
-                                        <img src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a" class="col  px-0 img-fluid imag-responsive hidden-sm-down">
-                                        <a href="<c:url value="/BackOffice/VideogameCard.jsp?id=${favoriteGame.videogame_id_fk.videogame_id_pk}"/>" class="col px-0">${favoriteGame.videogame_id_fk.name}</a>
-                                    </div>
+                                            <div class="col-4 col-lg-12">
+                                                <img src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a" class="col  px-0 img-fluid imag-responsive hidden-sm-down">
+                                                <a href="<c:url value="/BackOffice/VideogameCard.jsp?id=${favoriteGame.videogame_id_fk.videogame_id_pk}"/>" class="col px-0">${favoriteGame.videogame_id_fk.name}</a>
+                                            </div>
 
-                                </c:if>
-                            </c:forEach>
-                                <div class="row float-right">
-                                    <div class="col mt-2">
-                                        <button class="btn">Show more</button>
+                                        </c:if>
+                                    </c:forEach>
+                                    <div class="row float-right">
+                                        <div class="col mt-2">
+                                            <button class="btn">Show more</button>
+                                        </div>
                                     </div>
-                                </div>
                                 </c:otherwise>
                             </c:choose>
-
-
-                            <!--<div class="col-4 col-lg-12"><img
-                                    src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a"
-                                    class="col  px-0 img-fluid imag-responsive hidden-sm-down">
-                                <span class="col px-0">Vikings</span></div>
-
-                            <div class="col-4 col-lg-12"><img
-                                    src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg"
-                                    alt="s" class="col px-0 img-fluid imag-responsive hidden-sm-down">
-                                <span class="col px-0">Kingdom hearts</span></div>
-
-                            <div class="col-4 col-lg-12"><img
-                                    src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg"
-                                    alt="s" class="col px-0 img-fluid imag-responsive hidden-sm-down">
-                                <span class="col px-0">Kingdom hearts</span></div>
-                            </div>-->
-
 
                         </div>
                     </div>
@@ -394,31 +378,33 @@
 
                             </div>
                         </div>
+
                         <div class="row">
-                            <div class="col">
-                                <div class="row">
-                                    <div class="col-4 col-lg-12"><img
-                                            src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a"
-                                            class="col px-0 img-fluid imag-responsive hidden-sm-down"><span
-                                            class="col px-0 ">Vikings</span>
-                                    </div>
 
-                                    <div class="col-4 col-lg-12"><img
-                                            src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg"
-                                            alt="s" class="col px-0  img-fluid imag-responsive hidden-sm-down"><span
-                                            class="col px-0">Kingdom hearts</span></div>
+                            <c:choose>
 
-                                    <div class="col-4 col-lg-12"><img
-                                            src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg"
-                                            alt="s" class="col px-0 img-fluid imag-responsive hidden-sm-down"><span
-                                            class="col px-0">Kingdom hearts</span></div>
-                                </div>
-                                <div class="row">
-                                    <div class="col  mt-2">
-                                        <button class="btn  float-right">Show more</button>
+                                <c:when test="${requestScope.currentFavoriteCharactersListReversed.size() == 0}">
+                                    <p>Not favorite characters yet</p>
+                                </c:when>
+                                <c:otherwise>
+                                    <c:forEach var="favoriteCharacter" varStatus="index" items="${requestScope.currentFavoriteCharactersListReversed}">
+                                        <c:if test="${index.index < 3}">
+
+                                            <div class="col-4 col-lg-12">
+                                                <img src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a" class="col  px-0 img-fluid imag-responsive hidden-sm-down">
+                                                <a href="<c:url value="/BackOffice/CharacterCard.jsp?id=${favoriteCharacter.character_id_pk}"/>" class="col px-0">${favoriteCharacter.name}</a>
+                                            </div>
+
+                                        </c:if>
+                                    </c:forEach>
+                                    <div class="row float-right">
+                                        <div class="col mt-2">
+                                            <button class="btn">Show more</button>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
+                                </c:otherwise>
+                            </c:choose>
+
                         </div>
                     </div>
                     <div class="col-lg-4 col-12 ">
@@ -429,27 +415,31 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-4 col-lg-12"><img
-                                    src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a"
-                                    class="col px-0 img-fluid imag-responsive hidden-sm-down"><span
-                                    class="col px-0">Vikings</span></div>
 
-                            <div class="col-4 col-lg-12"><img
-                                    src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg"
-                                    alt="s" class="col px-0 img-fluid imag-responsive hidden-sm-down"><span
-                                    class="col-12 px-0">Kingdom hearts</span></div>
+                            <c:choose>
 
-                            <div class="col-4 col-lg-12"><img
-                                    src="http://fdzeta.com/data/MetaMirrorCache/___cb20130808121919_finalfantasy_images_1_19_Kingdom_Hearts_Characters.jpg"
-                                    alt="s" class="col px-0 img-fluid imag-responsive hidden-sm-down"><span
-                                    class="col px-0">Kingdom hearts</span></div>
+                                <c:when test="${requestScope.currentFavoritePeopleListReversed.size() == 0}">
+                                    <p>Not favorite people yet</p>
+                                </c:when>
+                                <c:otherwise>
+                                    <c:forEach var="favoritePeople" varStatus="index" items="${requestScope.currentFavoritePeopleListReversed}">
+                                        <c:if test="${index.index < 3}">
 
+                                            <div class="col-4 col-lg-12">
+                                                <img src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a" class="col  px-0 img-fluid imag-responsive hidden-sm-down">
+                                                <a href="<c:url value="/BackOffice/PeopleCard.jsp?id=${favoritePeople.people_id_pk}"/>" class="col px-0">${favoritePeople.name}</a>
+                                            </div>
 
-                        </div>
-                        <div class="row float-right">
-                            <div class="col  mt-2">
-                                <button class="btn">Show more</button>
-                            </div>
+                                        </c:if>
+                                    </c:forEach>
+                                    <div class="row float-right">
+                                        <div class="col mt-2">
+                                            <button class="btn">Show more</button>
+                                        </div>
+                                    </div>
+                                </c:otherwise>
+                            </c:choose>
+
                         </div>
                     </div>
 

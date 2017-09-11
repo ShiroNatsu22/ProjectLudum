@@ -53,8 +53,10 @@ public class UserSelectedVideogamesControl extends HttpServlet {
             videogamesCount.add((int) userSelectedVideogamesList.stream().filter(svl -> svl.getStatus().equals("dropped")).count());
             videogamesCount.add((int) userSelectedVideogamesList.stream().filter(svl -> svl.getStatus().equals("planToPlay")).count());
 
+
             // Obtenemos el porcentage de estas cuentas
-            for (Integer count : videogamesCount) videogamesCountPercent.add(count != 0 ? ((count * 100) / 5) : 0);
+            for (Integer count : videogamesCount)
+                videogamesCountPercent.add(count != 0 ? (((count * 100) - 1) / userSelectedVideogamesList.size() + 1) : 0);
 
             req.setAttribute("currentUserSelectedVideogame", userSelectedVideogames);
             req.setAttribute("currentUserSelectedVideogamesList", userSelectedVideogamesList);

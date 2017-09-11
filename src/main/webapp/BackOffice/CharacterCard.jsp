@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <jsp:include page="/controller/CharactersControl"/>
+<jsp:include page="/controller/FavoriteCharactersControl"/>
 
 <tag:cardTemplate>
 
@@ -12,6 +13,18 @@
 
     <jsp:attribute name="subtitle">
         ${requestScope.currentCharacter.name}
+        <c:if test="${sessionScope.currentUser != null}">
+            <form action="<c:url value="/controller/FavoriteCharactersControl"/>" class="d-inline" method="post">
+                <c:choose>
+                    <c:when test="${requestScope.currentFavoriteCharacter.character_id_pk != 0}">
+                        <button class="btn btn-link favorite-btn delete-favorite" name="deleteFavoriteCharacter" value="${param["id"]}">(Delete from favorites)</button>
+                    </c:when>
+                    <c:otherwise>
+                       <button class="btn btn-link favorite-btn add-favorite" name="addFavoriteCharacter" value="${param["id"]}">(Add to favorites)</button>
+                    </c:otherwise>
+                </c:choose>
+            </form>
+        </c:if>
     </jsp:attribute>
 
     <jsp:attribute name="leftBlock">
@@ -34,6 +47,12 @@
                 <div class="row card-attribute">
                     <div class="col  mt-2">
                         Name: ${requestScope.currentCharacter.name}
+                    </div>
+                </div>
+
+                <div class="row card-attribute">
+                    <div class="col mt-2">
+                        Favorited: ${requestScope.currentFavoriteCharacterCount}
                     </div>
                 </div>
 
