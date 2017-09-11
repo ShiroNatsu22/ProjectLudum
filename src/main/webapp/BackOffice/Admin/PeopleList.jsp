@@ -2,44 +2,46 @@
 <%@ taglib prefix="tag" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<jsp:include page="/controller/CompaniesControl"/>
-<jsp:include page="/controller/VideogamesControl"/>
-
+<jsp:include page="/controller/PeopleControl"/>
 
 <tag:pageMaster>
 
     <jsp:attribute name="head">
-        <title>Companies list</title>
+        <title>People list</title>
     </jsp:attribute>
 
     <jsp:body>
 
         <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#modalAddPeople">Add
-            company
+            people
         </button>
 
         <%-- Table that prints a list of all companies --%>
-        <table class="table table-hover table-bordered table-list cell-border">
+        <table class="table table-hover table-bordered table-list cell-border" style="width: 100%">
             <thead>
             <tr class="bg-primary text-white">
-                <th>Name</th>
-                <th>Founded</th>
+                <th>Complete name</th>
+                <th>Birthay</th>
+                <th>Nationality</th>
                 <th>Delete</th>
             </tr>
             </thead>
 
             <tbody>
-            <c:forEach items="${requestScope.companyList}" var="company">
+            <c:forEach items="${requestScope.peopleList}" var="people">
                 <tr>
                     <td>
-                        <a href="<c:url value="/BackOffice/CompanyCard.jsp?id=${company.company_id_pk}" />">${company.name}</a>
+                        <a href="<c:url value="/BackOffice/PeopleCard.jsp?id=${people.people_id_pk}" />">${people.name} ${people.surname}</a>
                     </td>
                     <td>
-                            ${company.founded}
+                            ${people.birthday}
                     </td>
                     <td>
-                        <form action="<c:url value="/controller/CompaniesControl"/>" method="post">
-                            <button name="deleteCompany" value="${company.company_id_pk}"><i class="fa fa-trash"></i>
+                            ${people.nationality}
+                    </td>
+                    <td>
+                        <form action="<c:url value="/controller/PeopleControl"/>" method="post">
+                            <button name="deletePeople" value="${people.people_id_pk}"><i class="fa fa-trash"></i>
                             </button>
                         </form>
                     </td>
@@ -62,13 +64,22 @@
                     <div class="row">
                         <div class="col">
                             <div class="modal-body">
-                                <form action="" method="post">
+                                <form action="<c:url value="/controller/PeopleControl"/>" method="post">
                                     <div class="row">
                                         <div class="col">
                                             <div class="form-group">
                                                 <label for="newPeopleName">Name</label>
                                                 <input class="form-control" id="newPeopleName" name="name"
-                                                       placeholder="Enter character name">
+                                                       placeholder="Enter person name">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="newPeopleSurname">Surname</label>
+                                                <input class="form-control" id="newPeopleSurname" name="surname" placeholder="Enter person surname">
                                             </div>
                                         </div>
                                     </div>
@@ -82,16 +93,15 @@
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="row">
                                         <div class="col">
                                             <div class="form-group">
-                                                <label for="newPeopleCompany">Location</label>
-                                                <input class="form-control" id="newPeopleCompany" name="company"
-                                                       placeholder="Enter person actual company">
+                                                <label for="newPeopleNationality">Nationality</label>
+                                                <input class="form-control" id="newPeopleNationality" name="nationality" placeholder="Enter person nationality">
                                             </div>
                                         </div>
                                     </div>
-
 
                                     <div class="row">
                                         <div class="col">

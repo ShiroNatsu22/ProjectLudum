@@ -10,7 +10,7 @@ public interface CharacterDAO {
 
     Character getCharacterByID(int character_id_pk);
 
-    int createCharacter(Character character);
+    void createCharacter(Character character);
 
     void deleteCharacter(int character_id_pk);
 

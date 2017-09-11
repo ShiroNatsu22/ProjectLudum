@@ -2,14 +2,16 @@
 <%@ taglib prefix="tag" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<jsp:include page="/controller/PeopleControl"/>
+
 <tag:cardTemplate>
 
     <jsp:attribute name="head">
-        <title>Provisional</title>
+        <title>${requestScope.currentPeople.name}'s Card</title>
     </jsp:attribute>
 
     <jsp:attribute name="subtitle">
-        PERSON NAME
+        ${requestScope.currentPeople.name}
     </jsp:attribute>
 
     <jsp:attribute name="leftBlock">
@@ -25,15 +27,7 @@
             <div class="col">
                 <div class="row card-attribute">
                     <div class="col  mt-2">
-                        Name: HIDEO GODJIMA
-                    </div>
-                </div>
-
-            </div>
-            <div class="col">
-                <div class="row card-attribute">
-                    <div class="col  mt-2">
-                        Birthday: 2000-22-12
+                        Name: ${requestScope.currentPeople.name} ${requestScope.currentPeople.surname}
                     </div>
                 </div>
 
@@ -42,12 +36,19 @@
             <div class="col">
                 <div class="row card-attribute">
                     <div class="col  mt-2">
-                        Actual company: Zony
+                        Birthday: ${requestScope.currentPeople.birthday}
                     </div>
                 </div>
 
             </div>
 
+            <div class="col">
+                <div class="row card-attribute">
+                    <div class="col mt-2">
+                        Nationality: ${requestScope.currentPeople.nationality}
+                    </div>
+                </div>
+            </div>
 
         </div>
     </jsp:attribute>
@@ -58,7 +59,7 @@
 
                 <div class="row">
                     <div class="col col-sm-12 mt-2 other-info">
-                        <p>ghjgisdhguhasudh asdughaushdg uashg asuhguashg</p>
+                            ${requestScope.currentPeople.biography}
                     </div>
                 </div>
 

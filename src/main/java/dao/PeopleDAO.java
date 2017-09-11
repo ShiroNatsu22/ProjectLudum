@@ -10,7 +10,7 @@ public interface PeopleDAO {
 
     People getPeopleByID(int People_id_pk);
 
-    int createPeople(People People);
+    void createPeople(People People);
 
     void deletePeople(int People_id_pk);
 

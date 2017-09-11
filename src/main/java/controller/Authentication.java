@@ -24,17 +24,8 @@ public class Authentication extends HttpServlet {
         UserDAO userDAO = new UserDAOImpl();
         User user = userDAO.getUserByUsername(username);
 
-        boolean authentication = false;
-
-        if (password != null && user.getPassword() != null)
-            authentication = password.equals(user.getPassword());
-
-        if (authentication) {
-            HttpSession session = req.getSession(true);
-            session.setAttribute("currentUser", user);
-
-        } else {
-
+        if (password != null && user.getPassword() != null && password.equals(user.getPassword())) {
+            req.getSession(true).setAttribute("currentUser", user);
         }
 
         resp.sendRedirect(req.getHeader("Referer"));

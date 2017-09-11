@@ -65,16 +65,15 @@ public class UsersControl extends HttpServlet {
         // Crear usuario
         else {
 
-            DateFormat format = new SimpleDateFormat("YYYY-MM-DD");
-            User user = null;
+            DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
             try {
-                user = new User(0, req.getParameter("username"), req.getParameter("password"), Boolean.parseBoolean(req.getParameter("admin")), req.getParameter("name"), req.getParameter("surname"), req.getParameter("gender"), req.getParameter("country"), req.getParameter("email"), !(req.getParameter("birthday").equals("")) ? format.parse(req.getParameter("birthday")) : null, req.getParameter("biography"), new Date());
+                User user = new User(0, req.getParameter("username"), req.getParameter("password"), Boolean.parseBoolean(req.getParameter("admin")), req.getParameter("name"), req.getParameter("surname"), req.getParameter("gender"), req.getParameter("country"), req.getParameter("email"), !(req.getParameter("birthday").equals("")) ? format.parse(req.getParameter("birthday")) : null, req.getParameter("biography"), new Date());
+                userDAO.createUser(user);
             } catch (ParseException e) {
                 e.printStackTrace();
             }
 
-            userDAO.createUser(user);
 
         }
 

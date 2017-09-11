@@ -5,7 +5,7 @@
 
     <!--
     Pablo's connection:
-    jdbc:mysql://192.168.1.36/gamerlistDB?allowMultiQueries=true
+    jdbc:mysql://192.168.1.38/gamerlistDB?allowMultiQueries=true
     User: root | Pass: 1234
     -->
     <!--
@@ -15,9 +15,9 @@
 
     <bean id="dbc" class="model.DataBase">
         <constructor-arg value="com.mysql.jdbc.Driver"/>
-        <constructor-arg value="jdbc:mysql://192.168.1.47/gamerlistDB?useUnicode=yes&amp;characterEncoding=utf8"/>
+        <constructor-arg value="jdbc:mysql://192.168.1.38/gamerlistDB?useUnicode=yes&amp;characterEncoding=utf8"/>
         <constructor-arg value="root"/>
-        <constructor-arg value="test"/>
+        <constructor-arg value="1234"/>
     </bean>
 
 </beans>
