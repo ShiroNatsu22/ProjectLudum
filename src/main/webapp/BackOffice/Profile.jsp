@@ -63,8 +63,10 @@
                         </c:when>
 
                         <c:when test='${requestScope.currentRelationship.status.equals("accepted")}'>
-                            Friend
-                            <button class="btn btn-danger" name="rejectRelationship" value="${requestScope.currentUser.user_id_pk}">Delete</button>
+
+                            <button type=button class="btn btn-danger" data-toggle="modal" data-target="#deleteFriend">
+                                <i class="fa fa-3x fa-user-times" aria-hidden="true"></i>
+                            </button>
                         </c:when>
 
                     </c:choose>
@@ -74,7 +76,8 @@
                     </div>
                     <div class="col">
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createPrivateMessage">
-                            <i class="fa fa-comments fa-3x" aria-hidden="true"></i>
+                            <i class="fa fa-envelope-o fa-3x" aria-hidden="true"></i>
+
                         </button>
                     </div>
 
@@ -160,7 +163,7 @@
                             <c:if test="${friend != null}">
                                 <c:if test="${count.index < 3}">
                                     <div class="col">
-                                            ${friend.username}
+                                        <a href="<c:url value="/BackOffice/Profile.jsp?id=${friend.user_id_pk}" />">${friend.username}</a>
                                         <!--<img class="  img-fluid" src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">-->
                                     </div>
                                 </c:if>
@@ -317,8 +320,10 @@
 
                         </div>
                         <div class="col  mt-2 ml-3">
+                            <button class="btn  float-right" onclick="window.location.href='<c:url
+                                    value='/BackOffice/UserGameList.jsp?id=${param["id"]}'/>'">Show more
+                            </button>
 
-                            <button class="btn  float-right">Show More</button>
                         </div>
                     </div>
                 </div>
@@ -469,9 +474,13 @@
                     <div class="modal-body">
 
                         <form id="privateMessageForm" action="<c:url value="/controller/PrivateMessagesControl" />" method="post">
-                            Subject <input name="subject">
-                            Message
-                            <textarea name="content"></textarea>
+                            <div class="row">
+                                <div class="col">
+                                    <label for="subject">Subject </label>
+                                    <input id="subject" name="subject">
+                                </div>
+                            </div>
+
 
                         </form>
 
@@ -482,7 +491,43 @@
                 </div>
             </div>
         </div>
+    <!--Modal para eliminar amigo -->
 
+        <div class="modal fade" id="deleteFriend" tabindex="-1" role="dialog" aria-labelledby="deleteFriend">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteFriendLabel">Are you sure to delete this friend?</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span>&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <form id="deleteFriendForm" action="<c:url value="/controller/RelationshipsControl" />" method="post">
+                            <div class="row">
+                                <div class="col">
+                                    <button class="btn btn-danger" name="rejectRelationship" value="${requestScope.currentUser.user_id_pk}">
+                                        <i class="fa fa-check fa-3x" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+
+                                <div class="col">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <i class="fa fa-times fa-3x" aria-hidden="true"></i>
+
+                                    </button>
+                                </div>
+                            </div>
+
+
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </jsp:attribute>
 
 </tag:cardTemplate>
