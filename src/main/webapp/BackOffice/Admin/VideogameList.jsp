@@ -18,7 +18,7 @@
         </button>
 
         <%-- Table that prints a list of all videogames --%>
-        <table class="table table-hover table-bordered table-list">
+        <table class="table table-hover table-bordered table-list"  width="100%">
             <thead>
             <tr class="bg-primary text-white">
                 <th>Name</th>

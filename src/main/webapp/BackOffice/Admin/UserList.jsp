@@ -16,7 +16,7 @@
         </button>
 
         <%-- Table that prints a list of all users --%>
-        <table class="table table-hover table-bordered">
+        <table class="table table-hover table-bordered"  width="100%">
             <thead>
             <tr class="bg-primary text-white">
                 <th>Username</th>

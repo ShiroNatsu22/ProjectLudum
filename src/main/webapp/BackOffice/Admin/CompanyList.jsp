@@ -18,7 +18,7 @@
         </button>
 
         <%-- Table that prints a list of all companies --%>
-        <table class="table table-hover table-bordered table-list cell-border">
+        <table class="table table-hover table-bordered table-list cell-border"  width="100%">
             <thead>
             <tr class="bg-primary text-white">
                 <th>Name</th>

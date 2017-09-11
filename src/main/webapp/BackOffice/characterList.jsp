@@ -15,7 +15,7 @@
 
         <div class="row">
             <div class="col">
-                <table class="table table-hover table-stripped table-bordered table-list">
+                <table class="table table-hover table-stripped table-bordered table-list"  width="100%">
                     <thead>
                     <tr>
                         <th>#</th>
@@ -27,7 +27,7 @@
                     <tbody>
                     <tr>
                         <th scope="row">1</th>
-                        <td><img class="img-fluid col-2"
+                        <td><img class="img-fluid col col-md-2"
                                  src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
                         </td>
                         <td>Vikings</td>
@@ -36,7 +36,7 @@
                     </tr>
                     <tr>
                         <th scope="row">2</th>
-                        <td><img class="img-fluid col-2"
+                        <td><img class="img-fluid col col-md-2"
                                  src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
                         </td>
                         <td>Kingdom hearts</td>
@@ -45,7 +45,7 @@
                     </tr>
                     <tr>
                         <th scope="row">3</th>
-                        <td><img class="img-fluid col-2"
+                        <td><img class="img-fluid col col-md-2"
                                  src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
                         </td>
                         <td>Metal Gear Solid</td>

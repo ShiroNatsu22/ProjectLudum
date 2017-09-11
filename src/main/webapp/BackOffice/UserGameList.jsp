@@ -23,7 +23,7 @@
                 <div class="row">
                     <div class="col">
 
-                        <ul id="user-list-nav" class="nav nav-tabs hidden-sm-down" role="tablist">
+                        <ul id="user-list-nav" class="nav nav-tabs hidden-sm-down" role="tablist" width="100%">
 
                             <li class="nav-item">
                                 <a class="nav-link active" href="#completed" id="completed-tab" role="tab"
@@ -42,10 +42,18 @@
                                    data-toggle="tab" aria-controls="pending">Plan to play</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " href="#favorite" id="favorite-tab" role="tab"
-                                   data-toggle="tab" aria-controls="favorite">Favorites</a>
+                                <a class="nav-link " href="#favoriteGame" id="favorite-game-tab" role="tab"
+                                   data-toggle="tab" aria-controls="favoriteGame">Favorite game</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="#favoritePeople" id="favorite-peopel-tab" role="tab"
+                                   data-toggle="tab" aria-controls="favoritePeople">Favorite people</a>
                             </li>
 
+                            <li class="nav-item">
+                                <a class="nav-link " href="#favoriteCharacter" id="favorite-character-tab" role="tab"
+                                   data-toggle="tab" aria-controls="favoriteCharacter">Favorite character</a>
+                            </li>
                         </ul>
 
                     </div>
@@ -57,9 +65,9 @@
             <div role="tabpanel" class="tab-pane fade show active" id="completed" aria-labelledby="completed-tab">
                 <div class="row">
                     <div class="col">
-                        <table class="table table-hover table-stripped responsive table-list" width="100%">
+                        <table class="table table-hover table-stripped table-bordered table-list" width="100%">
                             <thead>
-                            <tr>
+                            <tr class="bg-primary text-white">
                                 <th>#</th>
                                 <th>Image</th>
                                 <th>Name</th>
@@ -78,7 +86,7 @@
                                                 ${count.count}
                                         </td>
                                         <td>
-                                            <img class="img-fluid" width="50" height="50" src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
+                                            <img class="img-fluid col col-md-2" width="50" height="50" src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
                                         </td>
                                         <td>
                                             <a href="<c:url value="/BackOffice/VideogameCard.jsp?id=${userSelectedVideogame.videogame_id_fk.videogame_id_pk}"/>">${userSelectedVideogame.videogame_id_fk.name}</a>
@@ -108,9 +116,9 @@
             <div role="tabpanel" class="tab-pane fade show" id="playing" aria-labelledby="process-tab">
                 <div class="row">
                     <div class="col">
-                        <table class="table table-hover table-stripped responsive table-list" width="100%">
+                        <table class="table table-hover table-stripped table-bordered table-list" width="100%">
                             <thead>
-                            <tr>
+                            <tr class="bg-primary text-white">
                                 <th>#</th>
                                 <th>Image</th>
                                 <th>Name</th>
@@ -129,7 +137,7 @@
                                                 ${count.count}
                                         </td>
                                         <td>
-                                            <img class="img-fluid" width="50" height="50" src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
+                                            <img class="img-fluid col col-md-2" width="50" height="50" src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
                                         </td>
                                         <td>
                                             <a href="<c:url value="/BackOffice/VideogameCard.jsp?id=${userSelectedVideogame.videogame_id_fk.videogame_id_pk}"/>">${userSelectedVideogame.videogame_id_fk.name}</a>
@@ -159,9 +167,9 @@
             <div role="tabpanel" class="tab-pane fade show" id="dropped" aria-labelledby="dropped-tab">
                 <div class="row">
                     <div class="col">
-                        <table class="table table-hover table-stripped responsive table-list" width="100%">
+                        <table class="table table-hover table-stripped table-bordered table-list" width="100%">
                             <thead>
-                            <tr>
+                            <tr class="bg-primary text-white">
                                 <th>#</th>
                                 <th>Image</th>
                                 <th>Name</th>
@@ -180,7 +188,7 @@
                                                 ${count.count}
                                         </td>
                                         <td>
-                                            <img class="img-fluid" width="50" height="50" src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
+                                            <img class="img-fluid col col-md-2" width="50" height="50" src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
                                         </td>
                                         <td>
                                             <a href="<c:url value="/BackOffice/VideogameCard.jsp?id=${userSelectedVideogame.videogame_id_fk.videogame_id_pk}"/>">${userSelectedVideogame.videogame_id_fk.name}</a>
@@ -210,9 +218,9 @@
             <div role="tabpanel" class="tab-pane fade show " id="planToPlay" aria-labelledby="pending-tab">
                 <div class="row">
                     <div class="col">
-                        <table class="table table-hover table-stripped responsive table-list" width="100%">
+                        <table class="table table-hover table-stripped table-bordered table-list" width="100%">
                             <thead>
-                            <tr>
+                            <tr class="bg-primary text-white">
                                 <th>#</th>
                                 <th>Image</th>
                                 <th>Name</th>
@@ -231,7 +239,7 @@
                                                 ${count.count}
                                         </td>
                                         <td>
-                                            <img class="img-fluid" width="50" height="50" src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
+                                            <img class="img-fluid col col-md-2" width="50" height="50" src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
                                         </td>
                                         <td>
                                             <a href="<c:url value="/BackOffice/VideogameCard.jsp?id=${userSelectedVideogame.videogame_id_fk.videogame_id_pk}"/>">${userSelectedVideogame.videogame_id_fk.name}</a>
@@ -258,12 +266,12 @@
                 </div>
             </div>
 
-            <div role="tabpanel" class="tab-pane fade show " id="favorite" aria-labelledby="favorite-tab">
+            <div role="tabpanel" class="tab-pane fade show " id="favoriteGame" aria-labelledby="favorite-game-tab">
                 <div class="row">
                     <div class="col">
-                        <table class="table table-hover table-stripped responsive table-list" width="100%">
+                        <table class="table table-hover table-stripped table-bordered table-list" width="100%">
                             <thead>
-                            <tr>
+                            <tr class="bg-primary text-white">
                                 <th>#</th>
                                 <th>Image</th>
                                 <th>Name</th>
@@ -281,7 +289,7 @@
                                             ${count.count}
                                     </td>
                                     <td>
-                                        <img class="img-fluid" width="50" height="50" src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
+                                        <img class="img-fluid col col-md-2" width="50" height="50" src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
                                     </td>
                                     <td>
                                         <a href="<c:url value="/BackOffice/VideogameCard.jsp?id=${favoriteVideogame.videogame_id_fk.videogame_id_pk}"/>">${favoriteVideogame.videogame_id_fk.name}</a>
@@ -306,7 +314,101 @@
                 </div>
             </div>
 
+            <div role="tabpanel" class="tab-pane fade show " id="favoritePeople" aria-labelledby="favorite-people-tab">
+                <div class="row">
+                    <div class="col">
+                        <table class="table table-hover table-stripped table-bordered table-list" width="100%">
+                            <thead>
+                            <tr class="bg-primary text-white">
+                                <th>#</th>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <c:if test="${sessionScope.currentUser.user_id_pk == param['id']}">
+                                    <th>Delete</th>
+                                </c:if>
 
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <c:forEach var="favoriteVideogame" varStatus="count" items="${requestScope.currentFavoriteGamesList}">
+                                <tr>
+                                    <td>
+                                            ${count.count}
+                                    </td>
+                                    <td>
+                                        <img class="img-fluid col col-md-2" width="50" height="50" src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
+                                    </td>
+                                    <td>
+                                        <a href="<c:url value="/BackOffice/VideogameCard.jsp?id=${favoriteVideogame.videogame_id_fk.videogame_id_pk}"/>">${favoriteVideogame.videogame_id_fk.name}</a>
+                                    </td>
+                                    <c:if test="${sessionScope.currentUser.user_id_pk == param['id']}">
+                                        <td>
+                                            <form action="<c:url value="/controller/FavoriteGamesControl"/>" method="post">
+                                                <button class="btn btn-danger" name="deleteFavoriteGame" value="${favoriteVideogame.videogame_id_fk.videogame_id_pk}">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </c:if>
+                                </tr>
+
+
+                            </c:forEach>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div role="tabpanel" class="tab-pane fade show " id="favoriteCharacter" aria-labelledby="favorite-character-tab">
+                <div class="row">
+                    <div class="col">
+                        <table class="table table-hover table-stripped table-bordered table-list" width="100%">
+                            <thead>
+                            <tr class="bg-primary text-white">
+                                <th>#</th>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <c:if test="${sessionScope.currentUser.user_id_pk == param['id']}">
+                                    <th>Delete</th>
+                                </c:if>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <c:forEach var="favoriteVideogame" varStatus="count" items="${requestScope.currentFavoriteGamesList}">
+                                <tr>
+                                    <td>
+                                            ${count.count}
+                                    </td>
+                                    <td>
+                                        <img class="img-fluid col col-md-2" width="50" height="50" src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
+                                    </td>
+                                    <td>
+                                        <a href="<c:url value="/BackOffice/VideogameCard.jsp?id=${favoriteVideogame.videogame_id_fk.videogame_id_pk}"/>">${favoriteVideogame.videogame_id_fk.name}</a>
+                                    </td>
+                                    <c:if test="${sessionScope.currentUser.user_id_pk == param['id']}">
+                                        <td>
+                                            <form action="<c:url value="/controller/FavoriteGamesControl"/>" method="post">
+                                                <button class="btn btn-danger" name="deleteFavoriteGame" value="${favoriteVideogame.videogame_id_fk.videogame_id_pk}">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </c:if>
+                                </tr>
+
+
+                            </c:forEach>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
 
 
