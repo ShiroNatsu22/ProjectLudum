@@ -31,7 +31,7 @@
 
             <div class="row">
                 <div class="col">
-                    <a class="btn btn-primary" href="<c:url value="/BackOffice/UserGameList.jsp?id=${param['id']}"/>">Gamelist</a>
+                    <a class="btn btn-primary" href="<c:url value="/BackOffice/UserGameList.jsp?id=${param['id']}"/>"><i class="fa fa-3x fa-gamepad" aria-hidden="true"></i></a>
                 </div>
                 <c:if test="${sessionScope.currentUser != null && requestScope.currentUser.user_id_pk != sessionScope.currentUser.user_id_pk}">
 
@@ -42,7 +42,9 @@
                     <c:choose>
 
                         <c:when test="${requestScope.currentRelationship.relationship_id_pk == 0}">
-                            <button class="btn btn-primary" name="newRelationshipRequest" value="${requestScope.currentUser.user_id_pk}">Make friend</button>
+                            <button class="btn btn-primary" name="newRelationshipRequest" value="${requestScope.currentUser.user_id_pk}">
+                                <i class="fa fa-3x fa-user-plus" aria-hidden="true"></i>
+                            </button>
                         </c:when>
 
                         <c:when test='${requestScope.currentRelationship.status.equals("pending")}'>
@@ -72,7 +74,7 @@
                     </div>
                     <div class="col">
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createPrivateMessage">
-                            Send message
+                            <i class="fa fa-comments fa-3x" aria-hidden="true"></i>
                         </button>
                     </div>
 

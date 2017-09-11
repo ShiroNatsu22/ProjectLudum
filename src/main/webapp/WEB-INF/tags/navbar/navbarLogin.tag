@@ -36,7 +36,7 @@
                         <div class="col">
                             <div class="form-group">
                                 <label for="newUsername">Username(*)</label>
-                                <input class="form-control userRegistration uFill user-notFill" id="newUsername" name="username"
+                                <input  required class="form-control userRegistration requiredField required-notFill" id="newUsername" name="username"
                                        placeholder="Enter new username">
                             </div>
                         </div>
@@ -46,7 +46,7 @@
                         <div class="col">
                             <div class="form-group">
                                 <label for="newPassword">Password(*)</label>
-                                <input type="password" class="form-control originalPassword passwordRegistation pFill password-notFill" id="newPassword" name="password"
+                                <input type="password"  required class="form-control originalPassword requiredField required-notFill requiredField passwordRegistation pFill password-notFill" id="newPassword" name="password"
                                        placeholder="Enter new password">
                             </div>
                         </div>
@@ -63,7 +63,7 @@
                         <div class="col">
                             <div class="form-group ">
                                 <label for="newRepeatPassword">Repeat password(*)</label>
-                                <input type="password" class="form-control repeatPassword passwordRegistation pFill password-notFill" id="newRepeatPassword" name="password"
+                                <input required type="password" class="form-control repeatPassword requiredField required-notFillpasswordRegistation pFill password-notFill" id="newRepeatPassword" name="password"
                                        placeholder="Enter new password">
                             </div>
                         </div>
@@ -114,7 +114,7 @@
                         <div class="col">
                             <div class="form-group">
                                 <label for="newEmail">Email(*)</label>
-                                <input class="form-control emailRegistration eFill email-notFill" type="email" id="newEmail" name="email"
+                                <input  required class="form-control emailRegistration requiredField required-notFill" type="email" id="newEmail" name="email"
                                        placeholder="Enter your email">
                             </div>
                         </div>
