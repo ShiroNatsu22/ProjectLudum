@@ -33,6 +33,51 @@
                 <div class="col">
                     <a class="btn btn-primary" href="<c:url value="/BackOffice/UserGameList.jsp?id=${param['id']}"/>">Gamelist</a>
                 </div>
+                <c:if test="${sessionScope.currentUser != null && requestScope.currentUser.user_id_pk != sessionScope.currentUser.user_id_pk}">
+
+            <!-- Bloque de petición de amistad -->
+                    <div class="col">
+                        <form action="<c:url value="/controller/RelationshipsControl" />" method="post">
+
+                    <c:choose>
+
+                        <c:when test="${requestScope.currentRelationship.relationship_id_pk == 0}">
+                            <button class="btn btn-primary" name="newRelationshipRequest" value="${requestScope.currentUser.user_id_pk}">Make friend</button>
+                        </c:when>
+
+                        <c:when test='${requestScope.currentRelationship.status.equals("pending")}'>
+
+                            <c:choose>
+                                <c:when test="${sessionScope.currentUser.user_id_pk == requestScope.currentRelationship.receiver_user_id_fk}">
+                                    <button class="btn btn-primary" name="acceptRelationship" value="${requestScope.currentRelationship.sender_user_id_fk}">Accept</button>
+                                    <button class="btn btn-danger" name="rejectRelationship" value="${requestScope.currentRelationship.sender_user_id_fk}">Reject</button>
+                                </c:when>
+
+                                <c:when test="${sessionScope.currentUser.user_id_pk == requestScope.currentRelationship.sender_user_id_fk}">
+                                    Pending request...
+                                </c:when>
+                            </c:choose>
+
+                        </c:when>
+
+                        <c:when test='${requestScope.currentRelationship.status.equals("accepted")}'>
+                            Friend
+                            <button class="btn btn-danger" name="rejectRelationship" value="${requestScope.currentUser.user_id_pk}">Delete</button>
+                        </c:when>
+
+                    </c:choose>
+
+
+                        </form>
+                    </div>
+                    <div class="col">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createPrivateMessage">
+                            Send message
+                        </button>
+                    </div>
+
+                    </c:if>
+
             </div>
 
             <div class="col">
@@ -90,51 +135,7 @@
 
         </div>
 
-        <c:if test="${sessionScope.currentUser != null && requestScope.currentUser.user_id_pk != sessionScope.currentUser.user_id_pk}">
 
-            <!-- Bloque de petición de amistad -->
-            <li class="list-group-item">
-                <form action="<c:url value="/controller/RelationshipsControl" />" method="post">
-
-                    <c:choose>
-
-                        <c:when test="${requestScope.currentRelationship.relationship_id_pk == 0}">
-                            <button class="btn btn-primary" name="newRelationshipRequest" value="${requestScope.currentUser.user_id_pk}">Send friendship request</button>
-                        </c:when>
-
-                        <c:when test='${requestScope.currentRelationship.status.equals("pending")}'>
-
-                            <c:choose>
-                                <c:when test="${sessionScope.currentUser.user_id_pk == requestScope.currentRelationship.receiver_user_id_fk}">
-                                    <button class="btn btn-primary" name="acceptRelationship" value="${requestScope.currentRelationship.sender_user_id_fk}">Accept</button>
-                                    <button class="btn btn-danger" name="rejectRelationship" value="${requestScope.currentRelationship.sender_user_id_fk}">Reject</button>
-                                </c:when>
-
-                                <c:when test="${sessionScope.currentUser.user_id_pk == requestScope.currentRelationship.sender_user_id_fk}">
-                                    Pending request...
-                                </c:when>
-                            </c:choose>
-
-                        </c:when>
-
-                        <c:when test='${requestScope.currentRelationship.status.equals("accepted")}'>
-                            Friend
-                            <button class="btn btn-danger" name="rejectRelationship" value="${requestScope.currentUser.user_id_pk}">Delete</button>
-                        </c:when>
-
-                    </c:choose>
-
-
-                </form>
-            </li>
-
-            <li class="list-group-item">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createPrivateMessage">
-                    Send message
-                </button>
-            </li>
-
-        </c:if>
 
 
         <!-- Sección de amigos -->
@@ -345,7 +346,7 @@
 
                                     <div class="col-4 col-lg-12">
                                         <img src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a" class="col  px-0 img-fluid imag-responsive hidden-sm-down">
-                                        <a  href="<c:url value="/BackOffice/VideogameCard.jsp?id=${favoriteGame.videogame_id_fk.videogame_id_pk}"/>" class="col px-0">${favoriteGame.videogame_id_fk.name}</a>
+                                        <a href="<c:url value="/BackOffice/VideogameCard.jsp?id=${favoriteGame.videogame_id_fk.videogame_id_pk}"/>" class="col px-0">${favoriteGame.videogame_id_fk.name}</a>
                                     </div>
 
                                 </c:if>
