@@ -83,32 +83,35 @@
                             <tbody>
 
                             <c:forEach var="userSelectedVideogame" varStatus="count" items="${requestScope.currentUserSelectedVideogamesList}">
-                                <c:if test="${userSelectedVideogame.status.equals('completed')}">
-                                    <tr>
+
+                                <tr>
+                                    <td>
+                                            ${count.count}
+                                    </td>
+                                    <td>
+                                        <img class="img-fluid col col-md-2" width="50" height="50" src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
+                                    </td>
+                                    <td>
+                                        <a href="<c:url value="/BackOffice/VideogameCard.jsp?id=${userSelectedVideogame.videogame_id_fk.videogame_id_pk}"/>">${userSelectedVideogame.videogame_id_fk.name}</a>
+                                    </td>
+                                    <td class="rating">
+                                            ${userSelectedVideogame.rating}
+                                    </td>
+                                    <td>
+                                            ${userSelectedVideogame.status}
+                                    </td>
+                                    <c:if test="${sessionScope.currentUser.user_id_pk == param['id']}">
                                         <td>
-                                                ${count.count}
+                                            <form action="<c:url value="/controller/UserSelectedVideogamesControl"/>" method="post">
+                                                <button class="btn btn-danger" name="deleteFromUserList" value="${userSelectedVideogame.videogame_id_fk.videogame_id_pk}">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            </form>
                                         </td>
-                                        <td>
-                                            <img class="img-fluid col col-md-2" width="50" height="50" src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
-                                        </td>
-                                        <td>
-                                            <a href="<c:url value="/BackOffice/VideogameCard.jsp?id=${userSelectedVideogame.videogame_id_fk.videogame_id_pk}"/>">${userSelectedVideogame.videogame_id_fk.name}</a>
-                                        </td>
-                                        <td class="rating">
-                                                ${userSelectedVideogame.rating}
-                                        </td>
-                                        <c:if test="${sessionScope.currentUser.user_id_pk == param['id']}">
-                                            <td>
-                                                <form action="<c:url value="/controller/UserSelectedVideogamesControl"/>" method="post">
-                                                    <button class="btn btn-danger" name="deleteFromUserList" value="${userSelectedVideogame.videogame_id_fk.videogame_id_pk}">
-                                                        <i class="fa fa-trash"></i>
-                                                    </button>
-                                                </form>
-                                            </td>
-                                        </c:if>
-                                        <td>Completed</td>
-                                    </tr>
-                                </c:if>
+                                    </c:if>
+
+                                </tr>
+
                             </c:forEach>
 
                             </tbody>
@@ -347,12 +350,12 @@
                                         <img class="img-fluid col col-md-2" width="50" height="50" src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
                                     </td>
                                     <td>
-                                        <a href="<c:url value="/BackOffice/VideogameCard.jsp?id=${favoriteVideogame.videogame_id_fk.videogame_id_pk}"/>">${favoriteVideogame.videogame_id_fk.name}</a>
+                                        <a href="<c:url value="/BackOffice/VideogameCard.jsp?id=${favoriteVideogame.videogame_id_pk}"/>">${favoriteVideogame.name}</a>
                                     </td>
                                     <c:if test="${sessionScope.currentUser.user_id_pk == param['id']}">
                                         <td>
                                             <form action="<c:url value="/controller/FavoriteGamesControl"/>" method="post">
-                                                <button class="btn btn-danger" name="deleteFavoriteGame" value="${favoriteVideogame.videogame_id_fk.videogame_id_pk}">
+                                                <button class="btn btn-danger" name="deleteFavoriteGame" value="${favoriteVideogame.videogame_id_pk}">
                                                     <i class="fa fa-trash"></i>
                                                 </button>
                                             </form>
@@ -395,12 +398,12 @@
                                         <img class="img-fluid col col-md-2" width="50" height="50" src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
                                     </td>
                                     <td>
-                                        <a href="<c:url value="/BackOffice/VideogameCard.jsp?id=${favoriteVideogame.videogame_id_fk.videogame_id_pk}"/>">${favoriteVideogame.videogame_id_fk.name}</a>
+                                        <a href="<c:url value="/BackOffice/VideogameCard.jsp?id=${favoriteVideogame.videogame_id_pk}"/>">${favoriteVideogame.name}</a>
                                     </td>
                                     <c:if test="${sessionScope.currentUser.user_id_pk == param['id']}">
                                         <td>
                                             <form action="<c:url value="/controller/FavoriteGamesControl"/>" method="post">
-                                                <button class="btn btn-danger" name="deleteFavoriteGame" value="${favoriteVideogame.videogame_id_fk.videogame_id_pk}">
+                                                <button class="btn btn-danger" name="deleteFavoriteGame" value="${favoriteVideogame.videogame_id_pk}">
                                                     <i class="fa fa-trash"></i>
                                                 </button>
                                             </form>
@@ -443,12 +446,12 @@
                                         <img class="img-fluid col col-md-2" width="50" height="50" src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
                                     </td>
                                     <td>
-                                        <a href="<c:url value="/BackOffice/VideogameCard.jsp?id=${favoriteVideogame.videogame_id_fk.videogame_id_pk}"/>">${favoriteVideogame.videogame_id_fk.name}</a>
+                                        <a href="<c:url value="/BackOffice/VideogameCard.jsp?id=${favoriteVideogame.videogame_id_pk}"/>">${favoriteVideogame.name}</a>
                                     </td>
                                     <c:if test="${sessionScope.currentUser.user_id_pk == param['id']}">
                                         <td>
                                             <form action="<c:url value="/controller/FavoriteGamesControl"/>" method="post">
-                                                <button class="btn btn-danger" name="deleteFavoriteGame" value="${favoriteVideogame.videogame_id_fk.videogame_id_pk}">
+                                                <button class="btn btn-danger" name="deleteFavoriteGame" value="${favoriteVideogame.videogame_id_pk}">
                                                     <i class="fa fa-trash"></i>
                                                 </button>
                                             </form>
