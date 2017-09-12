@@ -57,18 +57,16 @@
                     <div class="col  mt-2">
                         Developer:
                         <c:forEach var="developer" items="${requestScope.currentVideogameDeveloperList}">
-                                    <a class="ml-1"
-                                       href="<c:url value="/BackOffice/CompanyCard.jsp?id=${developer.company_id_pk}" />">${developer.name}</a>
-                                </c:forEach>
+                            <a class="ml-1" href="<c:url value="/BackOffice/CompanyCard.jsp?id=${developer.company_id_fk.company_id_pk}" />">${developer.company_id_fk.name}</a>
+                        </c:forEach>
                     </div>
                 </div>
                 <div class="row card-attribute">
                     <div class="col  mt-2">
                         Publisher:
                         <c:forEach var="publisher" items="${requestScope.currentVideogamePublisherList}">
-                                    <a class="ml-1"
-                                       href="<c:url value="/BackOffice/CompanyCard.jsp?id=${publisher.company_id_pk}" />">${publisher.name}</a>
-                                </c:forEach>
+                            <a class="ml-1" href="<c:url value="/BackOffice/CompanyCard.jsp?id=${publisher.company_id_fk.company_id_pk}" />">${publisher.company_id_fk.name}</a>
+                        </c:forEach>
                     </div>
                 </div>
                 <div class="row card-attribute">

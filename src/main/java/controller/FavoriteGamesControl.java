@@ -2,7 +2,6 @@ package controller;
 
 import dao.FavoriteGamesDAO;
 import dao.FavoriteGamesDAOImpl;
-import model.FavoriteGames;
 import model.User;
 import model.Videogame;
 

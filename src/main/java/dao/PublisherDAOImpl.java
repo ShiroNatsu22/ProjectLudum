@@ -1,7 +1,9 @@
 package dao;
 
+import model.Company;
 import model.DataBase;
 import model.Publisher;
+import model.Videogame;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -24,7 +26,7 @@ public class PublisherDAOImpl implements PublisherDAO {
     @Override
     public List<Publisher> getPublishersByVideogame_id_fk(int videogame_id_fk) {
 
-        String query = String.format("SELECT * FROM publishers WHERE publishers.videogame_id_fk = %d", videogame_id_fk);
+        String query = String.format("SELECT * FROM publishers, videogames, companies WHERE publishers.videogame_id_fk = videogames.videogame_id_pk AND publishers.company_id_fk = companies.company_id_pk AND publishers.videogame_id_fk = %d", videogame_id_fk);
         return getPublishersById_fk(query);
 
     }
@@ -32,7 +34,7 @@ public class PublisherDAOImpl implements PublisherDAO {
     @Override
     public List<Publisher> getPublishersByCompany_id_fk(int company_id_fk) {
 
-        String query = String.format("SELECT * FROM publishers WHERE publishers.company_id_fk = %d", company_id_fk);
+        String query = String.format("SELECT * FROM publishers, videogames, companies WHERE publishers.videogame_id_fk = videogames.videogame_id_pk AND publishers.company_id_fk = companies.company_id_pk AND publishers.company_id_fk = %d", company_id_fk);
         return getPublishersById_fk(query);
 
     }
@@ -66,7 +68,12 @@ public class PublisherDAOImpl implements PublisherDAO {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                publisherList.add(new Publisher(rs.getInt("publisher_id_pk"), rs.getInt("videogame_id_fk"), rs.getInt("company_id_fk")));
+
+                Videogame videogame = new Videogame(rs.getInt("videogames.videogame_id_pk"), rs.getString("videogames.name"), rs.getString("videogames.description"));
+                Company company = new Company(rs.getInt("companies.company_id_pk"), rs.getString("companies.name"), rs.getDate("companies.founded"));
+
+                publisherList.add(new Publisher(rs.getInt("publisher_id_pk"), videogame, company));
+
             }
 
             ps.close();

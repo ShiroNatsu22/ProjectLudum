@@ -33,35 +33,22 @@ public class CompaniesControl extends HttpServlet {
 
             DeveloperDAO developerDAO = new DeveloperDAOImpl();
             PublisherDAO publisherDAO = new PublisherDAOImpl();
-            VideogameDAO videogameDAO = new VideogameDAOImpl();
-            List<Videogame> developerVideogameList = new ArrayList<Videogame>();
-            List<Videogame> publisherVideogameList = new ArrayList<Videogame>();
 
             // Obtenemos la empresa y la lista de la relación con developers y publishers
             Company company = companyDAO.getCompanyByID(Integer.parseInt(id));
             List<Developer> developerList = developerDAO.getDevelopersByCompany_id_fk(company.getCompany_id_pk());
             List<Publisher> publisherList = publisherDAO.getPublishersByCompany_id_fk(company.getCompany_id_pk());
 
-            // Obtenemos los datos de los videojuegos que hayan sido desarrollados por esta empresa
-            for (Developer developer : developerList)
-                developerVideogameList.add(videogameDAO.getVideogameByID(developer.getVideogame_id_fk()));
-
-            // Obtenemos los datos de los videojuegos que hayan sido publicados por esta empresa
-            for (Publisher publisher : publisherList)
-                publisherVideogameList.add(videogameDAO.getVideogameByID(publisher.getVideogame_id_fk()));
-
             // Enviamos la empresa actual y sus videojuegos
             req.setAttribute("currentCompany", company);
-            req.setAttribute("currentCompanyDeveloperList", developerVideogameList);
-            req.setAttribute("currentCompanyPublisherList", publisherVideogameList);
+            req.setAttribute("currentCompanyDeveloperList", developerList);
+            req.setAttribute("currentCompanyPublisherList", publisherList);
 
         } else {
 
             req.setAttribute("companyList", companyDAO.getAllCompanies());
 
         }
-
-        req.setAttribute("companyList", companyDAO.getAllCompanies());
 
     }
 

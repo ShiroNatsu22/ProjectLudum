@@ -81,23 +81,24 @@
                                             No information available
                                     </c:when>
                                     <c:otherwise>
-                                        <c:forEach var="videogame" varStatus="index" items="${requestScope.currentCompanyDeveloperList}">
+                                        <c:forEach var="developer" varStatus="index" items="${requestScope.currentCompanyDeveloperList}">
 
-                                    <c:if test="${index.index < 3}">
-                                        <div class="col <c:if test="${!(index.last)}">separator-right</c:if>">
+                                            <c:if test="${index.index < 3}">
 
-                                            <img class="img-fluid hidden-sm-down imag-responsive"
-                                                 src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
-                                                 alt="gameImg">
+                                                <div class="col <c:if test="${!(index.last)}">separator-right</c:if>">
 
-                                            <a class="ml-1"
-                                               href="<c:url value="/BackOffice/VideogameCard.jsp?id=${videogame.videogame_id_pk}" />">${videogame.name}
-                                            </a>
+                                                    <img class="img-fluid hidden-sm-down imag-responsive"
+                                                         src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
+                                                         alt="gameImg">
 
-                                        </div>
-                                    </c:if>
+                                                    <a class="ml-1" href="<c:url value="/BackOffice/VideogameCard.jsp?id=${developer.videogame_id_fk.videogame_id_pk}" />">
+                                                            ${developer.videogame_id_fk.name}
+                                                    </a>
 
-                                </c:forEach>
+                                                </div>
+                                            </c:if>
+
+                                        </c:forEach>
                                     </c:otherwise>
                                 </c:choose>
 
@@ -127,15 +128,15 @@
                             </div>
                             <div class="row mb-4">
 
-                                <c:forEach var="videogame" items="${requestScope.currentCompanyPublisherList}">
+                                <c:forEach var="publisher" items="${requestScope.currentCompanyPublisherList}">
                                     <div class="col separator-right">
 
                                         <img class="img-fluid hidden-sm-down imag-responsive"
                                              src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
                                              alt="gameImg">
 
-                                        <a class="ml-1"
-                                           href="<c:url value="/BackOffice/VideogameCard.jsp?id=${videogame.videogame_id_pk}" />">${videogame.name}
+                                        <a class="ml-1" href="<c:url value="/BackOffice/VideogameCard.jsp?id=${publisher.videogame_id_fk.videogame_id_pk}" />">
+                                                ${publisher.videogame_id_fk.name}
                                         </a>
 
                                     </div>

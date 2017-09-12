@@ -30,30 +30,16 @@ public class VideogamesControl extends HttpServlet {
 
             DeveloperDAO developerDAO = new DeveloperDAOImpl();
             PublisherDAO publisherDAO = new PublisherDAOImpl();
-            CompanyDAO companyDAO = new CompanyDAOImpl();
-            List<Company> developerCompanyList = new ArrayList<Company>();
-            List<Company> publisherCompanyList = new ArrayList<Company>();
 
             // Obtenemos el videojuego y las companies relacionadas
             Videogame videogame = videogameDAO.getVideogameByID(Integer.parseInt(id));
             List<Developer> developerList = developerDAO.getDevelopersByVideogame_id_fk(videogame.getVideogame_id_pk());
             List<Publisher> publisherList = publisherDAO.getPublishersByVideogame_id_fk(videogame.getVideogame_id_pk());
 
-
-            // Obtenemos los datos de las companies que sean los developers del juego
-            for (Developer developer : developerList) {
-                developerCompanyList.add(companyDAO.getCompanyByID(developer.getCompany_id_fk()));
-            }
-
-            // Obtenemos los datos de las companies que sean los publishers del juego
-            for (Publisher publisher : publisherList) {
-                publisherCompanyList.add(companyDAO.getCompanyByID(publisher.getCompany_id_fk()));
-            }
-
             // Enviamos el juego actual y la lista de desarrolladores
             req.setAttribute("currentVideogame", videogame);
-            req.setAttribute("currentVideogameDeveloperList", developerCompanyList);
-            req.setAttribute("currentVideogamePublisherList", publisherCompanyList);
+            req.setAttribute("currentVideogameDeveloperList", developerList);
+            req.setAttribute("currentVideogamePublisherList", publisherList);
 
         } else {
 
