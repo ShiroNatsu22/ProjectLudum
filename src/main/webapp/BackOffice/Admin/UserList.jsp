@@ -40,6 +40,7 @@
                                <c:if test="${item.admin}">checked</c:if> >
                     </td>
                     <td>
+
                         <form action="<c:url value="/controller/UsersControl"/>" method="post">
                             <button name="deleteUser" value="${item.user_id_pk}"><i class="fa fa-trash"></i></button>
                         </form>
@@ -66,19 +67,9 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="newUsername">Username</label>
-                                        <input class="form-control" id="newUsername" name="username"
-                                               placeholder="Enter new username">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col">
-                                    <div class="form-group">
-                                        <label for="newPassword">Password</label>
-                                        <input type="password" class="form-control" id="newPassword" name="password"
-                                               placeholder="Enter new password">
+                                        <label for="newUsername">Username(*)</label>
+                                        <input  required class="form-control userRegistration requiredField required-notFill" id="newUsername" name="username"
+                                                placeholder="Enter new username">
                                     </div>
                                 </div>
                             </div>
@@ -96,6 +87,34 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
+                                        <label for="newPassword">Password(*)</label>
+                                        <input type="password"  required class="form-control originalPassword  passwordRegistation pFill password-notFill" id="newPassword" name="password"
+                                               placeholder="Enter new password">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group ">
+                                        <div class="passwordComprobation errorMessage"></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group ">
+                                        <label for="newRepeatPassword">Repeat password(*)</label>
+                                        <input required type="password" class="form-control repeatPassword  passwordRegistation pFill password-notFill" id="newRepeatPassword" name="password"
+                                               placeholder="Enter new password">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
                                         <label for="newName">Name</label>
                                         <input class="form-control" id="newName" name="name"
                                                placeholder="Enter your name">
@@ -105,7 +124,7 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="newSurname">Name</label>
+                                        <label for="newSurname">Surname</label>
                                         <input class="form-control" id="newSurname" name="surname"
                                                placeholder="Enter your Surname">
                                     </div>
@@ -136,9 +155,9 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="newEmail">Email</label>
-                                        <input class="form-control" type="email" id="newEmail" name="email"
-                                               placeholder="Enter your email">
+                                        <label for="newEmail">Email(*)</label>
+                                        <input  required class="form-control emailRegistration requiredField required-notFill" type="email" id="newEmail" name="email"
+                                                placeholder="Enter your email">
                                     </div>
                                 </div>
                             </div>
@@ -161,20 +180,12 @@
                                 </div>
                             </div>
 
-
                             <div class="row">
                                 <div class="col">
-                                    <button class="btn btn-primary">Add user</button>
+                                    <button class="btn addUser btn-primary">Add user</button>
                                 </div>
                             </div>
 
-                        </form>
-
-                        Prueba de subir imagen
-                        <form id="prueba" method="post" action="<c:url value="/controller/FileUpload"/>" enctype="multipart/form-data">
-                            Select file to upload:
-                            <input type="file" name="dataFile" id="fileChooser"/><br/><br/>
-                            <input form="prueba" type="submit" value="Upload"/>
                         </form>
                     </div>
 

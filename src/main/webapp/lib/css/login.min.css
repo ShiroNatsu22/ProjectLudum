@@ -1,1 +1,1 @@
-.errorMessage{color:red}.required-notFill{border:1px solid red}.required-fill{border:1px solid #00f}
+.errorMessage{color:red}.password-notFill,.required-notFill{border:1px solid red}.password-Fill,.required-fill{border:1px solid #00f}

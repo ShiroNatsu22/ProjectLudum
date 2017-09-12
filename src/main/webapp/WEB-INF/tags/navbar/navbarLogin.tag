@@ -46,7 +46,7 @@
                         <div class="col">
                             <div class="form-group">
                                 <label for="newPassword">Password(*)</label>
-                                <input type="password"  required class="form-control originalPassword requiredField required-notFill requiredField passwordRegistation pFill password-notFill" id="newPassword" name="password"
+                                <input type="password"  required class="form-control originalPassword   passwordRegistation pFill password-notFill" id="newPassword" name="password"
                                        placeholder="Enter new password">
                             </div>
                         </div>
@@ -63,7 +63,7 @@
                         <div class="col">
                             <div class="form-group ">
                                 <label for="newRepeatPassword">Repeat password(*)</label>
-                                <input required type="password" class="form-control repeatPassword requiredField required-notFillpasswordRegistation pFill password-notFill" id="newRepeatPassword" name="password"
+                                <input required type="password" class="form-control repeatPassword passwordRegistation pFill password-notFill" id="newRepeatPassword" name="password"
                                        placeholder="Enter new password">
                             </div>
                         </div>
@@ -140,7 +140,7 @@
 
                     <div class="row">
                         <div class="col">
-                            <button class="btn addUser btn-primary" disabled="disabled">Add user</button>
+                            <button class="btn addUser btn-primary">Add user</button>
                         </div>
                     </div>
 

@@ -17,7 +17,7 @@
 
     <jsp:attribute name="subtitle">
         ${requestScope.currentUser.username}
-        <c:if test="${sessionScope.currentUser.user_id_pk == param['id']}"><button class="btn">Edit profile</button></c:if>
+        <c:if test="${sessionScope.currentUser.user_id_pk == param['id']}"><button type=button class="btn btn-danger" data-toggle="modal" data-target="#createModify">Edit profile</button></c:if>
     </jsp:attribute>
 
     <jsp:attribute name="leftBlock">
@@ -371,7 +371,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-12 ml-2  mr-2 separator-right put-separator">
+                    <div class="col-lg-4 col-12 separator-right put-separator">
                         <div class="row">
                             <div class=" section-title  mb-2 col px-1">
                                 Favorite characters
@@ -515,6 +515,128 @@
 
                     </div>
 
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal para enviar editar usuario -->
+        <div class="modal fade" id="createModify" tabindex="-1" role="dialog" aria-labelledby="createModifyLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modifyModalLabel">Send message</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span>&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="<c:url value="/controller/UsersControl"/>" method="post">
+
+
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="newPassword">Password(*)</label>
+                                        <input type="password"  required class="form-control originalPassword requiredField required-notFill requiredField passwordRegistation pFill password-notFill" id="newPassword" name="password"
+                                               placeholder="Enter new password">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group ">
+                                        <div class="passwordComprobation errorMessage"></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group ">
+                                        <label for="newRepeatPassword">Repeat password(*)</label>
+                                        <input required type="password" class="form-control repeatPassword requiredField required-notFillpasswordRegistation pFill password-notFill" id="newRepeatPassword" name="password"
+                                               placeholder="Enter new password">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="newName">Name</label>
+                                        <input class="form-control" id="newName" name="name"
+                                               placeholder="Enter your name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="newSurname">Surname</label>
+                                        <input class="form-control" id="newSurname" name="surname"
+                                               placeholder="Enter your Surname">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <label for="newGender">
+                                        Select your gender
+                                        <select class="col-6" id="newGender" name="gender">
+                                            <option value="M">Male</option>
+                                            <option value="F">Female</option>
+                                            <option value="O">Other</option>
+                                        </select>
+                                    </label>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="newCountry">Country</label>
+                                        <input class="form-control" id="newCountry" name="country"
+                                               placeholder="Enter your country">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="newEmail">Email</label>
+                                        <input   class="form-control emailRegistration " type="email" id="newEmail" name="email"
+                                                placeholder="Enter your email">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="newBirthday">Birthday</label>
+                                        <input type="date" class="form-control" id="newBirthday" name="birthday"
+                                               placeholder="Enter your birthday">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="newBiography">Biography</label>
+                                        <input class="form-control" id="newBiography" name="biography"
+                                               placeholder="Enter something about you">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <button class="btn addUser btn-primary" >Add user</button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
