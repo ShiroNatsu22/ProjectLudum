@@ -1,19 +1,17 @@
 package dao;
 
-import model.FavoriteGames;
-
+import model.Videogame;
 import java.util.List;
 
 public interface FavoriteGamesDAO {
 
-    List<FavoriteGames> getAllFavoriteGamesByUser_id_fk(int user_id_fk);
+    List<Videogame> getAllFavoriteGamesByUser_id_fk(int user_id_fk);
 
-    List<FavoriteGames> getAllFavoriteGamesByVideogame_id_fk(int videogame_id_fk);
+    int getFavoriteVideogamesCountByVideogame_id_fk(int videogame_id_fk);
 
-    FavoriteGames getFavoriteGameByUser_id_fkAndVideogame_id_fk(int user_id_fk, int videogame_id_fk);
+    Videogame getFavoriteVideogameByUser_id_fkAndVideogame_id_fk(int user_id_fk, int videogame_id_fk);
 
-    void createFavoriteGame(FavoriteGames favoriteGames);
+    void createFavoriteVideogame(int user_id_fk, int videogame_id_fk);
 
-    void deleteFavoriteGameByUser_id_fkAndVideogame_id_fk(int user_id_fk, int videogame_id_fk);
-
+    void deleteFavoriteVideogameByUser_id_fkAndVideogame_id_fk(int user_id_fk, int videogame_id_fk);
 }

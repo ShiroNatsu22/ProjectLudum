@@ -4,6 +4,7 @@ import dao.FavoriteGamesDAO;
 import dao.FavoriteGamesDAOImpl;
 import model.FavoriteGames;
 import model.User;
+import model.Videogame;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,24 +32,25 @@ public class FavoriteGamesControl extends HttpServlet {
             int videogame_id_fk = Integer.parseInt(id);
             int user_id_fk = Integer.parseInt(id);
 
+            // Obtenemos el número de veces en la que un juego ha sido favoriteado
+            int favoriteGamesCount = (favoriteGamesDAO.getFavoriteVideogamesCountByVideogame_id_fk(videogame_id_fk));
+
+            // Obtenemos los juegos favoritos del usuario obtenido a partir de la url
+            List<Videogame> favoriteGamesList = favoriteGamesDAO.getAllFavoriteGamesByUser_id_fk(user_id_fk);
 
             if (currentUser != null) {
 
                 // Obtenemos la relación del usuario actual con el videojuego
-                FavoriteGames currentFavoriteGame = favoriteGamesDAO.getFavoriteGameByUser_id_fkAndVideogame_id_fk(currentUser.getUser_id_pk(), videogame_id_fk);
-
-                // Obtenemos los juegos favoritos del usuario obtenido
-                List<FavoriteGames> favoriteGamesList = favoriteGamesDAO.getAllFavoriteGamesByUser_id_fk(user_id_fk);
-
-                int favoriteGamesCount = (favoriteGamesDAO.getAllFavoriteGamesByVideogame_id_fk(videogame_id_fk)).size();
+                Videogame currentFavoriteGame = favoriteGamesDAO.getFavoriteVideogameByUser_id_fkAndVideogame_id_fk(currentUser.getUser_id_pk(), videogame_id_fk);
 
                 req.setAttribute("currentFavoriteGame", currentFavoriteGame);
-                req.setAttribute("currentFavoriteGamesList", favoriteGamesList);
-                Collections.reverse(favoriteGamesList);
-                req.setAttribute("currentFavoriteGamesListReversed", favoriteGamesList);
-                req.setAttribute("currentFavoriteGamesCount", favoriteGamesCount);
 
             }
+
+            req.setAttribute("currentFavoriteGamesList", favoriteGamesList);
+            Collections.reverse(favoriteGamesList);
+            req.setAttribute("currentFavoriteGamesListReversed", favoriteGamesList);
+            req.setAttribute("currentFavoriteGamesCount", favoriteGamesCount);
 
         }
 
@@ -71,12 +73,11 @@ public class FavoriteGamesControl extends HttpServlet {
 
             // Agregamos al juego como favorito
             if (addFavoriteGame != null) {
-                favoriteGamesDAO.createFavoriteGame(new FavoriteGames(0, currentUser.getUser_id_pk(), videogame_id_fk));
+                favoriteGamesDAO.createFavoriteVideogame(currentUser.getUser_id_pk(), videogame_id_fk);
             }
-
             // Eliminamos al juego como favorito
-            if (deleteFavoriteGame != null) {
-                favoriteGamesDAO.deleteFavoriteGameByUser_id_fkAndVideogame_id_fk(currentUser.getUser_id_pk(), videogame_id_fk);
+            else {
+                favoriteGamesDAO.deleteFavoriteVideogameByUser_id_fkAndVideogame_id_fk(currentUser.getUser_id_pk(), videogame_id_fk);
             }
 
         }
