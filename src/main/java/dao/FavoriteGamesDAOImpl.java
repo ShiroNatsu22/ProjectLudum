@@ -1,7 +1,7 @@
 package dao;
 
 import model.DataBase;
-import model.FavoriteGames;
+import model.Videogame;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -22,44 +22,60 @@ public class FavoriteGamesDAOImpl implements FavoriteGamesDAO {
     }
 
     @Override
-    public List<FavoriteGames> getAllFavoriteGamesByUser_id_fk(int user_id_fk) {
+    public List<Videogame> getAllFavoriteGamesByUser_id_fk(int user_id_fk) {
 
-        String query = String.format("SELECT * FROM favoriteGames WHERE user_id_fk = %d", user_id_fk);
-        return getFavoriteGames(query);
-
-    }
-
-    @Override
-    public List<FavoriteGames> getAllFavoriteGamesByVideogame_id_fk(int videogame_id_fk) {
-
-        String query = String.format("SELECT * FROM favoriteGames WHERE videogame_id_fk = %d", videogame_id_fk);
-        return getFavoriteGames(query);
+        String query = String.format("SELECT videogames.* FROM favoriteGames, videogames WHERE favoriteGames.videogame_id_fk = videogames.videogame_id_pk AND favoriteGames.user_id_fk = %d ORDER BY videogame_id_pk", user_id_fk);
+        return getFavoriteVideogames(query);
 
     }
 
     @Override
-    public FavoriteGames getFavoriteGameByUser_id_fkAndVideogame_id_fk(int user_id_fk, int videogame_id_fk) {
+    public int getFavoriteVideogamesCountByVideogame_id_fk(int videogame_id_fk) {
 
-        String query = String.format("SELECT * FROM favoriteGames WHERE user_id_fk = %d AND videogame_id_fk = %d", user_id_fk, videogame_id_fk);
-        List<FavoriteGames> favoriteGamesList = getFavoriteGames(query);
-
-        if (!(favoriteGamesList.isEmpty()))
-            return favoriteGamesList.get(0);
-
-        return new FavoriteGames();
-
-    }
-
-    @Override
-    public void createFavoriteGame(FavoriteGames favoriteGames) {
+        String query = String.format("SELECT COUNT(*) AS count FROM favoriteGames WHERE videogame_id_fk = %d", videogame_id_fk);
+        int count = 0;
 
         try {
 
-            String query = "INSERT INTO favoriteGames (user_id_fk, videogame_id_fk) VALUES(?,?)";
+            PreparedStatement ps = db.getConnection(query);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next())
+                count = rs.getInt("count");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return count;
+
+    }
+
+    @Override
+    public Videogame getFavoriteVideogameByUser_id_fkAndVideogame_id_fk(int user_id_fk, int videogame_id_fk) {
+
+        String query = String.format("SELECT videogames.* FROM videogames, favoriteGames WHERE favoriteGames.videogame_id_fk = videogames.videogame_id_pk AND favoriteGames.user_id_fk = %d AND favoriteGames.videogame_id_fk = %d ORDER BY videogame_id_pk", user_id_fk, videogame_id_fk);
+        List<Videogame> videogameList = getFavoriteVideogames(query);
+
+        if (!(videogameList.isEmpty()))
+            return videogameList.get(0);
+
+        return new Videogame();
+
+    }
+
+    @Override
+    public void createFavoriteVideogame(int user_id_fk, int videogame_id_fk) {
+
+        String query = "INSERT INTO favoriteGames (user_id_fk, videogame_id_fk) VALUES(?,?)";
+
+        try {
+
+
             PreparedStatement ps = db.getConnection(query);
 
-            ps.setInt(1, favoriteGames.getUser_id_fk().getUser_id_pk());
-            ps.setInt(2, favoriteGames.getVideogame_id_fk().getVideogame_id_pk());
+            ps.setInt(1, user_id_fk);
+            ps.setInt(2, videogame_id_fk);
 
             ps.execute();
             ps.close();
@@ -71,11 +87,12 @@ public class FavoriteGamesDAOImpl implements FavoriteGamesDAO {
     }
 
     @Override
-    public void deleteFavoriteGameByUser_id_fkAndVideogame_id_fk(int user_id_fk, int videogame_id_fk) {
+    public void deleteFavoriteVideogameByUser_id_fkAndVideogame_id_fk(int user_id_fk, int videogame_id_fk) {
+
+        String query = String.format("DELETE FROM favoriteGames WHERE user_id_fk = %d AND videogame_id_fk = %d", user_id_fk, videogame_id_fk);
 
         try {
 
-            String query = String.format("DELETE FROM favoriteGames WHERE user_id_fk = %d AND videogame_id_fk = %d", user_id_fk, videogame_id_fk);
             PreparedStatement ps = db.getConnection(query);
             ps.execute();
             ps.close();
@@ -86,9 +103,9 @@ public class FavoriteGamesDAOImpl implements FavoriteGamesDAO {
 
     }
 
-    private List<FavoriteGames> getFavoriteGames(String query) {
+    private List<Videogame> getFavoriteVideogames(String query) {
 
-        List<FavoriteGames> favoriteGamesList = new ArrayList<>();
+        List<Videogame> videogameList = new ArrayList<>();
 
         try {
 
@@ -96,7 +113,7 @@ public class FavoriteGamesDAOImpl implements FavoriteGamesDAO {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                favoriteGamesList.add(new FavoriteGames(rs.getInt("favoriteGame_id_pk"), rs.getInt("user_id_fk"), rs.getInt("videogame_id_fk")));
+                videogameList.add(new Videogame(rs.getInt("videogame_id_pk"), rs.getString("name"), rs.getString("description")));
             }
 
             ps.close();
@@ -105,7 +122,9 @@ public class FavoriteGamesDAOImpl implements FavoriteGamesDAO {
             e.printStackTrace();
         }
 
-        return favoriteGamesList;
+        return videogameList;
 
     }
+
+
 }

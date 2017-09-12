@@ -355,7 +355,7 @@
 
                                             <div class="col-4 col-lg-12">
                                                 <img src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a" class="col  px-0 img-fluid imag-responsive hidden-sm-down">
-                                                <a href="<c:url value="/BackOffice/VideogameCard.jsp?id=${favoriteGame.videogame_id_fk.videogame_id_pk}"/>" class="col px-0">${favoriteGame.videogame_id_fk.name}</a>
+                                                <a href="<c:url value="/BackOffice/VideogameCard.jsp?id=${favoriteGame.videogame_id_pk}"/>" class="col px-0">${favoriteGame.name}</a>
                                             </div>
 
                                         </c:if>

@@ -16,7 +16,7 @@
         ${requestScope.currentVideogame.name}  <c:if test="${sessionScope.currentUser != null}">
                 <form action="<c:url value="/controller/FavoriteGamesControl"/>" class="d-inline" method="post">
                             <c:choose>
-                                <c:when test="${requestScope.currentFavoriteGame.favoriteGame_id_pk != 0}">
+                                <c:when test="${requestScope.currentFavoriteGame.videogame_id_pk != 0}">
                                     <button class="btn btn-link favorite-btn delete-favorite" name="deleteFavoriteGame" value="${param["id"]}">(Delete from favorites)</button>
                                 </c:when>
                                 <c:otherwise>
