@@ -38,7 +38,7 @@
             <div role="tabpanel" class="tab-pane fade show active" id="received" aria-labelledby="received-tab">
                 <div class="row">
                     <div class="col">
-                        <table class="table table-hover table-stripped table-list " width="100%">
+                        <table class="table table-hover table-bordered table-stripped table-list " width="100%">
                             <thead>
                             <tr>
                                 <th>Read/Unread</th>

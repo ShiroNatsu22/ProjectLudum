@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebFilter(urlPatterns = {"/BackOffice/Admin/*"})
+@WebFilter(urlPatterns = {"/BackOffice/Admin/*" , "/BackOffice/MyMessages.jsp"})
+
+
 public class RedirectToIndex implements javax.servlet.Filter {
 
     @Override

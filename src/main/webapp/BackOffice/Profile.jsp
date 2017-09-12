@@ -371,7 +371,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-12 separator-right put-separator">
+                    <div class="col-lg-4 col-12 ml-2  mr-2 separator-right put-separator">
                         <div class="row">
                             <div class=" section-title  mb-2 col px-1">
                                 Favorite characters
