@@ -104,32 +104,33 @@
 
                 <div class="row ">
                     <div class="col mt-2">
-                        Name: ${requestScope.currentUser.name} ${requestScope.currentUser.surname}
+                        Name:
+                        <span class="infoName">${requestScope.currentUser.name}</span><span class="infoSurname">${requestScope.currentUser.surname}</span>
                     </div>
                 </div>
 
 
                 <div class="row ">
                     <div class="col mt-2">
-                        Gender: ${requestScope.currentUser.gender}
+                        Gender: <span class="infoGender">${requestScope.currentUser.gender}</span>
                     </div>
                 </div>
 
                 <div class="row ">
                     <div class="col mt-2">
-                        Country: ${requestScope.currentUser.country}
+                        Country: <span class="infoCountry"> ${requestScope.currentUser.country}</span>
                     </div>
                 </div>
 
                 <div class="row ">
                     <div class="col mt-2">
-                        Email: ${requestScope.currentUser.email}
+                        Email: <span class="infoEmail">${requestScope.currentUser.email}</span>
                     </div>
                 </div>
 
                 <div class="row ">
                     <div class="col mt-2">
-                        BirthDay: ${requestScope.currentUser.birthday}
+                        BirthDay: <span class="infoBirthaday">${requestScope.currentUser.birthday}
                     </div>
                 </div>
 
@@ -321,12 +322,15 @@
                             </div>
 
                         </div>
-                        <div class="col  mt-2 ml-3">
-                            <button class="btn  float-right" onclick="window.location.href='<c:url
-                                    value='/BackOffice/UserGameList.jsp?id=${param["id"]}'/>'">Show more
-                            </button>
+                        <c:if test="${requestScope.currentUserSelectedVideogamesListReversed.size() != 0}">
 
-                        </div>
+                            <div class="col  mt-2 ml-3">
+                                <button class="btn  float-right" onclick="window.location.href='<c:url
+                                    value='/BackOffice/UserGameList.jsp?id=${param["id"]}'/>'">Show more
+                                </button>
+
+                            </div>
+                        </c:if>
                     </div>
                 </div>
 
@@ -338,12 +342,12 @@
 
                 <div class="row py-3">
                     <div class="col-lg-4 col-12 separator-right  put-separator">
-                        <div class="row">
-                            <div class=" section-title  mb-2 col px-0">
+                        <div class="row ml-1">
+                            <div class=" section-title  mb-2 col px-1">
                                 Favorite games
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row ml-1">
                             <c:choose>
 
                                 <c:when test="${requestScope.currentFavoriteGamesListReversed.size() == 0}">
@@ -372,14 +376,14 @@
                     </div>
 
                     <div class="col-lg-4 col-12 separator-right put-separator">
-                        <div class="row">
+                        <div class="row ml-1">
                             <div class=" section-title  mb-2 col px-1">
                                 Favorite characters
 
                             </div>
                         </div>
 
-                        <div class="row">
+                        <div class="row ml-1">
 
                             <c:choose>
 
@@ -408,13 +412,13 @@
                         </div>
                     </div>
                     <div class="col-lg-4 col-12 ">
-                        <div class="row">
+                        <div class="row ml-1">
                             <div class=" section-title col  mb-2 px-1">
                                 Favorite people
 
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row ml-1">
 
                             <c:choose>
 
@@ -537,7 +541,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="newPassword">Password(*)</label>
-                                        <input type="password"  required class="form-control originalPassword requiredField required-notFill requiredField passwordRegistation pFill password-notFill" id="newPassword" name="password"
+                                        <input type="password" required class="form-control originalPassword   passwordRegistation pFill password-notFill" id="newPassword" name="password"
                                                placeholder="Enter new password">
                                     </div>
                                 </div>
@@ -554,7 +558,7 @@
                                 <div class="col">
                                     <div class="form-group ">
                                         <label for="newRepeatPassword">Repeat password(*)</label>
-                                        <input required type="password" class="form-control repeatPassword requiredField required-notFillpasswordRegistation pFill password-notFill" id="newRepeatPassword" name="password"
+                                        <input required type="password" class="form-control repeatPassword passwordRegistation pFill password-notFill" id="newRepeatPassword" name="password"
                                                placeholder="Enter new password">
                                     </div>
                                 </div>
@@ -565,7 +569,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="newName">Name</label>
-                                        <input class="form-control" id="newName" name="name"
+                                        <input class="form-control modifyName" id="newName" name="name"
                                                placeholder="Enter your name">
                                     </div>
                                 </div>
@@ -574,7 +578,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="newSurname">Surname</label>
-                                        <input class="form-control" id="newSurname" name="surname"
+                                        <input class="form-control modifySurname" id="newSurname" name="surname"
                                                placeholder="Enter your Surname">
                                     </div>
                                 </div>
@@ -583,7 +587,7 @@
                                 <div class="col">
                                     <label for="newGender">
                                         Select your gender
-                                        <select class="col-6" id="newGender" name="gender">
+                                        <select class="col-6 modifyGender" id="newGender" name="gender">
                                             <option value="M">Male</option>
                                             <option value="F">Female</option>
                                             <option value="O">Other</option>
@@ -596,7 +600,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="newCountry">Country</label>
-                                        <input class="form-control" id="newCountry" name="country"
+                                        <input class="form-control modifyCountry" id="newCountry" name="country"
                                                placeholder="Enter your country">
                                     </div>
                                 </div>
@@ -605,8 +609,8 @@
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="newEmail">Email</label>
-                                        <input   class="form-control emailRegistration " type="email" id="newEmail" name="email"
-                                                placeholder="Enter your email">
+                                        <input class="form-control modifyEmail emailRegistration" type="email" id="newEmail" name="email"
+                                               placeholder="Enter your email">
                                     </div>
                                 </div>
                             </div>
@@ -614,7 +618,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="newBirthday">Birthday</label>
-                                        <input type="date" class="form-control" id="newBirthday" name="birthday"
+                                        <input type="date" class="form-control modifyBirthday" id="newBirthday" name="birthday"
                                                placeholder="Enter your birthday">
                                     </div>
                                 </div>
@@ -623,7 +627,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="newBiography">Biography</label>
-                                        <input class="form-control" id="newBiography" name="biography"
+                                        <input class="form-control modifyBiography" id="newBiography" name="biography"
                                                placeholder="Enter something about you">
                                     </div>
                                 </div>
@@ -631,7 +635,7 @@
 
                             <div class="row">
                                 <div class="col">
-                                    <button class="btn addUser btn-primary" >Add user</button>
+                                    <button class="btn addUser btn-primary">Add user</button>
                                 </div>
                             </div>
 

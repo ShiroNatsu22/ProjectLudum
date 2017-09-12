@@ -24,9 +24,12 @@
                     <div class="col">
 
                         <ul id="user-list-nav" class="nav nav-tabs hidden-sm-down" role="tablist" width="100%">
-
                             <li class="nav-item">
-                                <a class="nav-link active" href="#completed" id="completed-tab" role="tab"
+                                <a class="nav-link active" href="#all" id="all-tab" role="tab"
+                                   data-toggle="tab" aria-controls="all">All</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="#completed" id="completed-tab" role="tab"
                                    data-toggle="tab" aria-controls="completed">Completed</a>
                             </li>
                             <li class="nav-item">
@@ -61,8 +64,60 @@
             </div>
         </div>
         <div id="game-list-nav-content" class="tab-content">
+            <div role="tabpanel" class="tab-pane fade show active" id="all" aria-labelledby="all-tab">
+                <div class="row">
+                    <div class="col">
+                        <table class="table table-hover table-stripped table-bordered table-list" width="100%">
+                            <thead>
+                            <tr class="bg-primary text-white">
+                                <th>#</th>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Rating</th>
+                                <th>Status</th>
+                                <c:if test="${sessionScope.currentUser.user_id_pk == param['id']}">
+                                    <th>Delete</th>
+                                </c:if>
+                            </tr>
+                            </thead>
+                            <tbody>
 
-            <div role="tabpanel" class="tab-pane fade show active" id="completed" aria-labelledby="completed-tab">
+                            <c:forEach var="userSelectedVideogame" varStatus="count" items="${requestScope.currentUserSelectedVideogamesList}">
+                                <c:if test="${userSelectedVideogame.status.equals('completed')}">
+                                    <tr>
+                                        <td>
+                                                ${count.count}
+                                        </td>
+                                        <td>
+                                            <img class="img-fluid col col-md-2" width="50" height="50" src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
+                                        </td>
+                                        <td>
+                                            <a href="<c:url value="/BackOffice/VideogameCard.jsp?id=${userSelectedVideogame.videogame_id_fk.videogame_id_pk}"/>">${userSelectedVideogame.videogame_id_fk.name}</a>
+                                        </td>
+                                        <td class="rating">
+                                                ${userSelectedVideogame.rating}
+                                        </td>
+                                        <c:if test="${sessionScope.currentUser.user_id_pk == param['id']}">
+                                            <td>
+                                                <form action="<c:url value="/controller/UserSelectedVideogamesControl"/>" method="post">
+                                                    <button class="btn btn-danger" name="deleteFromUserList" value="${userSelectedVideogame.videogame_id_fk.videogame_id_pk}">
+                                                        <i class="fa fa-trash"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </c:if>
+                                        <td>Completed</td>
+                                    </tr>
+                                </c:if>
+                            </c:forEach>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div role="tabpanel" class="tab-pane fade show " id="completed" aria-labelledby="completed-tab">
                 <div class="row">
                     <div class="col">
                         <table class="table table-hover table-stripped table-bordered table-list" width="100%">
@@ -91,7 +146,7 @@
                                         <td>
                                             <a href="<c:url value="/BackOffice/VideogameCard.jsp?id=${userSelectedVideogame.videogame_id_fk.videogame_id_pk}"/>">${userSelectedVideogame.videogame_id_fk.name}</a>
                                         </td>
-                                        <td>
+                                        <td class="rating">
                                                 ${userSelectedVideogame.rating}
                                         </td>
                                         <c:if test="${sessionScope.currentUser.user_id_pk == param['id']}">
@@ -142,7 +197,7 @@
                                         <td>
                                             <a href="<c:url value="/BackOffice/VideogameCard.jsp?id=${userSelectedVideogame.videogame_id_fk.videogame_id_pk}"/>">${userSelectedVideogame.videogame_id_fk.name}</a>
                                         </td>
-                                        <td>
+                                        <td class="rating">
                                                 ${userSelectedVideogame.rating}
                                         </td>
                                         <c:if test="${sessionScope.currentUser.user_id_pk == param['id']}">
@@ -193,7 +248,7 @@
                                         <td>
                                             <a href="<c:url value="/BackOffice/VideogameCard.jsp?id=${userSelectedVideogame.videogame_id_fk.videogame_id_pk}"/>">${userSelectedVideogame.videogame_id_fk.name}</a>
                                         </td>
-                                        <td>
+                                        <td class="rating">
                                                 ${userSelectedVideogame.rating}
                                         </td>
                                         <c:if test="${sessionScope.currentUser.user_id_pk == param['id']}">
@@ -244,7 +299,7 @@
                                         <td>
                                             <a href="<c:url value="/BackOffice/VideogameCard.jsp?id=${userSelectedVideogame.videogame_id_fk.videogame_id_pk}"/>">${userSelectedVideogame.videogame_id_fk.name}</a>
                                         </td>
-                                        <td>
+                                        <td class="rating">
                                                 ${userSelectedVideogame.rating}
                                         </td>
                                         <c:if test="${sessionScope.currentUser.user_id_pk == param['id']}">

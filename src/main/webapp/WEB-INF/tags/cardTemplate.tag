@@ -58,7 +58,7 @@
             </div>
 
         </div>
-        <div class="col-12">
+        <div class="col-12 px-0">
             <div class="row py-3">
                 <div class="col">
                     <div class="separator-bottom"></div>
@@ -123,6 +123,9 @@
 
 <script src="../../lib/js/toggle-classes.min.js"></script>
 <script src="../../lib/js/global.js"></script>
+<script src="../../lib/js/errorControl.min.js"></script>
+
+
 
 
 </body>
