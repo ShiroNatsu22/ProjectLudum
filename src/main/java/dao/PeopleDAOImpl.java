@@ -1,14 +1,12 @@
 package dao;
 
+import model.Company;
 import model.DataBase;
 import model.People;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Types;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,10 +43,15 @@ public class PeopleDAOImpl implements PeopleDAO {
     @Override
     public void createPeople(People people) {
 
+        Connection connection = null;
+        PreparedStatement ps = null;
+
+        String query = "INSERT INTO people (name, surname, birthday, nationality, biography) VALUES(?,?,?,?,?)";
+
         try {
 
-            String query = "INSERT INTO people (name, surname, birthday, nationality, biography) VALUES(?,?,?,?,?)";
-            PreparedStatement ps = db.getConnection(query);
+            connection = db.getConnection();
+            ps = connection.prepareStatement(query);
 
             ps.setString(1, people.getName());
             ps.setString(2, people.getSurname());
@@ -58,10 +61,10 @@ public class PeopleDAOImpl implements PeopleDAO {
             ps.setString(5, people.getBiography());
             ps.execute();
 
-            ps.close();
-
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            db.closeConnection(connection, ps, null);
         }
 
     }
@@ -69,37 +72,47 @@ public class PeopleDAOImpl implements PeopleDAO {
     @Override
     public void deletePeople(int people_id_pk) {
 
+        Connection connection = null;
+        PreparedStatement ps = null;
+
+        String query = String.format("DELETE FROM people WHERE people.people_id_pk = %d", people_id_pk);
+
         try {
 
-            String query = String.format("DELETE FROM people WHERE people.people_id_pk = %d", people_id_pk);
-
-            PreparedStatement ps = db.getConnection(query);
+            connection = db.getConnection();
+            ps = connection.prepareStatement(query);
 
             ps.execute();
-            ps.close();
 
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            db.closeConnection(connection, ps, null);
         }
 
     }
 
     private List<People> getPeople(String query) {
 
+        Connection connection = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
         List<People> peopleList = new ArrayList<>();
 
         try {
 
-            PreparedStatement ps = db.getConnection(query);
-            ResultSet rs = ps.executeQuery();
+            connection = db.getConnection();
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
 
             while (rs.next())
                 peopleList.add(new People(rs.getInt("people_id_pk"), rs.getString("name"), rs.getString("surname"), rs.getDate("birthday"), rs.getString("nationality"), rs.getString("biography")));
 
-            ps.close();
-
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            db.closeConnection(connection, ps, rs);
         }
 
         return peopleList;

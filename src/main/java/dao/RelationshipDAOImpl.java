@@ -5,6 +5,7 @@ import model.Relationship;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -53,19 +54,25 @@ public class RelationshipDAOImpl implements RelationshipDAO {
     @Override
     public void createRelationship(Relationship relationship) {
 
+        Connection connection = null;
+        PreparedStatement ps = null;
+
+        String query = "INSERT INTO relationships (sender_user_id_fk, receiver_user_id_fk, status) VALUES(?,?,?)";
+
         try {
 
-            String query = "INSERT INTO relationships (sender_user_id_fk, receiver_user_id_fk, status) VALUES(?,?,?)";
-            PreparedStatement ps = db.getConnection(query);
+            connection = db.getConnection();
+            ps = connection.prepareStatement(query);
 
             ps.setInt(1, relationship.getSender_user_id_fk());
             ps.setInt(2, relationship.getReceiver_user_id_fk());
             ps.setString(3, relationship.getStatus());
             ps.execute();
-            ps.close();
 
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            db.closeConnection(connection, ps, null);
         }
 
     }
@@ -88,21 +95,26 @@ public class RelationshipDAOImpl implements RelationshipDAO {
 
     private List<Relationship> getRelationships(String query) {
 
+        Connection connection = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
         List<Relationship> relationshipList = new ArrayList<Relationship>();
 
         try {
 
-            PreparedStatement ps = db.getConnection(query);
-            ResultSet rs = ps.executeQuery();
+            connection = db.getConnection();
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
 
             while (rs.next()) {
                 relationshipList.add(new Relationship(rs.getInt("relationship_id_pk"), rs.getInt("sender_user_id_fk"), rs.getInt("receiver_user_id_fk"), rs.getString("status")));
             }
 
-            ps.close();
-
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            db.closeConnection(connection, ps, rs);
         }
 
         return relationshipList;
@@ -110,14 +122,19 @@ public class RelationshipDAOImpl implements RelationshipDAO {
 
     private void deleteRelationship(String query) {
 
+        Connection connection = null;
+        PreparedStatement ps = null;
+
         try {
 
-            PreparedStatement ps = db.getConnection(query);
+            connection = db.getConnection();
+            ps = connection.prepareStatement(query);
             ps.execute();
-            ps.close();
 
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            db.closeConnection(connection, ps, null);
         }
 
     }

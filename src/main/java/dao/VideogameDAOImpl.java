@@ -5,6 +5,7 @@ import model.Videogame;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -41,13 +42,17 @@ public class VideogameDAOImpl implements VideogameDAO {
     @Override
     public int createVideogame(Videogame videogame) {
 
+        Connection connection = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        String query = "INSERT INTO videogames (name, description) VALUES(?,?)";
         int resultVideogame_id_pk = -1;
 
         try {
 
-            ResultSet rs;
-            String query = "INSERT INTO videogames (name, description) VALUES(?,?)";
-            PreparedStatement ps = db.getConnection(query);
+            connection = db.getConnection();
+            ps = connection.prepareStatement(query);
 
             ps.setString(1, videogame.getName());
             ps.setString(2, videogame.getDescription());
@@ -58,10 +63,10 @@ public class VideogameDAOImpl implements VideogameDAO {
             if (rs.next())
                 resultVideogame_id_pk = rs.getInt(1);
 
-            ps.close();
-
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            db.closeConnection(connection, ps, rs);
         }
 
         return resultVideogame_id_pk;
@@ -71,38 +76,47 @@ public class VideogameDAOImpl implements VideogameDAO {
     @Override
     public void deleteVideogame(int videogame_id_pk) {
 
+        Connection connection = null;
+        PreparedStatement ps = null;
+
+        String query = String.format("DELETE FROM videogames WHERE videogames.videogame_id_pk = %d", videogame_id_pk);
+
         try {
 
-            String query = String.format("DELETE FROM videogames WHERE videogames.videogame_id_pk = %d", videogame_id_pk);
-
-            PreparedStatement ps = db.getConnection(query);
+            connection = db.getConnection();
+            ps = connection.prepareStatement(query);
 
             ps.execute();
-            ps.close();
 
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            db.closeConnection(connection, ps, null);
         }
 
     }
 
     private List<Videogame> getVideogames(String query) {
 
+        Connection connection = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
         List<Videogame> videogameList = new ArrayList<Videogame>();
 
         try {
 
-            PreparedStatement ps = db.getConnection(query);
-            ResultSet rs = ps.executeQuery();
+            connection = db.getConnection();
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
 
             while (rs.next())
                 videogameList.add(new Videogame(rs.getInt("videogame_id_pk"), rs.getString("name"), rs.getString("description")));
 
-
-            ps.close();
-
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            db.closeConnection(connection, ps, rs);
         }
 
         return videogameList;

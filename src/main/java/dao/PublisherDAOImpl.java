@@ -7,6 +7,7 @@ import model.Videogame;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -42,30 +43,41 @@ public class PublisherDAOImpl implements PublisherDAO {
     @Override
     public void createPublisher(int company_id_fk, int videogame_id_fk) {
 
+        Connection connection = null;
+        PreparedStatement ps = null;
+
+        String query = "INSERT INTO publishers (company_id_fk, videogame_id_fk) VALUES(?,?)";
+
         try {
 
-            String query = "INSERT INTO publishers (company_id_fk, videogame_id_fk) VALUES(?,?)";
-            PreparedStatement ps = db.getConnection(query);
+            connection = db.getConnection();
+            ps = connection.prepareStatement(query);
 
             ps.setInt(1, company_id_fk);
             ps.setInt(2, videogame_id_fk);
             ps.execute();
-            ps.close();
 
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            db.closeConnection(connection, ps, null);
         }
 
     }
 
     private List<Publisher> getPublishersById_fk(String query) {
 
-        List<Publisher> publisherList = new ArrayList<Publisher>();
+        Connection connection = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        List<Publisher> publisherList = new ArrayList<>();
 
         try {
 
-            PreparedStatement ps = db.getConnection(query);
-            ResultSet rs = ps.executeQuery();
+            connection = db.getConnection();
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
 
             while (rs.next()) {
 
@@ -76,10 +88,10 @@ public class PublisherDAOImpl implements PublisherDAO {
 
             }
 
-            ps.close();
-
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            db.closeConnection(connection, ps, null);
         }
 
         return publisherList;

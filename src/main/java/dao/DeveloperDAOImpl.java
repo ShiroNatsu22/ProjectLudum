@@ -7,6 +7,7 @@ import model.Videogame;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -42,30 +43,41 @@ public class DeveloperDAOImpl implements DeveloperDAO {
     @Override
     public void createDeveloper(int company_id_fk, int videogame_id_fk) {
 
+        Connection connection = null;
+        PreparedStatement ps = null;
+
+        String query = "INSERT INTO developers (company_id_fk, videogame_id_fk) VALUES(?,?)";
+
         try {
 
-            String query = "INSERT INTO developers (company_id_fk, videogame_id_fk) VALUES(?,?)";
-            PreparedStatement ps = db.getConnection(query);
+            connection = db.getConnection();
+            ps = connection.prepareStatement(query);
 
             ps.setInt(1, company_id_fk);
             ps.setInt(2, videogame_id_fk);
             ps.execute();
-            ps.close();
 
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            db.closeConnection(connection, ps, null);
         }
 
     }
 
     private List<Developer> getDevelopersById_fk(String query) {
 
+        Connection connection = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
         List<Developer> developerList = new ArrayList<>();
 
         try {
 
-            PreparedStatement ps = db.getConnection(query);
-            ResultSet rs = ps.executeQuery();
+            connection = db.getConnection();
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
 
             while (rs.next()) {
                 Company company = new Company(rs.getInt("companies.company_id_pk"), rs.getString("companies.name"), rs.getDate("companies.founded"));
@@ -74,10 +86,10 @@ public class DeveloperDAOImpl implements DeveloperDAO {
                 developerList.add(new Developer(rs.getInt("developers.developer_id_pk"), company, videogame));
             }
 
-            ps.close();
-
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            db.closeConnection(connection, ps, rs);
         }
 
         return developerList;

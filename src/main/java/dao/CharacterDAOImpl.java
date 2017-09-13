@@ -6,6 +6,7 @@ import model.Character;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -44,19 +45,23 @@ public class CharacterDAOImpl implements CharacterDAO {
     @Override
     public void createCharacter(Character character) {
 
+        Connection connection = null;
+        PreparedStatement ps = null;
+        String query = "INSERT INTO characters (name, biography) VALUES(?,?)";
+
         try {
 
-            String query = "INSERT INTO characters (name, biography) VALUES(?,?)";
-            PreparedStatement ps = db.getConnection(query);
+            connection = db.getConnection();
+            ps = connection.prepareStatement(query);
 
             ps.setString(1, character.getName());
             ps.setString(2, character.getBiography());
             ps.execute();
 
-            ps.close();
-
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            db.closeConnection(connection, ps, null);
         }
 
     }
@@ -64,29 +69,39 @@ public class CharacterDAOImpl implements CharacterDAO {
     @Override
     public void deleteCharacter(int character_id_pk) {
 
+        Connection connection = null;
+        PreparedStatement ps = null;
+
+        String query = String.format("DELETE FROM characters WHERE characters.character_id_pk = %d", character_id_pk);
+
         try {
 
-            String query = String.format("DELETE FROM characters WHERE characters.character_id_pk = %d", character_id_pk);
-
-            PreparedStatement ps = db.getConnection(query);
+            connection = db.getConnection();
+            ps = connection.prepareStatement(query);
 
             ps.execute();
-            ps.close();
 
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            db.closeConnection(connection, ps, null);
         }
 
     }
 
     private List<Character> getCharacters(String query) {
 
+        Connection connection = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
         List<Character> characterList = new ArrayList<Character>();
 
         try {
 
-            PreparedStatement ps = db.getConnection(query);
-            ResultSet rs = ps.executeQuery();
+            connection = db.getConnection();
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
 
             while (rs.next())
                 characterList.add(new Character(rs.getInt("character_id_pk"), rs.getString("name"), rs.getString("biography")));
@@ -96,6 +111,8 @@ public class CharacterDAOImpl implements CharacterDAO {
 
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            db.closeConnection(connection, ps, rs);
         }
 
         return characterList;

@@ -5,6 +5,7 @@ import model.UserSelectedVideogames;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -45,20 +46,26 @@ public class UserSelectedVideogamesDAOImpl implements UserSelectedVideogamesDAO 
     @Override
     public void createUserSelectedVideogame(UserSelectedVideogames userSelectedVideogames) {
 
+        Connection connection = null;
+        PreparedStatement ps = null;
+
+        String query = "INSERT INTO userSelectedVideogames (user_id_fk, videogame_id_fk, status, rating) VALUES(?,?,?,?)";
+
         try {
 
-            String query = "INSERT INTO userSelectedVideogames (user_id_fk, videogame_id_fk, status, rating) VALUES(?,?,?,?)";
-            PreparedStatement ps = db.getConnection(query);
+            connection = db.getConnection();
+            ps = connection.prepareStatement(query);
 
             ps.setInt(1, userSelectedVideogames.getUser_id_fk().getUser_id_pk());
             ps.setInt(2, userSelectedVideogames.getVideogame_id_fk().getVideogame_id_pk());
             ps.setString(3, userSelectedVideogames.getStatus());
             ps.setInt(4, userSelectedVideogames.getRating());
             ps.execute();
-            ps.close();
 
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            db.closeConnection(connection, ps, null);
         }
 
     }
@@ -66,37 +73,47 @@ public class UserSelectedVideogamesDAOImpl implements UserSelectedVideogamesDAO 
     @Override
     public void deleteUserSelectedVideogame(int userSelectedVideogame_id_pk) {
 
+        Connection connection = null;
+        PreparedStatement ps = null;
+
+        String query = String.format("DELETE FROM userSelectedVideogames WHERE userSelectedVideogame_id_pk = %d", userSelectedVideogame_id_pk);
+
         try {
 
-            String query = String.format("DELETE FROM userSelectedVideogames WHERE userSelectedVideogame_id_pk = %d", userSelectedVideogame_id_pk);
-
-            PreparedStatement ps = db.getConnection(query);
+            connection = db.getConnection();
+            ps = connection.prepareStatement(query);
             ps.execute();
-            ps.close();
 
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            db.closeConnection(connection, ps, null);
         }
 
     }
 
     private List<UserSelectedVideogames> getUserSelectedVideogames(String query) {
 
+        Connection connection = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
         List<UserSelectedVideogames> userSelectedVideogamesList = new ArrayList<UserSelectedVideogames>();
 
         try {
 
-            PreparedStatement ps = db.getConnection(query);
-            ResultSet rs = ps.executeQuery();
+            connection = db.getConnection();
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
 
             while (rs.next()) {
                 userSelectedVideogamesList.add(new UserSelectedVideogames(rs.getInt("userSelectedVideogame_id_pk"), rs.getInt("user_id_fk"), rs.getInt("videogame_id_fk"), rs.getString("status"), rs.getInt("rating")));
             }
 
-            ps.close();
-
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            db.closeConnection(connection, ps, null);
         }
 
         return userSelectedVideogamesList;

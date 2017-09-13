@@ -5,6 +5,7 @@ import model.DataBase;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -44,13 +45,17 @@ public class CompanyDAOImpl implements CompanyDAO {
     @Override
     public int createCompany(Company company) {
 
+        Connection connection = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
         int resultCompany_id_pk = -1;
+        String query = "INSERT INTO companies (name, founded) VALUES(?,?)";
 
         try {
 
-            ResultSet rs;
-            String query = "INSERT INTO companies (name, founded) VALUES(?,?)";
-            PreparedStatement ps = db.getConnection(query);
+            connection = db.getConnection();
+            ps = connection.prepareStatement(query);
 
             ps.setString(1, company.getName());
             ps.setDate(2, new Date(company.getFounded().getTime()));
@@ -61,10 +66,10 @@ public class CompanyDAOImpl implements CompanyDAO {
             if (rs.next())
                 resultCompany_id_pk = rs.getInt(1);
 
-            ps.close();
-
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            db.closeConnection(connection, ps, rs);
         }
 
         return resultCompany_id_pk;
@@ -74,38 +79,48 @@ public class CompanyDAOImpl implements CompanyDAO {
     @Override
     public void deleteCompany(int company_id_pk) {
 
+        Connection connection = null;
+        PreparedStatement ps = null;
+
+        String query = String.format("DELETE FROM companies WHERE companies.company_id_pk = %d", company_id_pk);
+
         try {
 
-            String query = String.format("DELETE FROM companies WHERE companies.company_id_pk = %d", company_id_pk);
-
-            PreparedStatement ps = db.getConnection(query);
+            connection = db.getConnection();
+            ps = connection.prepareStatement(query);
 
             ps.execute();
-            ps.close();
 
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            db.closeConnection(connection, ps, null);
         }
 
     }
 
     private List<Company> getCompanies(String query) {
 
-        List<Company> companyList = new ArrayList<Company>();
+        Connection connection = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        List<Company> companyList = new ArrayList<>();
 
         try {
 
-            PreparedStatement ps = db.getConnection(query);
-            ResultSet rs = ps.executeQuery();
+            connection = db.getConnection();
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
 
             while (rs.next()) {
                 companyList.add(new Company(rs.getInt("company_id_pk"), rs.getString("name"), rs.getDate("founded")));
             }
 
-            ps.close();
-
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            db.closeConnection(connection, ps, rs);
         }
 
         return companyList;

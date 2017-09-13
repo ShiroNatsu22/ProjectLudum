@@ -1,14 +1,12 @@
 package dao;
 
+import model.Company;
 import model.DataBase;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import model.User;
 
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Types;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,10 +54,15 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public void createUser(User user) {
 
+        Connection connection = null;
+        PreparedStatement ps = null;
+
+        String query = "INSERT INTO users (username, password, admin, name, surname, gender, country, email, birthday, biography, registration) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+
         try {
 
-            String query = "INSERT INTO users (username, password, admin, name, surname, gender, country, email, birthday, biography, registration) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
-            PreparedStatement ps = db.getConnection(query);
+            connection = db.getConnection();
+            ps = connection.prepareStatement(query);
 
             ps.setString(1, user.getUsername());
             ps.setString(2, user.getPassword());
@@ -75,48 +78,59 @@ public class UserDAOImpl implements UserDAO {
             ps.setDate(11, new Date(user.getRegistration().getTime()));
 
             ps.execute();
-            ps.close();
 
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            db.closeConnection(connection, ps, null);
         }
     }
 
     @Override
     public void deleteUser(int user_id_pk) {
 
+        Connection connection = null;
+        PreparedStatement ps = null;
+
+        String query = String.format("DELETE FROM users WHERE users.user_id_pk = %d", user_id_pk);
+
         try {
 
-            String query = String.format("DELETE FROM users WHERE users.user_id_pk = %d", user_id_pk);
-
-            PreparedStatement ps = db.getConnection(query);
+            connection = db.getConnection();
+            ps = connection.prepareStatement(query);
 
             ps.execute();
-            ps.close();
 
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            db.closeConnection(connection, ps, null);
         }
 
     }
 
     private List<User> getUsers(String query) {
 
-        List<User> userList = new ArrayList<User>();
+        Connection connection = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        List<User> userList = new ArrayList<>();
 
         try {
 
-            PreparedStatement ps = db.getConnection(query);
-            ResultSet rs = ps.executeQuery();
+            connection = db.getConnection();
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
 
             while (rs.next()) {
                 userList.add(new User(rs.getInt("user_id_pk"), rs.getString("username"), rs.getString("password"), rs.getBoolean("admin"), rs.getString("name"), rs.getString("surname"), rs.getString("gender"), rs.getString("country"), rs.getString("email"), rs.getDate("birthday"), rs.getString("biography"), rs.getDate("registration")));
             }
 
-            ps.close();
-
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            db.closeConnection(connection, ps, null);
         }
 
         return userList;

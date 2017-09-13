@@ -19,23 +19,58 @@ public class DataBase {
         this.password = password;
     }
 
-    public PreparedStatement getConnection(String query) {
+    public Connection getConnection() {
 
         try {
+
             Class.forName(this.getDriver());
-            Connection connection = DriverManager.getConnection(
+
+            return DriverManager.getConnection(
                     this.getUrl(),
                     this.getUser(),
                     this.getPassword()
             );
-            PreparedStatement ps = connection.prepareStatement(query);
-            return ps;
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         return null;
+    }
+
+    public void closeConnection(Connection connection, PreparedStatement ps, ResultSet rs) {
+
+        if (rs != null) {
+
+            try {
+                rs.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+
+        if (ps != null) {
+
+            try {
+                ps.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+
+        if (connection != null) {
+
+            try {
+                connection.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+
+
     }
 
     public String getDriver() {
