@@ -22,7 +22,7 @@
                 <th>Username</th>
                 <th>Password</th>
                 <th>Admin</th>
-                <th>Delete</th>
+                <th>Edit/Delete</th>
             </tr>
             </thead>
 
@@ -42,6 +42,8 @@
                     <td>
 
                         <form action="<c:url value="/controller/UsersControl"/>" method="post">
+                            <button onclick="ajaxPetition(${item.user_id_pk})" type=button class="btn btn-danger" data-toggle="modal" data-target="#createModify"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+
                             <button name="deleteUser" value="${item.user_id_pk}"><i class="fa fa-trash"></i></button>
                         </form>
                     </td>
@@ -193,6 +195,145 @@
             </div>
         </div>
 
+
+        <div class="modal fade" id="modifyUser" tabindex="-1" role="dialog" aria-labelledby="modifyUserLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modifyModalLabel">Send message</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span>&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="<c:url value="/controller/UsersControl"/>" method="post">
+
+
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="newPassword">Password(*)</label>
+                                        <input type="password"  class="form-control originalPassword   passwordRegistation pFill password-notFill" id="password" name="password"
+                                               placeholder="Enter new password">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group ">
+                                        <div class="passwordComprobation errorMessage"></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group ">
+                                        <label for="newRepeatPassword">Repeat password(*)</label>
+                                        <input  type="password" class="form-control repeatPassword passwordRegistation pFill password-notFill" id="repeatPassword" name="password"
+                                               placeholder="Enter new password">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="newName">Name</label>
+                                        <input class="form-control modifyName" id="name" name="name"
+                                               placeholder="Enter your name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="newSurname">Surname</label>
+                                        <input class="form-control modifySurname" id="surname" name="surname"
+                                               placeholder="Enter your Surname">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <label for="newGender">
+                                        Select your gender
+                                        <select class="col-6 modifyGender" id="gender" name="gender">
+                                            <option value="M">Male</option>
+                                            <option value="F">Female</option>
+                                            <option value="O">Other</option>
+                                        </select>
+                                    </label>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="newCountry">Country</label>
+                                        <input class="form-control modifyCountry" id="country" name="country"
+                                               placeholder="Enter your country">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="newEmail">Email</label>
+                                        <input class="form-control modifyEmail emailRegistration" type="email" id="email" name="email"
+                                               placeholder="Enter your email">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="newBirthday">Birthday</label>
+                                        <input type="date" class="form-control modifyBirthday" id="birthday" name="birthday"
+                                               placeholder="Enter your birthday">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="newBiography">Biography</label>
+                                        <input class="form-control modifyBiography" id="biography" name="biography"
+                                               placeholder="Enter something about you">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <button class="btn addUser btn-primary">Add user</button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            function ajaxPetition(id) {
+
+
+                $(document).ready(function () {
+                    $.get({
+                        url: '<c:url value="/controller/UsersControl"/>',
+                        data:{
+                            id: id
+                        },
+                        success: function (data) {
+                            console.log(data);
+                        }
+                    });
+                });
+            }
+        </script>
     </jsp:body>
 
 </tag:pageMaster>

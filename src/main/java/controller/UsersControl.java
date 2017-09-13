@@ -1,5 +1,6 @@
 package controller;
 
+import com.google.gson.Gson;
 import dao.*;
 import model.PrivateMessage;
 import model.Relationship;
@@ -37,6 +38,11 @@ public class UsersControl extends HttpServlet {
 
             // Se devuelve un usuario a partir de la ID obtenida
             req.setAttribute("currentUser", user);
+
+            String json = new Gson().toJson(user);
+            resp.setContentType("application/json");
+            resp.setCharacterEncoding("UTF-8");
+            resp.getWriter().write(json);
 
         }
         else {
