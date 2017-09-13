@@ -7,4 +7,9 @@
 
     <display-name>Archetype Created Web Application</display-name>
 
+    <context-param>
+        <param-name>UserProfileImageFolder</param-name>
+        <param-value>/lib/data/Images/UserProfile/</param-value>
+    </context-param>
+
 </web-app>

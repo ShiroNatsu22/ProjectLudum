@@ -25,9 +25,14 @@
 
             <div class="row">
                 <div class="col image">
-                    <img class="img-fluid imag-responsive"
-                         src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
-                         alt="gameImg">
+                    <c:choose>
+                        <c:when test="${requestScope.currentUser.profileImage != null}">
+                            <img class="img-fluid imag-responsive" src="${initParam.UserProfileImageFolder}${requestScope.currentUser.profileImage}" alt="userImage">
+                        </c:when>
+                        <c:otherwise>
+                            <img class="img-fluid imag-responsive" src="http://www.zwiftnation.com/Content/AdminLTE/img/anonymous.png" alt="userImage">
+                        </c:otherwise>
+                    </c:choose>
                 </div>
             </div>
 

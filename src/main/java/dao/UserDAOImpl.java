@@ -57,7 +57,7 @@ public class UserDAOImpl implements UserDAO {
         Connection connection = null;
         PreparedStatement ps = null;
 
-        String query = "INSERT INTO users (username, password, admin, name, surname, gender, country, email, birthday, biography, registration) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+        String query = "INSERT INTO users (username, password, admin, name, surname, gender, country, email, birthday, biography, registration, profileImage) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
 
         try {
 
@@ -76,6 +76,7 @@ public class UserDAOImpl implements UserDAO {
             else ps.setNull(9, Types.DATE);
             ps.setString(10, user.getBiography());
             ps.setDate(11, new Date(user.getRegistration().getTime()));
+            ps.setString(12, user.getProfileImage());
 
             ps.execute();
 
@@ -124,13 +125,13 @@ public class UserDAOImpl implements UserDAO {
             rs = ps.executeQuery();
 
             while (rs.next()) {
-                userList.add(new User(rs.getInt("user_id_pk"), rs.getString("username"), rs.getString("password"), rs.getBoolean("admin"), rs.getString("name"), rs.getString("surname"), rs.getString("gender"), rs.getString("country"), rs.getString("email"), rs.getDate("birthday"), rs.getString("biography"), rs.getDate("registration")));
+                userList.add(new User(rs.getInt("user_id_pk"), rs.getString("username"), rs.getString("password"), rs.getBoolean("admin"), rs.getString("name"), rs.getString("surname"), rs.getString("gender"), rs.getString("country"), rs.getString("email"), rs.getDate("birthday"), rs.getString("biography"), rs.getDate("registration"), rs.getString("profileImage")));
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            db.closeConnection(connection, ps, null);
+            db.closeConnection(connection, ps, rs);
         }
 
         return userList;

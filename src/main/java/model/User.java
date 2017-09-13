@@ -16,12 +16,13 @@ public class User {
     private Date birthday;
     private String biography;
     private Date registration;
+    private String profileImage;
 
     public User() {
 
     }
 
-    public User(int user_id_pk, String username, String password, boolean admin, String name, String surname, String gender, String country, String email, Date birthday, String biography, Date registration) {
+    public User(int user_id_pk, String username, String password, boolean admin, String name, String surname, String gender, String country, String email, Date birthday, String biography, Date registration, String profileImage) {
         this.user_id_pk = user_id_pk;
         this.username = username;
         this.password = password;
@@ -34,6 +35,7 @@ public class User {
         this.birthday = birthday;
         this.biography = biography;
         this.registration = registration;
+        this.profileImage = profileImage;
     }
 
     public int getUser_id_pk() {
@@ -130,5 +132,13 @@ public class User {
 
     public void setRegistration(Date registration) {
         this.registration = registration;
+    }
+
+    public String getProfileImage() {
+        return profileImage;
+    }
+
+    public void setProfileImage(String profileImage) {
+        this.profileImage = profileImage;
     }
 }

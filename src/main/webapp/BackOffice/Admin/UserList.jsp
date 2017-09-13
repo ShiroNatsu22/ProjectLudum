@@ -15,6 +15,11 @@
         <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#modalAddUser">Add user
         </button>
 
+        <!-- Area de pruebas del FileUpload -->
+        <form action="<c:url value="/controller/FileUpload"/>" method="post" enctype="multipart/form-data">
+
+        </form>
+
         <%-- Table that prints a list of all users --%>
         <table class="table table-hover table-bordered"  width="100%">
             <thead>
@@ -182,6 +187,10 @@
                                 </div>
                             </div>
 
+                            <input id="userProfileImage" onchange="sendFile()" type="file" name="userProfileImage"/>
+                            <input id="hfFilename" type="hidden" name="hfFilename">
+                            <button type="button" id="btn_upload">Upload File</button>
+
                             <div class="row">
                                 <div class="col">
                                     <button class="btn addUser btn-primary">Add user</button>
@@ -348,6 +357,26 @@
                 });
             }
         </script>
+        <script>
+
+            function sendFile() {
+                var formData = new FormData();
+                formData.append("userProfileImage", document.getElementById("userProfileImage").files[0]);
+
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        console.log(this.responseText);
+                        $("#hfFilename").val(this.responseText.substring(1, this.responseText.length - 1));
+                    }
+                };
+                xhr.open("POST", "<c:url value="/controller/FileUpload"/>");
+                xhr.send(formData);
+            }
+
+
+        </script>
+
     </jsp:body>
 
 </tag:pageMaster>

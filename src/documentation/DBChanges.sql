@@ -292,3 +292,9 @@ CREATE TABLE `gamerlistDB`.`favoritePeople` (
     ON DELETE CASCADE
     ON UPDATE CASCADE
 );
+
+/* PAJ 13/09/2017 - Creado el campo de imagen del usuario */
+
+ALTER TABLE `gamerlistDB`.`users`
+  ADD COLUMN `profileImage` VARCHAR(45) NULL
+  AFTER `registration`;

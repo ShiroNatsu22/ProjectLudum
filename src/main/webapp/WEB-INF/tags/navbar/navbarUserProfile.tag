@@ -42,5 +42,14 @@
 
 
 <a class="navbar-brand" href="<c:url value="/BackOffice/Profile.jsp?id=${sessionScope.currentUser.user_id_pk}" />">
-    <img src="http://www.zwiftnation.com/Content/AdminLTE/img/anonymous.png" width="30" height="30" alt="userImage">
+
+    <c:choose>
+        <c:when test="${sessionScope.currentUser.profileImage != null}">
+            <img src="${initParam.UserProfileImageFolder}${sessionScope.currentUser.profileImage}" width="30" height="30" alt="userImage">
+        </c:when>
+        <c:otherwise>
+            <img src="http://www.zwiftnation.com/Content/AdminLTE/img/anonymous.png" width="30" height="30" alt="userImage">
+        </c:otherwise>
+    </c:choose>
+
 </a>
