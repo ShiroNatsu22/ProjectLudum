@@ -23,7 +23,7 @@
             <tr class="bg-primary text-white">
                 <th>Name</th>
                 <th>Description</th>
-                <th>Delete</th>
+                <th>Edit/Delete</th>
             </tr>
             </thead>
 
@@ -38,6 +38,8 @@
                     </td>
                     <td>
                         <form action="<c:url value="/controller/VideogamesControl"/>" method="post">
+                            <button type=button onclick="ajaxPetition(${company.company_id_pk})" class="btn btn-danger " data-toggle="modal" data-target="#videogameModal"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+
                             <button name="deleteVideogame" value="${item.videogame_id_pk}"><i class="fa fa-trash"></i>
                             </button>
                         </form>
@@ -116,6 +118,83 @@
                             <div class="row">
                                 <div class="col">
                                     <button class="btn btn-primary">Add videogame</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="videogameModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add new videogame</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span>&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <form action="<c:url value="/controller/VideogamesControl"/>" method="post" accept-charset="UTF-8">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="name">Name</label>
+                                        <input class="form-control" id="name" name="name"
+                                               placeholder="Enter new name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="description">Description</label>
+                                        <textarea class="form-control" id="description" name="description"
+                                                  rows="3"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <label for="developer">
+                                        Select developers
+                                        <select class="col-6" id="developer" name="developer_company_id_fk" multiple>
+                                            <c:forEach var="developer" items="${requestScope.companyList}">
+                                                <option value="${developer.company_id_pk}">${developer.name}</option>
+                                            </c:forEach>
+                                        </select>
+                                    </label>
+                                    <label for="publisher">
+                                        Select publishers
+
+                                        <select class="col-6" id="publisher" name="publisher_company_id_fk" multiple>
+                                            <c:forEach var="publisher" items="${requestScope.companyList}">
+                                                <option value="${publisher.company_id_pk}">${publisher.name}</option>
+                                            </c:forEach>
+                                        </select>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <label for="character">
+                                        Select characters
+                                        <select class="col-6" id="character" name="character_id_fk" multiple>
+                                            <c:forEach var="character" items="${requestScope.characterList}">
+                                                <option value="${character.character_id_pk}">${character.name}</option>
+                                            </c:forEach>
+                                        </select>
+                                    </label>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <button class="btn btn-primary">Modify videogame</button>
                                 </div>
                             </div>
                         </form>

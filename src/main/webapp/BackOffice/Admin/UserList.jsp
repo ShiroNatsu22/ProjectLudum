@@ -137,9 +137,9 @@
                                     <label for="newGender">
                                         Select your gender
                                         <select class="col-6" id="newGender" name="gender">
-                                            <option value="M">Male</option>
-                                            <option value="F">Female</option>
-                                            <option value="O">Other</option>
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                            <option value="Other">Other</option>
                                         </select>
                                     </label>
 
@@ -212,7 +212,7 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="newPassword">Password(*)</label>
+                                        <label for="password">Password(*)</label>
                                         <input type="password"  class="form-control originalPassword   passwordRegistation pFill password-notFill" id="password" name="password"
                                                placeholder="Enter new password">
                                     </div>
@@ -229,7 +229,7 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group ">
-                                        <label for="newRepeatPassword">Repeat password(*)</label>
+                                        <label for="repeatPassword">Repeat password(*)</label>
                                         <input  type="password" class="form-control repeatPassword passwordRegistation pFill password-notFill" id="repeatPassword" name="password"
                                                placeholder="Enter new password">
                                     </div>
@@ -240,7 +240,7 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="newName">Name</label>
+                                        <label for="name">Name</label>
                                         <input class="form-control modifyName" id="name" name="name"
                                                placeholder="Enter your name">
                                     </div>
@@ -249,7 +249,7 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="newSurname">Surname</label>
+                                        <label for="surname">Surname</label>
                                         <input class="form-control modifySurname" id="surname" name="surname"
                                                placeholder="Enter your Surname">
                                     </div>
@@ -257,12 +257,12 @@
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <label for="newGender">
+                                    <label for="gender">
                                         Select your gender
                                         <select class="col-6 modifyGender" id="gender" name="gender">
-                                            <option value="M">Male</option>
-                                            <option value="F">Female</option>
-                                            <option value="O">Other</option>
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                            <option value="Other">Other</option>
                                         </select>
                                     </label>
 
@@ -271,7 +271,7 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="newCountry">Country</label>
+                                        <label for="country">Country</label>
                                         <input class="form-control modifyCountry" id="country" name="country"
                                                placeholder="Enter your country">
                                     </div>
@@ -280,7 +280,7 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="newEmail">Email</label>
+                                        <label for="email">Email</label>
                                         <input class="form-control modifyEmail emailRegistration" type="email" id="email" name="email"
                                                placeholder="Enter your email">
                                     </div>
@@ -289,7 +289,7 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="newBirthday">Birthday</label>
+                                        <label for="birthday">Birthday</label>
                                         <input type="date" class="form-control modifyBirthday" id="birthday" name="birthday"
                                                placeholder="Enter your birthday">
                                     </div>
@@ -298,7 +298,7 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="newBiography">Biography</label>
+                                        <label for="biography">Biography</label>
                                         <input class="form-control modifyBiography" id="biography" name="biography"
                                                placeholder="Enter something about you">
                                     </div>
@@ -307,7 +307,7 @@
 
                             <div class="row">
                                 <div class="col">
-                                    <button class="btn addUser btn-primary">Add user</button>
+                                    <button class="btn addUser btn-primary">Modify user</button>
                                 </div>
                             </div>
 
@@ -318,6 +318,10 @@
         </div>
 
         <script>
+            function getMonthFromString(mon){
+                return new Date(Date.parse(mon)).getMonth()+1
+            }
+
             function ajaxPetition(id) {
 
 
@@ -328,7 +332,17 @@
                             id: id
                         },
                         success: function (data) {
-                            console.log(data);
+                            $("#name").val(data.name);
+                            $("#surname").val(data.surname);
+                            $("#country").val(data.country);
+                            $(".select2-selection__rendered").text(data.gender);
+                            $("#email").val(data.email);
+                            var date= new Date(data.val);
+                            var newDate=date.toString('yy-MM-dd');
+                            console.log(new Date(data.birthday));
+                            $("#birthday").val(data.birthday);
+                            $("#biography").val(data.biography);
+                            $("#modifyUser").modal("show");
                         }
                     });
                 });

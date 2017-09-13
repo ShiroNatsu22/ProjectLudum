@@ -1,5 +1,6 @@
 package controller;
 
+import com.google.gson.Gson;
 import dao.PeopleDAO;
 import dao.PeopleDAOImpl;
 import model.People;

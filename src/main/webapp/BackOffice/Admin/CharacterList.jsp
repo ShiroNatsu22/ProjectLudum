@@ -22,7 +22,7 @@
             <tr class="bg-primary text-white">
                 <th>Name</th>
                 <th>Biography</th>
-                <th>Delete</th>
+                <th>Edit/Delete</th>
             </tr>
             </thead>
 
@@ -37,6 +37,8 @@
                     </td>
                     <td>
                         <form action="<c:url value="/controller/CharactersControl"/>" method="post">
+                            <button type=button class="btn btn-danger" data-toggle="modal" data-target="#characterModal"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+
                             <button name="deleteCharacter" value="${character.character_id_pk}">
                                 <i class="fa fa-trash"></i>
                             </button>
@@ -85,6 +87,55 @@
                             <div class="row">
                                 <div class="col">
                                     <button class="btn btn-primary">Add character</button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="characterModal" tabindex="-1" role="dialog" aria-labelledby="characterModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Modify character</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span>&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <form action="<c:url value="/controller/CharactersControl"/>" method="post">
+
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="newCharacterName">Name</label>
+                                        <input class="form-control" id="characterName" name="name"
+                                               placeholder="Enter character name">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="newCharacterBiography">Biography</label>
+                                        <input class="form-control" id="characterBiography" name="biography"
+                                               placeholder="Enter something about the character">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <button class="btn btn-primary">Modify character</button>
                                 </div>
                             </div>
 

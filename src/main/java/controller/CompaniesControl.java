@@ -1,5 +1,7 @@
 package controller;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import dao.*;
 import model.Company;
 import model.Developer;
@@ -43,6 +45,13 @@ public class CompaniesControl extends HttpServlet {
             req.setAttribute("currentCompany", company);
             req.setAttribute("currentCompanyDeveloperList", developerList);
             req.setAttribute("currentCompanyPublisherList", publisherList);
+
+            String json = new Gson().toJson(company);
+            resp.setContentType("application/json");
+            resp.setCharacterEncoding("UTF-8");
+            resp.getWriter().write(json);
+
+
 
         } else {
 
