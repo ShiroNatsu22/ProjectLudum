@@ -28,7 +28,7 @@ correctInfo();
 
 function score() {
 
-$( ".rating:contains('-1')" ).html( "0" );
+$( ".rating:contains('-1')" ).html( "-" );
 
 }
 
