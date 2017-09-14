@@ -72,7 +72,7 @@
                         <div class="rounded ">
                             <div class="row mt-4">
                                 <div class="col mb-2">
-                                    <span class="separator-title  mb-2">Games Developed: <button type="button" class="btn hidden-sm-down show-button">Show me more</button></span>
+                                    <span class="separator-title  mb-2">Games Developed: </span>
                                 </div>
                             </div>
                             <div class="row mb-4">
@@ -103,14 +103,6 @@
                                 </c:choose>
 
 
-                                <!-- MOBILE -->
-                                <div class="row  mb-2 mr-1 hidden-md-up">
-                                    <div class="col ">
-                                        <button type="button" class="btn show-button float-right">Show me more</button>
-                                        </span>
-                                    </div>
-                                </div>
-                                <!--END MOBILE -->
                             </div>
 
                         </div>
@@ -123,7 +115,7 @@
                         <div class="rounded ">
                             <div class="row mt-4">
                                 <div class="col mb-2">
-                                    <span class="separator-title  mb-2">Games Published: <button type="button" class="btn hidden-sm-down show-button">Show me more</button></span>
+                                    <span class="separator-title  mb-2">Games Published: </span>
                                 </div>
                             </div>
                             <div class="row mb-4">
@@ -143,14 +135,7 @@
 
                                 </c:forEach>
 
-                                <!-- MOBILE -->
-                                <div class="row  mb-2 mr-1 hidden-md-up">
-                                    <div class="col ">
-                                        <button type="button" class="btn show-button float-right">Show me more</button>
-                                        </span>
-                                    </div>
-                                </div>
-                                <!--END MOBILE -->
+
                             </div>
 
                         </div>

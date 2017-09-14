@@ -189,13 +189,7 @@
                     <div class="col">
 
                         <div class="rounded info-card">
-                            <!-- DESKTOP -->
-                            <div class="row mt-4">
-                                <div class="col col-12 mb-2">
-                                    <span class="separator-title mb-2">Characters: <button type="button" class="btn show-butto hidden-sm-down">Show me more</button> </span>
-                                </div>
-                            </div>
-                            <!-- END DESKTOP -->
+
                             <div class="row mb-4">
                                 <div class="col separator">
                                     <div class=" game-title">Hideo Godjima</div>
@@ -228,14 +222,7 @@
                                 </div>
                             </div>
 
-                            <!-- MOBILE -->
-                            <div class="row  mb-2 mr-1 hidden-md-up">
-                                <div class="col ">
-                                    <button type="button" class="btn show-button float-right">Show me more</button>
-                                    </span>
-                                </div>
-                            </div>
-                            <!--END MOBILE -->
+
 
                         </div>
                     </div>
@@ -249,7 +236,7 @@
                             <!-- DESKTOP -->
                             <div class="row mt-4">
                                 <div class="col col-12 mb-2">
-                                    <span class="separator-title mb-2">People: <button type="button" class="btn show-butto hidden-sm-down">Show me more</button> </span>
+                                    <span class="separator-title mb-2">People: </span>
                                 </div>
                             </div>
                             <!-- END DESKTOP -->
@@ -285,14 +272,6 @@
                                 </div>
                             </div>
 
-                            <!-- MOBILE -->
-                            <div class="row  mb-2 mr-1 hidden-md-up">
-                                <div class="col ">
-                                    <button type="button" class="btn show-button float-right">Show me more</button>
-                                    </span>
-                                </div>
-                            </div>
-                            <!--END MOBILE -->
 
                         </div>
                     </div>

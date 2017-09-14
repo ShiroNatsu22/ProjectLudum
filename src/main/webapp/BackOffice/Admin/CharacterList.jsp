@@ -22,7 +22,7 @@
             <tr class="bg-primary text-white">
                 <th>Name</th>
                 <th>Biography</th>
-                <th>Edit/Delete</th>
+                <th></th>
             </tr>
             </thead>
 
@@ -37,7 +37,7 @@
                     </td>
                     <td>
                         <form action="<c:url value="/controller/CharactersControl"/>" method="post">
-                            <button type=button class="btn btn-danger" data-toggle="modal" data-target="#characterModal"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                            <button style="display:none" type=button class="btn btn-danger" data-toggle="modal" data-target="#characterModal"><i class="fa fa-pencil" aria-hidden="true"></i></button>
 
                             <button name="deleteCharacter" value="${character.character_id_pk}">
                                 <i class="fa fa-trash"></i>

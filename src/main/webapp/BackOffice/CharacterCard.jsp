@@ -89,7 +89,7 @@
                             <!-- DESKTOP -->
                             <div class="row mt-4">
                                 <div class="col col-12 mb-2">
-                                    <span class="separator-title mb-2">Games appeared: <button type="button" class="btn show-butto hidden-sm-down">Show me more</button> </span>
+                                    <span class="separator-title mb-2">Games appeared: </span>
                                 </div>
                             </div>
                             <!-- END DESKTOP -->
@@ -125,14 +125,7 @@
                                 </div>
                             </div>
 
-                            <!-- MOBILE -->
-                            <div class="row  mb-2 mr-1 hidden-md-up">
-                                <div class="col ">
-                                    <button type="button" class="btn show-button float-right">Show me more</button>
-                                    </span>
-                                </div>
-                            </div>
-                            <!--END MOBILE -->
+
 
                         </div>
                     </div>

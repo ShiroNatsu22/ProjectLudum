@@ -27,7 +27,7 @@
                 <th>Username</th>
                 <th>Password</th>
                 <th>Admin</th>
-                <th>Edit/Delete</th>
+                <th>Delete</th>
             </tr>
             </thead>
 
@@ -47,7 +47,7 @@
                     <td>
 
                         <form action="<c:url value="/controller/UsersControl"/>" method="post">
-                            <button onclick="ajaxPetition(${item.user_id_pk})" type=button class="btn btn-danger" name="ajax" data-toggle="modal" data-target="#createModify"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                            <button style="display: none;" nclick="ajaxPetition(${item.user_id_pk})" type=button class="btn btn-danger" name="ajax" data-toggle="modal" data-target="#createModify"><i class="fa fa-pencil" aria-hidden="true"></i></button>
 
                             <button name="deleteUser" value="${item.user_id_pk}"><i class="fa fa-trash"></i></button>
                         </form>

@@ -46,10 +46,7 @@ public class CompaniesControl extends HttpServlet {
             req.setAttribute("currentCompanyDeveloperList", developerList);
             req.setAttribute("currentCompanyPublisherList", publisherList);
 
-            String json = new Gson().toJson(company);
-            resp.setContentType("application/json");
-            resp.setCharacterEncoding("UTF-8");
-            resp.getWriter().write(json);
+
 
 
 

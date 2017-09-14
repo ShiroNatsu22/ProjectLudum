@@ -42,10 +42,7 @@ public class VideogamesControl extends HttpServlet {
             req.setAttribute("currentVideogameDeveloperList", developerList);
             req.setAttribute("currentVideogamePublisherList", publisherList);
 
-            String json = new Gson().toJson(videogame);
-            resp.setContentType("application/json");
-            resp.setCharacterEncoding("UTF-8");
-            resp.getWriter().write(json);
+
         } else {
 
             req.setAttribute("videogameList", videogameDAO.getAllVideogames());

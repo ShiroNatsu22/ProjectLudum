@@ -97,7 +97,7 @@
                         <div class="rounded info-card">
                             <div class="row mt-4">
                                 <div class="col mb-2">
-                                    <span class="separator-title ml-4 mb-2">Games Made: <button type="button" class="btn hidden-sm-down show-button">Show me more</button></span>
+                                    <span class="separator-title ml-4 mb-2">Games Made:</span>
                                 </div>
                             </div>
                             <div class="row mb-4">
@@ -152,14 +152,7 @@
                                 </div>
                             </div>
 
-                            <!-- MOBILE -->
-                            <div class="row  mb-2 mr-1 hidden-md-up">
-                                <div class="col ">
-                                    <button type="button" class="btn show-button float-right">Show me more</button>
-                                    </span>
-                                </div>
-                            </div>
-                            <!--END MOBILE -->
+
                         </div>
                     </div>
 

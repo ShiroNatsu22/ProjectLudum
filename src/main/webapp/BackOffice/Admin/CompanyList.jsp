@@ -23,7 +23,7 @@
             <tr class="bg-primary text-white">
                 <th>Name</th>
                 <th>Founded</th>
-                <th>Edit/Delete</th>
+                <th>Delete</th>
             </tr>
             </thead>
 
@@ -38,7 +38,7 @@
                     </td>
                     <td>
                         <form action="<c:url value="/controller/CompaniesControl"/>" method="post">
-                            <button type=button onclick="ajaxPetition(${company.company_id_pk})" class="btn btn-danger " data-toggle="modal" data-target="#modifyCompany"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                            <button style="display:none" type=button onclick="ajaxPetition(${company.company_id_pk})" class="btn btn-danger " data-toggle="modal" data-target="#modifyCompany"><i class="fa fa-pencil" aria-hidden="true"></i></button>
 
                             <button name="deleteCompany" value="${company.company_id_pk}"><i class="fa fa-trash"></i>
                             </button>

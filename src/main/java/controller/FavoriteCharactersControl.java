@@ -45,9 +45,7 @@ public class FavoriteCharactersControl extends HttpServlet {
             }
 
             req.setAttribute("currentFavoriteCharactersList", characterList);
-            Collections.reverse(characterList);
-            req.setAttribute("currentFavoriteCharactersListReversed", characterList);
-            req.setAttribute("currentFavoriteCharacterCount", favoriteCount);
+
 
         }
 
