@@ -99,7 +99,6 @@
 <script src="../../lib/js/libraries.min.js"></script>
 
 <script src="../../lib/js/toggle-classes.min.js"></script>
-<script src="../../lib/js/global.js"></script>
 <script src="../../lib/js/errorControl.min.js"></script>
 
 

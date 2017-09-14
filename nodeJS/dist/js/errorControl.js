@@ -28,9 +28,7 @@ correctInfo();
 
 function score() {
 
-  if ($(".rating").text() == -1) {
-    $(".rating").html("-");
-  }
+$( ".rating:contains('-1')" ).html( "0" );
 
 }
 
