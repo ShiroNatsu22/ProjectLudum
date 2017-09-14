@@ -183,7 +183,7 @@
             </div>
         </div>
 
-        <script>
+        <!--<script>
 
             function ajaxPetition(id) {
 
@@ -203,7 +203,7 @@
                     });
                 });
             }
-        </script>
+        </script>-->
     </jsp:body>
 
 </tag:pageMaster>

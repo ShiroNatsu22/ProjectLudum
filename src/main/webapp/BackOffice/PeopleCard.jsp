@@ -89,7 +89,7 @@
         </div>
 
 
-        <div class="row mt-5">
+        <!--<div class="row mt-5">
             <div class="col">
                 <div class="row">
                     <div class="col">
@@ -160,7 +160,7 @@
 
 
             </div>
-        </div>
+        </div>-->
     </jsp:attribute>
 
 </tag:cardTemplate>

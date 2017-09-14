@@ -80,19 +80,19 @@
         </div>
 
 
-        <div class="row mt-5">
+        <!--<div class="row mt-5">
             <div class="col">
                 <div class="row  separator-top ">
                     <div class="col">
 
                         <div class="rounded info-card">
-                            <!-- DESKTOP -->
+
                             <div class="row mt-4">
                                 <div class="col col-12 mb-2">
                                     <span class="separator-title mb-2">Games appeared: </span>
                                 </div>
                             </div>
-                            <!-- END DESKTOP -->
+
                             <div class="row mb-4">
                                 <div class="col separator">
                                     <div class=" game-title">Hideo Godjima</div>
@@ -132,27 +132,10 @@
 
                 </div>
             </div>
-        </div>
+        </div>-->
     </jsp:attribute>
 
     <jsp:body>
-
-        <div class="row">
-            <div class="col game-title">
-                <h3></h3>
-            </div>
-        </div>
-
-        <div class="row">
-
-            <div class="col col-12 col-xl-4 col-md-12 ">
-
-            </div>
-
-            <div class="col col-12 col-lg-12 col-xl-8">
-
-            </div>
-        </div>
 
 
     </jsp:body>

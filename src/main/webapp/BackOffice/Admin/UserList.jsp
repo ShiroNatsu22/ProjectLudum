@@ -47,7 +47,7 @@
                     <td>
 
                         <form action="<c:url value="/controller/UsersControl"/>" method="post">
-                            <button style="display: none;" nclick="ajaxPetition(${item.user_id_pk})" type=button class="btn btn-danger" name="ajax" data-toggle="modal" data-target="#createModify"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                            <button style="display: none;" onclick="ajaxPetition(${item.user_id_pk})" type=button class="btn btn-danger" name="ajax" data-toggle="modal" data-target="#createModify"><i class="fa fa-pencil" aria-hidden="true"></i></button>
 
                             <button name="deleteUser" value="${item.user_id_pk}"><i class="fa fa-trash"></i></button>
                         </form>
@@ -324,7 +324,7 @@
                 </div>
             </div>
         </div>
-
+<!--
         <script>
 
             function ajaxPetition(id) {
@@ -332,7 +332,7 @@
 
                 $(document).ready(function () {
                     $.get({
-                        url: '<c:url value="/controller/UsersControl"/>',
+                        url: '/<c:url value="/controller/UsersControl"/>',
                         data:{
                             id: id,
                             ajax:"info"
@@ -353,6 +353,7 @@
                 });
             }
         </script>
+        -->
         <script>
 
             function sendFile() {

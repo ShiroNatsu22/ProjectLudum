@@ -207,7 +207,7 @@
                 </div>
             </div>
         </div>
-
+<!--
         <script>
 
             function sendFile() {
@@ -225,7 +225,7 @@
             }
 
 
-        </script>
+        </script>-->
 
     </jsp:body>
 

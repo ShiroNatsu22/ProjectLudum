@@ -666,7 +666,7 @@
                 </div>
             </div>
         </div>
-
+<!--
            <script>
 
                function ajaxPetition(id) {
@@ -694,6 +694,7 @@
                    });
                }
            </script>
+        -->
     </jsp:attribute>
 
 </tag:cardTemplate>
