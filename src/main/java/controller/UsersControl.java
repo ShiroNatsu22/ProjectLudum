@@ -39,11 +39,12 @@ public class UsersControl extends HttpServlet {
             // Se devuelve un usuario a partir de la ID obtenida
             req.setAttribute("currentUser", user);
 
-            String json = new Gson().toJson(user);
-            resp.setContentType("application/json");
-            resp.setCharacterEncoding("UTF-8");
-            resp.getWriter().write(json);
-
+            if(req.getParameter("ajax")!= null) {
+                String json = new Gson().toJson(user);
+                resp.setContentType("application/json");
+                resp.setCharacterEncoding("UTF-8");
+                resp.getWriter().print(json);
+            }
         }
         else {
 
@@ -53,7 +54,6 @@ public class UsersControl extends HttpServlet {
         }
 
     }
-
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

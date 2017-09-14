@@ -47,7 +47,7 @@
                     <td>
 
                         <form action="<c:url value="/controller/UsersControl"/>" method="post">
-                            <button onclick="ajaxPetition(${item.user_id_pk})" type=button class="btn btn-danger" data-toggle="modal" data-target="#createModify"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                            <button onclick="ajaxPetition(${item.user_id_pk})" type=button class="btn btn-danger" name="ajax" data-toggle="modal" data-target="#createModify"><i class="fa fa-pencil" aria-hidden="true"></i></button>
 
                             <button name="deleteUser" value="${item.user_id_pk}"><i class="fa fa-trash"></i></button>
                         </form>
@@ -327,9 +327,6 @@
         </div>
 
         <script>
-            function getMonthFromString(mon){
-                return new Date(Date.parse(mon)).getMonth()+1
-            }
 
             function ajaxPetition(id) {
 
@@ -338,7 +335,8 @@
                     $.get({
                         url: '<c:url value="/controller/UsersControl"/>',
                         data:{
-                            id: id
+                            id: id,
+                            ajax:"info"
                         },
                         success: function (data) {
                             $("#name").val(data.name);
@@ -346,9 +344,8 @@
                             $("#country").val(data.country);
                             $(".select2-selection__rendered").text(data.gender);
                             $("#email").val(data.email);
-                            var date= new Date(data.val);
-                            var newDate=date.toString('yy-MM-dd');
-                            console.log(new Date(data.birthday));
+
+                            console.log(data);
                             $("#birthday").val(data.birthday);
                             $("#biography").val(data.biography);
                             $("#modifyUser").modal("show");

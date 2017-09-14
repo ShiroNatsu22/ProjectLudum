@@ -1,13 +1,13 @@
-<%@ page pageEncoding="UTF-8" %>
+<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="tag" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<jsp:include page="/controller/UsersControl"/>
 <jsp:include page="/controller/RelationshipsControl"/>
 <jsp:include page="/controller/UserSelectedVideogamesControl"/>
 <jsp:include page="/controller/FavoriteGamesControl"/>
 <jsp:include page="/controller/FavoriteCharactersControl"/>
 <jsp:include page="/controller/FavoritePeopleControl"/>
+<jsp:include page="/controller/UsersControl"/>
 
 <tag:cardTemplate>
 
@@ -17,7 +17,7 @@
 
     <jsp:attribute name="subtitle">
         ${requestScope.currentUser.username}
-        <c:if test="${sessionScope.currentUser.user_id_pk == param['id']}"><button type=button class="btn btn-danger" data-toggle="modal" data-target="#createModify">Edit profile</button></c:if>
+        <c:if test="${sessionScope.currentUser.user_id_pk == param['id']}"><button type=button onclick="ajaxPetition(${requestScope.currentUser.user_id_pk})" class="btn btn-danger" data-toggle="modal" data-target="#createModify">Edit profile</button></c:if>
     </jsp:attribute>
 
     <jsp:attribute name="leftBlock">
@@ -123,7 +123,7 @@
 
                 <div class="row ">
                     <div class="col mt-2">
-                        Country: <span class="infoCountry"> ${requestScope.currentUser.country}</span>
+                        Country: <span class="infoCountry">${requestScope.currentUser.country}</span>
                     </div>
                 </div>
 
@@ -135,7 +135,7 @@
 
                 <div class="row ">
                     <div class="col mt-2">
-                        BirthDay: <span class="infoBirthaday">${requestScope.currentUser.birthday}
+                        BirthDay: <span class="infoBirthaday">${requestScope.currentUser.birthday}</span>
                     </div>
                 </div>
 
@@ -186,6 +186,14 @@
     </jsp:attribute>
 
     <jsp:attribute name="rightBlock">
+
+        <div class="row ">
+            <div class="col">
+                <span class="infoBiography">${requestScope.currentUser.biography}</span>
+            </div>
+        </div>
+
+
         <div class="row">
             <div class="col">
                 <div class="row mt-3">
@@ -649,6 +657,34 @@
                 </div>
             </div>
         </div>
+
+           <script>
+
+               function ajaxPetition(id) {
+
+
+                   $(document).ready(function () {
+                       $.get({
+                           url: '<c:url value="/controller/UsersControl"/>',
+                           data:{
+                               id: id,
+                               ajax:"info"
+                           },
+                           success: function (data) {
+                               $(".modifyName").val(data.name);
+                               $(".modifySurname").val(data.surname);
+                               $(".modifyCountry").val(data.country);
+                               $(".select2-selection__rendered").text(data.gender);
+                               $(".modifyEmail").val(data.email);
+
+                               console.log(data);
+                               $(".modifyBirthday").val(data.birthday);
+                               $(".modifyBiography").val(data.biography);
+                           }
+                       });
+                   });
+               }
+           </script>
     </jsp:attribute>
 
 </tag:cardTemplate>

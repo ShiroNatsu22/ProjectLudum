@@ -67,8 +67,16 @@
                                 <tr>
 
                                     <td class="align-middle">
-                                        <img height="50" width="50" src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
-                                    </td>
+                                        <div class="col image">
+                                            <c:choose>
+                                                <c:when test="${requestScope.currentUser.profileImage != null}">
+                                                    <img class="img-fluid  col-md-2 table-img imag-responsive" src="${initParam.UserProfileImageFolder}${requestScope.currentUser.profileImage}" alt="userImage">
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <img class="img-fluid  col-md-2 table-img imag-responsive" src="http://www.zwiftnation.com/Content/AdminLTE/img/anonymous.png" alt="userImage">
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </div>                                    </td>
 
                                     <td class="align-middle">
                                         <a href="<c:url value="/BackOffice/Profile.jsp?id=${friend.user_id_pk}" />">${friend.username}</a>
@@ -120,8 +128,16 @@
                                                 <a href="<c:url value="/BackOffice/Profile.jsp?id=${friends.user_id_pk}" />">${friends.username}</a>
                                             </td>
                                             <td class="align-middle">
-                                                <img height="50" width="50" src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
-                                            </td>
+                                                    <div class="col image">
+                                                        <c:choose>
+                                                            <c:when test="${requestScope.currentUser.profileImage != null}">
+                                                                <img class="img-fluid  col-md-2 table-img imag-responsive" src="${initParam.UserProfileImageFolder}${requestScope.currentUser.profileImage}" alt="userImage">
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                <img class="img-fluid  col-md-2 table-img imag-responsive" src="http://www.zwiftnation.com/Content/AdminLTE/img/anonymous.png" alt="userImage">
+                                                            </c:otherwise>
+                                                        </c:choose>
+                                                    </div>
                                             <td class="align-middle">
                                                 <form action="<c:url value="/controller/RelationshipsControl" />" method="post">
 

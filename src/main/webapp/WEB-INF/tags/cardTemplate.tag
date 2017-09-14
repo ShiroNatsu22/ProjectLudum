@@ -21,7 +21,6 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet"/>
     <link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap4.min.css" rel="stylesheet"/>
     <link type="text/css" rel="stylesheet" href="../../lib/css/login.min.css"/>
-    <link rel="stylesheet" type="text/css" href="../../lib/css/jquery-comments.css">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../lib/css/all.min.css">
 
@@ -66,27 +65,7 @@
             </div>
         </div>
     </div>
-    <!-- Bloque comentarios -->
-    <div class="row">
 
-        <div class="col">
-                <span>
-                    Comentarios:
-                </span>
-        </div>
-
-
-        <div class="row">
-
-
-            <div class="col-12">
-                <div id="comments-container">
-
-                </div>
-
-            </div>
-        </div>
-    </div>
 
 </div>
 
@@ -116,8 +95,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
 
 <!-- Libraries -->
-
-<script src="../../lib/js/jquery-comments.min.js"></script>
 
 <script src="../../lib/js/libraries.min.js"></script>
 
