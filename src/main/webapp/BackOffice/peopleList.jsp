@@ -2,7 +2,7 @@
 <%@ taglib prefix="tag" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<jsp:include page="/controller/VideogamesControl"/>
+<jsp:include page="/controller/PeopleControl"/>
 <link type="text/css" rel="stylesheet" href="<c:url value="../lib/css/login.min.css" />"/>
 
 <tag:pageMaster>
@@ -17,41 +17,24 @@
             <div class="col">
                 <table class="table table-hover table-stripped table-bordered table-list"  width="100%">
                     <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Imagen</th>
-                        <th>Nombre</th>
-                        <th>Juegos</th>
+                    <tr class="bg-primary text-white">
+                        <th>Image</th>
+                        <th>Name</th>
                     </tr>
                     </thead>
+
                     <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td><img class="img-fluid col col-md-2"
-                                 src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
-                        </td>
-                        <td>Vikings</td>
-                        <td>Completado</td>
+                    <c:forEach items="${requestScope.peopleList}" var="item">
+                        <tr>
+                            <td>
 
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td><img class="img-fluid col col-md-2"
-                                 src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
-                        </td>
-                        <td>Kingdom hearts</td>
-                        <td>Completado</td>
+                            </td>
+                            <td>
+                                <a href="<c:url value="/BackOffice/PeopleCard.jsp?id=${item.people_id_pk}" />">${item.name} ${item.surname}</a>
+                            </td>
 
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td><img class="img-fluid col col-md-2"
-                                 src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
-                        </td>
-                        <td>Metal Gear Solid</td>
-                        <td>Completado</td>
-
-                    </tr>
+                        </tr>
+                    </c:forEach>
                     </tbody>
                 </table>
             </div>

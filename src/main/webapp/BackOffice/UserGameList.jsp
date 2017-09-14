@@ -4,12 +4,14 @@
 
 <jsp:include page="/controller/UserSelectedVideogamesControl"/>
 <jsp:include page="/controller/FavoriteGamesControl"/>
+<jsp:include page="/controller/FavoritePeopleControl"/>
+<jsp:include page="/controller/FavoriteCharactersControl"/>
 <jsp:include page="/controller/UsersControl"/>
 
 <tag:pageMaster>
 
     <jsp:attribute name="head">
-        <title>Provisional</title>
+        <title>${requestScope.currentUser.username}'s game list</title>
     </jsp:attribute>
 
     <jsp:body>
@@ -89,7 +91,16 @@
                                             ${count.count}
                                     </td>
                                     <td>
-                                        <img class="img-fluid col col-md-2" width="50" height="50" src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
+                                        <c:choose>
+                                            <c:when test="${userSelectedVideogame.videogame_id_fk.image != null}">
+                                                <img class="img-fluid imag-responsive" src="/files/${userSelectedVideogame.videogame_id_fk.image}" width="50" height="50" alt="gameImg">
+                                            </c:when>
+                                            <c:otherwise>
+                                                <img class="img-fluid imag-responsive" width="50" height="50"
+                                                     src="http://www.freeiconspng.com/uploads/video-game-controller-icon-33.png"
+                                                     alt="gameImg">
+                                            </c:otherwise>
+                                        </c:choose>
                                     </td>
                                     <td>
                                         <a href="<c:url value="/BackOffice/VideogameCard.jsp?id=${userSelectedVideogame.videogame_id_fk.videogame_id_pk}"/>">${userSelectedVideogame.videogame_id_fk.name}</a>
@@ -144,7 +155,16 @@
                                                 ${count.count}
                                         </td>
                                         <td>
-                                            <img class="img-fluid col col-md-2" width="50" height="50" src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
+                                            <c:choose>
+                                                <c:when test="${userSelectedVideogame.videogame_id_fk.image != null}">
+                                                    <img class="img-fluid imag-responsive" src="/files/${userSelectedVideogame.videogame_id_fk.image}" width="50" height="50" alt="gameImg">
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <img class="img-fluid imag-responsive" width="50" height="50"
+                                                         src="http://www.freeiconspng.com/uploads/video-game-controller-icon-33.png"
+                                                         alt="gameImg">
+                                                </c:otherwise>
+                                            </c:choose>
                                         </td>
                                         <td>
                                             <a href="<c:url value="/BackOffice/VideogameCard.jsp?id=${userSelectedVideogame.videogame_id_fk.videogame_id_pk}"/>">${userSelectedVideogame.videogame_id_fk.name}</a>
@@ -195,7 +215,16 @@
                                                 ${count.count}
                                         </td>
                                         <td>
-                                            <img class="img-fluid col col-md-2" width="50" height="50" src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
+                                            <c:choose>
+                                                <c:when test="${userSelectedVideogame.videogame_id_fk.image != null}">
+                                                    <img class="img-fluid imag-responsive" src="/files/${userSelectedVideogame.videogame_id_fk.image}" width="50" height="50" alt="gameImg">
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <img class="img-fluid imag-responsive" width="50" height="50"
+                                                         src="http://www.freeiconspng.com/uploads/video-game-controller-icon-33.png"
+                                                         alt="gameImg">
+                                                </c:otherwise>
+                                            </c:choose>
                                         </td>
                                         <td>
                                             <a href="<c:url value="/BackOffice/VideogameCard.jsp?id=${userSelectedVideogame.videogame_id_fk.videogame_id_pk}"/>">${userSelectedVideogame.videogame_id_fk.name}</a>
@@ -246,7 +275,16 @@
                                                 ${count.count}
                                         </td>
                                         <td>
-                                            <img class="img-fluid col col-md-2" width="50" height="50" src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
+                                            <c:choose>
+                                                <c:when test="${userSelectedVideogame.videogame_id_fk.image != null}">
+                                                    <img class="img-fluid imag-responsive" src="/files/${userSelectedVideogame.videogame_id_fk.image}" width="50" height="50" alt="gameImg">
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <img class="img-fluid imag-responsive" width="50" height="50"
+                                                         src="http://www.freeiconspng.com/uploads/video-game-controller-icon-33.png"
+                                                         alt="gameImg">
+                                                </c:otherwise>
+                                            </c:choose>
                                         </td>
                                         <td>
                                             <a href="<c:url value="/BackOffice/VideogameCard.jsp?id=${userSelectedVideogame.videogame_id_fk.videogame_id_pk}"/>">${userSelectedVideogame.videogame_id_fk.name}</a>
@@ -297,7 +335,16 @@
                                                 ${count.count}
                                         </td>
                                         <td>
-                                            <img class="img-fluid col col-md-2" width="50" height="50" src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
+                                            <c:choose>
+                                                <c:when test="${userSelectedVideogame.videogame_id_fk.image != null}">
+                                                    <img class="img-fluid imag-responsive" src="/files/${userSelectedVideogame.videogame_id_fk.image}" width="50" height="50" alt="gameImg">
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <img class="img-fluid imag-responsive" width="50" height="50"
+                                                         src="http://www.freeiconspng.com/uploads/video-game-controller-icon-33.png"
+                                                         alt="gameImg">
+                                                </c:otherwise>
+                                            </c:choose>
                                         </td>
                                         <td>
                                             <a href="<c:url value="/BackOffice/VideogameCard.jsp?id=${userSelectedVideogame.videogame_id_fk.videogame_id_pk}"/>">${userSelectedVideogame.videogame_id_fk.name}</a>
@@ -347,7 +394,16 @@
                                             ${count.count}
                                     </td>
                                     <td>
-                                        <img class="img-fluid col col-md-2" width="50" height="50" src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
+                                        <c:choose>
+                                            <c:when test="${favoriteVideogame.image != null}">
+                                                <img class="img-fluid imag-responsive" src="/files/${favoriteVideogame.image}" width="50" height="50" alt="gameImg">
+                                            </c:when>
+                                            <c:otherwise>
+                                                <img class="img-fluid imag-responsive" width="50" height="50"
+                                                     src="http://www.freeiconspng.com/uploads/video-game-controller-icon-33.png"
+                                                     alt="gameImg">
+                                            </c:otherwise>
+                                        </c:choose>
                                     </td>
                                     <td>
                                         <a href="<c:url value="/BackOffice/VideogameCard.jsp?id=${favoriteVideogame.videogame_id_pk}"/>">${favoriteVideogame.name}</a>
@@ -389,21 +445,21 @@
                             </thead>
                             <tbody>
 
-                            <c:forEach var="favoriteVideogame" varStatus="count" items="${requestScope.currentFavoriteGamesList}">
+                            <c:forEach var="favoritePeople" varStatus="count" items="${requestScope.currentFavoritePeopleList}">
                                 <tr>
                                     <td>
                                             ${count.count}
                                     </td>
                                     <td>
-                                        <img class="img-fluid col col-md-2" width="50" height="50" src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
+
                                     </td>
                                     <td>
-                                        <a href="<c:url value="/BackOffice/VideogameCard.jsp?id=${favoriteVideogame.videogame_id_pk}"/>">${favoriteVideogame.name}</a>
+                                        <a href="<c:url value="/BackOffice/PeopleCard.jsp?id=${favoritePeople.people_id_pk}"/>">${favoritePeople.name} ${favoritePeople.surname}</a>
                                     </td>
                                     <c:if test="${sessionScope.currentUser.user_id_pk == param['id']}">
                                         <td>
-                                            <form action="<c:url value="/controller/FavoriteGamesControl"/>" method="post">
-                                                <button class="btn btn-danger" name="deleteFavoriteGame" value="${favoriteVideogame.videogame_id_pk}">
+                                            <form action="<c:url value="/controller/FavoritePeopleControl"/>" method="post">
+                                                <button class="btn btn-danger" name="deleteFavoritePeople" value="${favoritePeople.people_id_pk}">
                                                     <i class="fa fa-trash"></i>
                                                 </button>
                                             </form>
@@ -437,21 +493,21 @@
                             </thead>
                             <tbody>
 
-                            <c:forEach var="favoriteVideogame" varStatus="count" items="${requestScope.currentFavoriteGamesList}">
+                            <c:forEach var="favoriteCharacter" varStatus="count" items="${requestScope.currentFavoriteCharactersList}">
                                 <tr>
                                     <td>
                                             ${count.count}
                                     </td>
                                     <td>
-                                        <img class="img-fluid col col-md-2" width="50" height="50" src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
+
                                     </td>
                                     <td>
-                                        <a href="<c:url value="/BackOffice/VideogameCard.jsp?id=${favoriteVideogame.videogame_id_pk}"/>">${favoriteVideogame.name}</a>
+                                        <a href="<c:url value="/BackOffice/CharacterCard.jsp?id=${favoriteCharacter.character_id_pk}"/>">${favoriteCharacter.name}</a>
                                     </td>
                                     <c:if test="${sessionScope.currentUser.user_id_pk == param['id']}">
                                         <td>
-                                            <form action="<c:url value="/controller/FavoriteGamesControl"/>" method="post">
-                                                <button class="btn btn-danger" name="deleteFavoriteGame" value="${favoriteVideogame.videogame_id_pk}">
+                                            <form action="<c:url value="/controller/FavoriteCharactersControl"/>" method="post">
+                                                <button class="btn btn-danger" name="deleteFavoriteCharacter" value="${favoriteCharacter.character_id_pk}">
                                                     <i class="fa fa-trash"></i>
                                                 </button>
                                             </form>

@@ -7,7 +7,7 @@
 <tag:pageMaster>
 
     <jsp:attribute name="head">
-        <title>Provisional</title>
+        <title>Games list</title>
     </jsp:attribute>
 
     <jsp:body>
@@ -18,15 +18,24 @@
                     <thead>
                     <tr class="bg-primary text-white">
                         <th>Image</th>
-                        <th>Username</th>
+                        <th>Name</th>
                     </tr>
                     </thead>
 
                     <tbody>
                     <c:forEach items="${requestScope.videogameList}" var="item">
                         <tr>
-                            <td><img class="img-fluid col col-md-2"
-                                     src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">
+                            <td>
+                                <c:choose>
+                                    <c:when test="${item.image != null}">
+                                        <img class="img-fluid imag-responsive" src="/files/${item.image}" height="50" width="50" alt="gameImg">
+                                    </c:when>
+                                    <c:otherwise>
+                                        <img class="img-fluid imag-responsive" width="50" height="50"
+                                             src="http://www.freeiconspng.com/uploads/video-game-controller-icon-33.png"
+                                             alt="gameImg">
+                                    </c:otherwise>
+                                </c:choose>
                             </td>
                             <td>
                                 <a href="<c:url value="/BackOffice/VideogameCard.jsp?id=${item.videogame_id_pk}" />">${item.name}</a>

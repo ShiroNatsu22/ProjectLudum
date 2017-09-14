@@ -17,7 +17,7 @@
 
     <jsp:attribute name="subtitle">
         ${requestScope.currentUser.username}
-        <c:if test="${sessionScope.currentUser.user_id_pk == param['id']}"><button type=button onclick="ajaxPetition(${requestScope.currentUser.user_id_pk})" class="btn btn-danger" data-toggle="modal" data-target="#createModify">Edit profile</button></c:if>
+        <%--<c:if test="${sessionScope.currentUser.user_id_pk == param['id']}"><button type=button onclick="ajaxPetition(${requestScope.currentUser.user_id_pk})" class="btn btn-danger" data-toggle="modal" data-target="#createModify">Edit profile</button></c:if>--%>
     </jsp:attribute>
 
     <jsp:attribute name="leftBlock">
@@ -329,7 +329,15 @@
                                                         ${userSelectedVideogame.status}
                                                 </div>
 
-                                                <img src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a" class="col-12 px-0 img-fluid hidden-sm-down imag-responsive">
+                                                <c:choose>
+                                                    <c:when test="${userSelectedVideogame.videogame_id_fk.image != null}">
+                                                        <img src="/files/${userSelectedVideogame.videogame_id_fk.image}" alt="a" class="col-12 px-0 img-fluid hidden-sm-down imag-responsive" style="height: 300px">
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <img src="http://www.freeiconspng.com/uploads/video-game-controller-icon-33.png" alt="a" class="col-12 px-0 img-fluid hidden-sm-down imag-responsive" style="height: 300px">
+                                                    </c:otherwise>
+                                                </c:choose>
+
 
                                             </div>
                                         </c:if>
@@ -380,17 +388,24 @@
                                         <c:if test="${index.index < 3}">
 
                                             <div class="col-4 col-lg-12">
-                                                <img src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a" class="col  px-0 img-fluid imag-responsive hidden-sm-down">
+                                                <c:choose>
+                                                    <c:when test="${favoriteGame.image != null}">
+                                                        <img src="/files/${favoriteGame.image}" alt="a" height="100" class="col-12 px-0 img-fluid hidden-sm-down imag-responsive">
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <img src="http://www.freeiconspng.com/uploads/video-game-controller-icon-33.png" alt="a" height="100" class="col-12 px-0 img-fluid hidden-sm-down imag-responsive">
+                                                    </c:otherwise>
+                                                </c:choose>
                                                 <a href="<c:url value="/BackOffice/VideogameCard.jsp?id=${favoriteGame.videogame_id_pk}"/>" class="col px-0">${favoriteGame.name}</a>
                                             </div>
 
                                         </c:if>
                                     </c:forEach>
-                                    <div class="row float-right">
+                                    <!--<div class="row float-right">
                                         <div class="col mt-2">
                                             <button class="btn">Show more</button>
                                         </div>
-                                    </div>
+                                    </div>-->
                                 </c:otherwise>
                             </c:choose>
 
@@ -417,17 +432,17 @@
                                         <c:if test="${index.index < 3}">
 
                                             <div class="col-4 col-lg-12">
-                                                <img src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a" class="col  px-0 img-fluid imag-responsive hidden-sm-down">
+                                                <!--<img src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a" class="col  px-0 img-fluid imag-responsive hidden-sm-down">-->
                                                 <a href="<c:url value="/BackOffice/CharacterCard.jsp?id=${favoriteCharacter.character_id_pk}"/>" class="col px-0">${favoriteCharacter.name}</a>
                                             </div>
 
                                         </c:if>
                                     </c:forEach>
-                                    <div class="row float-right">
+                                    <!--<div class="row float-right">
                                         <div class="col mt-2">
                                             <button class="btn">Show more</button>
                                         </div>
-                                    </div>
+                                    </div>-->
                                 </c:otherwise>
                             </c:choose>
 
@@ -452,17 +467,17 @@
                                         <c:if test="${index.index < 3}">
 
                                             <div class="col-4 col-lg-12">
-                                                <img src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a" class="col  px-0 img-fluid imag-responsive hidden-sm-down">
+                                                <!--<img src="https://image.tmdb.org/t/p/original/A30ZqEoDbchvE7mCZcSp6TEwB1Q.jpg" alt="a" class="col  px-0 img-fluid imag-responsive hidden-sm-down">-->
                                                 <a href="<c:url value="/BackOffice/PeopleCard.jsp?id=${favoritePeople.people_id_pk}"/>" class="col px-0">${favoritePeople.name}</a>
                                             </div>
 
                                         </c:if>
                                     </c:forEach>
-                                    <div class="row float-right">
+                                    <!--<div class="row float-right">
                                         <div class="col mt-2">
                                             <button class="btn">Show more</button>
                                         </div>
-                                    </div>
+                                    </div>-->
                                 </c:otherwise>
                             </c:choose>
 
