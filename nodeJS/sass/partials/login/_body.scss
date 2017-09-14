@@ -1,0 +1,13 @@
+
+
+.errorMessage{
+  color: red;
+}
+
+.required-notFill,.password-notFill{
+  border:solid 1px red;
+}
+
+.required-fill,.password-Fill{
+  border:solid 1px blue;
+}

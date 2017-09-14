@@ -1,0 +1,90 @@
+.favorite-btn {
+  font-weight: bold;
+
+  &:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    text-decoration: none !important;
+  }
+}
+
+.add-favorite {
+  color: blue;
+}
+
+.delete-favorite {
+  color: red;
+}
+/*Leyendas para los juegos totales que el usuario tiene dividido por secciones*/
+.completed-leyend,
+.dropped-leyend,
+.pending-leyend,
+.playing-leyend {
+  border: 1px solid black;
+  width: 20px;
+  height: 20px;
+}
+
+.completed-game,
+.completed-leyend {
+  background: $completed;
+}
+
+.dropped-game,
+.dropped-leyend {
+  background: $dropped;
+}
+
+.pending-game,
+.pending-leyend {
+  background: $pending;
+}
+
+.playing-game,
+.playing-leyend {
+  background: $playing;
+}
+
+.game-status-section {
+  border: 1px solid $border-color;
+  background: $grey;
+}
+
+.total-games {
+  height: 20px !important;
+}
+/*-------------------------------------------------------------------------*/
+/*Diferentes bordes, uno en cada direccion*/
+
+.separator-bottom {
+  border-bottom: 1px solid $border-color;
+}
+
+.separator-left {
+  border-left: 1px solid $border-color;
+}
+
+.separator-right {
+  border-right: 1px solid $border-color;
+}
+/*Seccion de elementos que contiene la ficha separadas por una barra gris horizontal*/
+.separator-top {
+  border-top: 1px solid $darkGrey;
+}
+/*Tamaño de letra de la seccion de elementos */
+.separator-title {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.show-button {
+  &:hover {
+    background: $greyHover;
+  }
+}
+
+.game-title,
+.section-title {
+  font-size: 20px;
+  font-weight: bold;
+}

@@ -1,0 +1,88 @@
+@charset "UTF-8";
+.favorite-btn {
+  font-weight: bold; }
+  .favorite-btn:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    text-decoration: none !important; }
+
+.add-favorite {
+  color: blue; }
+
+.delete-favorite {
+  color: red; }
+
+/*Leyendas para los juegos totales que el usuario tiene dividido por secciones*/
+.completed-leyend,
+.dropped-leyend,
+.pending-leyend,
+.playing-leyend {
+  border: 1px solid black;
+  width: 20px;
+  height: 20px; }
+
+.completed-game,
+.completed-leyend {
+  background: #29BA66; }
+
+.dropped-game,
+.dropped-leyend {
+  background: #A55C52; }
+
+.pending-game,
+.pending-leyend {
+  background: #CFC5C4; }
+
+.playing-game,
+.playing-leyend {
+  background: #719994; }
+
+.game-status-section {
+  border: 1px solid lightgrey;
+  background: #f7f7f9; }
+
+.total-games {
+  height: 20px !important; }
+
+/*-------------------------------------------------------------------------*/
+/*Diferentes bordes, uno en cada direccion*/
+.separator-bottom {
+  border-bottom: 1px solid lightgrey; }
+
+.separator-left {
+  border-left: 1px solid lightgrey; }
+
+.separator-right {
+  border-right: 1px solid lightgrey; }
+
+/*Seccion de elementos que contiene la ficha separadas por una barra gris horizontal*/
+.separator-top {
+  border-top: 1px solid #aeaec2; }
+
+/*Tamaño de letra de la seccion de elementos */
+.separator-title {
+  font-size: 30px;
+  font-weight: bold; }
+
+.show-button:hover {
+  background: #B0B2A1; }
+
+.game-title,
+.section-title {
+  font-size: 20px;
+  font-weight: bold; }
+
+@media screen and (min-width: 424px) and (max-width: 765px) {
+  .section-content span {
+    margin-left: 20% !important; } }
+
+@media screen and (max-width: 765px) {
+  .separator-title {
+    font-size: 20px !important;
+    font-weight: bold !important; }
+  .separator {
+    border: 0; } }
+
+@media screen and (max-width: 424px) {
+  .section-content span {
+    font-size: 14px; } }

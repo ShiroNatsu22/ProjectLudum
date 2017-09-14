@@ -1,0 +1,25 @@
+@media screen and (min-width: $small-mobile) and (max-width: $mobile-max) {
+  .section-content {
+    span {
+      margin-left: 20% !important;
+    }
+  }
+}
+
+@media screen and (max-width: $mobile-max) {
+  .separator-title {
+    font-size: 20px !important;
+    font-weight: bold !important;
+  }
+
+  .separator {
+    border: 0;
+  }
+}
+@media screen and (max-width: $small-mobile) {
+  .section-content {
+    span {
+      font-size: 14px;
+    }
+  }
+}

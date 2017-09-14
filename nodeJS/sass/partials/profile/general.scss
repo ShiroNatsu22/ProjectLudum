@@ -1,0 +1,34 @@
+.completed-leyend,
+.dropped-leyend,
+.pending-leyend,
+.playing-leyend {
+  border: 1px solid black;
+  width: 20px;
+  height: 20px;
+}
+
+.completed-game{
+  height: 20px !important;
+}
+
+
+.completed-leyend,.completed-game{
+  background: $completed;
+}
+.dropped-leyend,.dropped-game{
+  background:$dropped ;
+}
+.pending-leyend,.pending-game{
+  background:$pending ;
+}
+.playing-leyend, .playing-game{
+  background: $playing;
+}
+.game-status-section{
+  border: 1px solid black;
+  background: lightgrey;
+}
+.game-title{
+  font-size:25px !important;
+  font-weight: bold;
+}

@@ -1,0 +1,16 @@
+$border-color: lightgrey;
+
+$grey: #f7f7f9;
+$darkGrey:darken( $grey, 25% );
+$greyHover:#B0B2A1;
+$lightGreyHover: lighten( $greyHover, 20% );
+
+$small-mobile:424px;
+$mobile-max:765px;
+
+
+$completed:#29BA66;
+$pending:#CFC5C4;
+$dropped: #A55C52;
+$playing: #719994;
+$favorites:#AE6D72;

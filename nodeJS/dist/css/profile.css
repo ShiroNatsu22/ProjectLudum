@@ -1,0 +1,26 @@
+.completed-leyend,
+.dropped-leyend,
+.pending-leyend,
+.playing-leyend {
+  border: 1px solid black;
+  width: 20px;
+  height: 20px; }
+
+.completed-game {
+  height: 20px !important; }
+
+.completed-leyend, .completed-game {
+  background: #29BA66; }
+
+.dropped-leyend, .dropped-game {
+  background: #A55C52; }
+
+.pending-leyend, .pending-game {
+  background: #CFC5C4; }
+
+.playing-leyend, .playing-game {
+  background: #719994; }
+
+.game-status-section {
+  border: 1px solid black;
+  background: lightgrey; }
