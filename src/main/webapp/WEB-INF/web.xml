@@ -11,5 +11,13 @@
         <param-name>UserProfileImageFolder</param-name>
         <param-value>/lib/data/Images/UserProfile/</param-value>
     </context-param>
+    <context-param>
+        <param-name>VideogameImageFolder</param-name>
+        <param-value>/lib/data/Images/VideogameImages/</param-value>
+    </context-param>
+    <context-param>
+        <param-name>ImagesFolder</param-name>
+        <param-value>/GameList/Images</param-value>
+    </context-param>
 
 </web-app>

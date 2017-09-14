@@ -81,7 +81,7 @@ public class PublisherDAOImpl implements PublisherDAO {
 
             while (rs.next()) {
 
-                Videogame videogame = new Videogame(rs.getInt("videogames.videogame_id_pk"), rs.getString("videogames.name"), rs.getString("videogames.description"));
+                Videogame videogame = new Videogame(rs.getInt("videogames.videogame_id_pk"), rs.getString("videogames.name"), rs.getString("videogames.description"), rs.getString("image"));
                 Company company = new Company(rs.getInt("companies.company_id_pk"), rs.getString("companies.name"), rs.getDate("companies.founded"));
 
                 publisherList.add(new Publisher(rs.getInt("publisher_id_pk"), videogame, company));
@@ -91,7 +91,7 @@ public class PublisherDAOImpl implements PublisherDAO {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            db.closeConnection(connection, ps, null);
+            db.closeConnection(connection, ps, rs);
         }
 
         return publisherList;

@@ -298,3 +298,7 @@ CREATE TABLE `gamerlistDB`.`favoritePeople` (
 ALTER TABLE `gamerlistDB`.`users`
   ADD COLUMN `profileImage` VARCHAR(45) NULL
   AFTER `registration`;
+
+ALTER TABLE `gamerlistDB`.`videogames`
+  ADD COLUMN `image` VARCHAR(45) NULL
+  AFTER `description`;

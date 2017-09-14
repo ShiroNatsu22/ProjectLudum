@@ -27,26 +27,37 @@ public class FileUpload extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
 
         Part userProfileImage = req.getPart("userProfileImage");
+        Part videogameImage = req.getPart("videogameImage");
+
+        String json = "";
 
         if (userProfileImage != null) {
-            String fileName = Paths.get(userProfileImage.getSubmittedFileName()).getFileName().toString();
-            String name = fileName.substring(0, fileName.lastIndexOf("."));
-            String ext = fileName.substring(fileName.lastIndexOf("."));
-
-            File uploads = new File(getServletContext().getInitParameter("UserProfileImageFolder"));
-            uploads.mkdirs();
-
-            File file = File.createTempFile(name, ext, uploads);
-
-            try (InputStream inputStream = userProfileImage.getInputStream()) {
-                Files.copy(inputStream, file.toPath(), StandardCopyOption.REPLACE_EXISTING);
-            }
-
-            String json = new Gson().toJson(file.getName());
-            resp.setContentType("application/json");
-            resp.setCharacterEncoding("UTF-8");
-            resp.getWriter().write(json);
+            json = saveFile(userProfileImage, "UserProfileImageFolder");
+        } else if (videogameImage != null) {
+            json = saveFile(videogameImage, "VideogameImageFolder");
         }
 
+        resp.setContentType("application/json");
+        resp.setCharacterEncoding("UTF-8");
+        resp.getWriter().write(json);
+
+    }
+
+    private String saveFile(Part part, String folderName) throws IOException {
+
+        String fileName = Paths.get(part.getSubmittedFileName()).getFileName().toString();
+        String name = fileName.substring(0, fileName.lastIndexOf("."));
+        String ext = fileName.substring(fileName.lastIndexOf("."));
+
+        File uploads = new File(getServletContext().getInitParameter("ImagesFolder"));
+        uploads.mkdirs();
+
+        File file = File.createTempFile(name, ext, uploads);
+
+        try (InputStream inputStream = part.getInputStream()) {
+            Files.copy(inputStream, file.toPath(), StandardCopyOption.REPLACE_EXISTING);
+        }
+
+        return new Gson().toJson(file.getName());
     }
 }

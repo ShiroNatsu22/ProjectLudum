@@ -70,7 +70,7 @@ public class VideogamesControl extends HttpServlet {
 
             DeveloperDAO developerDAO = new DeveloperDAOImpl();
             PublisherDAO publisherDAO = new PublisherDAOImpl();
-            Videogame videogame = new Videogame(0, req.getParameter("name"), req.getParameter("description"));
+            Videogame videogame = new Videogame(0, req.getParameter("name"), req.getParameter("description"), req.getParameter("hfFilename"));
             String[] developerList = req.getParameterValues("developer_company_id_fk");
             String[] publisherList = req.getParameterValues("publisher_company_id_fk");
 

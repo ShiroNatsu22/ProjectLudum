@@ -69,14 +69,15 @@
                                     <td class="align-middle">
                                         <div class="col image">
                                             <c:choose>
-                                                <c:when test="${requestScope.currentUser.profileImage != null}">
-                                                    <img class="img-fluid  col-md-2 table-img imag-responsive" src="${initParam.UserProfileImageFolder}${requestScope.currentUser.profileImage}" alt="userImage">
+                                                <c:when test="${friend.profileImage != null}">
+                                                    <img class="img-fluid  col-md-2 table-img imag-responsive" src="/files/${friend.profileImage}" alt="userImage">
                                                 </c:when>
                                                 <c:otherwise>
                                                     <img class="img-fluid  col-md-2 table-img imag-responsive" src="http://www.zwiftnation.com/Content/AdminLTE/img/anonymous.png" alt="userImage">
                                                 </c:otherwise>
                                             </c:choose>
-                                        </div>                                    </td>
+                                        </div>
+                                    </td>
 
                                     <td class="align-middle">
                                         <a href="<c:url value="/BackOffice/Profile.jsp?id=${friend.user_id_pk}" />">${friend.username}</a>
@@ -125,19 +126,20 @@
 
                                         <tr>
                                             <td class="align-middle">
-                                                <a href="<c:url value="/BackOffice/Profile.jsp?id=${friends.user_id_pk}" />">${friends.username}</a>
+                                                <div class="col image">
+                                                    <c:choose>
+                                                        <c:when test="${friends.profileImage != null}">
+                                                            <img class="img-fluid  col-md-2 table-img imag-responsive" src="/files/${friends.profileImage}" alt="userImage">
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <img class="img-fluid  col-md-2 table-img imag-responsive" src="http://www.zwiftnation.com/Content/AdminLTE/img/anonymous.png" alt="userImage">
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                </div>
                                             </td>
                                             <td class="align-middle">
-                                                    <div class="col image">
-                                                        <c:choose>
-                                                            <c:when test="${requestScope.currentUser.profileImage != null}">
-                                                                <img class="img-fluid  col-md-2 table-img imag-responsive" src="${initParam.UserProfileImageFolder}${requestScope.currentUser.profileImage}" alt="userImage">
-                                                            </c:when>
-                                                            <c:otherwise>
-                                                                <img class="img-fluid  col-md-2 table-img imag-responsive" src="http://www.zwiftnation.com/Content/AdminLTE/img/anonymous.png" alt="userImage">
-                                                            </c:otherwise>
-                                                        </c:choose>
-                                                    </div>
+                                                <a href="<c:url value="/BackOffice/Profile.jsp?id=${friends.user_id_pk}" />">${friends.username}</a>
+                                            </td>
                                             <td class="align-middle">
                                                 <form action="<c:url value="/controller/RelationshipsControl" />" method="post">
 

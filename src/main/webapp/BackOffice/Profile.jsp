@@ -27,7 +27,7 @@
                 <div class="col image">
                     <c:choose>
                         <c:when test="${requestScope.currentUser.profileImage != null}">
-                            <img class="img-fluid imag-responsive" src="${initParam.UserProfileImageFolder}${requestScope.currentUser.profileImage}" alt="userImage">
+                            <img class="img-fluid imag-responsive" src="/files/${requestScope.currentUser.profileImage}" alt="userImage">
                         </c:when>
                         <c:otherwise>
                             <img class="img-fluid imag-responsive" src="http://www.zwiftnation.com/Content/AdminLTE/img/anonymous.png" alt="userImage">
@@ -172,6 +172,15 @@
                                 <c:if test="${count.index < 3}">
                                     <div class="col">
                                         <a href="<c:url value="/BackOffice/Profile.jsp?id=${friend.user_id_pk}" />">${friend.username}</a>
+                                        <c:choose>
+                                            <c:when test="${friend.profileImage != null}">
+                                                <img class="img-fluid" src="/files/${friend.profileImage}" alt="friendImage">
+                                            </c:when>
+                                            <c:otherwise>
+                                                <img class="img-fluid" src="http://www.zwiftnation.com/Content/AdminLTE/img/anonymous.png" alt="friendImage">
+                                            </c:otherwise>
+                                        </c:choose>
+                                        
                                         <!--<img class="  img-fluid" src="https://vignette2.wikia.nocookie.net/fairytail/images/1/1a/X791_Natsu_profile.png/revision/latest?cb=20130331212040">-->
                                     </div>
                                 </c:if>

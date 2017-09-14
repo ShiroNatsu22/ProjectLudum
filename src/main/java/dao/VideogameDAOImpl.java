@@ -46,7 +46,7 @@ public class VideogameDAOImpl implements VideogameDAO {
         PreparedStatement ps = null;
         ResultSet rs = null;
 
-        String query = "INSERT INTO videogames (name, description) VALUES(?,?)";
+        String query = "INSERT INTO videogames (name, description, image) VALUES(?,?,?)";
         int resultVideogame_id_pk = -1;
 
         try {
@@ -56,6 +56,7 @@ public class VideogameDAOImpl implements VideogameDAO {
 
             ps.setString(1, videogame.getName());
             ps.setString(2, videogame.getDescription());
+            ps.setString(3, videogame.getImage());
             ps.execute();
 
             rs = ps.getGeneratedKeys();
@@ -111,7 +112,7 @@ public class VideogameDAOImpl implements VideogameDAO {
             rs = ps.executeQuery();
 
             while (rs.next())
-                videogameList.add(new Videogame(rs.getInt("videogame_id_pk"), rs.getString("name"), rs.getString("description")));
+                videogameList.add(new Videogame(rs.getInt("videogame_id_pk"), rs.getString("name"), rs.getString("description"), rs.getString("image")));
 
         } catch (Exception e) {
             e.printStackTrace();

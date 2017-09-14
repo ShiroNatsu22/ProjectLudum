@@ -81,7 +81,7 @@ public class DeveloperDAOImpl implements DeveloperDAO {
 
             while (rs.next()) {
                 Company company = new Company(rs.getInt("companies.company_id_pk"), rs.getString("companies.name"), rs.getDate("companies.founded"));
-                Videogame videogame = new Videogame(rs.getInt("videogames.videogame_id_pk"), rs.getString("videogames.name"), rs.getString("videogames.description"));
+                Videogame videogame = new Videogame(rs.getInt("videogames.videogame_id_pk"), rs.getString("videogames.name"), rs.getString("videogames.description"), rs.getString("videogames.image"));
 
                 developerList.add(new Developer(rs.getInt("developers.developer_id_pk"), company, videogame));
             }

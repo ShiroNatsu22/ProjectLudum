@@ -115,6 +115,10 @@
 
                                 </div>
                             </div>
+
+                            <input id="videogameImage" onchange="sendFile()" type="file" name="videogameImage"/>
+                            <input id="hfFilename" type="hidden" name="hfFilename">
+
                             <div class="row">
                                 <div class="col">
                                     <button class="btn btn-primary">Add videogame</button>
@@ -203,6 +207,25 @@
                 </div>
             </div>
         </div>
+
+        <script>
+
+            function sendFile() {
+                var formData = new FormData();
+                formData.append("videogameImage", document.getElementById("videogameImage").files[0]);
+
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        $("#hfFilename").val(this.responseText.substring(1, this.responseText.length - 1));
+                    }
+                };
+                xhr.open("POST", "<c:url value="/controller/FileUpload"/>");
+                xhr.send(formData);
+            }
+
+
+        </script>
 
     </jsp:body>
 

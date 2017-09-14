@@ -33,9 +33,18 @@
         <div id="card-effect">
             <div class="row">
                 <div class="col image">
-                    <img class="img-fluid imag-responsive"
-                         src="https://s-media-cache-ak0.pinimg.com/originals/a1/4c/58/a14c58f6a7232d6b907877d5e8b57df0.jpg"
-                         alt="gameImg">
+                    <c:choose>
+                        <c:when test="${requestScope.currentVideogame.image != null}">
+                            <img class="img-fluid imag-responsive" src="/files/${requestScope.currentVideogame.image}" alt="gameImg">
+                        </c:when>
+                        <c:otherwise>
+                            <img class="img-fluid imag-responsive"
+                                 src="http://www.freeiconspng.com/uploads/video-game-controller-icon-33.png"
+                                 alt="gameImg">
+                        </c:otherwise>
+                    </c:choose>
+
+
                 </div>
             </div>
 

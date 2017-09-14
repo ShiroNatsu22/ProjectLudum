@@ -45,7 +45,7 @@
 
     <c:choose>
         <c:when test="${sessionScope.currentUser.profileImage != null}">
-            <img src="${initParam.UserProfileImageFolder}${sessionScope.currentUser.profileImage}" width="30" height="30" alt="userImage">
+            <img src="/files/${sessionScope.currentUser.profileImage}" width="30" height="30" alt="userImage">
         </c:when>
         <c:otherwise>
             <img src="http://www.zwiftnation.com/Content/AdminLTE/img/anonymous.png" width="30" height="30" alt="userImage">

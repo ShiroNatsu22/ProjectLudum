@@ -28,8 +28,8 @@
                             <td>
                                 <div class="col image">
                                     <c:choose>
-                                        <c:when test="${requestScope.currentUser.profileImage != null}">
-                                            <img class="img-fluid  col-md-2 table-img imag-responsive" src="${initParam.UserProfileImageFolder}${requestScope.currentUser.profileImage}" alt="userImage">
+                                        <c:when test="${item.profileImage != null}">
+                                            <img class="img-fluid  col-md-2 table-img imag-responsive" src="/files/${item.profileImage}" alt="userImage">
                                         </c:when>
                                         <c:otherwise>
                                             <img class="img-fluid  col-md-2 table-img imag-responsive" src="http://www.zwiftnation.com/Content/AdminLTE/img/anonymous.png" alt="userImage">

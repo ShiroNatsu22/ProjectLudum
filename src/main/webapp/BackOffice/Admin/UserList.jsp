@@ -189,7 +189,6 @@
 
                             <input id="userProfileImage" onchange="sendFile()" type="file" name="userProfileImage"/>
                             <input id="hfFilename" type="hidden" name="hfFilename">
-                            <button type="button" id="btn_upload">Upload File</button>
 
                             <div class="row">
                                 <div class="col">

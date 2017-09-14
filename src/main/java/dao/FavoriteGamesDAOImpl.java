@@ -135,7 +135,7 @@ public class FavoriteGamesDAOImpl implements FavoriteGamesDAO {
             rs = ps.executeQuery();
 
             while (rs.next()) {
-                videogameList.add(new Videogame(rs.getInt("videogame_id_pk"), rs.getString("name"), rs.getString("description")));
+                videogameList.add(new Videogame(rs.getInt("videogame_id_pk"), rs.getString("name"), rs.getString("description"), rs.getString("image")));
             }
 
         } catch (Exception e) {
